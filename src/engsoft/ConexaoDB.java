@@ -24,7 +24,7 @@ public class ConexaoDB {//Classe de conexão primária com o banco de dados, fei
         try{
             String url = "jdbc:postgresql://localhost:5432/trabsoftw";//Local do banco 
             String usuario = "postgres";  //Usuario
-            String senha = "0000";  //Senha
+            String senha = "2509";  //Senha
   
             Class.forName("org.postgresql.Driver");//Driver de conexão   
   

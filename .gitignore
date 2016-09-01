@@ -58,3 +58,4 @@ manifest.mf
 *.jnlp
 nbproject/build-impl.xml
 *.xml
+/dist/
