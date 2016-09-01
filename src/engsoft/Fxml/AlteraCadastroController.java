@@ -46,6 +46,7 @@ public class AlteraCadastroController implements Initializable {
     TextField EmailField=new TextField();
     @FXML
     Text Mensagem=new Text();
+    ObservableList ConjVazio= FXCollections.observableArrayList();
 
     private Connection con = null;
     private Connection conUser=null;
@@ -63,15 +64,16 @@ public class AlteraCadastroController implements Initializable {
         usuario= engsoft.ControleUI.getInstance().getUser();//Recebe o usuário da classe de controle
         carregaPais();//Carrega os países
         puxarInfo();// Puxa as informações do usuário
+        
     } 
     @FXML
     
     public void limpaCampos(){
         //Função para  limpar os campos
-        EstadoField.setValue(null); //Limpa o valor atual
-        CityField.setValue(null);
-        EstadoField.setItems(null);//Limpa o vetor de items
-        CityField.setItems(null);        
+        EstadoField.setValue(ConjVazio); //Limpa o valor atual
+        CityField.setValue(ConjVazio);
+        EstadoField.setItems(ConjVazio);//Limpa o vetor de items
+        CityField.setItems(ConjVazio);        
         }
     
      @FXML
@@ -88,8 +90,7 @@ public class AlteraCadastroController implements Initializable {
         System.out.println(e);
     }
     PaisField.setItems(Paises);//Adiciona os países na choice box  
-    Mensagem.setText("");//Limpa os campos     
-    limpaCampos();        
+    Mensagem.setText("");//Limpa os campos            
     }
     
     @FXML

@@ -44,7 +44,7 @@ public class CadastroController implements Initializable {
     PasswordField PassField=new PasswordField();
     @FXML 
     Text Mensagem= new Text();
-
+    ObservableList ConjVazio= FXCollections.observableArrayList(); 
     
     @FXML
     public void retornaLogin(){ //Retorna para a tela de login
@@ -79,10 +79,10 @@ public class CadastroController implements Initializable {
     
     @FXML
     public void limpaCampos(){
-        EstadoField.setValue(null);
-        CityField.setValue(null);
-        EstadoField.setItems(null);
-        CityField.setItems(null);
+        EstadoField.setValue(ConjVazio);
+        CityField.setValue(ConjVazio);
+        EstadoField.setItems(ConjVazio);
+        CityField.setItems(ConjVazio);
     }
     
     @FXML
