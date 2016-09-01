@@ -11,7 +11,8 @@ import java.sql.*;
  *
  * @author Gabriel
  */
-public class UserConexaoDB { 
+public class UserConexaoDB {  //Classe para a conexão especifica de um usúario no sistema
+    //Se possível passar para singleton
     
 private Connection conexao;   
 private String usuario;

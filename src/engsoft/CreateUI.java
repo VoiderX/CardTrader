@@ -16,7 +16,7 @@ public class CreateUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ControleUI.getInstance().start(primaryStage);
+        ControleUI.getInstance().start(primaryStage); //Chama a inicialização da classe de controle
                 
     }
     

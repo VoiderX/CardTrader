@@ -36,7 +36,7 @@ public class LoginController implements Initializable {
     @FXML
     public void sair(){
         try{
-        engsoft.ConexaoDB.getCon().close();
+        engsoft.ConexaoDB.getCon().close();//Encerra a conexão base
         }catch(Exception e){
             System.out.println("Erro ao sair!");
         }
@@ -79,7 +79,7 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Mensagem.wrappingWidthProperty();
+        Mensagem.wrappingWidthProperty();//Permite o campo de texto se expandir
     }    
     
 }

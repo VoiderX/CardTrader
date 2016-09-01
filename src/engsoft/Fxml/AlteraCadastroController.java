@@ -50,7 +50,7 @@ public class AlteraCadastroController implements Initializable {
     private Connection con = null;
     private Connection conUser=null;
     String usuario;
-    public void setConUser(Connection conUser){
+    public void setConUser(Connection conUser){ //Método para settar a conexão do usúario nesta interface
         this.conUser=conUser;
     }
     /**
@@ -71,8 +71,7 @@ public class AlteraCadastroController implements Initializable {
         EstadoField.setValue(null); //Limpa o valor atual
         CityField.setValue(null);
         EstadoField.setItems(null);//Limpa o vetor de items
-        CityField.setItems(null);
-        System.out.println("Campos limpos!");           
+        CityField.setItems(null);        
         }
     
      @FXML
@@ -90,11 +89,7 @@ public class AlteraCadastroController implements Initializable {
     }
     PaisField.setItems(Paises);//Adiciona os países na choice box  
     Mensagem.setText("");//Limpa os campos     
-    EstadoField.setValue(null);//Limpeza caso os país seja alterado
-    CityField.setValue(null);
-    EstadoField.setItems(null);
-    CityField.setItems(null);
-        
+    limpaCampos();        
     }
     
     @FXML
@@ -117,10 +112,7 @@ public class AlteraCadastroController implements Initializable {
     EstadoField.show();
         }
         else{
-            EstadoField.setValue(null);//Limpeza de campos caso não haja um país selecionado
-            EstadoField.setItems(null);
-            CityField.setValue(null);
-            CityField.setItems(null);
+            limpaCampos();
             Mensagem.setText("Selecione um país!");
         }
     }
@@ -145,10 +137,7 @@ public class AlteraCadastroController implements Initializable {
     CityField.show();
         }
         else{//Limpeza de campos caso não haja um estado selecionado
-            CityField.setValue(null);
-            CityField.setItems(null);
-            EstadoField.setValue(null);
-            EstadoField.setItems(null);
+            limpaCampos();
             Mensagem.setText("Selecione um estado!");
         }
     }
@@ -209,8 +198,10 @@ public class AlteraCadastroController implements Initializable {
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
         try{
-        Statement s=conUser.createStatement();//Passa as querys de alteração de dados       
+        Statement s=conUser.createStatement();//Passa as querys de alteração de dados
+        if(!PassField.getText().isEmpty()){
         s.executeUpdate("ALTER USER "+usuario+" WITH PASSWORD '"+PassField.getText()+"'");
+        }
         s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField.getText()+"' WHERE NICK_USUARIO='"+
                 engsoft.ControleUI.getInstance().getUser()+"'");
         s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField.getText()+"' WHERE NICK_USUARIO='"+

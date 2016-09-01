@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
  */
 public class CadastroController implements Initializable {
     
-    @FXML
+    @FXML //Inicialização dos elementos
     TextField NickField=new TextField();
     @FXML
     TextField NomeField=new TextField();
@@ -45,14 +45,10 @@ public class CadastroController implements Initializable {
     @FXML 
     Text Mensagem= new Text();
 
-  
-    /**
-     * Initializes the controller class.
-     */
-      
+    
     @FXML
-    public void retornaLogin(){
-        engsoft.ControleUI.getInstance().mostraLogin();
+    public void retornaLogin(){ //Retorna para a tela de login
+        engsoft.ControleUI.getInstance().mostraLogin(); //Instanciado através da classe singleton
              NickField.setText("");
              PassField.setText("");
              NomeField.setText("");
@@ -65,7 +61,7 @@ public class CadastroController implements Initializable {
     }
     
     @FXML
-    public void carregaPais(){
+    public void carregaPais(){ //Métodos carregaPais,carregaEstados,carregaCidas idem ao da classe de alteração
         ObservableList Paises= FXCollections.observableArrayList();  
         try{
             Statement s=con.createStatement();
@@ -78,9 +74,15 @@ public class CadastroController implements Initializable {
         System.out.println(e);
     }
     PaisField.setItems(Paises);  
-    Mensagem.setText("");
-    EstadoField.setValue(null);
-    CityField.setValue(null);
+    Mensagem.setText("");    
+    }
+    
+    @FXML
+    public void limpaCampos(){
+        EstadoField.setValue(null);
+        CityField.setValue(null);
+        EstadoField.setItems(null);
+        CityField.setItems(null);
     }
     
     @FXML
@@ -102,6 +104,7 @@ public class CadastroController implements Initializable {
     Mensagem.setText("");
         }
         else{
+            limpaCampos();
             Mensagem.setText("Selecione um país!");
         }
     }
@@ -123,6 +126,7 @@ public class CadastroController implements Initializable {
     CityField.setItems(Cidades);
         }
         else{
+            limpaCampos();
             Mensagem.setText("Selecione um estado!");
         }
     }
@@ -138,25 +142,31 @@ public class CadastroController implements Initializable {
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
         try{
-        Statement s=con.createStatement();
+        Statement s=con.createStatement(); //Inicia o statement
+        
+          //Cria um usuário no banco de dados com a senha fornecida pelo usuário   
+        s.executeUpdate("CREATE USER "+NickField.getText()+" WITH PASSWORD '"+PassField.getText()+"'");
+        
+        //Cria uma visão da tabela usuario para o usuario com o nome de Userview            
+        s.executeUpdate("CREATE VIEW "+NickField.getText()+"view AS SELECT * FROM USUARIO"
+                        + " WHERE NICK_USUARIO='"+NickField.getText()+"'");        
+        
+           //Fornece permissão de seleção e atualização na sua própria view
+        s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField.getText()+"view TO "+NickField.getText());
+        
+          //Insere os dados na tabela do usuário
         s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText()+"','"+NomeField.getText()+
-                "','"+EndField.getText()+"','"+NumField.getText()+"','"+"1','"+
+                "','"+EndField.getText()+"','"+NumField.getText()+"','"+
                 EmailField.getText()+"','"+
-                EstadoField.getValue()+"','"+CityField.getValue()+"','"+PaisField.getValue()+"')");
-                Mensagem.setText("Usuário Cadastrado com sucesso!");
-                s.executeUpdate("CREATE USER "+NickField.getText()+" WITH PASSWORD '"+PassField.getText()+"'");
-                s.executeUpdate("CREATE VIEW "+NickField.getText()+"view AS SELECT * FROM USUARIO"
-                        + " WHERE NICK_USUARIO='"+NickField.getText()+"'");
-                s.executeUpdate("GRANT ALL ON "+NickField.getText()+"view TO "+NickField.getText());
-                s.executeUpdate("REVOKE INSERT ON "+NickField.getText()+"view FROM "+
-                        NickField.getText());
-                s.close();              
-                 
+                PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
+                Mensagem.setText("Usuário Cadastrado com sucesso!");       
+
+        s.close();//Encerra o statement(declaração);           
+             
     }
-        catch(Exception e){
+        catch(Exception e){//Caso haja um email ou usuario com o mesmo nome o banco irá retornar uma exceção
             Mensagem.setText("Nome de usuário ou email já cadastrados!");
-            System.out.println(e);
-           
+            System.out.println(e);           
         }
     }
     
@@ -164,8 +174,8 @@ public class CadastroController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        con = engsoft.ConexaoDB.getCon();
-        carregaPais();
+        con = engsoft.ConexaoDB.getCon(); //Necessário utilizar a conexão base para realização do cadastro
+        carregaPais();//Carrega os paises ao iniciar a interface
     }    
     
 }

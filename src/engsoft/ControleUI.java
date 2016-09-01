@@ -34,9 +34,10 @@ public final class ControleUI{
     public static Scene getAlteraScene() {
         return AlteraScene;
     }
-    private String user;
-
+    
     private ControleUI(){};
+
+    private String user; //String contendo o usuário utilizando o sistema e seus metódos getter e setter
     
     public String getUser() {
         return user;
@@ -46,7 +47,7 @@ public final class ControleUI{
         this.user = user;
     }
     
-    Connection conUser;
+    Connection conUser;//Conexão do usuário e seu método setter e getter
 
     public void setConUser(Connection conUser) {
         this.conUser = conUser;
@@ -63,12 +64,12 @@ public final class ControleUI{
         return((INSTANCE == null)?INSTANCE = new ControleUI():INSTANCE);
     }
     
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {//Chama a parimeira tela
         mainStage = primaryStage;
         initUI();
     }    
     
-    private static Parent LoginFXML;
+    private static Parent LoginFXML; //Classes parent para manipulação do Fxml
     private static Parent CadastroFXML;
     private static Parent MenuFXML;
     private static Parent AlteraCadastroFXML;
@@ -82,12 +83,12 @@ public final class ControleUI{
     
     
     
-    private void initUI(){
+    private void initUI(){ //Metódo inicializador 
         mainStage.centerOnScreen();
-        mainStage.setTitle("Sistema de Cartas");
+        mainStage.setTitle("CardTrader 2016");
         
         try {
-            LoginFXML = FXMLLoader.load(getClass().getResource("Fxml/Login.fxml"));
+            LoginFXML = FXMLLoader.load(getClass().getResource("Fxml/Login.fxml")); //Carrega o arquivo FXML na classe pai
             CadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/Cadastro.fxml"));
             MenuFXML=FXMLLoader.load(getClass().getResource("Fxml/Menu.fxml"));            
             
@@ -95,27 +96,28 @@ public final class ControleUI{
             //fazer algo para mostrar erro
             System.out.println("Erro" + ex);
         }
-        LoginScene = new Scene(LoginFXML);
+        LoginScene = new Scene(LoginFXML); //Transforma a classe parent em um objeto do tipo Scene
         CadastroScene=new Scene(CadastroFXML);
         MenuScene=new Scene(MenuFXML);
         
         mostraLogin();
     }
    
-    public void mostraLogin(){
+    public void mostraLogin(){ //Método para chamar o login
         mainStage.setScene(LoginScene);
         mainStage.show();    
     }
     
-    public void mostraCadastro(){
+    public void mostraCadastro(){//Método para chamar a tela de cadastro
         mainStage.setScene(CadastroScene);
         mainStage.show();
     }
-    public void mostraMenu(){
+    public void mostraMenu(){ //Método para chamar o menu
         mainStage.setScene(MenuScene);
         mainStage.show();
     }
-    public void mostraAlterCadastro(){
+    public void mostraAlterCadastro(){ //Método para chamar a tela de alteração de cadastro
+        //Objetos são inicializados nele devido a necessidade de puxar informações sobre a conexão do usúario
         try{
         AlteraCadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/AlteraCadastro.fxml"));
         }catch(Exception e){
