@@ -19,39 +19,44 @@ import javafx.scene.text.Text;
 public final class Valida {
     
     //Métodos de validação da login
-    public boolean validaLogin(TextField text, PasswordField pass, Text mens){
+    public static boolean validaLogin(TextField text, PasswordField pass, Text mens){
+        mens.setText("");
+        boolean ctrl=true;
         if(text.getText().isEmpty()){
-            mens.setText("Usuário Vazio");
-            return(false);
-        }else if(pass.getText().isEmpty()){
-            mens.setText("Senha vazia");
-            return(false);
-        }else{
-            return(true);
+            appendText(mens,"Usuário Vazio.");
+            ctrl = false;
         }
+        if(pass.getText().isEmpty()){
+            appendText(mens,"Senha vazia.");
+            ctrl = false;
+        }
+        return(ctrl);
     }
     
     //Métodos de validação da Recuperação de senhas
-    public boolean validaSenha(TextField text, PasswordField pass, Text mens){
+    public static boolean validaSenha(TextField text, PasswordField pass, Text mens){
+        mens.setText("");
+        boolean ctrl = true;
         if(text.getText().isEmpty()){
             mens.setText("Usuário Vazio");
-            return(false);
-        }else if(pass.getText().isEmpty()){
-            mens.setText("Senha vazia");
-            return(false);
-        }else if(pass.getText().length() < 6){
-            mens.setText("Senha muito curta");
-            return(false);
-        }else if(pass.getText().length() > 15){
-            mens.setText("Senha muito longa");
-            return(false);
-        }else{
-            return(true);
+            ctrl = false;
         }
+        if(pass.getText().isEmpty()){
+            appendText(mens,"Senha vazia");
+            ctrl = false;
+        }else if(pass.getText().length() < 6){
+            appendText(mens,"Senha muito curta");
+            ctrl = false;
+        }else if(pass.getText().length() > 15){
+            appendText(mens,"Senha muito longa");
+            ctrl = false;
+        }
+        return(ctrl);
     }
     
     //Métodos para validar cadastro
-    public boolean testaCadastro(TextField nick,TextField nome,TextField end,TextField num,TextField email, ChoiceBox cidade,PasswordField pass,Text mens){
+    public static boolean validaCadastro(TextField nick,TextField nome,TextField end,TextField num,TextField email, ChoiceBox cidade,PasswordField pass,Text mens){
+        mens.setText("");
         boolean nickB = validaNick(num, mens);
         boolean nomeB = validaNome(nome, mens);
         boolean endB = validaEnd(end, mens);
@@ -59,27 +64,26 @@ public final class Valida {
         boolean emailB = validaEmail(end, mens);
         boolean cidadeB = validaCidade(cidade, mens);
         boolean passB = validaPass(pass, mens);
-        if(nickB || nomeB || endB || numB || emailB || cidadeB || passB){
-            return(true);
-        }else{
-            return(false);
-        }
+        return(nickB && nomeB && endB && numB && emailB && cidadeB && passB);
     }
     
-    public boolean validaNick(TextField nick,Text mens){
+    public static boolean validaNick(TextField nick,Text mens){
         String pattern = "[a-z][a-z0-9]*";
         Pattern test = Pattern.compile(pattern);
         Matcher matcher = test.matcher(nick.getText());
+        System.out.println(nick.getText());
         if(nick.getText().isEmpty()){
             mens.setText("nickname vazio.");
             return(false);
         }else if(matcher.matches()){
             mens.setText("nickname não pode começar com numeros ou ter caracteres especiais.");
             return(false);
-        }else if(nick.getText().length() < 6){
+        }else 
+        if(nick.getText().length() < 6){
             mens.setText("nickname muito curto.");
             return(false);
-        }else if(nick.getText().length() > 25){
+        }else
+        if(nick.getText().length() > 25){
             mens.setText("nickname muito longo.");
             return(false);
         }else{
@@ -87,7 +91,7 @@ public final class Valida {
         }
     }
     
-    public boolean validaNome(TextField nome,Text mens){
+    public static boolean validaNome(TextField nome,Text mens){
         if(nome.getText().isEmpty()){
             appendText(mens,"Nome vazio.");
             return(false);
@@ -99,7 +103,7 @@ public final class Valida {
         }
     }
     
-    public boolean validaNum(TextField num,Text mens){
+    public static boolean validaNum(TextField num,Text mens){
         String pattern = "(\\(0?[0-9]{2}\\))[0-9]?[0-9]{4}\\-[0-9]{4}";
         Pattern test = Pattern.compile(pattern);
         Matcher matcher = test.matcher(num.getText());
@@ -114,7 +118,7 @@ public final class Valida {
         }
     }
     
-    public boolean validaEmail(TextField email,Text mens){
+    public static boolean validaEmail(TextField email,Text mens){
         String pattern = "([a-zA-Z])(.+)*@(.+)\\.(.+)";
         Pattern test = Pattern.compile(pattern);
         Matcher matcher = test.matcher(email.getText());
@@ -131,7 +135,7 @@ public final class Valida {
     
     
     
-    public boolean validaEnd(TextField end,Text mens){
+    public static boolean validaEnd(TextField end,Text mens){
         if(end.getText().isEmpty()){
             appendText(mens,"Endereço vazio.");
             return(false);
@@ -143,7 +147,7 @@ public final class Valida {
         }
     }
     
-    public boolean validaCidade(ChoiceBox cidade,Text mens){
+    public static boolean validaCidade(ChoiceBox cidade,Text mens){
         if(cidade.getSelectionModel().isEmpty()){
             appendText(mens, "Selecione país,estado e cidade válidos.");
             return(false);
@@ -152,7 +156,7 @@ public final class Valida {
         }
     }
     
-    public boolean validaPass(PasswordField pass,Text mens){
+    public static boolean validaPass(PasswordField pass,Text mens){
         if(pass.getText().isEmpty()){
             appendText(mens,"Senha vazia.");
             return(false);
@@ -170,7 +174,7 @@ public final class Valida {
         }
     }
     
-    private void appendText(Text mens,String text){
+    private static void appendText(Text mens,String text){
         String orig = mens.getText();
         mens.setText(orig+" "+text);
     }

@@ -5,6 +5,7 @@
  */
 package engsoft.Fxml;
 
+import engsoft.Valida;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -141,32 +142,33 @@ public class CadastroController implements Initializable {
         //Lembrete:No banco aumentar o número máximo das caracteres de telefone e definir email como uma
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
-        try{
-        Statement s=con.createStatement(); //Inicia o statement
-        
-          //Cria um usuário no banco de dados com a senha fornecida pelo usuário   
-        s.executeUpdate("CREATE USER "+NickField.getText()+" WITH PASSWORD '"+PassField.getText()+"'");
-        
-        //Cria uma visão da tabela usuario para o usuario com o nome de Userview            
-        s.executeUpdate("CREATE VIEW "+NickField.getText()+"view AS SELECT * FROM USUARIO"
-                        + " WHERE NICK_USUARIO='"+NickField.getText()+"'");        
-        
-           //Fornece permissão de seleção e atualização na sua própria view
-        s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField.getText()+"view TO "+NickField.getText());
-        
-          //Insere os dados na tabela do usuário
-        s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText()+"','"+NomeField.getText()+
-                "','"+EndField.getText()+"','"+NumField.getText()+"','"+
-                EmailField.getText()+"','"+
-                PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
-                Mensagem.setText("Usuário Cadastrado com sucesso!");       
+        if(Valida.validaCadastro(NickField, NomeField, EndField, NumField, EndField, CityField, PassField, Mensagem)){
+            try{
+                Statement s=con.createStatement(); //Inicia o statement
+                
+                //Cria um usuário no banco de dados com a senha fornecida pelo usuário   
+                s.executeUpdate("CREATE USER "+NickField.getText().toUpperCase()+" WITH PASSWORD '"+PassField.getText().toUpperCase()+"'");
 
-        s.close();//Encerra o statement(declaração);           
-             
-    }
-        catch(Exception e){//Caso haja um email ou usuario com o mesmo nome o banco irá retornar uma exceção
-            Mensagem.setText("Nome de usuário ou email já cadastrados!");
-            System.out.println(e);           
+                //Cria uma visão da tabela usuario para o usuario com o nome de Userview            
+                s.executeUpdate("CREATE VIEW "+NickField.getText().toUpperCase()+"view AS SELECT * FROM USUARIO"
+                                + " WHERE NICK_USUARIO='"+NickField.getText().toUpperCase()+"'");        
+
+                   //Fornece permissão de seleção e atualização na sua própria view
+                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField.getText().toUpperCase()+"view TO "+NickField.getText().toUpperCase());
+
+                  //Insere os dados na tabela do usuário
+                s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText().toUpperCase()+"','"+NomeField.getText().toUpperCase()+
+                        "','"+EndField.getText().toUpperCase()+"','"+NumField.getText().toUpperCase()+"','"+
+                        EmailField.getText().toUpperCase()+"','"+
+                        PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
+                        Mensagem.setText("Usuário Cadastrado com sucesso!");       
+
+                s.close();//Encerra o statement(declaração);           
+
+            }catch(Exception e){//Caso haja um email ou usuario com o mesmo nome o banco irá retornar uma exceção
+                Mensagem.setText("Nome de usuário ou email já cadastrados!");
+                System.out.println(e);           
+            }
         }
     }
     

@@ -5,6 +5,7 @@
  */
 package engsoft.Fxml;
 
+import engsoft.Valida;
 import java.net.URL;
 import java.sql.Statement;
 import java.util.ResourceBundle;
@@ -30,14 +31,16 @@ public class RecuperaSenhaController implements Initializable {
     
     @FXML
     public void alteraSenha(){
-        try{
-      Statement s=engsoft.ConexaoDB.getCon().createStatement();
-      //Validar a senha digitada pelo usuário
-      s.executeUpdate("ALTER USER "+NickField.getText()+ " WITH PASSWORD '"+PassField.getText()+"'");
-      Mensagem.setText("Alteração executada com sucesso!");
-        }catch(Exception e){
-            System.out.println(e);
-            Mensagem.setText("Usuário não encontrado!");
+        if(Valida.validaSenha(NickField, PassField, Mensagem)){
+            try{
+                Statement s=engsoft.ConexaoDB.getCon().createStatement();
+                //Validar a senha digitada pelo usuário
+                s.executeUpdate("ALTER USER "+NickField.getText()+ " WITH PASSWORD '"+PassField.getText()+"'");
+                Mensagem.setText("Alteração executada com sucesso!");
+            }catch(Exception e){
+                System.out.println(e);
+                Mensagem.setText("Usuário não encontrado!");
+            }
         }
     }
     

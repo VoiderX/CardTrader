@@ -9,6 +9,7 @@ package engsoft.Fxml;
 
 import engsoft.ControleUI;
 import engsoft.UserConexaoDB;
+import engsoft.Valida;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -48,27 +49,29 @@ public class LoginController implements Initializable {
         Connection con;
         //Colocar um if antes para verificar se o campo do nome de usuário e o campo da senha
         //não estão vazios, dessa forma evitando um acesso desnecessário ao banco   
-        //Para exibir a mensagem para o  usuário basta chamar Mensagem.setText("texto"); 
-        try{
-          engsoft.UserConexaoDB conUser = new engsoft.UserConexaoDB();//Cria a conexão do usuário
-          conUser.setUsuario(NickField.getText());//Passa o nome e senha como parametro
-          conUser.setSenha(PassField.getText());
-          engsoft.ControleUI.getInstance().setUser(NickField.getText());//Passa o nome do usuario
-          //para a classe de controle
-          con=conUser.createCon();
-          engsoft.ControleUI.getInstance().setConUser(con);//Passa a conexão do usuário para a classe de
-          //controle
-          if(con==null){//Caso o login falhe
-              Mensagem.setText("Senha incorreta ou usuário não cadastrado!");
-          }else{//caso de certo
-          engsoft.ControleUI.getInstance().mostraMenu();//Exibe o menu
-            Mensagem.setText("");//Limpa os campos
-            NickField.setText("");
-            PassField.setText("");
-          }
-        }
-        catch(Exception e){
-        System.out.println("Erro:"+ e); 
+        //Para exibir a mensagem para o  usuário basta chamar Mensagem.setText("texto");
+        if(Valida.validaLogin(NickField, PassField, Mensagem)){
+            try{
+              engsoft.UserConexaoDB conUser = new engsoft.UserConexaoDB();//Cria a conexão do usuário
+              conUser.setUsuario(NickField.getText().toUpperCase());//Passa o nome e senha como parametro
+              conUser.setSenha(PassField.getText().toUpperCase());
+              engsoft.ControleUI.getInstance().setUser(NickField.getText());//Passa o nome do usuario
+              //para a classe de controle
+              con=conUser.createCon();
+              engsoft.ControleUI.getInstance().setConUser(con);//Passa a conexão do usuário para a classe de
+              //controle
+              if(con==null){//Caso o login falhe
+                  Mensagem.setText("Senha incorreta ou usuário não cadastrado!");
+              }else{//caso de certo
+              engsoft.ControleUI.getInstance().mostraMenu();//Exibe o menu
+                Mensagem.setText("");//Limpa os campos
+                NickField.setText("");
+                PassField.setText("");
+              }
+            }
+            catch(Exception e){
+            System.out.println("Erro:"+ e); 
+            }
         }
     }
     @FXML
