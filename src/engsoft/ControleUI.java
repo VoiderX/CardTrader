@@ -73,11 +73,13 @@ public final class ControleUI{
     private static Parent CadastroFXML;
     private static Parent MenuFXML;
     private static Parent AlteraCadastroFXML;
+    private static Parent RecSenhaFXML;
     
     private static Scene LoginScene;
     private static Scene CadastroScene;
     private static Scene MenuScene;
     private static Scene AlteraScene;
+    private static Scene RecSenhaScene;
     
     private static Stage mainStage;
     
@@ -90,7 +92,8 @@ public final class ControleUI{
         try {
             LoginFXML = FXMLLoader.load(getClass().getResource("Fxml/Login.fxml")); //Carrega o arquivo FXML na classe pai
             CadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/Cadastro.fxml"));
-            MenuFXML=FXMLLoader.load(getClass().getResource("Fxml/Menu.fxml"));            
+            MenuFXML=FXMLLoader.load(getClass().getResource("Fxml/Menu.fxml"));
+            RecSenhaFXML=FXMLLoader.load(getClass().getResource("Fxml/RecuperaSenha.fxml"));
             
         } catch (IOException ex) {
             //fazer algo para mostrar erro
@@ -99,7 +102,7 @@ public final class ControleUI{
         LoginScene = new Scene(LoginFXML); //Transforma a classe parent em um objeto do tipo Scene
         CadastroScene=new Scene(CadastroFXML);
         MenuScene=new Scene(MenuFXML);
-        
+        RecSenhaScene=new Scene(RecSenhaFXML);
         mostraLogin();
     }
    
@@ -129,5 +132,9 @@ public final class ControleUI{
         
     }
     
+    public void chamaRecPass(){
+        mainStage.setScene(RecSenhaScene);
+        mainStage.show();
+    }    
     
 }

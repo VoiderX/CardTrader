@@ -71,11 +71,15 @@ public class LoginController implements Initializable {
         System.out.println("Erro:"+ e); 
         }
     }
-    
+    @FXML
     public void chamaCadastro(){//Chama a tela de cadastro
        engsoft.ControleUI.getInstance().getCadastroScene();
        engsoft.ControleUI.getInstance().mostraCadastro();
-    } 
+    }
+    @FXML
+    public void chamaRecSenha(){
+        engsoft.ControleUI.getInstance().chamaRecPass();
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

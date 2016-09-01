@@ -18,10 +18,11 @@
             <Label layoutX="161.0" layoutY="34.0" prefHeight="17.0" prefWidth="103.0" text="Nome de Usuário" />
             <Label layoutX="198.0" layoutY="94.0" prefHeight="17.0" prefWidth="46.0" text="Senha" />
             <Text fx:id="Mensagem" layoutX="80.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="294.0000033378601" />
-            <Label layoutX="98.0" layoutY="6.0" prefHeight="17.0" prefWidth="259.0" text="Olá , Seja bem vindo ao &lt;nome do sistema&gt;" />
+            <Label layoutX="131.0" layoutY="6.0" prefHeight="17.0" prefWidth="193.0" text="Olá , Seja bem vindo ao CardTrader" />
          </children>
       </Pane>
-      <Button layoutX="443.0" layoutY="330.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="103.0" text="Sair" />
-      <Button layoutX="249.0" layoutY="330.0" mnemonicParsing="false" onAction="#chamaCadastro" prefHeight="25.0" prefWidth="103.0" text="Cadastrar" />
+      <Button layoutX="433.0" layoutY="330.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="123.0" text="Sair" />
+      <Button layoutX="222.0" layoutY="330.0" mnemonicParsing="false" onAction="#chamaCadastro" prefHeight="25.0" prefWidth="123.0" text="Cadastrar" />
+      <Button layoutX="53.0" layoutY="330.0" mnemonicParsing="false" onAction="#chamaRecSenha" prefHeight="25.0" prefWidth="123.0" text="Esqueceu a Senha?" />
    </children>
 </AnchorPane>
