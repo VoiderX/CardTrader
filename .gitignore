@@ -45,3 +45,16 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.properties
+build/classes/engsoft/ConexaoDB.class
+*.class
+*.html
+dist/CardTrader.jar
+*.jar
+dist/web-files/dtjava.js
+*.png
+*.gif
+manifest.mf
+*.jnlp
+nbproject/build-impl.xml
+*.xml
