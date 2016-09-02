@@ -67,6 +67,16 @@ public final class Valida {
         return(nickB && nomeB && endB && numB && emailB && cidadeB && passB);
     }
     
+    public static boolean validaAltCadastro(TextField nome,TextField end,TextField num,TextField email, ChoiceBox cidade,Text mens){
+        mens.setText("");
+        boolean nomeB = validaNome(nome, mens);
+        boolean endB = validaEnd(end, mens);
+        boolean numB = validaNum(num, mens);
+        boolean emailB = validaEmail(email, mens);
+        boolean cidadeB = validaCidade(cidade, mens);
+        return(nomeB && endB && numB && emailB && cidadeB);
+    }
+    
     public static boolean validaNick(TextField nick,Text mens){
         String pattern = "[a-z][a-z0-9]*";
         Pattern test = Pattern.compile(pattern);

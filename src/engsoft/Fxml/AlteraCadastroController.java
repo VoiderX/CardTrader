@@ -5,6 +5,7 @@
  */
 package engsoft.Fxml;
 
+import engsoft.Valida;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -198,32 +199,31 @@ public class AlteraCadastroController implements Initializable {
         //Lembrete:No banco aumentar o número máximo das caracteres de telefone e definir email como uma
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
-        try{
-        Statement s=conUser.createStatement();//Passa as querys de alteração de dados
-        if(!PassField.getText().isEmpty()){
-        s.executeUpdate("ALTER USER "+usuario+" WITH PASSWORD '"+PassField.getText()+"'");
-        }
-        s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField.getText()+"' WHERE NICK_USUARIO='"+
-                engsoft.ControleUI.getInstance().getUser()+"'");
-        s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField.getText()+"' WHERE NICK_USUARIO='"+
-                engsoft.ControleUI.getInstance().getUser()+"'");
-        s.executeUpdate("UPDATE "+usuario+"view SET EMAIL_USUARIO='"+EmailField.getText()+"' WHERE NICK_USUARIO='"+
-                engsoft.ControleUI.getInstance().getUser()+"'");
-        s.executeUpdate("UPDATE "+usuario+"view SET ENDERECO_USUARIO='"+EndField.getText()+"' WHERE NICK_USUARIO='"+
-                engsoft.ControleUI.getInstance().getUser()+"'");
-        s.executeUpdate("UPDATE "+usuario+"view SET(CIDADE_ESTADO_PAIS_NOME_PAIS,CIDADE_ESTADO_NOME_ESTADO,CIDADE_NOME_CIDADE)"
-                +"=('"+PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')WHERE "+
-                 "NICK_USUARIO='"+engsoft.ControleUI.getInstance().getUser()+"'");
-        //Update de Pais-Estado-Cidade, devem ser realizados todos em uma unica query devido ser uma chave composta        
-        Mensagem.setText("Dados atualizados com sucesso!");
-        s.close();      
-        }
-        catch(Exception e){//Banco pode lançar exceção chave duplicada ou email duplicado
-           //Outras possibilidades devem ser tratadas na interface 
-            System.out.println(e);
-            Mensagem.setText("Nome de usuário ou email já utilizados!");
+        if(Valida.validaAltCadastro(NomeField, EndField, NumField, EmailField, CityField, Mensagem)){
+            try{
+                Statement s=conUser.createStatement();//Passa as querys de alteração de dados
+                if(!PassField.getText().isEmpty()){
+                    s.executeUpdate("ALTER USER "+usuario+" WITH PASSWORD '"+PassField.getText()+"'");
+                }
+                s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField.getText()+"' WHERE NICK_USUARIO='"+
+                            engsoft.ControleUI.getInstance().getUser()+"'");
+                s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField.getText()+"' WHERE NICK_USUARIO='"+
+                            engsoft.ControleUI.getInstance().getUser()+"'");
+                s.executeUpdate("UPDATE "+usuario+"view SET EMAIL_USUARIO='"+EmailField.getText()+"' WHERE NICK_USUARIO='"+
+                            engsoft.ControleUI.getInstance().getUser()+"'");
+                s.executeUpdate("UPDATE "+usuario+"view SET ENDERECO_USUARIO='"+EndField.getText()+"' WHERE NICK_USUARIO='"+
+                            engsoft.ControleUI.getInstance().getUser()+"'");
+                s.executeUpdate("UPDATE "+usuario+"view SET(CIDADE_ESTADO_PAIS_NOME_PAIS,CIDADE_ESTADO_NOME_ESTADO,CIDADE_NOME_CIDADE)"
+                            +"=('"+PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')WHERE "+
+                             "NICK_USUARIO='"+engsoft.ControleUI.getInstance().getUser()+"'");
+                    //Update de Pais-Estado-Cidade, devem ser realizados todos em uma unica query devido ser uma chave composta        
+                Mensagem.setText("Dados atualizados com sucesso!");
+                s.close();      
+            }catch(Exception e){//Banco pode lançar exceção chave duplicada ou email duplicado
+                //Outras possibilidades devem ser tratadas na interface 
+                System.out.println(e);
+                Mensagem.setText("Nome de usuário ou email já utilizados!");
+            }
         }
     }
-        
-    
 }
