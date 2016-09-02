@@ -76,7 +76,6 @@ public class LoginController implements Initializable {
     }
     @FXML
     public void chamaCadastro(){//Chama a tela de cadastro
-       engsoft.ControleUI.getInstance().getCadastroScene();
        engsoft.ControleUI.getInstance().mostraCadastro();
     }
     @FXML

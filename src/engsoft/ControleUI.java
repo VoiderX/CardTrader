@@ -19,22 +19,7 @@ import javafx.stage.Stage;
  */
 public final class ControleUI{
 
-    public static Scene getLoginScene() {//Metodos para controle de comunicação de interfaces
-        return LoginScene;
-    }
-
-    public static Scene getCadastroScene() {
-        return CadastroScene;
-    }
-
-    public static Scene getMenuScene() {
-        return MenuScene;
-    }
-
-    public static Scene getAlteraScene() {
-        return AlteraScene;
-    }
-    
+   
     private ControleUI(){};
 
     private String user; //String contendo o usuário utilizando o sistema e seus metódos getter e setter
@@ -58,7 +43,7 @@ public final class ControleUI{
     }
     
     
-     private static ControleUI INSTANCE = null;
+    private static ControleUI INSTANCE = null;
     
     public static ControleUI getInstance(){
         return((INSTANCE == null)?INSTANCE = new ControleUI():INSTANCE);
