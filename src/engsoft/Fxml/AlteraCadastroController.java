@@ -47,7 +47,7 @@ public class AlteraCadastroController implements Initializable {
     TextField EmailField=new TextField();
     @FXML
     Text Mensagem=new Text();
-    ObservableList ConjVazio= FXCollections.observableArrayList();
+    engsoft.Locations Loc;
 
     private Connection con = null;
     private Connection conUser=null;
@@ -60,90 +60,28 @@ public class AlteraCadastroController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        con = engsoft.ConexaoDB.getCon();//Utiliza a conexão root para puxar os países,estados e cidades
-        conUser=engsoft.ControleUI.getInstance().getConUser();//Recebe a conexão do usuário
-        usuario= engsoft.ControleUI.getInstance().getUser();//Recebe o usuário da classe de controle
-        carregaPais();//Carrega os países
+        Loc=new engsoft.Locations();
+        Loc.carregaPais(PaisField, Mensagem);
+        conUser=engsoft.ControleUI.getInstance().getConUser();
+        usuario=engsoft.ControleUI.getInstance().getUser();
         puxarInfo();// Puxa as informações do usuário
         
     } 
-    @FXML
-    
+    @FXML    
     public void limpaCampos(){
-        //Função para  limpar os campos
-        EstadoField.setValue(ConjVazio); //Limpa o valor atual
-        CityField.setValue(ConjVazio);
-        EstadoField.setItems(ConjVazio);//Limpa o vetor de items
-        CityField.setItems(ConjVazio);        
+          Loc.limpaCampos(EstadoField, CityField);
         }
     
-     @FXML
-    public void carregaPais(){
-    ObservableList Paises= FXCollections.observableArrayList();//Inicializa o "array"
-    try{
-    Statement s = con.createStatement();
-    ResultSet rs=s.executeQuery("SELECT * FROM PAIS");//Result set com todos os países
-    while(rs.next()){//Loop para adicionr os páises no array
-    Paises.add(rs.getString("NOME_PAIS"));
-    }
-    }
-    catch(Exception e){
-        System.out.println(e);
-    }
-    PaisField.setItems(Paises);//Adiciona os países na choice box  
-    Mensagem.setText("");//Limpa os campos            
-    }
     
     @FXML
     public void carregaEstados(){
-        ObservableList Estados= FXCollections.observableArrayList();//Inicializa o "array"
-        if(PaisField.getValue()!=null){//Verifica se o país foi selecionado
-    try{
-        Statement s=con.createStatement();//Insere no rs somente os estados dos países selecionados
-        ResultSet rs=s.executeQuery("SELECT NOME_ESTADO FROM ESTADO WHERE PAIS_NOME_PAIS='"+ PaisField.getValue()+"'");
-    while(rs.next()){        
-        Estados.add(rs.getString("NOME_ESTADO"));//Idem ao carregaPaíses até o fim do método
-    }
-    }
-    catch(Exception e){
-        System.out.println(e);
-    }
-    EstadoField.setItems(Estados);
-    CityField.setValue(null);
-    Mensagem.setText("");
-    EstadoField.show();
-        }
-        else{
-            limpaCampos();
-            Mensagem.setText("Selecione um país!");
-        }
+        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
     }
     
     @FXML
-    public void carregaCidades(){//Idem ao carregaEstados
-         ObservableList Cidades= FXCollections.observableArrayList();
-        if(EstadoField.getValue()!=null){
-           
-    try{
-        Statement s=con.createStatement();
-        ResultSet rs=s.executeQuery("SELECT NOME_CIDADE FROM CIDADE WHERE ESTADO_NOME_ESTADO='"
-                + EstadoField.getValue()+"' AND ESTADO_PAIS_NOME_PAIS='"+PaisField.getValue()+"'");
-    while(rs.next()){        
-        Cidades.add(rs.getString("NOME_CIDADE"));
-    }
-    }
-    catch(Exception e){
-        System.out.println(e);
-    }
-    CityField.setItems(Cidades);
-    CityField.show();
-        }
-        else{//Limpeza de campos caso não haja um estado selecionado
-            limpaCampos();
-            Mensagem.setText("Selecione um estado!");
-        }
-    }
-   
+    public void carregaCidades(){
+        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);        
+    }   
 
     @FXML
     private void retornaMenu(){//Retorna ao menu e limpa os campos;    
@@ -173,11 +111,11 @@ public class AlteraCadastroController implements Initializable {
              NumField.setText(rs.getString("NUM_USUARIO"));
              EmailField.setText(rs.getString("EMAIL_USUARIO"));
              EndField.setText(rs.getString("ENDERECO_USUARIO"));
-             carregaPais();
+             Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
              PaisField.setValue(rs.getString("CIDADE_ESTADO_PAIS_NOME_PAIS"));
-             carregaEstados();
+             Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
              EstadoField.setValue(rs.getString("CIDADE_ESTADO_NOME_ESTADO"));
-             carregaCidades();
+             Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
              CityField.setValue(rs.getString("CIDADE_NOME_CIDADE"));
              rs.first();
              rs.close();//Fecha o result set

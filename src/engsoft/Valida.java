@@ -157,7 +157,7 @@ public final class Valida {
     }
     
     public static boolean validaCidade(ChoiceBox cidade,Text mens){
-        if(cidade.getSelectionModel().isEmpty()){
+        if(cidade.getValue()==null){
             appendText(mens, "Selecione país,estado e cidade válidos.");
             return(false);
         }else{

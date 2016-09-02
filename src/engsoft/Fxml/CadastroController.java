@@ -45,7 +45,7 @@ public class CadastroController implements Initializable {
     PasswordField PassField=new PasswordField();
     @FXML 
     Text Mensagem= new Text();
-    ObservableList ConjVazio= FXCollections.observableArrayList(); 
+    engsoft.Locations Loc;
     
     @FXML
     public void retornaLogin(){ //Retorna para a tela de login
@@ -59,77 +59,22 @@ public class CadastroController implements Initializable {
              PaisField.setValue(null);
              EstadoField.setValue(null);
              CityField.setValue(null);  
-    }
-    
-    @FXML
-    public void carregaPais(){ //Métodos carregaPais,carregaEstados,carregaCidas idem ao da classe de alteração
-        ObservableList Paises= FXCollections.observableArrayList();  
-        try{
-            Statement s=con.createStatement();
-            ResultSet rs=s.executeQuery("SELECT * FROM PAIS");
-        while(rs.next()){        
-    Paises.add(rs.getString("NOME_PAIS"));
-    }
-    }
-    catch(Exception e){
-        System.out.println(e);
-    }
-    PaisField.setItems(Paises);  
-    Mensagem.setText("");    
-    }
+    }    
+   
     
     @FXML
     public void limpaCampos(){
-        EstadoField.setValue(ConjVazio);
-        CityField.setValue(ConjVazio);
-        EstadoField.setItems(ConjVazio);
-        CityField.setItems(ConjVazio);
+        Loc.limpaCampos(EstadoField, CityField);
     }
     
     @FXML
     public void carregaEstados(){
-        ObservableList Estados= FXCollections.observableArrayList();
-        if(PaisField.getValue()!=null){ 
-    try{
-        Statement s=con.createStatement();
-        ResultSet rs=s.executeQuery("SELECT NOME_ESTADO FROM ESTADO WHERE PAIS_NOME_PAIS='"+ PaisField.getValue()+"'");
-    while(rs.next()){        
-        Estados.add(rs.getString("NOME_ESTADO"));
-    }
-    }
-    catch(Exception e){
-        System.out.println(e);
-    }
-    EstadoField.setItems(Estados);
-    CityField.setValue(null);
-    Mensagem.setText("");
-        }
-        else{
-            limpaCampos();
-            Mensagem.setText("Selecione um país!");
-        }
+        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
     }
     
     @FXML
     public void carregaCidades(){
-         ObservableList Cidades= FXCollections.observableArrayList();
-        if(EstadoField.getValue()!=null){ 
-    try{
-        Statement s=con.createStatement();
-        ResultSet rs=s.executeQuery("SELECT NOME_CIDADE FROM CIDADE WHERE ESTADO_NOME_ESTADO='"+ EstadoField.getValue()+"'");
-    while(rs.next()){        
-        Cidades.add(rs.getString("NOME_CIDADE"));
-    }
-    }
-    catch(Exception e){
-        System.out.println(e);
-    }
-    CityField.setItems(Cidades);
-        }
-        else{
-            limpaCampos();
-            Mensagem.setText("Selecione um estado!");
-        }
+        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
     }
    
     
@@ -177,7 +122,8 @@ public class CadastroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         con = engsoft.ConexaoDB.getCon(); //Necessário utilizar a conexão base para realização do cadastro
-        carregaPais();//Carrega os paises ao iniciar a interface
+        Loc= new engsoft.Locations();
+        Loc.carregaPais(PaisField, Mensagem);
     }    
     
 }
