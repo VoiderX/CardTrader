@@ -18,7 +18,7 @@ import javafx.scene.text.Text;
  *
  * @author Gabriel
  */
-public class Locations {
+public class Locations { //Classe para armazenar os métodos de consulta as tabelas de países,estados e cidades
         Connection con;
         ObservableList ConjVazio=FXCollections.observableArrayList();
     public Locations(){

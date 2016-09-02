@@ -63,8 +63,8 @@ public class AlteraCadastroController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Loc=new engsoft.Locations();
-        Loc.carregaPais(PaisField, Mensagem);
+        Loc=new engsoft.Locations(); //Instancia a classe de localizações
+        Loc.carregaPais(PaisField, Mensagem); //Carrega os países ao incicializar a interface
         conUser=engsoft.ControleUI.getInstance().getConUser();
         usuario=engsoft.ControleUI.getInstance().getUser();
         puxarInfo();// Puxa as informações do usuário
@@ -72,18 +72,18 @@ public class AlteraCadastroController implements Initializable {
     } 
     @FXML    
     public void limpaCampos(){
-          Loc.limpaCampos(EstadoField, CityField);
+          Loc.limpaCampos(EstadoField, CityField);//Chama o método de limpar os campos
         }
     
     
     @FXML
     public void carregaEstados(){
-        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
+        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem); //Método para carregar o estados
     }
     
     @FXML
     public void carregaCidades(){
-        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);        
+        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);//Método para carregar as cidades        
     }   
 
     @FXML
@@ -111,7 +111,7 @@ public class AlteraCadastroController implements Initializable {
              NomeField.setText(rs.getString("NOME_USUARIO"));
              NumField=rs.getString("NUM_USUARIO");
              
-             if(NumField.length()==11){
+             if(NumField.length()==11){ //Trata a exibição do telefone de acordo com os casos possíveis na validação
                 if(NumField.subSequence(0,1).equals("0")){
                     DDDField.setText(NumField.substring(0,3));
                     CodCddField.setText(NumField.substring(3,7));
@@ -124,15 +124,15 @@ public class AlteraCadastroController implements Initializable {
              }
              
              if(NumField.length()==10){
-                     DDDField.setText(NumField.substring(0,2));
-                     CodCddField.setText(NumField.substring(2,6));
-                     NumUsuarioField.setText(NumField.substring(6,10)); 
+                DDDField.setText(NumField.substring(0,2));
+                CodCddField.setText(NumField.substring(2,6));
+                NumUsuarioField.setText(NumField.substring(6,10)); 
              }
              
              if(NumField.length()==12){
-                 DDDField.setText(NumField.substring(0,3));
-                     CodCddField.setText(NumField.substring(3,8));
-                     NumUsuarioField.setText(NumField.substring(8,12));
+                DDDField.setText(NumField.substring(0,3));
+                CodCddField.setText(NumField.substring(3,8));
+                NumUsuarioField.setText(NumField.substring(8,12));
              }
              
              EmailField.setText(rs.getString("EMAIL_USUARIO"));
