@@ -57,11 +57,11 @@ public final class Valida {
     //Métodos para validar cadastro
     public static boolean validaCadastro(TextField nick,TextField nome,TextField end,TextField num,TextField email, ChoiceBox cidade,PasswordField pass,Text mens){
         mens.setText("");
-        boolean nickB = validaNick(num, mens);
+        boolean nickB = validaNick(nick, mens);
         boolean nomeB = validaNome(nome, mens);
         boolean endB = validaEnd(end, mens);
         boolean numB = validaNum(num, mens);
-        boolean emailB = validaEmail(end, mens);
+        boolean emailB = validaEmail(email, mens);
         boolean cidadeB = validaCidade(cidade, mens);
         boolean passB = validaPass(pass, mens);
         return(nickB && nomeB && endB && numB && emailB && cidadeB && passB);
@@ -71,11 +71,10 @@ public final class Valida {
         String pattern = "[a-z][a-z0-9]*";
         Pattern test = Pattern.compile(pattern);
         Matcher matcher = test.matcher(nick.getText());
-        System.out.println(nick.getText());
         if(nick.getText().isEmpty()){
             mens.setText("nickname vazio.");
             return(false);
-        }else if(matcher.matches()){
+        }else if(!matcher.matches()){
             mens.setText("nickname não pode começar com numeros ou ter caracteres especiais.");
             return(false);
         }else 
@@ -110,7 +109,7 @@ public final class Valida {
         if(num.getText().isEmpty()){
             appendText(mens,"Telefone vazio.");
             return(false);
-        }else if(matcher.matches()){
+        }else if(!matcher.matches()){
             appendText(mens,"Telefone não reconhecido.");
             return(false);
         }else{
@@ -119,13 +118,13 @@ public final class Valida {
     }
     
     public static boolean validaEmail(TextField email,Text mens){
-        String pattern = "([a-zA-Z])(.+)*@(.+)\\.(.+)";
+        String pattern = "([a-zA-Z])(.)*@(.+)\\.(.+)";
         Pattern test = Pattern.compile(pattern);
         Matcher matcher = test.matcher(email.getText());
         if(email.getText().isEmpty()){
             appendText(mens, "Email vazio.");
             return(false);
-        }else if(matcher.matches()){
+        }else if(!matcher.matches()){
             appendText(mens,"Email não válido.");
             return(false);
         }else{

@@ -142,23 +142,23 @@ public class CadastroController implements Initializable {
         //Lembrete:No banco aumentar o número máximo das caracteres de telefone e definir email como uma
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
-        if(Valida.validaCadastro(NickField, NomeField, EndField, NumField, EndField, CityField, PassField, Mensagem)){
+        if(Valida.validaCadastro(NickField, NomeField, EndField, NumField, EmailField, CityField, PassField, Mensagem)){
             try{
                 Statement s=con.createStatement(); //Inicia o statement
                 
                 //Cria um usuário no banco de dados com a senha fornecida pelo usuário   
-                s.executeUpdate("CREATE USER "+NickField.getText().toUpperCase()+" WITH PASSWORD '"+PassField.getText().toUpperCase()+"'");
+                s.executeUpdate("CREATE USER "+NickField.getText()+" WITH PASSWORD '"+PassField.getText()+"'");
 
                 //Cria uma visão da tabela usuario para o usuario com o nome de Userview            
-                s.executeUpdate("CREATE VIEW "+NickField.getText().toUpperCase()+"view AS SELECT * FROM USUARIO"
-                                + " WHERE NICK_USUARIO='"+NickField.getText().toUpperCase()+"'");        
+                s.executeUpdate("CREATE VIEW "+NickField.getText()+"view AS SELECT * FROM USUARIO"
+                                + " WHERE NICK_USUARIO='"+NickField.getText()+"'");        
 
                    //Fornece permissão de seleção e atualização na sua própria view
-                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField.getText().toUpperCase()+"view TO "+NickField.getText().toUpperCase());
+                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField.getText());
 
                   //Insere os dados na tabela do usuário
-                s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText().toUpperCase()+"','"+NomeField.getText().toUpperCase()+
-                        "','"+EndField.getText().toUpperCase()+"','"+NumField.getText().toUpperCase()+"','"+
+                s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText()+"','"+NomeField.getText().toUpperCase()+
+                        "','"+EndField.getText().toUpperCase()+"','"+NumField.getText()+"','"+
                         EmailField.getText().toUpperCase()+"','"+
                         PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
                         Mensagem.setText("Usuário Cadastrado com sucesso!");       
