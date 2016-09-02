@@ -146,6 +146,13 @@ public class CadastroController implements Initializable {
             try{
                 Statement s=con.createStatement(); //Inicia o statement
                 
+                   //Insere os dados na tabela do usuário
+                s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText()+"','"+NomeField.getText().toUpperCase()+
+                        "','"+EndField.getText().toUpperCase()+"','"+NumField.getText()+"','"+
+                        EmailField.getText().toUpperCase()+"','"+
+                        PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
+                        Mensagem.setText("Usuário Cadastrado com sucesso!");
+                
                 //Cria um usuário no banco de dados com a senha fornecida pelo usuário   
                 s.executeUpdate("CREATE USER "+NickField.getText()+" WITH PASSWORD '"+PassField.getText()+"'");
 
@@ -154,14 +161,7 @@ public class CadastroController implements Initializable {
                                 + " WHERE NICK_USUARIO='"+NickField.getText()+"'");        
 
                    //Fornece permissão de seleção e atualização na sua própria view
-                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField.getText());
-
-                  //Insere os dados na tabela do usuário
-                s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText()+"','"+NomeField.getText().toUpperCase()+
-                        "','"+EndField.getText().toUpperCase()+"','"+NumField.getText()+"','"+
-                        EmailField.getText().toUpperCase()+"','"+
-                        PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
-                        Mensagem.setText("Usuário Cadastrado com sucesso!");       
+                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField.getText()+"view TO "+NickField.getText());                     
 
                 s.close();//Encerra o statement(declaração);           
 
