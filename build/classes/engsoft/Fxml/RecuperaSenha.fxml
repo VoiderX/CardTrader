@@ -19,7 +19,7 @@
             <Text fx:id="Mensagem" layoutX="124.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="148.50781559944153" />
             <Label layoutX="124.0" layoutY="6.0" prefHeight="17.0" prefWidth="149.0" text="Recuperar/Alterar a senha" />
             <Label layoutX="124.0" layoutY="61.0" prefHeight="17.0" prefWidth="98.0" text="Nome de Usuário" />
-            <Label layoutX="124.0" layoutY="124.0" prefHeight="17.0" prefWidth="149.0" text="Nova Senha:" />
+            <Label layoutX="124.0" layoutY="124.0" prefHeight="17.0" prefWidth="193.0" text="Nova Senha (6 a 20 Caracteres)" />
          </children>
       </Pane>
    </children>

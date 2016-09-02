@@ -34,7 +34,12 @@ public class AlteraCadastroController implements Initializable {
     @FXML
     TextField EndField=new TextField();
     @FXML
-    TextField NumField=new TextField();
+    TextField DDDField=new TextField();
+    @FXML
+    TextField CodCddField=new TextField();
+    @FXML
+    TextField NumUsuarioField=new TextField();
+    String NumField;
     @FXML
     ChoiceBox PaisField=new ChoiceBox();
     @FXML
@@ -85,7 +90,6 @@ public class AlteraCadastroController implements Initializable {
     private void retornaMenu(){//Retorna ao menu e limpa os campos;    
              NickField.setText("");
              NomeField.setText("");
-             NumField.setText("");
              EmailField.setText("");
              EndField.setText("");
              PaisField.setValue(null);
@@ -105,7 +109,32 @@ public class AlteraCadastroController implements Initializable {
              NickField.setText(rs.getString("NICK_USUARIO"));//Puxa os dados do banco e exibe para o usuário
              NickField.setDisable(true);
              NomeField.setText(rs.getString("NOME_USUARIO"));
-             NumField.setText(rs.getString("NUM_USUARIO"));
+             NumField=rs.getString("NUM_USUARIO");
+             
+             if(NumField.length()==11){
+                if(NumField.subSequence(0,1).equals("0")){
+                    DDDField.setText(NumField.substring(0,3));
+                    CodCddField.setText(NumField.substring(3,7));
+                    NumUsuarioField.setText(NumField.substring(7,11));    
+                }else{
+                     DDDField.setText(NumField.substring(0,2));
+                     CodCddField.setText(NumField.substring(2,7));
+                     NumUsuarioField.setText(NumField.substring(7,11));
+                }
+             }
+             
+             if(NumField.length()==10){
+                     DDDField.setText(NumField.substring(0,2));
+                     CodCddField.setText(NumField.substring(2,6));
+                     NumUsuarioField.setText(NumField.substring(6,10)); 
+             }
+             
+             if(NumField.length()==12){
+                 DDDField.setText(NumField.substring(0,3));
+                     CodCddField.setText(NumField.substring(3,8));
+                     NumUsuarioField.setText(NumField.substring(8,12));
+             }
+             
              EmailField.setText(rs.getString("EMAIL_USUARIO"));
              EndField.setText(rs.getString("ENDERECO_USUARIO"));
              Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
@@ -134,13 +163,14 @@ public class AlteraCadastroController implements Initializable {
         //Lembrete:No banco aumentar o número máximo das caracteres de telefone e definir email como uma
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
+        String NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());
         if(Valida.validaAltCadastro(NomeField, EndField, NumField, EmailField, CityField, Mensagem)){
             try{
                 Statement s=conUser.createStatement();//Passa as querys de alteração de dados
                
                 s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField.getText()+"' WHERE NICK_USUARIO='"+
                             engsoft.ControleUI.getInstance().getUser()+"'");
-                s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField.getText()+"' WHERE NICK_USUARIO='"+
+                s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField+"' WHERE NICK_USUARIO='"+
                             engsoft.ControleUI.getInstance().getUser()+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET EMAIL_USUARIO='"+EmailField.getText()+"' WHERE NICK_USUARIO='"+
                             engsoft.ControleUI.getInstance().getUser()+"'");

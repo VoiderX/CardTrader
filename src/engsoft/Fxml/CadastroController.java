@@ -32,7 +32,12 @@ public class CadastroController implements Initializable {
     @FXML
     TextField EndField=new TextField();
     @FXML
-    TextField NumField=new TextField();
+    TextField DDDField=new TextField();
+    @FXML
+    TextField CodCddField=new TextField();
+    @FXML
+    TextField NumUsuarioField=new TextField();
+    String NumField;
     @FXML
     TextField EmailField=new TextField();
     @FXML
@@ -53,7 +58,6 @@ public class CadastroController implements Initializable {
              NickField.setText("");
              PassField.setText("");
              NomeField.setText("");
-             NumField.setText("");
              EmailField.setText("");
              EndField.setText("");
              PaisField.setValue(null);
@@ -88,13 +92,14 @@ public class CadastroController implements Initializable {
         //Lembrete:No banco aumentar o número máximo das caracteres de telefone e definir email como uma
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
+        NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());
         if(Valida.validaCadastro(NickField, NomeField, EndField, NumField, EmailField, CityField, PassField, Mensagem)){
             try{
                 Statement s=con.createStatement(); //Inicia o statement
                 
                    //Insere os dados na tabela do usuário
                 s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText()+"','"+NomeField.getText().toUpperCase()+
-                        "','"+EndField.getText().toUpperCase()+"','"+NumField.getText()+"','"+
+                        "','"+EndField.getText().toUpperCase()+"','"+NumField+"','"+
                         EmailField.getText().toUpperCase()+"','"+
                         PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
                         Mensagem.setText("Usuário Cadastrado com sucesso!");
@@ -125,7 +130,6 @@ public class CadastroController implements Initializable {
         con = engsoft.ConexaoDB.getCon(); //Necessário utilizar a conexão base para realização do cadastro
         Loc= new engsoft.Locations();
         Loc.carregaPais(PaisField, Mensagem);
-        
     }    
     
 }

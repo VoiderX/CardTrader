@@ -55,7 +55,7 @@ public final class Valida {
     }
     
     //Métodos para validar cadastro
-    public static boolean validaCadastro(TextField nick,TextField nome,TextField end,TextField num,TextField email, ChoiceBox cidade,PasswordField pass,Text mens){
+    public static boolean validaCadastro(TextField nick,TextField nome,TextField end,String num,TextField email, ChoiceBox cidade,PasswordField pass,Text mens){
         mens.setText("");
         boolean nickB = validaNick(nick, mens);
         boolean nomeB = validaNome(nome, mens);
@@ -67,7 +67,7 @@ public final class Valida {
         return(nickB && nomeB && endB && numB && emailB && cidadeB && passB);
     }
     
-    public static boolean validaAltCadastro(TextField nome,TextField end,TextField num,TextField email, ChoiceBox cidade,Text mens){
+    public static boolean validaAltCadastro(TextField nome,TextField end,String num,TextField email, ChoiceBox cidade,Text mens){
         mens.setText("");
         boolean nomeB = validaNome(nome, mens);
         boolean endB = validaEnd(end, mens);
@@ -112,11 +112,11 @@ public final class Valida {
         }
     }
     
-    public static boolean validaNum(TextField num,Text mens){
-        String pattern = "(\\(0?[0-9]{2}\\))[0-9]?[0-9]{4}\\-[0-9]{4}";
+    public static boolean validaNum(String num,Text mens){
+        String pattern = "0?[0-9]{2}[0-9]?[0-9]{4}[0-9]{4}";
         Pattern test = Pattern.compile(pattern);
-        Matcher matcher = test.matcher(num.getText());
-        if(num.getText().isEmpty()){
+        Matcher matcher = test.matcher(num);
+        if(num.isEmpty()){
             appendText(mens,"Telefone vazio.");
             return(false);
         }else if(!matcher.matches()){
