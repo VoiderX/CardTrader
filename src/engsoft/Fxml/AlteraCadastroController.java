@@ -51,24 +51,20 @@ public class AlteraCadastroController implements Initializable {
     @FXML
     Text Mensagem=new Text();
     engsoft.Locations Loc;
-
-    private Connection con = null;
-    private Connection conUser=null;
     String usuario;
-    public void setConUser(Connection conUser){ //Método para settar a conexão do usúario nesta interface
-        this.conUser=conUser;
-    }
-    /**
-     * Initializes the controller class
-     */
+    String MensagemString;
+    
+    private Connection con = null;
+    private engsoft.UserConexaoDB conexao =null;    
+   
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Loc=new engsoft.Locations(); //Instancia a classe de localizações
         Loc.carregaPais(PaisField, Mensagem); //Carrega os países ao incicializar a interface
-        conUser=engsoft.ControleUI.getInstance().getConUser();
         usuario=engsoft.ControleUI.getInstance().getUser();
-        puxarInfo();// Puxa as informações do usuário
-        
+        conexao=engsoft.ControleUI.getInstance().getConexaoUser();
+        puxarInfo();// Puxa as informações do usuário       
     } 
     @FXML    
     public void limpaCampos(){
@@ -100,59 +96,8 @@ public class AlteraCadastroController implements Initializable {
     
     @FXML
     private void puxarInfo(){//Puxa as informações do usuário
-      
-      try{             
-             Statement s = conUser.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-             String sql = "SELECT * FROM "+usuario+"view";
-             ResultSet rs = s.executeQuery(sql); //Result set recebe apenas os dados da view do usuário
-             rs.first();//Coloca o result set na primeira posição
-             NickField.setText(rs.getString("NICK_USUARIO"));//Puxa os dados do banco e exibe para o usuário
-             NickField.setDisable(true);
-             NomeField.setText(rs.getString("NOME_USUARIO"));
-             NumField=rs.getString("NUM_USUARIO");
-             
-             if(NumField.length()==11){ //Trata a exibição do telefone de acordo com os casos possíveis na validação
-                if(NumField.subSequence(0,1).equals("0")){
-                    DDDField.setText(NumField.substring(0,3));
-                    CodCddField.setText(NumField.substring(3,7));
-                    NumUsuarioField.setText(NumField.substring(7,11));    
-                }else{
-                     DDDField.setText(NumField.substring(0,2));
-                     CodCddField.setText(NumField.substring(2,7));
-                     NumUsuarioField.setText(NumField.substring(7,11));
-                }
-             }
-             
-             if(NumField.length()==10){
-                DDDField.setText(NumField.substring(0,2));
-                CodCddField.setText(NumField.substring(2,6));
-                NumUsuarioField.setText(NumField.substring(6,10)); 
-             }
-             
-             if(NumField.length()==12){
-                DDDField.setText(NumField.substring(0,3));
-                CodCddField.setText(NumField.substring(3,8));
-                NumUsuarioField.setText(NumField.substring(8,12));
-             }
-             
-             EmailField.setText(rs.getString("EMAIL_USUARIO"));
-             EndField.setText(rs.getString("ENDERECO_USUARIO"));
-             Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
-             PaisField.setValue(rs.getString("CIDADE_ESTADO_PAIS_NOME_PAIS"));
-             Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
-             EstadoField.setValue(rs.getString("CIDADE_ESTADO_NOME_ESTADO"));
-             Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
-             CityField.setValue(rs.getString("CIDADE_NOME_CIDADE"));
-             rs.first();
-             rs.close();//Fecha o result set
-             s.close(); //Fecha o statement     
-             Mensagem.setText("Dados carregados com sucesso!");
-             
-     }
-      catch(Exception e){
-          System.out.println(e);
-          Mensagem.setText("Erro ao carregar dados!");
-      }
+      conexao.puxarInfo(NickField, NomeField, DDDField, CodCddField, NumUsuarioField, EmailField, 
+              EndField, PaisField, EstadoField, CityField, Mensagem);
     }
     
     @FXML
@@ -164,30 +109,14 @@ public class AlteraCadastroController implements Initializable {
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
         String NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());
-        if(Valida.validaAltCadastro(NomeField, EndField, NumField, EmailField, CityField, Mensagem)){
-            try{
-                Statement s=conUser.createStatement();//Passa as querys de alteração de dados
-               
-                s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField.getText()+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
-                s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
-                s.executeUpdate("UPDATE "+usuario+"view SET EMAIL_USUARIO='"+EmailField.getText()+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
-                s.executeUpdate("UPDATE "+usuario+"view SET ENDERECO_USUARIO='"+EndField.getText()+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
-                s.executeUpdate("UPDATE "+usuario+"view SET(CIDADE_ESTADO_PAIS_NOME_PAIS,CIDADE_ESTADO_NOME_ESTADO,CIDADE_NOME_CIDADE)"
-                            +"=('"+PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')WHERE "+
-                             "NICK_USUARIO='"+engsoft.ControleUI.getInstance().getUser()+"'");
-                    //Update de Pais-Estado-Cidade, devem ser realizados todos em uma unica query devido ser uma chave composta        
-                Mensagem.setText("Dados atualizados com sucesso!");
-                s.close();      
-            }catch(Exception e){//Banco pode lançar exceção chave duplicada ou email duplicado
-                //Outras possibilidades devem ser tratadas na interface 
-                System.out.println(e);
-                Mensagem.setText("Nome de usuário ou email já utilizados!");
-            }
-        }
+        
+        if(Valida.validaAltCadastro(NomeField, EndField, NumField, EmailField, CityField, Mensagem)){           
+          Mensagem.setText(conexao.alterarCadastro(NomeField.getText().toUpperCase(),
+                  NumField, EmailField.getText().toUpperCase(),
+                  EndField.getText().toUpperCase(),
+                  PaisField.getValue().toString(), EstadoField.getValue().toString()
+                  ,CityField.getValue().toString()));                  
+        }        
     }
     @FXML
     public void alterarSenha(){

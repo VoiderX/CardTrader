@@ -58,7 +58,7 @@ public class LoginController implements Initializable {
               engsoft.ControleUI.getInstance().setUser(NickField.getText());//Passa o nome do usuario
               //para a classe de controle
               con=conUser.createCon();
-              engsoft.ControleUI.getInstance().setConUser(con);//Passa a conexão do usuário para a classe de
+              engsoft.ControleUI.getInstance().setConexaoUser(conUser);
               //controle
               if(con==null){//Caso o login falhe
                   Mensagem.setText("Senha incorreta ou usuário não cadastrado!");

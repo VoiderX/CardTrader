@@ -51,7 +51,7 @@ public class CadastroController implements Initializable {
     @FXML 
     Text Mensagem= new Text();
     engsoft.Locations Loc;
-    
+    engsoft.ConexaoDB conexao;    
     @FXML
     public void retornaLogin(){ //Retorna para a tela de login
         engsoft.ControleUI.getInstance().mostraLogin(); //Instanciado através da classe singleton
@@ -94,40 +94,18 @@ public class CadastroController implements Initializable {
         //Converter todos os atributos menos o nick pra maiusculo
         NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());  //Cooncatena os dados do telefone
         if(Valida.validaCadastro(NickField, NomeField, EndField, NumField, EmailField, CityField, PassField, Mensagem)){
-            try{
-                Statement s=con.createStatement(); //Inicia o statement
-                
-                   //Insere os dados na tabela do usuário
-                s.executeUpdate("INSERT INTO USUARIO VALUES('"+NickField.getText()+"','"+NomeField.getText().toUpperCase()+
-                        "','"+EndField.getText().toUpperCase()+"','"+NumField+"','"+
-                        EmailField.getText().toUpperCase()+"','"+
-                        PaisField.getValue()+"','"+EstadoField.getValue()+"','"+CityField.getValue()+"')");
-                        Mensagem.setText("Usuário Cadastrado com sucesso!");
-                
-                //Cria um usuário no banco de dados com a senha fornecida pelo usuário   
-                s.executeUpdate("CREATE USER "+NickField.getText()+" WITH PASSWORD '"+PassField.getText()+"'");
-
-                //Cria uma visão da tabela usuario para o usuario com o nome de Userview            
-                s.executeUpdate("CREATE VIEW "+NickField.getText()+"view AS SELECT * FROM USUARIO"
-                                + " WHERE NICK_USUARIO='"+NickField.getText()+"'");        
-
-                   //Fornece permissão de seleção e atualização na sua própria view
-                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField.getText()+"view TO "+NickField.getText());                     
-
-                s.close();//Encerra o statement(declaração);           
-
-            }catch(Exception e){//Caso haja um email ou usuario com o mesmo nome o banco irá retornar uma exceção
-                Mensagem.setText("Nome de usuário ou email já cadastrados!");
-                System.out.println(e);           
-            }
+            
+            Mensagem.setText(conexao.realizaCadastro(NickField.getText(),NomeField.getText(),
+                  EndField.getText(),NumField,EmailField.getText(),PaisField.getValue().toString()
+                    ,EstadoField.getValue().toString()
+                    ,CityField.getValue().toString(),PassField.getText()));
         }
     }
     
-    private Connection con = null;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        con = engsoft.ConexaoDB.getCon(); //Necessário utilizar a conexão base para realização do cadastro
+        conexao = new engsoft.ConexaoDB(); //Necessário utilizar a conexão base para realização do cadastro
         Loc= new engsoft.Locations();
         Loc.carregaPais(PaisField, Mensagem);
     }    

@@ -22,7 +22,7 @@ public class MenuController implements Initializable {
     public void sair(){//Sai da conta do usuário
         engsoft.ControleUI.getInstance().mostraLogin();
         try{
-        engsoft.ControleUI.getInstance().getConUser().close();//Encerra a conexão do usuário
+        engsoft.ControleUI.getInstance().getConexaoUser().fecharConexao();
         }catch(Exception e){
             System.out.println("Erro ao fechar a conexão!");
         }

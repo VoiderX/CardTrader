@@ -30,18 +30,16 @@ public final class ControleUI{
 
     public void setUser(String user) {
         this.user = user;
+    }  
+    
+    UserConexaoDB conexao;
+    public void setConexaoUser(engsoft.UserConexaoDB conexao){
+        this.conexao=conexao;
     }
     
-    Connection conUser;//Conexão do usuário e seu método setter e getter
-
-    public void setConUser(Connection conUser) {
-        this.conUser = conUser;
+    public engsoft.UserConexaoDB getConexaoUser(){
+        return conexao;
     }
-
-    public Connection getConUser() {
-        return conUser;
-    }
-    
     
     private static ControleUI INSTANCE = null;
     

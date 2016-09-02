@@ -28,19 +28,12 @@ public class RecuperaSenhaController implements Initializable {
     TextField NickField=new TextField();
     @FXML
     PasswordField PassField=new PasswordField();
+    engsoft.ConexaoDB conexao;
     
     @FXML
     public void alteraSenha(){
         if(Valida.validaSenha(NickField, PassField, Mensagem)){
-            try{
-                Statement s=engsoft.ConexaoDB.getCon().createStatement();
-                //Validar a senha digitada pelo usuário
-                s.executeUpdate("ALTER USER "+NickField.getText()+ " WITH PASSWORD '"+PassField.getText()+"'");
-                Mensagem.setText("Alteração executada com sucesso!");
-            }catch(Exception e){
-                System.out.println(e);
-                Mensagem.setText("Usuário não encontrado!");
-            }
+           Mensagem.setText(conexao.altSenha(NickField.getText(), PassField.getText()));
         }
     }
     
@@ -57,6 +50,7 @@ public class RecuperaSenhaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        conexao=new engsoft.ConexaoDB();
     }    
     
 }
