@@ -82,14 +82,14 @@ public final class Valida {
         Pattern test = Pattern.compile(pattern);
         Matcher matcher = test.matcher(nick.getText());
         if(nick.getText().isEmpty()){
-            mens.setText("nickname vazio.");
+            mens.setText("Nickname vazio.");
             return(false);
         }else if(!matcher.matches()){
-            mens.setText("nickname não pode começar com numeros ou ter caracteres especiais.");
+            mens.setText("Nickname não pode começar com numeros ou ter caracteres especiais.");
             return(false);
         }else 
         if(nick.getText().length() < 6){
-            mens.setText("nickname muito curto.");
+            mens.setText("Nickname muito curto.");
             return(false);
         }else
         if(nick.getText().length() > 25){

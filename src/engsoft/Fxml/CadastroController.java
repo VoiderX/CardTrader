@@ -58,7 +58,8 @@ public class CadastroController implements Initializable {
              EndField.setText("");
              PaisField.setValue(null);
              EstadoField.setValue(null);
-             CityField.setValue(null);  
+             CityField.setValue(null);
+             Mensagem.setText("");
     }    
    
     
@@ -124,6 +125,7 @@ public class CadastroController implements Initializable {
         con = engsoft.ConexaoDB.getCon(); //Necessário utilizar a conexão base para realização do cadastro
         Loc= new engsoft.Locations();
         Loc.carregaPais(PaisField, Mensagem);
+        
     }    
     
 }

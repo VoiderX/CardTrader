@@ -42,8 +42,6 @@ public class AlteraCadastroController implements Initializable {
     @FXML
     ChoiceBox CityField=new ChoiceBox();
     @FXML
-    PasswordField PassField=new PasswordField();
-    @FXML
     TextField EmailField=new TextField();
     @FXML
     Text Mensagem=new Text();
@@ -86,7 +84,6 @@ public class AlteraCadastroController implements Initializable {
     @FXML
     private void retornaMenu(){//Retorna ao menu e limpa os campos;    
              NickField.setText("");
-             PassField.setText("");
              NomeField.setText("");
              NumField.setText("");
              EmailField.setText("");
@@ -140,9 +137,7 @@ public class AlteraCadastroController implements Initializable {
         if(Valida.validaAltCadastro(NomeField, EndField, NumField, EmailField, CityField, Mensagem)){
             try{
                 Statement s=conUser.createStatement();//Passa as querys de alteração de dados
-                if(!PassField.getText().isEmpty()){
-                    s.executeUpdate("ALTER USER "+usuario+" WITH PASSWORD '"+PassField.getText()+"'");
-                }
+               
                 s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField.getText()+"' WHERE NICK_USUARIO='"+
                             engsoft.ControleUI.getInstance().getUser()+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField.getText()+"' WHERE NICK_USUARIO='"+
@@ -163,5 +158,9 @@ public class AlteraCadastroController implements Initializable {
                 Mensagem.setText("Nome de usuário ou email já utilizados!");
             }
         }
+    }
+    @FXML
+    public void alterarSenha(){
+        engsoft.ControleUI.getInstance().chamaRecPass();
     }
 }
