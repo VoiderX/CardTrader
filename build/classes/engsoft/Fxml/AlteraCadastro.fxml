@@ -17,7 +17,7 @@
             <Button layoutX="254.0" layoutY="347.0" mnemonicParsing="false" onAction="#atualizaCadastro" prefHeight="25.0" prefWidth="199.0" text="Atualizar Informações" />
             <Label layoutX="45.0" layoutY="66.0" prefHeight="17.0" prefWidth="101.0" text="Nome de Usuário" />
             <Label layoutX="45.0" layoutY="129.0" prefHeight="17.0" prefWidth="182.0" text="Nome (Máximo de 50 Caracteres)" />
-            <Label layoutX="45.0" layoutY="184.0" prefHeight="17.0" prefWidth="191.0" text="Endereço(Máximo de 50 Caracteres" />
+            <Label layoutX="45.0" layoutY="184.0" prefHeight="17.0" prefWidth="213.0" text="Endereço (Máximo de 50 Caracteres)" />
             <Label layoutX="42.0" layoutY="227.0" prefHeight="17.0" prefWidth="250.0" text="Numero de Telefone (DDD-Codigo-Número)" />
             <Label layoutX="379.0" layoutY="66.0" text="País" />
             <Label layoutX="379.0" layoutY="121.0" text="Estado" />

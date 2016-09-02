@@ -92,7 +92,7 @@ public class CadastroController implements Initializable {
         //Lembrete:No banco aumentar o número máximo das caracteres de telefone e definir email como uma
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
-        NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());
+        NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());  //Cooncatena os dados do telefone
         if(Valida.validaCadastro(NickField, NomeField, EndField, NumField, EmailField, CityField, PassField, Mensagem)){
             try{
                 Statement s=con.createStatement(); //Inicia o statement
