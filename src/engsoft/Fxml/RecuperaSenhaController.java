@@ -32,8 +32,11 @@ public class RecuperaSenhaController implements Initializable {
     
     @FXML
     public void alteraSenha(){
-        if(Valida.validaSenha(NickField, PassField, Mensagem)){
+        StringBuilder mens = new StringBuilder("");
+        if(Valida.validaSenha(NickField.getText(), PassField.getText(), mens)){
            Mensagem.setText(conexao.altSenha(NickField.getText(), PassField.getText()));
+        }else{
+            Mensagem.setText(mens.toString());
         }
     }
     

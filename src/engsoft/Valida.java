@@ -19,44 +19,44 @@ import javafx.scene.text.Text;
 public final class Valida {
     
     //Métodos de validação da login
-    public static boolean validaLogin(TextField text, PasswordField pass, Text mens){
-        mens.setText("");
+    public static boolean validaLogin(String text, String pass,StringBuilder mens){
+        mens.setLength(0);
         boolean ctrl=true;
-        if(text.getText().isEmpty()){
-            appendText(mens,"Usuário Vazio.");
+        if(text.isEmpty()){
+            mens.append("Usuário Vazio.");
             ctrl = false;
         }
-        if(pass.getText().isEmpty()){
-            appendText(mens,"Senha vazia.");
+        if(pass.isEmpty()){
+            mens.append(" Senha vazia.");
             ctrl = false;
         }
         return(ctrl);
     }
     
     //Métodos de validação da Recuperação de senhas
-    public static boolean validaSenha(TextField text, PasswordField pass, Text mens){
-        mens.setText("");
+    public static boolean validaSenha(String text, String pass, StringBuilder mens){
+        mens.setLength(0);
         boolean ctrl = true;
-        if(text.getText().isEmpty()){
-            mens.setText("Usuário Vazio");
+        if(text.isEmpty()){
+            mens.append("Usuário Vazio");
             ctrl = false;
         }
-        if(pass.getText().isEmpty()){
-            appendText(mens,"Senha vazia");
+        if(pass.isEmpty()){
+            mens.append(" Senha vazia");
             ctrl = false;
-        }else if(pass.getText().length() < 6){
-            appendText(mens,"Senha muito curta");
+        }else if(pass.length() < 6){
+            mens.append(" Senha muito curta");
             ctrl = false;
-        }else if(pass.getText().length() > 15){
-            appendText(mens,"Senha muito longa");
+        }else if(pass.length() > 15){
+            mens.append(" Senha muito longa");
             ctrl = false;
         }
         return(ctrl);
     }
     
     //Métodos para validar cadastro
-    public static boolean validaCadastro(TextField nick,TextField nome,TextField end,String num,TextField email, ChoiceBox cidade,PasswordField pass,Text mens){
-        mens.setText("");
+    public static boolean validaCadastro(String nick,String nome,String end,String num,String email, String cidade,String pass,StringBuilder mens){
+        mens.setLength(0);
         boolean nickB = validaNick(nick, mens);
         boolean nomeB = validaNome(nome, mens);
         boolean endB = validaEnd(end, mens);
@@ -67,8 +67,8 @@ public final class Valida {
         return(nickB && nomeB && endB && numB && emailB && cidadeB && passB);
     }
     
-    public static boolean validaAltCadastro(TextField nome,TextField end,String num,TextField email, ChoiceBox cidade,Text mens){
-        mens.setText("");
+    public static boolean validaAltCadastro(String nome,String end,String num,String email,String cidade,StringBuilder mens){
+        mens.setLength(0);
         boolean nomeB = validaNome(nome, mens);
         boolean endB = validaEnd(end, mens);
         boolean numB = validaNum(num, mens);
@@ -77,65 +77,65 @@ public final class Valida {
         return(nomeB && endB && numB && emailB && cidadeB);
     }
     
-    public static boolean validaNick(TextField nick,Text mens){
+    public static boolean validaNick(String nick,StringBuilder mens){
         String pattern = "[a-z][a-z0-9]*";
         Pattern test = Pattern.compile(pattern);
-        Matcher matcher = test.matcher(nick.getText());
-        if(nick.getText().isEmpty()){
-            mens.setText("Nickname vazio.");
+        Matcher matcher = test.matcher(nick);
+        if(nick.isEmpty()){
+            mens.append("Nickname vazio.");
             return(false);
         }else if(!matcher.matches()){
-            mens.setText("Nickname não pode começar com numeros ou ter caracteres especiais.");
+            mens.append("Nickname não pode começar com numeros ou ter caracteres especiais.");
             return(false);
         }else 
-        if(nick.getText().length() < 6){
-            mens.setText("Nickname muito curto.");
+        if(nick.length() < 6){
+            mens.append("Nickname muito curto.");
             return(false);
         }else
-        if(nick.getText().length() > 25){
-            mens.setText("nickname muito longo.");
+        if(nick.length() > 25){
+            mens.append("nickname muito longo.");
             return(false);
         }else{
             return(true);
         }
     }
     
-    public static boolean validaNome(TextField nome,Text mens){
-        if(nome.getText().isEmpty()){
-            appendText(mens,"Nome vazio.");
+    public static boolean validaNome(String nome,StringBuilder mens){
+        if(nome.isEmpty()){
+            mens.append(" Nome vazio.");
             return(false);
-        }else if(nome.getText().length() > 50){
-            appendText(mens,"Nome muito grande.");
+        }else if(nome.length() > 50){
+            mens.append(" Nome muito grande.");
             return(false);
         }else{
             return(true);
         }
     }
     
-    public static boolean validaNum(String num,Text mens){
+    public static boolean validaNum(String num,StringBuilder mens){
         String pattern = "0?[0-9]{2}[0-9]?[0-9]{4}[0-9]{4}";
         Pattern test = Pattern.compile(pattern);
         Matcher matcher = test.matcher(num);
         if(num.isEmpty()){
-            appendText(mens,"Telefone vazio.");
+            mens.append(" Telefone vazio.");
             return(false);
         }else if(!matcher.matches()){
-            appendText(mens,"Telefone não reconhecido.");
+            mens.append(" Telefone não reconhecido.");
             return(false);
         }else{
             return(true);
         }
     }
     
-    public static boolean validaEmail(TextField email,Text mens){
+    public static boolean validaEmail(String email,StringBuilder mens){
         String pattern = "([a-zA-Z])(.)*@(.+)\\.(.+)";
         Pattern test = Pattern.compile(pattern);
-        Matcher matcher = test.matcher(email.getText());
-        if(email.getText().isEmpty()){
-            appendText(mens, "Email vazio.");
+        Matcher matcher = test.matcher(email);
+        if(email.isEmpty()){
+            mens.append(" Email vazio.");
             return(false);
         }else if(!matcher.matches()){
-            appendText(mens,"Email não válido.");
+            mens.append(" Email não válido.");
             return(false);
         }else{
             return(true);
@@ -144,47 +144,44 @@ public final class Valida {
     
     
     
-    public static boolean validaEnd(TextField end,Text mens){
-        if(end.getText().isEmpty()){
-            appendText(mens,"Endereço vazio.");
+    public static boolean validaEnd(String end,StringBuilder mens){
+        if(end.isEmpty()){
+            mens.append(" Endereço vazio.");
             return(false);
-        }else if(end.getText().length() > 50){
-            appendText(mens,"Endereço muito grande.");
-            return(false);
-        }else{
-            return(true);
-        }
-    }
-    
-    public static boolean validaCidade(ChoiceBox cidade,Text mens){
-        if(cidade.getValue()==null){
-            appendText(mens, "Selecione país,estado e cidade válidos.");
+        }else if(end.length() > 50){
+            mens.append(" Endereço muito grande.");
             return(false);
         }else{
             return(true);
         }
     }
     
-    public static boolean validaPass(PasswordField pass,Text mens){
-        if(pass.getText().isEmpty()){
-            appendText(mens,"Senha vazia.");
-            return(false);
-        }else if(pass.getText().contains(" ")){
-            appendText(mens,"Senha não pode conter espaços.");
-            return(false);
-        }else if(pass.getText().length() < 6){
-            appendText(mens,"Senha muito curta.");
-            return(false);
-        }else if(pass.getText().length() > 20){
-            appendText(mens,"Senha muito longa.");
+    public static boolean validaCidade(String cidade,StringBuilder mens){
+        if(cidade.isEmpty()){
+            mens.append(" Selecione país,estado e cidade válidos.");
             return(false);
         }else{
             return(true);
         }
     }
     
-    private static void appendText(Text mens,String text){
-        String orig = mens.getText();
-        mens.setText(orig+" "+text);
+    public static boolean validaPass(String pass,StringBuilder mens){
+        if(pass.isEmpty()){
+            mens.append(" Senha vazia.");
+            return(false);
+        }else if(pass.contains(" ")){
+            mens.append(" Senha não pode conter espaços.");
+            return(false);
+        }else if(pass.length() < 6){
+            mens.append(" Senha muito curta.");
+            return(false);
+        }else if(pass.length() > 20){
+            mens.append(" Senha muito longa.");
+            return(false);
+        }else{
+            return(true);
+        }
     }
+    
+    
 }

@@ -50,7 +50,9 @@ public class LoginController implements Initializable {
         //Colocar um if antes para verificar se o campo do nome de usuário e o campo da senha
         //não estão vazios, dessa forma evitando um acesso desnecessário ao banco   
         //Para exibir a mensagem para o  usuário basta chamar Mensagem.setText("texto");
-        if(Valida.validaLogin(NickField, PassField, Mensagem)){
+        StringBuilder mens = new StringBuilder("");
+        
+        if(Valida.validaLogin(NickField.getText(), PassField.getText(), mens)){
             try{
               engsoft.UserConexaoDB conUser = new engsoft.UserConexaoDB();//Cria a conexão do usuário
               conUser.setUsuario(NickField.getText().toLowerCase());//Passa o nome e senha como parametro
@@ -72,6 +74,9 @@ public class LoginController implements Initializable {
             catch(Exception e){
             System.out.println("Erro:"+ e); 
             }
+        }else{
+            
+            Mensagem.setText(mens.toString());
         }
     }
     @FXML

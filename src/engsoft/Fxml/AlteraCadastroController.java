@@ -109,14 +109,16 @@ public class AlteraCadastroController implements Initializable {
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
         String NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());
-        
-        if(Valida.validaAltCadastro(NomeField, EndField, NumField, EmailField, CityField, Mensagem)){           
+        StringBuilder mens = new StringBuilder("");
+        if(Valida.validaAltCadastro(NomeField.getText(), EndField.getText(), NumField, EmailField.getText(),((CityField.getValue()==null)?"":CityField.getValue().toString()), mens)){           
           Mensagem.setText(conexao.alterarCadastro(NomeField.getText().toUpperCase(),
                   NumField, EmailField.getText().toUpperCase(),
                   EndField.getText().toUpperCase(),
                   PaisField.getValue().toString(), EstadoField.getValue().toString()
                   ,CityField.getValue().toString()));                  
-        }        
+        }else{
+            Mensagem.setText(mens.toString());
+        }      
     }
     @FXML
     public void alterarSenha(){

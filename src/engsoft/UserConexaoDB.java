@@ -74,7 +74,7 @@ private String senha;
              rs.first();//Coloca o result set na primeira posição
              NickField.setText(rs.getString("NICK_USUARIO"));//Puxa os dados do banco e exibe para o usuário
              NickField.setDisable(true);
-             NomeField.setText(rs.getString("NOME_USUARIO"));
+             NomeField.setText(rs.getString("NOME_USUARIO").toLowerCase());
              String NumField;
              NumField=rs.getString("NUM_USUARIO");
              
@@ -101,8 +101,8 @@ private String senha;
                 CodCddField.setText(NumField.substring(3,8));
                 NumUsuarioField.setText(NumField.substring(8,12));
              }             
-             EmailField.setText(rs.getString("EMAIL_USUARIO"));
-             EndField.setText(rs.getString("ENDERECO_USUARIO"));
+             EmailField.setText(rs.getString("EMAIL_USUARIO").toLowerCase());
+             EndField.setText(rs.getString("ENDERECO_USUARIO").toLowerCase());
              Locations Loc = new Locations();
              Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
              PaisField.setValue(rs.getString("CIDADE_ESTADO_PAIS_NOME_PAIS"));

@@ -93,12 +93,15 @@ public class CadastroController implements Initializable {
         //chave candidata
         //Converter todos os atributos menos o nick pra maiusculo
         NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());  //Cooncatena os dados do telefone
-        if(Valida.validaCadastro(NickField, NomeField, EndField, NumField, EmailField, CityField, PassField, Mensagem)){
+        StringBuilder mens = new StringBuilder("");
+        if(Valida.validaCadastro(NickField.getText(), NomeField.getText(), EndField.getText(), NumField, EmailField.getText(), ((CityField.getValue()==null)?"":CityField.getValue().toString()), PassField.getText(), mens)){
             
             Mensagem.setText(conexao.realizaCadastro(NickField.getText(),NomeField.getText(),
                   EndField.getText(),NumField,EmailField.getText(),PaisField.getValue().toString()
                     ,EstadoField.getValue().toString()
                     ,CityField.getValue().toString(),PassField.getText()));
+        }else{
+            Mensagem.setText(mens.toString());
         }
     }
     
