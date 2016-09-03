@@ -21,16 +21,7 @@ public final class ControleUI{
 
    
     private ControleUI(){};
-
-    private String user; //String contendo o usuário utilizando o sistema e seus metódos getter e setter
-    
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }  
+   
     
     UserConexaoDB conexao;
     public void setConexaoUser(engsoft.UserConexaoDB conexao){

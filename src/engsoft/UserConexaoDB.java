@@ -106,16 +106,16 @@ private String senha;
                 Statement s=conUser.createStatement();//Passa as querys de alteração de dados
                
                 s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
+                            usuario+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
+                            usuario+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET EMAIL_USUARIO='"+EmailField+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
+                            usuario+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET ENDERECO_USUARIO='"+EndField+"' WHERE NICK_USUARIO='"+
-                            engsoft.ControleUI.getInstance().getUser()+"'");
+                            usuario+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET(CIDADE_ESTADO_PAIS_NOME_PAIS,CIDADE_ESTADO_NOME_ESTADO,CIDADE_NOME_CIDADE)"
                             +"=('"+PaisField+"','"+EstadoField+"','"+CityField+"')WHERE "+
-                             "NICK_USUARIO='"+engsoft.ControleUI.getInstance().getUser()+"'");
+                             "NICK_USUARIO='"+usuario+"'");
                     //Update de Pais-Estado-Cidade, devem ser realizados todos em uma unica query devido ser uma chave composta        
                 Mensagem= "Dados atualizados com sucesso!";
                 s.close();      

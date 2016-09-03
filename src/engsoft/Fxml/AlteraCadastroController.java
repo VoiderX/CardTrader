@@ -51,9 +51,7 @@ public class AlteraCadastroController implements Initializable {
     TextField EmailField=new TextField();
     @FXML
     Text Mensagem=new Text();
-    engsoft.Locations Loc;
-    String usuario;
-    String MensagemString;
+    engsoft.Locations Loc;  
     
     private Connection con = null;
     private engsoft.UserConexaoDB conexao =null;    
@@ -63,7 +61,6 @@ public class AlteraCadastroController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Loc=new engsoft.Locations(); //Instancia a classe de localizações
         Loc.carregaPais(PaisField, Mensagem); //Carrega os países ao incicializar a interface
-        usuario=engsoft.ControleUI.getInstance().getUser();
         conexao=engsoft.ControleUI.getInstance().getConexaoUser();
         puxarInfo();// Puxa as informações do usuário       
     } 

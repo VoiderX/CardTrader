@@ -56,8 +56,7 @@ public class LoginController implements Initializable {
             try{
               engsoft.UserConexaoDB conUser = new engsoft.UserConexaoDB();//Cria a conexão do usuário
               conUser.setUsuario(NickField.getText().toLowerCase());//Passa o nome e senha como parametro
-              conUser.setSenha(PassField.getText());
-              engsoft.ControleUI.getInstance().setUser(NickField.getText());//Passa o nome do usuario
+              conUser.setSenha(PassField.getText());            
               //para a classe de controle
               con=conUser.createCon();
               engsoft.ControleUI.getInstance().setConexaoUser(conUser);
