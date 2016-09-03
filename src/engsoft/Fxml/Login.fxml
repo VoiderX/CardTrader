@@ -10,19 +10,19 @@
 
 <AnchorPane id="AnchorPane" fx:id="Texto" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.LoginController">
    <children>
-      <Pane layoutX="73.0" layoutY="30.0" prefHeight="275.0" prefWidth="421.0">
+      <Pane layoutX="90.0" layoutY="34.0" prefHeight="275.0" prefWidth="421.0">
          <children>
-            <TextField fx:id="NickField" layoutX="138.0" layoutY="60.0" prefHeight="25.0" prefWidth="166.0" />
-            <PasswordField fx:id="PassField" layoutX="140.0" layoutY="125.0" onAction="#setLogin" prefHeight="25.0" prefWidth="166.0" />
-            <Button fx:id="Logar" layoutX="172.0" layoutY="194.0" mnemonicParsing="false" onAction="#setLogin" prefHeight="25.0" prefWidth="103.0" text="Logar" />
-            <Label layoutX="161.0" layoutY="34.0" prefHeight="17.0" prefWidth="103.0" text="Nome de Usuário" />
-            <Label layoutX="198.0" layoutY="94.0" prefHeight="17.0" prefWidth="46.0" text="Senha" />
+            <TextField fx:id="NickField" layoutX="128.0" layoutY="60.0" prefHeight="25.0" prefWidth="166.0" />
+            <PasswordField fx:id="PassField" layoutX="128.0" layoutY="125.0" onAction="#setLogin" prefHeight="25.0" prefWidth="166.0" />
+            <Button fx:id="Logar" layoutX="160.0" layoutY="195.0" mnemonicParsing="false" onAction="#setLogin" prefHeight="25.0" prefWidth="103.0" text="Logar" />
+            <Label layoutX="160.0" layoutY="35.0" prefHeight="17.0" prefWidth="103.0" text="Nome de Usuário" />
+            <Label layoutX="188.0" layoutY="95.0" prefHeight="17.0" prefWidth="46.0" text="Senha" />
             <Text fx:id="Mensagem" layoutX="80.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="294.0000033378601" />
-            <Label layoutX="131.0" layoutY="6.0" prefHeight="17.0" prefWidth="193.0" text="Olá , Seja bem vindo ao CardTrader" />
+            <Label layoutX="115.0" layoutY="6.0" prefHeight="17.0" prefWidth="193.0" text="Olá , Seja bem vindo ao CardTrader" />
          </children>
       </Pane>
-      <Button layoutX="433.0" layoutY="330.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="123.0" text="Sair" />
-      <Button layoutX="222.0" layoutY="330.0" mnemonicParsing="false" onAction="#chamaCadastro" prefHeight="25.0" prefWidth="123.0" text="Cadastrar" />
-      <Button layoutX="53.0" layoutY="330.0" mnemonicParsing="false" onAction="#chamaRecSenha" prefHeight="25.0" prefWidth="123.0" text="Esqueceu a Senha?" />
+      <Button layoutX="388.0" layoutY="330.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="123.0" text="Sair" />
+      <Button layoutX="239.0" layoutY="330.0" mnemonicParsing="false" onAction="#chamaCadastro" prefHeight="25.0" prefWidth="123.0" text="Cadastrar" />
+      <Button layoutX="90.0" layoutY="330.0" mnemonicParsing="false" onAction="#chamaRecSenha" prefHeight="25.0" prefWidth="123.0" text="Esqueceu a Senha?" />
    </children>
 </AnchorPane>
