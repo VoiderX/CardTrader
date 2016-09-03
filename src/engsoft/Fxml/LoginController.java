@@ -82,10 +82,16 @@ public class LoginController implements Initializable {
     @FXML
     public void chamaCadastro(){//Chama a tela de cadastro
        engsoft.ControleUI.getInstance().mostraCadastro();
+       Mensagem.setText("");//Limpa os campos
+       NickField.setText("");
+       PassField.setText("");
     }
     @FXML
     public void chamaRecSenha(){
         engsoft.ControleUI.getInstance().chamaRecPass();
+        Mensagem.setText("");//Limpa os campos
+        NickField.setText("");
+        PassField.setText("");
     }
     
     @Override

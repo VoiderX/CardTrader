@@ -76,31 +76,8 @@ private String senha;
              NickField.setDisable(true);
              NomeField.setText(rs.getString("NOME_USUARIO").toLowerCase());
              String NumField;
-             NumField=rs.getString("NUM_USUARIO");
-             
-             if(NumField.length()==11){ //Trata a exibição do telefone de acordo com os casos possíveis na validação
-                if(NumField.subSequence(0,1).equals("0")){
-                    DDDField.setText(NumField.substring(0,3));
-                    CodCddField.setText(NumField.substring(3,7));
-                    NumUsuarioField.setText(NumField.substring(7,11));    
-                }else{
-                     DDDField.setText(NumField.substring(0,2));
-                     CodCddField.setText(NumField.substring(2,7));
-                     NumUsuarioField.setText(NumField.substring(7,11));
-                }
-             }
-             
-             if(NumField.length()==10){
-                DDDField.setText(NumField.substring(0,2));
-                CodCddField.setText(NumField.substring(2,6));
-                NumUsuarioField.setText(NumField.substring(6,10)); 
-             }
-             
-             if(NumField.length()==12){
-                DDDField.setText(NumField.substring(0,3));
-                CodCddField.setText(NumField.substring(3,8));
-                NumUsuarioField.setText(NumField.substring(8,12));
-             }             
+             NumField=rs.getString("NUM_USUARIO");             
+             Utilidades.telSplit(NumField, DDDField, CodCddField, NumUsuarioField);
              EmailField.setText(rs.getString("EMAIL_USUARIO").toLowerCase());
              EndField.setText(rs.getString("ENDERECO_USUARIO").toLowerCase());
              Locations Loc = new Locations();

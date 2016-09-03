@@ -5,6 +5,7 @@
  */
 package engsoft.Fxml;
 
+import engsoft.Utilidades;
 import engsoft.Valida;
 import java.net.URL;
 import java.sql.Connection;
@@ -91,13 +92,15 @@ public class AlteraCadastroController implements Initializable {
              PaisField.setValue(null);
              EstadoField.setValue(null);
              CityField.setValue(null);     
-    engsoft.ControleUI.getInstance().mostraMenu();
+             engsoft.ControleUI.getInstance().mostraMenu();
     }
     
     @FXML
     private void puxarInfo(){//Puxa as informações do usuário
       conexao.puxarInfo(NickField, NomeField, DDDField, CodCddField, NumUsuarioField, EmailField, 
               EndField, PaisField, EstadoField, CityField, Mensagem);
+              Utilidades.firstToUpper(NomeField);
+              Utilidades.firstToUpper(EndField);
     }
     
     @FXML
