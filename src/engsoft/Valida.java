@@ -7,10 +7,7 @@ package engsoft;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+
 
 /**
  *
