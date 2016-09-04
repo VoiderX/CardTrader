@@ -12,10 +12,10 @@ import javafx.scene.control.TextField;
  * @author noda2
  */
 public final class Utilidades {
-    public static void firstToUpper(TextField AnyField){
-        char NomeFieldChar[]=new char[AnyField.getText().length()];
+    public static String firstToUpper(String AnyField){
+        char NomeFieldChar[]=new char[AnyField.length()];
         
-        NomeFieldChar=AnyField.getText().toCharArray();
+        NomeFieldChar=AnyField.toCharArray();
         NomeFieldChar[0]=Character.toUpperCase(NomeFieldChar[0]);
        
         for(int i=0;i<NomeFieldChar.length-1;i++){          
@@ -23,7 +23,7 @@ public final class Utilidades {
                 NomeFieldChar[i+1]=Character.toUpperCase(NomeFieldChar[i+1]);
             }
         }        
-       AnyField.setText(String.valueOf(NomeFieldChar));
+       return String.valueOf(NomeFieldChar);
     }
     
     public static void telSplit(String NumField,TextField DDDField,TextField CodCddField,TextField NumUsuarioField){
