@@ -142,8 +142,6 @@ public final class Valida {
         }
     }
     
-    
-    
     public static boolean validaEnd(String end,StringBuilder mens){
         if(end.isEmpty()){
             mens.append(" Endereço vazio.");
