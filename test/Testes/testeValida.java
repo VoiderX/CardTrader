@@ -39,7 +39,7 @@ public class testeValida {
     public void tearDown() {
     }
 
-    //Teste funcionando como deveria
+    //Teste validaLogin() funcionando como deveria
     @Test
     public void validaloginVerdade(){
         
@@ -49,11 +49,12 @@ public class testeValida {
         estado = Valida.validaLogin("arch23","dezembro",mens);
         
         //pega o retorno da função
-        assertEquals(true,estado);
+        assertTrue(estado);
         assertTrue(mens.toString().equals(""));
     
     }//end function
     
+    //Teste validaLogin() Usuário Vazio.
     @Test
     public void validaloginUsuario(){
         
@@ -63,11 +64,12 @@ public class testeValida {
         estado = Valida.validaLogin("","dezembro",mens);
         
         //pega o retorno da função
-        assertEquals(false,estado);
+        assertFalse(estado);
         assertTrue(mens.toString().equals("Usuário Vazio."));
     
     }//end function
     
+    //Teste validaLogin() Senha vazia.
     @Test
     public void validaloginSenha(){
         
@@ -77,9 +79,148 @@ public class testeValida {
         estado = Valida.validaLogin("arch23","",mens);
         
         //pega o retorno da função
-        assertEquals(false,estado);
-        assertTrue(mens.toString().equals(" Senha vazia."));
+        assertFalse(estado);
+        assertTrue(mens.toString().equals("Senha vazia."));
     
+    }//end function
+    
+    //Teste validaSenha() funcionando como deveria
+    @Test
+    public void validasenhaVerdade(){
+    
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaSenha("arch23","dezembro",mens);
+        
+        //pega o retorno da função
+        assertTrue(estado);
+        assertTrue(mens.toString().equals(""));
+        
+    }//end function
+    
+    //Teste validaSenha() - 1º if
+    @Test
+    public void validasenhaUsuarioVazio(){
+    
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaSenha("","dezembro",mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals("Usuário Vazio"));
+        
+    }//end function
+    
+    //Teste validaSenha() - 2º if
+    @Test
+    public void validasenhaVazia(){
+    
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaSenha("arch23","",mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals(" Senha vazia"));
+        
+    }//end function
+    
+    //Teste validaSenha() - 3º if
+    @Test
+    public void validasenhaMenor(){
+    
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaSenha("arch23","23454",mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals(" Senha muito curta"));
+        
+    }//end function
+    
+    //Teste validaSenha() - 4º if
+    @Test
+    public void validasenhaMaior(){
+    
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaSenha("arch23","23454a36ert23562",mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals(" Senha muito longa"));
+        
+    }//end function
+   
+    //Teste validaNick() - verdadeiro
+    @Test
+    public void verdadevalidaNick(){
+        
+        String nick = "arch23";
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaNick(nick,mens);
+        
+        //pega o retorno da função
+        assertTrue(estado);
+        assertTrue(mens.toString().equals(""));
+        
+    }//end funcion
+    
+    //Teste validaNick() - 1º if
+    @Test
+    public void nickvalidaNick(){
+        
+        String nick = "arch23";
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaNick(nick,mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals("Nickname vazio."));
+        
+    }//end function
+    
+    //teste validaNick() - 2º if - caracteres especiais
+    @Test
+    public void charactervalidaNick(){
+        
+        String nick = "arch23)é";
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaNick(nick,mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals("Nickname não pode começar com numeros ou ter caracteres especiais."));
+        
+    }//end function
+    
+    //Teste validaNick() - 3º if - nickname curto
+    @Test
+    public void shortvalidaNick(){
+        
+        String nick = "arch23";
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaNick(nick,mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals("Nickname muito curto."));
+        
     }//end function
     
     // TODO add test methods here.
@@ -88,10 +229,7 @@ public class testeValida {
     // @Test
     // public void hello() {}
 
-    @Test
-    public void teste(){
-        
-        
-    }//endfunction
+    
+    
 
 }//endclass

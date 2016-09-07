@@ -27,7 +27,7 @@ public final class Valida {
             ctrl = false;
         }
         if(pass.isEmpty()){
-            mens.append(" Senha vazia.");
+            mens.append("Senha vazia.");
             ctrl = false;
         }
         return(ctrl);
