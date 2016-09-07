@@ -179,7 +179,7 @@ public class testeValida {
     @Test
     public void nickvalidaNick(){
         
-        String nick = "arch23";
+        String nick = "";
         boolean estado;
         StringBuilder mens = new StringBuilder("");
         
@@ -211,7 +211,7 @@ public class testeValida {
     @Test
     public void shortvalidaNick(){
         
-        String nick = "arch23";
+        String nick = "arch2";
         boolean estado;
         StringBuilder mens = new StringBuilder("");
         
@@ -222,6 +222,38 @@ public class testeValida {
         assertTrue(mens.toString().equals("Nickname muito curto."));
         
     }//end function
+    
+    @Test
+    public void longvalidaNick(){
+        
+        String nick = "arch231sdfsdfsdfsdfse223573";
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaNick(nick,mens);
+        
+        //pega o retorno da função
+        assertFalse(estado);
+        assertTrue(mens.toString().equals("nickname muito longo."));
+        
+    }//end function
+    
+    @Test
+    public void truevalidaNome(){
+        
+        String nome = "Andre Costa Lopes";
+        boolean estado;
+        StringBuilder mens = new StringBuilder("");
+        
+        estado = Valida.validaNome(nome,mens);
+        
+        //pega o retorno da função
+        assertTrue(estado);
+        assertTrue(mens.toString().equals(""));
+        
+    }//end function
+    
+    
     
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
