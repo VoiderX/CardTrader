@@ -253,6 +253,59 @@ public class testeValida {
         
     }//end function
     
+    @Test 
+    public void emptyValidaNome(){
+        String nome = "";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaNome(nome, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Nome vazio."));       
+    }
+    
+    @Test 
+    public void longValidaNome(){
+        String nome = "FernandaDeboraMariaArianeNataliaCamilaSandaMariluciaViviane";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaNome(nome, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Nome muito grande."));
+            
+    }
+
+    @Test 
+    public void normalValidaNum(){
+        String num = "4399022422";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaNum(num, msg);
+        assertTrue(retorno);
+        assertTrue(msg.toString().equals(""));       
+    }
+    
+    @Test 
+    public void emptyValidaNum(){
+        String num = "";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaNum(num, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Telefone vazio."));       
+    }
+    
+    @Test 
+    public void anormalValidaNum(){
+        String num = "019995979234574032033333";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaNum(num, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Telefone não reconhecido."));       
+    }    
+    
+    
+    
     
     
     // TODO add test methods here.
