@@ -7,8 +7,6 @@ package engsoft.Fxml;
 
 
 
-import engsoft.ControleUI;
-import engsoft.UserConexaoDB;
 import engsoft.Valida;
 import java.net.URL;
 import java.sql.*;

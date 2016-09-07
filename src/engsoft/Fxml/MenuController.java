@@ -6,7 +6,6 @@
 package engsoft.Fxml;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
