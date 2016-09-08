@@ -304,7 +304,114 @@ public class testeValida {
         assertTrue(msg.toString().equals(" Telefone não reconhecido."));       
     }    
     
+    @Test 
+    public void normalValidaEmail(){
+        String email = "asdfg@gmail.com";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaEmail(email, msg);
+        assertTrue(retorno);
+        assertTrue(msg.toString().equals(""));       
+    }
+    @Test
+        public void emptyValidaEmail(){
+        String email = "";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaEmail(email, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Email vazio."));       
+    }
     
+    @Test 
+    public void anormalValidaEmail(){
+        String email = "@_www";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaEmail(email, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Email não válido."));       
+    } 
+    
+    @Test 
+    public void normalValidaEnd(){
+        String end = "Avenida da Rua numero 789 Bairro da Rua";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaEnd(end, msg);
+        assertTrue(retorno);
+        assertTrue(msg.toString().equals(""));       
+    }
+    
+        @Test
+        public void emptyValidaEnd(){
+            String end = "";
+            StringBuilder msg = new StringBuilder("");
+            boolean retorno;
+            retorno = Valida.validaEnd(end, msg);
+            assertFalse(retorno);
+            assertTrue(msg.toString().equals(" Endereço vazio."));       
+    }
+    
+    @Test 
+    public void longValidaEnd(){
+        String end = "CarolinaLiviaFernandaDeboraMariaArianeNataliaCamilaSandaMariluciaViviane";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaEnd(end, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Endereço muito grande."));
+    }
+    
+     @Test 
+    public void normalValidaCidade(){
+        String cidade = "Lucas do Rio Verde";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaCidade(cidade, msg);
+        assertTrue(retorno);
+        assertTrue(msg.toString().equals(""));       
+    }
+    
+    @Test 
+    public void normalValidaPass(){
+        String pass = "123456";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaPass(pass, msg);
+        assertTrue(retorno);
+        assertTrue(msg.toString().equals(""));       
+    }
+    
+     @Test 
+    public void menorValidaPass(){
+        String pass = "1234";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaPass(pass, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Senha muito curta."));       
+    }
+    
+    @Test 
+    public void maiorValidaPass(){
+        String pass = "LarissaNathalia12345678";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaPass(pass, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Senha muito longa."));     
+    }
+    
+    @Test 
+    public void spaceValidaPass(){
+        String pass = " ";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaPass(pass, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Senha não pode conter espaços."));     
+    }
     
     
     
