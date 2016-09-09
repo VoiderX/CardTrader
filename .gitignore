@@ -59,3 +59,4 @@ manifest.mf
 nbproject/build-impl.xml
 *.xml
 /dist/
+*.exec
