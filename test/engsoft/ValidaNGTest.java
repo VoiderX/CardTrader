@@ -41,7 +41,7 @@ public class ValidaNGTest {
      * Teste de método validaLogin, da classe Valida.
      */
     @Test
-    public void validaloginVerdade(){
+    public void validaLoginVerdade(){
         
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -56,7 +56,7 @@ public class ValidaNGTest {
     
     //Teste validaLogin() Usuário Vazio.
     @Test
-    public void validaloginUsuario(){
+    public void validaLoginUsuario(){
         
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -71,7 +71,7 @@ public class ValidaNGTest {
     
     //Teste validaLogin() Senha vazia.
     @Test
-    public void validaloginSenha(){
+    public void validaLoginSenha(){
         
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -86,7 +86,7 @@ public class ValidaNGTest {
     
     //Teste validaSenha() funcionando como deveria
     @Test
-    public void validasenhaVerdade(){
+    public void validaSenhaVerdade(){
     
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -101,7 +101,7 @@ public class ValidaNGTest {
     
     //Teste validaSenha() - 1º if
     @Test
-    public void validasenhaUsuarioVazio(){
+    public void validaSenhaUsuarioVazio(){
     
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -116,7 +116,7 @@ public class ValidaNGTest {
     
     //Teste validaSenha() - 2º if
     @Test
-    public void validasenhaVazia(){
+    public void validaSenhaVazia(){
     
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -131,7 +131,7 @@ public class ValidaNGTest {
     
     //Teste validaSenha() - 3º if
     @Test
-    public void validasenhaMenor(){
+    public void validaSenhaMenor(){
     
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -146,7 +146,7 @@ public class ValidaNGTest {
     
     //Teste validaSenha() - 4º if
     @Test
-    public void validasenhaMaior(){
+    public void validaSenhaMaior(){
     
         boolean estado;
         StringBuilder mens = new StringBuilder("");
@@ -161,7 +161,7 @@ public class ValidaNGTest {
    
     //Teste validaNick() - verdadeiro
     @Test
-    public void verdadevalidaNick(){
+    public void verdadeValidaNick(){
         
         String nick = "arch23";
         boolean estado;
@@ -177,7 +177,7 @@ public class ValidaNGTest {
     
     //Teste validaNick() - 1º if
     @Test
-    public void nickvalidaNick(){
+    public void nickValidaNick(){
         
         String nick = "";
         boolean estado;
@@ -193,7 +193,7 @@ public class ValidaNGTest {
     
     //teste validaNick() - 2º if - caracteres especiais
     @Test
-    public void charactervalidaNick(){
+    public void characterValidaNick(){
         
         String nick = "arch23)é";
         boolean estado;
@@ -209,7 +209,7 @@ public class ValidaNGTest {
     
     //Teste validaNick() - 3º if - nickname curto
     @Test
-    public void shortvalidaNick(){
+    public void shortValidaNick(){
         
         String nick = "arch2";
         boolean estado;
@@ -224,7 +224,7 @@ public class ValidaNGTest {
     }//end function
     
     @Test
-    public void longvalidaNick(){
+    public void longValidaNick(){
         
         String nick = "arch231sdfsdfsdfsdfse223573";
         boolean estado;
@@ -239,7 +239,7 @@ public class ValidaNGTest {
     }//end function
     
     @Test
-    public void truevalidaNome(){
+    public void trueValidaNome(){
         
         String nome = "Andre Costa Lopes";
         boolean estado;
@@ -363,7 +363,7 @@ public class ValidaNGTest {
         assertTrue(msg.toString().equals(" Endereço muito grande."));
     }
     
-     @Test 
+    @Test 
     public void normalValidaCidade(){
         String cidade = "Lucas do Rio Verde";
         StringBuilder msg = new StringBuilder("");
@@ -371,6 +371,26 @@ public class ValidaNGTest {
         retorno = Valida.validaCidade(cidade, msg);
         assertTrue(retorno);
         assertTrue(msg.toString().equals(""));       
+    }
+    
+    @Test
+    public void emptyValidaCidade(){
+        String cidade = "";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaCidade(cidade, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Selecione país,estado e cidade válidos."));  
+    }
+    
+    @Test
+    public void emptyValidaPass(){
+        String pass = "";
+        StringBuilder msg = new StringBuilder("");
+        boolean retorno;
+        retorno = Valida.validaPass(pass, msg);
+        assertFalse(retorno);
+        assertTrue(msg.toString().equals(" Senha vazia.")); 
     }
     
     @Test 
@@ -413,4 +433,119 @@ public class ValidaNGTest {
         assertTrue(msg.toString().equals(" Senha não pode conter espaços."));     
     }
     
+    @Test
+    public void validaValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("arch23","Vinicius Noda","Endereço hue","4396045728","noda.23@hotmail.com","Cornélio","huehue",mens);
+        assertTrue(retorno);
+        assertTrue(mens.toString().equals(""));
+    }
+    
+    @Test
+    public void falseNickValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("","Vinicius Noda","Endereço hue","4396045728","noda.23@hotmail.com","Cornélio","huehue",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals("Nickname vazio."));
+    }
+    
+    @Test
+    public void falseNomeValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("arch23","","Endereço hue","4396045728","noda.23@hotmail.com","Cornélio","huehue",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Nome vazio."));
+    }
+    
+    @Test
+    public void falseEndValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("arch23","Vinicius Noda","","4396045728","noda.23@hotmail.com","Cornélio","huehue",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Endereço vazio."));
+    }
+    
+    @Test
+    public void falseNumValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("arch23","Vinicius Noda","Endereço Hue","","noda.23@hotmail.com","Cornélio","huehue",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Telefone vazio."));
+    }
+    
+    @Test
+    public void falseEmailValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("arch23","Vinicius Noda","Endereço Hue","4396045728","","Cornélio","huehue",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Email vazio."));
+    }
+    
+    @Test
+    public void falseCidadeValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("arch23","Vinicius Noda","Endereço Hue","4396045728","noda.23@hotmail.com","","huehue",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Selecione país,estado e cidade válidos."));
+    }
+    
+    @Test
+    public void falsePassValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaCadastro("arch23","Vinicius Noda","Endereço Hue","4396045728","noda.23@hotmail.com","Cornélio","",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Senha vazia."));
+    }
+    
+    @Test void validaValidaAlterarCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaAltCadastro("Vinicius Noda","Endereço hue","4396045728","noda.23@hotmail.com","Cornélio",mens);
+        assertTrue(retorno);
+        assertTrue(mens.toString().equals(""));
+    }
+    
+    @Test
+    public void falseNomeAltValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaAltCadastro("","Endereço hue","4396045728","noda.23@hotmail.com","Cornélio",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Nome vazio."));
+    }
+    
+    @Test
+    public void falseEndAltValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaAltCadastro("Vinicius Noda","","4396045728","noda.23@hotmail.com","Cornélio",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Endereço vazio."));
+    }
+    
+    @Test
+    public void falseNumAltValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaAltCadastro("Vinicius Noda","Endereço hue","","noda.23@hotmail.com","Cornélio",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Telefone vazio."));
+    }
+    
+    @Test
+    public void falseEmailAltValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaAltCadastro("Vinicius Noda","Endereço hue","4396045728","","Cornélio",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Email vazio."));
+    }
+    
+    @Test
+    public void falseCidadeAltValidaCadastro(){
+        StringBuilder mens = new StringBuilder("");
+        boolean retorno = Valida.validaAltCadastro("Vinicius Noda","Endereço hue","4396045728","noda.23@hotmail.com","",mens);
+        assertFalse(retorno);
+        assertTrue(mens.toString().equals(" Selecione país,estado e cidade válidos."));
+    }
+    
+    @Test
+    public void validaCons(){
+        Valida obj = new Valida();
+    }
 }
