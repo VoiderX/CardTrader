@@ -1,45 +1,45 @@
-package Testes;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package engsoft;
 
-import engsoft.Valida;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  *
- * @author André Costa Lopes
+ * @author noda2
  */
-public class testeValida {
+public class ValidaNGTest {
     
-    public testeValida() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    public ValidaNGTest() {
     }
 
-    //Teste validaLogin() funcionando como deveria
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @BeforeMethod
+    public void setUpMethod() throws Exception {
+    }
+
+    @AfterMethod
+    public void tearDownMethod() throws Exception {
+    }
+
+    /**
+     * Teste de método validaLogin, da classe Valida.
+     */
     @Test
     public void validaloginVerdade(){
         
@@ -413,15 +413,4 @@ public class testeValida {
         assertTrue(msg.toString().equals(" Senha não pode conter espaços."));     
     }
     
-    
-    
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-
-    
-    
-
-}//endclass
+}
