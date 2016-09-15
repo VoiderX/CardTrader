@@ -40,8 +40,18 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
     
     public String realizaCadastro(String NickField,String NomeField,String EndField,String NumField,String EmailField,
     String PaisField,String EstadoField,String CityField,String PassField){
-        String Mensagem;
+        String Mensagem="";
         conexao=createCon();
+        try{
+            Statement a=conexao.createStatement();
+           ResultSet ver= a.executeQuery("SELECT * FROM USUARIO WHERE NICK_USUARIO='"+NickField+"'");
+           while(ver.next()){
+              if(ver.getString("NICK_USUARIO").equals(NickField));
+              return  "Nome de usuário ou email já  cadastrado!";
+           }
+        }catch(Exception e){
+           return "Um erro ocorreu, tente novamente!";
+        }
          try{
                 Statement s=conexao.createStatement(); //Inicia o statement
                 
@@ -62,11 +72,24 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                    //Fornece permissão de seleção e atualização na sua própria view
                 s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField);                     
 
-                s.close();//Encerra o statement(declaração);           
+                s.close();//Encerra o statement(declaração);         
 
-            }catch(Exception e){//Caso haja um email ou usuario com o mesmo nome o banco irá retornar uma exceção
-                Mensagem=("Nome de usuário ou email já cadastrados!");
-                System.out.println(e);           
+            }catch(Exception e){//Caso haja uma falha de conexão
+                int j=0;
+                do{
+                try{
+                Statement s=conexao.createStatement();
+                s.executeUpdate("DELETE FROM USUARIO WHERE NICK_USUARIO='"+NickField+"'");
+                s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"view");
+                s.executeUpdate("DROP USER IF EXISTS "+NickField);
+                System.out.println(e);
+                Mensagem="Erro de conexão, tente novamente";
+                }
+                catch(Exception a){
+                    System.out.println(a);
+                    j=1;
+                    }
+                }while(j==1);
             }
          return Mensagem;    
     }
