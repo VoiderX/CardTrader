@@ -84,6 +84,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 s.executeUpdate("DROP USER IF EXISTS "+NickField);
                 System.out.println(e);
                 Mensagem="Erro de conexão, tente novamente";
+                j=0;
                 }
                 catch(Exception a){
                     System.out.println(a);
