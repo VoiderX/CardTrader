@@ -60,3 +60,5 @@ nbproject/build-impl.xml
 *.xml
 /dist/
 *.exec
+*.js
+*.css
