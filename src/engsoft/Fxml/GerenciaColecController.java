@@ -36,7 +36,7 @@ public class GerenciaColecController implements Initializable {
     }
     @FXML
     public void procurarCarta(){
-        File file1 = new File("D:/Downloads/aaa.jpg");
+        File file1 = new File("D:/Downloads/aguia-real.jpg");
         Image im2= new Image(file1.toURI().toString());
         Image5.setImage(im2);
        
@@ -68,7 +68,7 @@ public class GerenciaColecController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         File file = new File("D:/Downloads/aaa.jpg");
+         File file = new File("D:/Downloads/aguia-real.jpg");
          Image im1= new Image(file.toURI().toString());
          Image1.setImage(im1);
          Image2.setImage(im1);

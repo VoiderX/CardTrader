@@ -15,54 +15,54 @@
       <Pane layoutX="10.0" layoutY="14.0" prefHeight="373.0" prefWidth="581.0">
          <children>
             <Button layoutX="399.0" layoutY="335.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="151.0" text="Voltar para menu" textFill="#0d0d0d" />
-            <ImageView fx:id="Image1" fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="23.0" onMouseClicked="#clickImage1" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Image1" fitHeight="99.0" fitWidth="140.0" layoutX="18.0" layoutY="38.0" onMouseClicked="#clickImage1" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="Image3" fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="197.0" onMouseClicked="#clickImage3" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Image3" fitHeight="99.0" fitWidth="132.0" layoutX="27.0" layoutY="197.0" onMouseClicked="#clickImage3" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="Image2" fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="23.0" onMouseClicked="#clickImage2" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Image2" fitHeight="119.0" fitWidth="132.0" layoutX="208.0" layoutY="38.0" onMouseClicked="#clickImage2" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="Image4" fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="197.0" onMouseClicked="#clickImage4" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Image4" fitHeight="99.0" fitWidth="132.0" layoutX="216.0" layoutY="197.0" onMouseClicked="#clickImage4" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
             <Label layoutX="45.0" layoutY="6.0" prefHeight="17.0" prefWidth="132.0" text="Adições recentes:" />
-            <Text layoutX="53.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta1" wrappingWidth="80.13671875" />
-            <Text layoutX="242.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta2" wrappingWidth="80.13671875" />
-            <Text layoutX="53.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta3" wrappingWidth="80.13671875" />
-            <Text layoutX="242.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta4" wrappingWidth="80.13671875" />
+            <Text layoutX="44.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta1" wrappingWidth="80.13671875" />
+            <Text layoutX="234.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta2" wrappingWidth="80.13671875" />
+            <Text layoutX="53.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta3" wrappingWidth="80.13671875" />
+            <Text layoutX="242.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta4" wrappingWidth="80.13671875" />
             <TextField layoutX="379.0" layoutY="73.0" prefHeight="25.0" prefWidth="191.0" />
             <Label layoutX="379.0" layoutY="48.0" prefHeight="17.0" prefWidth="191.0" text="Procurar Cartas:" />
             <Button layoutX="472.0" layoutY="115.0" mnemonicParsing="false" onAction="#procurarCarta" prefHeight="25.0" prefWidth="95.0" text="Procurar" />
-            <ImageView fx:id="Image5" fitHeight="150.0" fitWidth="151.0" layoutX="397.0" layoutY="153.0" onMouseClicked="#clickImage5" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Image5" fitHeight="107.0" fitWidth="151.0" layoutX="407.0" layoutY="171.0" onMouseClicked="#clickImage5" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Text layoutX="419.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta5" wrappingWidth="80.13671860098839" />
+            <Text layoutX="438.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta5" wrappingWidth="80.13671860098839" />
          </children>
       </Pane>
    </children>

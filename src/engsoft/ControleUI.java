@@ -60,6 +60,7 @@ public final class ControleUI{
     private static Scene GerenciaCartaScene;
     
     private static Stage mainStage;
+    private static Stage secondStage;
     
     
     
@@ -140,7 +141,7 @@ public final class ControleUI{
     }
     
     public void chamaGerenciaCarta(){
-        Stage secondStage= new Stage();
+        secondStage= new Stage();
          try{
        GerenciaCartaFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciaCarta.fxml"));
         }
@@ -151,6 +152,9 @@ public final class ControleUI{
         secondStage.setScene(GerenciaCartaScene);
         secondStage.setTitle("Gerenciamento de Carta");
         secondStage.show();
+    }
+    public void saisecondStage(){
+        secondStage.close();
     }
     
 }
