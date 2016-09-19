@@ -47,12 +47,17 @@ public final class ControleUI{
     private static Parent AlteraCadastroFXML;
     private static Parent RecSenhaFXML;
     private static Parent GerenciaColecFXML;
+    private static Parent ListaColecFXML;
+    private static Parent GerenciaCartaFXML;
     
     private static Scene LoginScene;
     private static Scene CadastroScene;
     private static Scene MenuScene;
     private static Scene AlteraScene;
     private static Scene RecSenhaScene;
+    private static Scene GerenciaColecScene;
+    private static Scene ListaColecScene;
+    private static Scene GerenciaCartaScene;
     
     private static Stage mainStage;
     
@@ -117,9 +122,35 @@ public final class ControleUI{
         catch(Exception e){
             e.printStackTrace();
         }
-        AlteraScene=new Scene(GerenciaColecFXML);
-        mainStage.setScene(AlteraScene);
+        GerenciaColecScene=new Scene(GerenciaColecFXML);
+        mainStage.setScene(GerenciaColecScene);
         mainStage.show();
+    }
+    
+    public void chamaListaColec(){
+        try{
+       ListaColecFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaColec.fxml"));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        ListaColecScene=new Scene(ListaColecFXML);
+        mainStage.setScene(ListaColecScene);
+        mainStage.show();
+    }
+    
+    public void chamaGerenciaCarta(){
+        Stage secondStage= new Stage();
+         try{
+       GerenciaCartaFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciaCarta.fxml"));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        GerenciaCartaScene=new Scene(GerenciaCartaFXML);
+        secondStage.setScene(GerenciaCartaScene);
+        secondStage.setTitle("Gerenciamento de Carta");
+        secondStage.show();
     }
     
 }

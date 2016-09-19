@@ -41,6 +41,26 @@ public class GerenciaColecController implements Initializable {
         Image5.setImage(im2);
        
     }
+    @FXML
+    public void clickImage1(){
+        engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+    }
+     @FXML
+    public void clickImage2(){
+         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+    }
+     @FXML
+    public void clickImage3(){
+         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+    }
+     @FXML
+    public void clickImage4(){
+         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+    }
+    @FXML
+    public void clickImage5(){
+         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+    }
 
     /**
      * Initializes the controller class.
