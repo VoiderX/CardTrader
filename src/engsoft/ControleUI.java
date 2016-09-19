@@ -46,6 +46,7 @@ public final class ControleUI{
     private static Parent MenuFXML;
     private static Parent AlteraCadastroFXML;
     private static Parent RecSenhaFXML;
+    private static Parent GerenciaColecFXML;
     
     private static Scene LoginScene;
     private static Scene CadastroScene;
@@ -107,6 +108,18 @@ public final class ControleUI{
     public void chamaRecPass(){
         mainStage.setScene(RecSenhaScene);
         mainStage.show();
-    }    
+    }
+    
+    public void chamaGerenciarColec(){
+        try{
+        GerenciaColecFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciaColec.fxml"));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        AlteraScene=new Scene(GerenciaColecFXML);
+        mainStage.setScene(AlteraScene);
+        mainStage.show();
+    }
     
 }

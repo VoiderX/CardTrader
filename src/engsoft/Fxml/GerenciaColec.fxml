@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.GerenciaColecController">
+   <children>
+      <Pane layoutX="10.0" layoutY="14.0" prefHeight="373.0" prefWidth="581.0">
+         <children>
+            <Button layoutX="399.0" layoutY="335.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="151.0" text="Voltar para menu" textFill="#0d0d0d" />
+            <ImageView fx:id="Image1" fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <ImageView fx:id="Image3" fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="Image2" fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="Image4" fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="45.0" layoutY="6.0" prefHeight="17.0" prefWidth="132.0" text="Adições recentes:" />
+            <Text layoutX="53.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta1" wrappingWidth="80.13671875" />
+            <Text layoutX="242.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta2" wrappingWidth="80.13671875" />
+            <Text layoutX="53.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta3" wrappingWidth="80.13671875" />
+            <Text layoutX="242.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta4" wrappingWidth="80.13671875" />
+            <TextField layoutX="379.0" layoutY="73.0" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="379.0" layoutY="48.0" prefHeight="17.0" prefWidth="191.0" text="Procurar Cartas:" />
+            <Button layoutX="472.0" layoutY="115.0" mnemonicParsing="false" onAction="#procurarCarta" prefHeight="25.0" prefWidth="95.0" text="Procurar" />
+            <ImageView fx:id="Image5" fitHeight="150.0" fitWidth="151.0" layoutX="397.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aaa.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="419.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta5" wrappingWidth="80.13671860098839" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -30,6 +30,10 @@ public class MenuController implements Initializable {
     public void alteraCad(){//Chama o menu de alteração de cadastro
          engsoft.ControleUI.getInstance().mostraAlterCadastro();         
     }
+    @FXML
+    public void gerenciaColec(){//Chama o gerenciar coleções
+        engsoft.ControleUI.getInstance().chamaGerenciarColec();
+    }
     
     /**
      * Initializes the controller class.
