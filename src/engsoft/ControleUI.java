@@ -49,6 +49,7 @@ public final class ControleUI{
     private static Parent GerenciaColecFXML;
     private static Parent ListaColecFXML;
     private static Parent GerenciaCartaFXML;
+    private static Parent ListaCartasFXML;
     
     private static Scene LoginScene;
     private static Scene CadastroScene;
@@ -58,6 +59,7 @@ public final class ControleUI{
     private static Scene GerenciaColecScene;
     private static Scene ListaColecScene;
     private static Scene GerenciaCartaScene;
+    private static Scene ListaCartasScene;
     
     private static Stage mainStage;
     private static Stage secondStage;
@@ -72,7 +74,7 @@ public final class ControleUI{
             LoginFXML = FXMLLoader.load(getClass().getResource("Fxml/Login.fxml")); //Carrega o arquivo FXML na classe pai
             CadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/Cadastro.fxml"));
             MenuFXML=FXMLLoader.load(getClass().getResource("Fxml/Menu.fxml"));
-            RecSenhaFXML=FXMLLoader.load(getClass().getResource("Fxml/RecuperaSenha.fxml"));
+            RecSenhaFXML=FXMLLoader.load(getClass().getResource("Fxml/RecuperaSenha.fxml"));            
             
         } catch (IOException ex) {
             //fazer algo para mostrar erro
@@ -152,6 +154,21 @@ public final class ControleUI{
         secondStage.setScene(GerenciaCartaScene);
         secondStage.setTitle("Gerenciamento de Carta");
         secondStage.show();
+    }
+    
+    public void ChamaLista(){
+        secondStage=new Stage();
+        try{
+        ListaCartasFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaCartas.fxml"));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        ListaCartasScene=new Scene(ListaCartasFXML);
+        secondStage.setTitle("Seleção de Carta");
+        secondStage.setScene(ListaCartasScene);
+        secondStage.show();
+        
     }
     public void saisecondStage(){
         secondStage.close();

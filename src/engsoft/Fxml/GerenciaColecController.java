@@ -5,12 +5,12 @@
  */
 package engsoft.Fxml;
 
-import java.io.File;
+import engsoft.CartaDAO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.Image;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 /**
@@ -29,6 +29,8 @@ public class GerenciaColecController implements Initializable {
     ImageView Image4=new ImageView();
     @FXML
     ImageView Image5=new ImageView();
+    @FXML
+    TextField IdCarta=new TextField();
     
     @FXML
     public void retornaMenu(){
@@ -36,11 +38,9 @@ public class GerenciaColecController implements Initializable {
     }
     @FXML
     public void procurarCarta(){
-        File file1 = new File("D:/Downloads/aguia-real.jpg");
-        Image im2= new Image(file1.toURI().toString());
-        Image5.setImage(im2);
-       
+     Image5.setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
     }
+    
     @FXML
     public void clickImage1(){
         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
@@ -61,6 +61,10 @@ public class GerenciaColecController implements Initializable {
     public void clickImage5(){
          engsoft.ControleUI.getInstance().chamaGerenciaCarta();
     }
+    @FXML
+    public void chamaLista(){
+        engsoft.ControleUI.getInstance().ChamaLista();
+    }
 
     /**
      * Initializes the controller class.
@@ -68,11 +72,9 @@ public class GerenciaColecController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         File file = new File("D:/Downloads/aguia-real.jpg");
-         Image im1= new Image(file.toURI().toString());
-         Image1.setImage(im1);
-         Image2.setImage(im1);
-         Image3.setImage(im1);
-         Image4.setImage(im1);
+         Image1.setImage(CartaDAO.puxarCarta(1));
+         Image2.setImage(CartaDAO.puxarCarta(2));
+         Image3.setImage(CartaDAO.puxarCarta(1));
+         Image4.setImage(CartaDAO.puxarCarta(2));
     }
 }

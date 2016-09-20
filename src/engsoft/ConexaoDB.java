@@ -70,8 +70,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                                 + " WHERE NICK_USUARIO='"+NickField+"'");        
 
                    //Fornece permissão de seleção e atualização na sua própria view
-                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField);                     
-
+                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField);  
                 s.close();//Encerra o statement(declaração);         
 
             }catch(Exception e){//Caso haja uma falha de conexão
