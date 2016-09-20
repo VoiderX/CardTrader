@@ -15,12 +15,12 @@ import javafx.fxml.Initializable;
  *
  * @author Gabriel
  */
-public class ListaColecController implements Initializable {
+public class ListaColecController implements Initializable {   
     
     @FXML
     public void voltaMenu(){
         engsoft.ControleUI.getInstance().mostraMenu();
-    }
+    }  
 
     /**
      * Initializes the controller class.
@@ -28,6 +28,7 @@ public class ListaColecController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+       
     }    
     
 }

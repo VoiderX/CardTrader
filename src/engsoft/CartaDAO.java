@@ -10,6 +10,8 @@ import java.io.ByteArrayInputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
@@ -21,7 +23,8 @@ import org.postgresql.largeobject.LargeObjectManager;
  * @author Gabriel
  */
 public class CartaDAO {
-    Connection con;
+    Connection con;  
+    
     public CartaDAO(){
         con=ConexaoDB.getCon();
     }
@@ -53,6 +56,25 @@ public class CartaDAO {
         e.printStackTrace();
     }
     return im;
+    }
+    
+    public static ObservableList retornaInfoCard(){
+       ObservableList lista=FXCollections.observableArrayList();
+       Connection con=ConexaoDB.getCon();
+       Carta c=null;
+       try{
+       Statement s=con.createStatement();
+      ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"
+        +" WHERE FABRICANTE_ID_FABRICANTE=ID_FABRICANTE");
+        while(rs.next()){
+            c=new Carta(rs.getString("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
+            lista.add(c);
+        }
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+       return lista;
     }
     
 }
