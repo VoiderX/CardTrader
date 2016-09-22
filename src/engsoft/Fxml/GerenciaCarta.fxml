@@ -16,12 +16,15 @@
             <Image url="@../../../../../../Downloads/aguia-real.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="255.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da Carta" wrappingWidth="89.13671875" />
-      <TextField layoutX="25.0" layoutY="241.0" />
+      <Text fx:id="Text1" layoutX="255.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da Carta" wrappingWidth="89.13671875" />
+      <TextField fx:id="Valor" layoutX="25.0" layoutY="241.0" />
+      <TextField fx:id="Quantidade" layoutX="189.0" layoutY="241.0" prefHeight="25.0" prefWidth="106.0" />
       <Label layoutX="28.0" layoutY="216.0" prefHeight="17.0" prefWidth="143.0" text="Valor:" />
-      <TextArea layoutX="25.0" layoutY="290.0" prefHeight="82.0" prefWidth="256.0" wrapText="true" />
+      <TextArea fx:id="Desc" editable="false" layoutX="25.0" layoutY="290.0" prefHeight="82.0" prefWidth="256.0" wrapText="true" />
       <Label layoutX="28.0" layoutY="273.0" prefHeight="17.0" prefWidth="64.0" text="Descrição:" />
-      <Button layoutX="407.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Salvar" />
+      <Button layoutX="407.0" layoutY="241.0" mnemonicParsing="false" onAction="#inserirCarta" prefHeight="25.0" prefWidth="106.0" text="Salvar" />
       <Button layoutX="407.0" layoutY="319.0" mnemonicParsing="false" onAction="#sairStage" prefHeight="25.0" prefWidth="106.0" text="Cancelar" />
+      <Label layoutX="189.0" layoutY="216.0" text="Quantidade:" />
+      <Text fx:id="Mensagem" layoutX="362.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="171.13671875" />
    </children>
 </AnchorPane>

@@ -5,14 +5,16 @@
  */
 package engsoft.Fxml;
 
-import java.io.File;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -24,19 +26,40 @@ public class GerenciaCartaController implements Initializable {
     @FXML
     ImageView Image1=new ImageView();
     @FXML
-    AnchorPane Painel=new  AnchorPane();
+    Text Text1=new Text();
+    @FXML
+    TextArea Desc= new TextArea();
+    @FXML
+    TextField Valor = new TextField();
+    @FXML
+    TextField Quantidade = new TextField();
+    @FXML
+    Text Mensagem = new Text();
     @FXML
     public void sairStage(){
         engsoft.ControleUI.getInstance().saisecondStage();
+    }
+    @FXML
+    public void inserirCarta(){
+        try{
+        Mensagem.setText(engsoft.ControleUI.getInstance().getConexaoUser().insereCatalogo(engsoft.ControleUI.getInstance().getIdCartaBuf(), 
+                Integer.valueOf(Quantidade.getText()), Float.valueOf(Valor.getText())));
+        }
+        catch(Exception e){
+            Mensagem.setText("Digite um valor válido!");
+        }
     }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         File file = new File("D:/Downloads/aguia-real.jpg");
-         Image im1= new Image(file.toURI().toString());
+         Image im1=engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getIdCartaBuf());
          Image1.setImage(im1);
+         Text1.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getIdCartaBuf()));
+         Desc.appendText(engsoft.CartaDAO.retornaDescCard(engsoft.ControleUI.getInstance().getIdCartaBuf()));
+         
+         
     }    
     
 }

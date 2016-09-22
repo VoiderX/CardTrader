@@ -47,10 +47,10 @@
                </cursor>
             </ImageView>
             <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="132.0" text="Adições recentes:" />
-            <Text layoutX="44.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta1" wrappingWidth="80.13671875" />
-            <Text layoutX="234.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta2" wrappingWidth="80.13671875" />
-            <Text layoutX="53.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta3" wrappingWidth="80.13671875" />
-            <Text layoutX="242.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta4" wrappingWidth="80.13671875" />
+            <Text fx:id="Text1" layoutX="44.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
+            <Text fx:id="Text2" layoutX="234.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
+            <Text fx:id="Text3" layoutX="53.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
+            <Text fx:id="Text4" layoutX="242.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
             <TextField fx:id="IdCarta" layoutX="379.0" layoutY="73.0" onAction="#procurarCarta" prefHeight="25.0" prefWidth="191.0" />
             <Label layoutX="379.0" layoutY="48.0" prefHeight="17.0" prefWidth="191.0" text="Procurar Cartas:" />
             <Button layoutX="487.0" layoutY="115.0" mnemonicParsing="false" onAction="#procurarCarta" prefHeight="25.0" prefWidth="80.0" text="Procurar" />
@@ -62,7 +62,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Text layoutX="438.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCarta5" wrappingWidth="80.13671860098839" />
+            <Text fx:id="Text5" layoutX="438.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671860098839" />
             <Button layoutX="381.0" layoutY="115.0" mnemonicParsing="false" onAction="#chamaLista" prefHeight="25.0" prefWidth="80.0" text="Listar Todos" />
          </children>
       </Pane>

@@ -126,4 +126,37 @@ private String senha;
           return Mensagem;
     }
     
+    public ResultSet retornaCatalogo(){
+        ResultSet rs=null;
+       try{
+           Statement s= conUser.createStatement();
+           rs=s.executeQuery("SELECT * FROM "+usuario+"catview");
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+       return rs;
+    }
+    
+    public String insereCatalogo(int IdCarta,int quant,float valor){
+        try{
+            Statement s= conUser.createStatement();
+            s.executeUpdate("INSERT INTO "+usuario+"catview"+ " VALUES ('"+usuario+"',"+IdCarta+","+quant+","+valor+")");
+            return "Item inserido com sucesso!";
+        }
+       catch(Exception e){
+           e.printStackTrace();
+           return "Um erro ocorreu!";
+       }
+    }
+    public void deletaCatalogo(int IdCarta){
+       try{
+            Statement s= conUser.createStatement();
+            s.executeUpdate("DELETE FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta+")");
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+    }
+    
 }

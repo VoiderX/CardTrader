@@ -67,10 +67,13 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
 
                 //Cria uma visão da tabela usuario para o usuario com o nome de Userview            
                 s.executeUpdate("CREATE VIEW "+NickField+"view AS SELECT * FROM USUARIO"
-                                + " WHERE NICK_USUARIO='"+NickField+"'");        
+                                + " WHERE NICK_USUARIO='"+NickField+"'"); 
+                s.executeUpdate("CREATE VIEW "+NickField+"catview AS SELECT * FROM CATALOGO"
+                                + " WHERE USUARIO_CATALOGO='"+NickField+"'"); 
 
                    //Fornece permissão de seleção e atualização na sua própria view
-                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField);  
+                s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField);
+                s.executeUpdate("GRANT SELECT,INSERT,UPDATE,DELETE ON "+NickField+"catview TO "+NickField);
                 s.close();//Encerra o statement(declaração);         
 
             }catch(Exception e){//Caso haja uma falha de conexão
@@ -80,16 +83,17 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 Statement s=conexao.createStatement();
                 s.executeUpdate("DELETE FROM USUARIO WHERE NICK_USUARIO='"+NickField+"'");
                 s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"view");
+                s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"catview");
                 s.executeUpdate("DROP USER IF EXISTS "+NickField);
                 System.out.println(e);
                 Mensagem="Erro de conexão, tente novamente";
-                j=0;
+                j++;
                 }
                 catch(Exception a){
                     System.out.println(a);
-                    j=1;
+                    j++;
                     }
-                }while(j==1);
+                }while(j<20);
             }
          return Mensagem;    
     }

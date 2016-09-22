@@ -29,6 +29,16 @@ public final class ControleUI{
     public engsoft.UserConexaoDB getConexaoUser(){
         return conexao;
     }
+    int idCartaBuf=0;
+
+    public int getIdCartaBuf() {
+        return idCartaBuf;
+    }
+
+    public void setIdCartaBuf(int idCartaBuf) {
+        this.idCartaBuf = idCartaBuf;
+    }
+    
     
     private static ControleUI INSTANCE = null;
     

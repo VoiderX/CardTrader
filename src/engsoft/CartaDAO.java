@@ -63,7 +63,7 @@ public class CartaDAO {
        Connection con=ConexaoDB.getCon();
        Carta c=null;
        try{
-       Statement s=con.createStatement();
+      Statement s=con.createStatement();
       ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"
         +" WHERE FABRICANTE_ID_FABRICANTE=ID_FABRICANTE");
         while(rs.next()){
@@ -75,6 +75,36 @@ public class CartaDAO {
            e.printStackTrace();
        }
        return lista;
+    }
+    public static String retornaNomeCard(int IdCarta){
+         Connection con=ConexaoDB.getCon();
+         String nome="";
+        try{
+             Statement s=con.createStatement();
+             ResultSet rs=s.executeQuery("SELECT NOME_CARTA FROM CARTA WHERE ID_CARTA="+IdCarta);
+             while(rs.next()){
+             nome=rs.getString("NOME_CARTA");
+             }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return nome;
+    }
+    public static String retornaDescCard(int IdCarta){
+         Connection con=ConexaoDB.getCon();
+         String Desc="";
+        try{
+             Statement s=con.createStatement();
+             ResultSet rs=s.executeQuery("SELECT DESC_CARTA FROM CARTA WHERE ID_CARTA="+IdCarta);
+             while(rs.next()){
+             Desc=rs.getString("DESC_CARTA");
+             }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return Desc;
     }
     
 }
