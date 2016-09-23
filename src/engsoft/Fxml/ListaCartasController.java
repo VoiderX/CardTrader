@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -30,14 +31,21 @@ public class ListaCartasController implements Initializable {
     TableColumn ColunaFabr=new TableColumn();
     @FXML
     TableColumn ColunaDesc=new TableColumn();
-    
+    @FXML
+    Text Mensagem=new Text();
     public void cancelar(){
         engsoft.ControleUI.getInstance().saisecondStage();
     }
     public void selecionaCarta(){
-       engsoft.Carta c=(engsoft.Carta)Tabela.getSelectionModel().getSelectedItem(); 
-       engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.valueOf(c.getID()));
-       engsoft.ControleUI.getInstance().chamaGerenciarColec();
+        try{
+            engsoft.Carta c=(engsoft.Carta)Tabela.getSelectionModel().getSelectedItem(); 
+            engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.valueOf(c.getID()));
+            engsoft.ControleUI.getInstance().chamaGerenciarColec();
+            engsoft.ControleUI.getInstance().saisecondStage();
+        }
+        catch(Exception e){
+           Mensagem.setText("Selecione uma carta!");
+        }
     }
 
     /**

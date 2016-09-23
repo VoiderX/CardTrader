@@ -56,37 +56,82 @@ public class GerenciaColecController implements Initializable {
     @FXML
     public void procurarCarta(){
         try{
-     Image5.setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
-     Text5.setText(engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())));
+            if(Integer.valueOf(IdCarta.getText())>0){
+              try{
+                 if(!engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())).equals("xNull")){ 
+                  Image5.setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
+                  Text5.setText(engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())));
+                  Mensagem.setText("");
+                  }
+                 else{
+                    Mensagem.setText("ID indisponível!");
+                    Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
+                    Text5.setText("");
+                }
+              }
+                catch(Exception e){
+                Mensagem.setText("Digite um ID válido!");
+                Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
+                Text5.setText(engsoft.CartaDAO.retornaNomeCard(0));
+                }
+          }
+          else{
+            Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
+            Text5.setText("");
+         }
         }
         catch(Exception e){
-            Mensagem.setText("Digite um ID Válido");
+            Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
+            Text5.setText("");
+            Mensagem.setText("Digite um ID válido!");
         }
     }
     
     @FXML
     public void clickImage1(){
-        engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+        engsoft.ControleUI.getInstance().setIdCartaBuf(id1);
+        engsoft.ControleUI.getInstance().chamaGerenciaCarta();      
     }
      @FXML
     public void clickImage2(){
-         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+        engsoft.ControleUI.getInstance().setIdCartaBuf(id2);
+        engsoft.ControleUI.getInstance().chamaGerenciaCarta();         
     }
      @FXML
     public void clickImage3(){
-         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+        engsoft.ControleUI.getInstance().setIdCartaBuf(id3);
+        engsoft.ControleUI.getInstance().chamaGerenciaCarta();         
     }
      @FXML
     public void clickImage4(){
-         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+         engsoft.ControleUI.getInstance().setIdCartaBuf(id4);
+         engsoft.ControleUI.getInstance().chamaGerenciaCarta();         
     }
     @FXML
     public void clickImage5(){
-        id5=Integer.valueOf(IdCarta.getText());
-        if(id5>0){
-        engsoft.ControleUI.getInstance().setIdCartaBuf(id5);
-        engsoft.ControleUI.getInstance().chamaGerenciaCarta();
-        }
+            try{
+            if(!engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())).equals("xNull")){
+                    try{
+                        id5=Integer.valueOf(IdCarta.getText());
+                        engsoft.ControleUI.getInstance().setIdCartaBuf(id5);
+                        engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+                        Mensagem.setText("");
+                     }
+                    catch(Exception e){
+                        Mensagem.setText("Digite um ID válido!");
+                        Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
+                        Text5.setText("");
+                    }
+            }
+            else{
+            Text5.setText("");
+            Mensagem.setText("");
+             }
+            }
+            catch(Exception e){
+                Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
+                Text5.setText("");
+            }
     }
     @FXML
     public void chamaLista(){

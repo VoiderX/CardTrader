@@ -89,6 +89,9 @@ public class CartaDAO {
         catch(Exception e){
             e.printStackTrace();
         }
+        if(nome.isEmpty()){
+        nome="xNull";
+        }
         return nome;
     }
     public static String retornaDescCard(int IdCarta){

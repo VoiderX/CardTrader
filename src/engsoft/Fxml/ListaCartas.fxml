@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ListaCartasController">
    <children>
@@ -17,5 +18,6 @@
       </TableView>
       <Button layoutX="329.0" layoutY="312.0" mnemonicParsing="false" onAction="#selecionaCarta" prefHeight="25.0" prefWidth="104.0" text="Selecionar" />
       <Button layoutX="480.0" layoutY="312.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="104.0" text="Cancelar" />
+      <Text fx:id="Mensagem" layoutX="43.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="212.13671875" />
    </children>
 </AnchorPane>

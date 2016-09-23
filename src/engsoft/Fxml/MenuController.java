@@ -19,9 +19,10 @@ public class MenuController implements Initializable {
    
     @FXML 
     public void sair(){//Sai da conta do usuário
-        engsoft.ControleUI.getInstance().mostraLogin();
         try{
         engsoft.ControleUI.getInstance().getConexaoUser().fecharConexao();
+        engsoft.ControleUI.getInstance().setIdCartaBuf(0);
+        engsoft.ControleUI.getInstance().mostraLogin();
         }catch(Exception e){
             System.out.println("Erro ao fechar a conexão!");
         }
