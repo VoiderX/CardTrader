@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.GerenciaColecController">
+   <children>
+      <Pane layoutX="10.0" layoutY="14.0" prefHeight="373.0" prefWidth="581.0">
+         <children>
+            <Button layoutX="399.0" layoutY="335.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="151.0" text="Voltar para menu" textFill="#0d0d0d" />
+            <ImageView fx:id="Image1" fitHeight="99.0" fitWidth="140.0" layoutX="18.0" layoutY="38.0" onMouseClicked="#clickImage1" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <ImageView fx:id="Image3" fitHeight="99.0" fitWidth="132.0" layoutX="27.0" layoutY="197.0" onMouseClicked="#clickImage3" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="Image2" fitHeight="119.0" fitWidth="132.0" layoutX="208.0" layoutY="38.0" onMouseClicked="#clickImage2" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="Image4" fitHeight="99.0" fitWidth="132.0" layoutX="216.0" layoutY="197.0" onMouseClicked="#clickImage4" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="132.0" text="Adições recentes:" />
+            <Text fx:id="Text1" layoutX="44.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
+            <Text fx:id="Text2" layoutX="234.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
+            <Text fx:id="Text3" layoutX="53.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
+            <Text fx:id="Text4" layoutX="242.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671875" />
+            <TextField fx:id="IdCarta" layoutX="379.0" layoutY="73.0" onAction="#procurarCarta" prefHeight="25.0" prefWidth="191.0" />
+            <Label layoutX="379.0" layoutY="48.0" prefHeight="17.0" prefWidth="191.0" text="Procurar Cartas:" />
+            <Button layoutX="487.0" layoutY="115.0" mnemonicParsing="false" onAction="#procurarCarta" prefHeight="25.0" prefWidth="80.0" text="Procurar" />
+            <ImageView fx:id="Image5" fitHeight="107.0" fitWidth="151.0" layoutX="407.0" layoutY="171.0" onMouseClicked="#clickImage5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/aguia-real.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Text fx:id="Text5" layoutX="438.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671860098839" />
+            <Button layoutX="381.0" layoutY="115.0" mnemonicParsing="false" onAction="#chamaLista" prefHeight="25.0" prefWidth="80.0" text="Listar Todos" />
+            <Text fx:id="Mensagem" layoutX="389.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.99999928474426" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
