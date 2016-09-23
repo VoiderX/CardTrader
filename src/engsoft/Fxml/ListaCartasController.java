@@ -20,7 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author Gabriel
  */
 public class ListaCartasController implements Initializable {
-     @FXML
+    @FXML
     TableView Tabela=new TableView();
     @FXML
     TableColumn ColunaID=new TableColumn();
@@ -35,7 +35,9 @@ public class ListaCartasController implements Initializable {
         engsoft.ControleUI.getInstance().saisecondStage();
     }
     public void selecionaCarta(){
-        
+       engsoft.Carta c=(engsoft.Carta)Tabela.getSelectionModel().getSelectedItem(); 
+       engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.valueOf(c.getID()));
+       engsoft.ControleUI.getInstance().chamaGerenciarColec();
     }
 
     /**

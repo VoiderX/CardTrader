@@ -41,6 +41,8 @@ public class GerenciaColecController implements Initializable {
     Text Text4=new Text();
     @FXML
     Text Text5=new Text();
+    @FXML
+    Text Mensagem = new Text();
     int id1=0;
     int id2=0;
     int id3=0;
@@ -52,8 +54,13 @@ public class GerenciaColecController implements Initializable {
     }
     @FXML
     public void procurarCarta(){
+        try{
      Image5.setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
      Text5.setText(engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())));
+        }
+        catch(Exception e){
+            Mensagem.setText("Digite um ID Válido");
+        }
     }
     
     @FXML
@@ -77,7 +84,6 @@ public class GerenciaColecController implements Initializable {
         id5=Integer.valueOf(IdCarta.getText());
         engsoft.ControleUI.getInstance().setIdCartaBuf(id5);
         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
-         
     }
     @FXML
     public void chamaLista(){
@@ -92,15 +98,15 @@ public class GerenciaColecController implements Initializable {
         // TODO
          id5=engsoft.ControleUI.getInstance().getIdCartaBuf();
          IdCarta.setText(Integer.toString(id5));
-         
+         procurarCarta();         
          Image1.setImage(engsoft.CartaDAO.puxarCarta(1));
          Text1.setText(engsoft.CartaDAO.retornaNomeCard(1));
          
          Image2.setImage(engsoft.CartaDAO.puxarCarta(2));
          Text2.setText(engsoft.CartaDAO.retornaNomeCard(2));
          
-         Image3.setImage(engsoft.CartaDAO.puxarCarta(1));
-         Text3.setText(engsoft.CartaDAO.retornaNomeCard(1));
+         Image3.setImage(engsoft.CartaDAO.puxarCarta(3));
+         Text3.setText(engsoft.CartaDAO.retornaNomeCard(3));
          
          Image4.setImage(engsoft.CartaDAO.puxarCarta(2));
          Text4.setText(engsoft.CartaDAO.retornaNomeCard(2));

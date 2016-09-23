@@ -29,7 +29,7 @@ public final class ControleUI{
     public engsoft.UserConexaoDB getConexaoUser(){
         return conexao;
     }
-    int idCartaBuf=0;
+    int idCartaBuf;
 
     public int getIdCartaBuf() {
         return idCartaBuf;
@@ -79,6 +79,7 @@ public final class ControleUI{
     private void initUI(){ //Metódo inicializador 
         mainStage.centerOnScreen();
         mainStage.setTitle("CardTrader 2016");
+        secondStage= new Stage();
         
         try {
             LoginFXML = FXMLLoader.load(getClass().getResource("Fxml/Login.fxml")); //Carrega o arquivo FXML na classe pai
@@ -153,7 +154,6 @@ public final class ControleUI{
     }
     
     public void chamaGerenciaCarta(){
-        secondStage= new Stage();
          try{
        GerenciaCartaFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciaCarta.fxml"));
         }
@@ -166,8 +166,7 @@ public final class ControleUI{
         secondStage.show();
     }
     
-    public void ChamaLista(){
-        secondStage=new Stage();
+    public void ChamaLista(){      
         try{
         ListaCartasFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaCartas.fxml"));
         }

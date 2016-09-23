@@ -64,6 +64,7 @@
             </ImageView>
             <Text fx:id="Text5" layoutX="438.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.13671860098839" />
             <Button layoutX="381.0" layoutY="115.0" mnemonicParsing="false" onAction="#chamaLista" prefHeight="25.0" prefWidth="80.0" text="Listar Todos" />
+            <Text fx:id="Mensagem" layoutX="438.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="79.99999523162842" />
          </children>
       </Pane>
    </children>
