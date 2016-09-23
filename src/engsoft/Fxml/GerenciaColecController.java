@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -82,8 +83,10 @@ public class GerenciaColecController implements Initializable {
     @FXML
     public void clickImage5(){
         id5=Integer.valueOf(IdCarta.getText());
+        if(id5>0){
         engsoft.ControleUI.getInstance().setIdCartaBuf(id5);
         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
+        }
     }
     @FXML
     public void chamaLista(){
@@ -98,17 +101,24 @@ public class GerenciaColecController implements Initializable {
         // TODO
          id5=engsoft.ControleUI.getInstance().getIdCartaBuf();
          IdCarta.setText(Integer.toString(id5));
-         procurarCarta();         
-         Image1.setImage(engsoft.CartaDAO.puxarCarta(1));
-         Text1.setText(engsoft.CartaDAO.retornaNomeCard(1));
+         procurarCarta();
+         //Puxar id1, id2,id3,id4 do banco, verificando quais foram as ultimas cartas que o user adicionou
+         //Valores setados só para teste
+         id1=1;
+         id2=2;
+         id3=3;
+         id4=2;
+         Image1.setImage(engsoft.CartaDAO.puxarCarta(id1));
+         Text1.setText(engsoft.CartaDAO.retornaNomeCard(id1));
          
-         Image2.setImage(engsoft.CartaDAO.puxarCarta(2));
-         Text2.setText(engsoft.CartaDAO.retornaNomeCard(2));
+         Image2.setImage(engsoft.CartaDAO.puxarCarta(id2));
+         Text2.setText(engsoft.CartaDAO.retornaNomeCard(id2));
          
-         Image3.setImage(engsoft.CartaDAO.puxarCarta(3));
-         Text3.setText(engsoft.CartaDAO.retornaNomeCard(3));
+         Image3.setImage(engsoft.CartaDAO.puxarCarta(id3));
+         Text3.setText(engsoft.CartaDAO.retornaNomeCard(id3));
          
-         Image4.setImage(engsoft.CartaDAO.puxarCarta(2));
-         Text4.setText(engsoft.CartaDAO.retornaNomeCard(2));
+         Image4.setImage(engsoft.CartaDAO.puxarCarta(id4));
+         Text4.setText(engsoft.CartaDAO.retornaNomeCard(id4));
+         
     }
 }
