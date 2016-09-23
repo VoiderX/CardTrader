@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="Painel" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.GerenciaCartaController">
+<AnchorPane id="AnchorPane" fx:id="Painel" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.GerenciarCarta.GerenciaCartaController">
    <children>
       <ImageView fx:id="Image1" fitHeight="184.0" fitWidth="252.0" layoutX="177.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>

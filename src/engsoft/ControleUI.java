@@ -82,10 +82,10 @@ public final class ControleUI{
         secondStage= new Stage();
         
         try {
-            LoginFXML = FXMLLoader.load(getClass().getResource("Fxml/Login.fxml")); //Carrega o arquivo FXML na classe pai
-            CadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/Cadastro.fxml"));
-            MenuFXML=FXMLLoader.load(getClass().getResource("Fxml/Menu.fxml"));
-            RecSenhaFXML=FXMLLoader.load(getClass().getResource("Fxml/RecuperaSenha.fxml"));            
+            LoginFXML = FXMLLoader.load(getClass().getResource("Fxml/Login/Login.fxml")); //Carrega o arquivo FXML na classe pai
+            CadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/Cadastro/Cadastro.fxml"));
+            MenuFXML=FXMLLoader.load(getClass().getResource("Fxml/Menu/Menu.fxml"));
+            RecSenhaFXML=FXMLLoader.load(getClass().getResource("Fxml/RecuperaSenha/RecuperaSenha.fxml"));            
             
         } catch (IOException ex) {
             //fazer algo para mostrar erro
@@ -114,7 +114,7 @@ public final class ControleUI{
     public void mostraAlterCadastro(){ //Método para chamar a tela de alteração de cadastro
         //Objetos são inicializados nele devido a necessidade de puxar informações sobre a conexão do usúario
         try{
-        AlteraCadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/AlteraCadastro.fxml"));
+        AlteraCadastroFXML=FXMLLoader.load(getClass().getResource("Fxml/AlteraCadastro/AlteraCadastro.fxml"));
         }catch(Exception e){
             System.out.println(e);
         }
@@ -131,7 +131,7 @@ public final class ControleUI{
     
     public void chamaGerenciarColec(){
         try{
-        GerenciaColecFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciaColec.fxml"));
+        GerenciaColecFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciarColec/GerenciaColec.fxml"));
         }
         catch(Exception e){
             e.printStackTrace();
@@ -143,7 +143,7 @@ public final class ControleUI{
     
     public void chamaListaColec(){
         try{
-       ListaColecFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaColec.fxml"));
+       ListaColecFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaColec/ListaColec.fxml"));
         }
         catch(Exception e){
             e.printStackTrace();
@@ -155,7 +155,7 @@ public final class ControleUI{
     
     public void chamaGerenciaCarta(){
          try{
-       GerenciaCartaFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciaCarta.fxml"));
+       GerenciaCartaFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciarCarta/GerenciaCarta.fxml"));
         }
         catch(Exception e){
             e.printStackTrace();
@@ -168,7 +168,7 @@ public final class ControleUI{
     
     public void ChamaLista(){      
         try{
-        ListaCartasFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaCartas.fxml"));
+        ListaCartasFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaCartas/ListaCartas.fxml"));
         }
         catch(Exception e){
             e.printStackTrace();
