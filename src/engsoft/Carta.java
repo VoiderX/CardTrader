@@ -5,6 +5,8 @@
  */
 package engsoft;
 
+import javafx.scene.image.Image;
+
 /**
  *
  * @author Gabriel
@@ -14,13 +16,37 @@ public class Carta {
     private String Nome;
     private String Fabricante;
     private String desc;
-
+    private int quant;
+    private float valor;
+    private Image img;
+    
     public Carta(String ID,String Nome,String Desc,String Fabricante){
         setID(ID);
         setNome(Nome);
         setFabricante(Fabricante);
         setDesc(Desc);
     }
+
+    public Carta(int ID, int quant, float valor) {
+        this.quant = quant;
+        this.valor = valor;
+        CartaDAO obj = new CartaDAO();
+        this.img = obj.puxarCarta(ID);
+        this.desc = obj.retornaDescCard(ID);
+    }
+
+    public int getQuant() {
+        return quant;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public Image getImg() {
+        return img;
+    }
+    
     public String getID() {
         return ID;
     }
