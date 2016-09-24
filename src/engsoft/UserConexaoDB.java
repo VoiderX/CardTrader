@@ -139,14 +139,21 @@ private String senha;
     }
     
     public String insereCatalogo(int IdCarta,int quant,float valor){
-        try{
-            Statement s= conUser.createStatement();
-            s.executeUpdate("INSERT INTO "+usuario+"catview"+ " VALUES ('"+usuario+"',"+IdCarta+","+quant+","+valor+")");
-            return "Item inserido com sucesso!";
-        }
-       catch(Exception e){
-           e.printStackTrace();
-           return "Um erro ocorreu!";
+        if(quant<1){
+            return("Quantidade inválida!");
+        }else if(valor<=0.0){
+            return("Valor inválido");
+        }else{
+            
+            try{
+                Statement s= conUser.createStatement();
+                s.executeUpdate("INSERT INTO "+usuario+"catview"+ " VALUES ('"+usuario+"',"+IdCarta+","+quant+","+valor+")");
+                return "Item inserido com sucesso!";
+            }
+           catch(Exception e){
+               e.printStackTrace();
+               return "Um erro ocorreu!";
+           }
        }
     }
     public void deletaCatalogo(int IdCarta){

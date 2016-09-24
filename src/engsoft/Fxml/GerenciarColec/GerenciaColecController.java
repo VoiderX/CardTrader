@@ -19,7 +19,7 @@ import javafx.scene.text.Text;
  *
  * @author Gabriel
  */
-public class GerenciaColecController implements Initializable {   
+public class GerenciaColecController implements Initializable {
     @FXML
     ImageView Image1=new ImageView();
     @FXML
@@ -57,55 +57,51 @@ public class GerenciaColecController implements Initializable {
     public void procurarCarta(){
         try{
             if(Integer.valueOf(IdCarta.getText())>0){
-              try{
-                 if(!engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())).equals("xNull")){ 
-                  Image5.setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
-                  Text5.setText(engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())));
-                  Mensagem.setText("");
-                  }
-                 else{
-                    Mensagem.setText("ID indisponível!");
+                try{
+                    if(!engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())).equals("xNull")){
+                        Image5.setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
+                        Text5.setText(engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())));
+                        Mensagem.setText("");
+                    }else{
+                        Mensagem.setText("ID indisponível!");
+                        Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
+                        Text5.setText("");
+                    }
+                }catch(Exception e){
+                    Mensagem.setText("Digite um ID válido!");
                     Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
-                    Text5.setText("");
+                    Text5.setText(engsoft.CartaDAO.retornaNomeCard(0));
                 }
-              }
-                catch(Exception e){
-                Mensagem.setText("Digite um ID válido!");
-                Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
-                Text5.setText(engsoft.CartaDAO.retornaNomeCard(0));
-                }
-          }
-          else{
-            Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
-            Text5.setText("");
-         }
-        }
-        catch(Exception e){
+            }else{
+                Image5.setImage(null);
+                Text5.setText("Digite um ID maior que zero!");
+            }
+        }catch(Exception e){
             Image5.setImage(engsoft.CartaDAO.puxarCarta(0));
             Text5.setText("");
             Mensagem.setText("Digite um ID válido!");
         }
     }
-    
+
     @FXML
     public void clickImage1(){
         engsoft.ControleUI.getInstance().setIdCartaBuf(id1);
-        engsoft.ControleUI.getInstance().chamaGerenciaCarta();      
+        engsoft.ControleUI.getInstance().chamaGerenciaCarta();
     }
      @FXML
     public void clickImage2(){
         engsoft.ControleUI.getInstance().setIdCartaBuf(id2);
-        engsoft.ControleUI.getInstance().chamaGerenciaCarta();         
+        engsoft.ControleUI.getInstance().chamaGerenciaCarta();
     }
      @FXML
     public void clickImage3(){
         engsoft.ControleUI.getInstance().setIdCartaBuf(id3);
-        engsoft.ControleUI.getInstance().chamaGerenciaCarta();         
+        engsoft.ControleUI.getInstance().chamaGerenciaCarta();
     }
      @FXML
     public void clickImage4(){
          engsoft.ControleUI.getInstance().setIdCartaBuf(id4);
-         engsoft.ControleUI.getInstance().chamaGerenciaCarta();         
+         engsoft.ControleUI.getInstance().chamaGerenciaCarta();
     }
     @FXML
     public void clickImage5(){
@@ -144,26 +140,26 @@ public class GerenciaColecController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         id5=engsoft.ControleUI.getInstance().getIdCartaBuf();
-         IdCarta.setText(Integer.toString(id5));
-         procurarCarta();
-         //Puxar id1, id2,id3,id4 do banco, verificando quais foram as ultimas cartas que o user adicionou
-         //Valores setados só para teste
-         id1=1;
-         id2=2;
-         id3=3;
-         id4=2;
-         Image1.setImage(engsoft.CartaDAO.puxarCarta(id1));
-         Text1.setText(engsoft.CartaDAO.retornaNomeCard(id1));
-         
-         Image2.setImage(engsoft.CartaDAO.puxarCarta(id2));
-         Text2.setText(engsoft.CartaDAO.retornaNomeCard(id2));
-         
-         Image3.setImage(engsoft.CartaDAO.puxarCarta(id3));
-         Text3.setText(engsoft.CartaDAO.retornaNomeCard(id3));
-         
-         Image4.setImage(engsoft.CartaDAO.puxarCarta(id4));
-         Text4.setText(engsoft.CartaDAO.retornaNomeCard(id4));
-         
+        id5=engsoft.ControleUI.getInstance().getIdCartaBuf();
+        IdCarta.setText(Integer.toString(id5));
+        procurarCarta();
+        //Puxar id1, id2,id3,id4 do banco, verificando quais foram as ultimas cartas que o user adicionou
+        //Valores setados só para teste
+        id1=1;
+        id2=2;
+        id3=3;
+        id4=2;
+        Image1.setImage(engsoft.CartaDAO.puxarCarta(id1));
+        Text1.setText(engsoft.CartaDAO.retornaNomeCard(id1));
+
+        Image2.setImage(engsoft.CartaDAO.puxarCarta(id2));
+        Text2.setText(engsoft.CartaDAO.retornaNomeCard(id2));
+
+        Image3.setImage(engsoft.CartaDAO.puxarCarta(id3));
+        Text3.setText(engsoft.CartaDAO.retornaNomeCard(id3));
+
+        Image4.setImage(engsoft.CartaDAO.puxarCarta(id4));
+        Text4.setText(engsoft.CartaDAO.retornaNomeCard(id4));
+
     }
 }
