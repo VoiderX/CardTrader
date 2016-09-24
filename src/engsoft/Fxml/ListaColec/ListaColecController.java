@@ -88,6 +88,10 @@ public class ListaColecController implements Initializable {
             }
             ctrl++;
         }
+        previous.setDisable(true);
+        if(list.size()<4){
+            next.setDisable(true);
+        }
     }     
     
     public void init(){
@@ -142,6 +146,12 @@ public class ListaColecController implements Initializable {
                 ctrl++;
             }   
         }
+        if(ctrl>=list.size()){
+            next.setDisable(true);
+        }
+        if(ctrl>3){
+            previous.setDisable(false);
+        }
     }
     
     public void previous(){
@@ -162,6 +172,12 @@ public class ListaColecController implements Initializable {
                 }
                 ctrl++;
             }
+        }
+        if(ctrl<list.size()){
+            next.setDisable(false);
+        }
+        if(ctrl<=3){
+            previous.setDisable(true);
         }
     }
 }
