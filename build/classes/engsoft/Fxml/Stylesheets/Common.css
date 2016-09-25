@@ -1,0 +1,41 @@
+.block{
+    -fx-background-color: #696A76;
+}
+
+.font{
+    -fx-text-fill: #FFFFFF;
+}
+
+.rich-blue {
+    -fx-background-color:
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 2, 2);
+}
+
+.rich-blue Text {
+   -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+}
+
+.rich-blue:hover{
+   -fx-background-color:#000000,
+   linear-gradient(#7ebcea, #3c68d5),
+   linear-gradient(#426ab7, #3f69cb),
+   linear-gradient(#395cab, #406dd5);
+}
+
+.rich-blue:pressed{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 2, 2);
+}
+
+.card-back{
+   -fx-background-color: rgba(26, 27, 41, 0.6);
+   -fx-background-radius: 10px;
+}
