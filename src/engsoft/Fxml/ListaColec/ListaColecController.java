@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 /**
@@ -53,12 +54,19 @@ public class ListaColecController implements Initializable {
     Button next;
     @FXML
     Button previous;
+    @FXML
+    Pane pane1;
+    @FXML
+    Pane pane2;
+    @FXML
+    Pane pane3;
     
     private ArrayList<Carta> list;
     private ArrayList<Text> valor;
     private ArrayList<Text> quant;
     private ArrayList<Text> desc;
     private ArrayList<ImageView> img;
+    private ArrayList<Pane> pane;
     private int ctrl;
             
     @FXML
@@ -75,12 +83,14 @@ public class ListaColecController implements Initializable {
         ctrl=0;
         for(int i=0;i<3;i++){
             if(ctrl<list.size()){
+                pane.get(i).setVisible(true);
                 img.get(ctrl%3).setImage(list.get(ctrl).getImg());
                 quant.get(ctrl%3).setText(""+list.get(ctrl).getQuant());
                 valor.get(ctrl%3).setText(""+list.get(ctrl).getValor());
                 desc.get(ctrl%3).setText(list.get(ctrl).getDesc());
                 
             }else{
+                pane.get(i).setVisible(false);
                 img.get(i).setImage(null);
                 quant.get(i).setText("");
                 valor.get(i).setText("");
@@ -100,6 +110,7 @@ public class ListaColecController implements Initializable {
         quant = new ArrayList<>();
         desc = new ArrayList<>();
         img = new ArrayList<>();
+        pane = new ArrayList<>();
         valor.add(valor1);
         valor.add(valor2);
         valor.add(valor3);
@@ -112,6 +123,9 @@ public class ListaColecController implements Initializable {
         img.add(img1);
         img.add(img2);
         img.add(img3);
+        pane.add(pane1);
+        pane.add(pane2);
+        pane.add(pane3);
     }
     
     public ArrayList getList(){
@@ -132,12 +146,14 @@ public class ListaColecController implements Initializable {
         if(ctrl<list.size()){
             for(int i=0;i<3;i++){
                 if(ctrl<list.size()){
+                    pane.get(i).setVisible(true);
                     img.get(ctrl%3).setImage(list.get(ctrl).getImg());
                     quant.get(ctrl%3).setText(""+list.get(ctrl).getQuant());
                     valor.get(ctrl%3).setText(""+list.get(ctrl).getValor());
                     desc.get(ctrl%3).setText(list.get(ctrl).getDesc());
                     
                 }else{
+                    pane.get(i).setVisible(false);
                     img.get(i).setImage(null);
                     quant.get(i).setText("");
                     valor.get(i).setText("");
@@ -159,12 +175,13 @@ public class ListaColecController implements Initializable {
             ctrl-=6;
             for(int i=0;i<3;i++){
                 if(ctrl<list.size()){
+                    pane.get(i).setVisible(true);
                     img.get(ctrl%3).setImage(list.get(ctrl).getImg());
                     quant.get(ctrl%3).setText(""+list.get(ctrl).getQuant());
                     valor.get(ctrl%3).setText(""+list.get(ctrl).getValor());
                     desc.get(ctrl%3).setText(list.get(ctrl).getDesc());
-                    
                 }else{
+                    pane.get(i).setVisible(false);
                     img.get(i).setImage(null);
                     quant.get(i).setText("");
                     valor.get(i).setText("");

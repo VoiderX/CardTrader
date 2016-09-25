@@ -7,50 +7,50 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ListaColec.ListaColecController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ListaColec.ListaColecController">
    <children>
-      <Button layoutX="523.0" layoutY="451.0" mnemonicParsing="false" onAction="#voltaMenu" prefHeight="25.0" prefWidth="126.0" text="Voltar para Menu" />
-      <Text layoutX="43.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carta" />
-      <Text layoutX="166.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
-      <Text layoutX="322.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor" />
-      <Text layoutX="465.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
-      <Pane layoutX="14.0" layoutY="47.0" prefHeight="127.0" prefWidth="627.0" style="-fx-background-color: #BEB8B8;">
+      <Button layoutX="628.0" layoutY="538.0" mnemonicParsing="false" onAction="#voltaMenu" prefHeight="41.0" prefWidth="153.0" styleClass="rich-blue" text="Voltar para Menu" />
+      <Text fill="WHITE" layoutX="123.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" text="Carta" />
+      <Text fill="WHITE" layoutX="324.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" text="Quantidade" />
+      <Text fill="WHITE" layoutX="502.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" text="Valor" />
+      <Text fill="WHITE" layoutX="653.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" text="Descrição" textAlignment="CENTER" />
+      <Pane fx:id="pane1" layoutX="20.0" layoutY="43.0" prefHeight="150.0" prefWidth="761.0" styleClass="card-back">
          <children>
-            <ImageView fx:id="img1" fitHeight="127.0" fitWidth="160.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img1" fitHeight="127.0" fitWidth="160.0" layoutX="65.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../OneDrive/Imagens/d8236023ae8f2d5128d5974c85b367d1-d5kd4t7.jpg" />
                </image>
             </ImageView>
-            <Text fx:id="quant1" layoutX="176.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" />
-            <Text fx:id="valor1" layoutX="314.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V" />
-            <Text fx:id="desc1" layoutX="471.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" />
+            <Text fx:id="quant1" fill="WHITE" layoutX="263.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" textAlignment="CENTER" wrappingWidth="145.046875" />
+            <Text fx:id="valor1" fill="WHITE" layoutX="428.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V" textAlignment="CENTER" wrappingWidth="137.453125" />
+            <Text fx:id="desc1" fill="WHITE" layoutX="590.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" textAlignment="CENTER" wrappingWidth="137.45312988758087" />
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="182.0" prefHeight="127.0" prefWidth="627.0" style="-fx-background-color: #BEB8B8;">
+      <Button fx:id="previous" layoutX="19.0" layoutY="538.0" mnemonicParsing="false" onAction="#previous" styleClass="rich-blue" text="Anterior" />
+      <Button fx:id="next" layoutX="516.0" layoutY="538.0" mnemonicParsing="false" onAction="#next" styleClass="rich-blue" text="Próximo" />
+      <Pane fx:id="pane2" layoutX="20.0" layoutY="206.0" prefHeight="150.0" prefWidth="761.0" styleClass="card-back">
          <children>
-            <ImageView fx:id="img2" fitHeight="127.0" fitWidth="160.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img2" fitHeight="127.0" fitWidth="160.0" layoutX="65.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../OneDrive/Imagens/d8236023ae8f2d5128d5974c85b367d1-d5kd4t7.jpg" />
                </image>
             </ImageView>
-            <Text fx:id="quant2" layoutX="176.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" />
-            <Text fx:id="valor2" layoutX="314.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V" />
-            <Text fx:id="desc2" layoutX="474.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" />
+            <Text fx:id="quant2" fill="WHITE" layoutX="263.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" textAlignment="CENTER" wrappingWidth="145.046875" />
+            <Text fx:id="valor2" fill="WHITE" layoutX="428.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V" textAlignment="CENTER" wrappingWidth="137.453125" />
+            <Text fx:id="desc2" fill="WHITE" layoutX="590.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" textAlignment="CENTER" wrappingWidth="137.45312988758087" />
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="317.0" prefHeight="127.0" prefWidth="627.0" style="-fx-background-color: #BEB8B8;">
+      <Pane fx:id="pane3" layoutX="20.0" layoutY="369.0" prefHeight="150.0" prefWidth="761.0" styleClass="card-back">
          <children>
-            <ImageView fx:id="img3" fitHeight="127.0" fitWidth="160.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img3" fitHeight="127.0" fitWidth="160.0" layoutX="65.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../OneDrive/Imagens/d8236023ae8f2d5128d5974c85b367d1-d5kd4t7.jpg" />
                </image>
             </ImageView>
-            <Text fx:id="quant3" layoutX="175.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" />
-            <Text fx:id="valor3" layoutX="314.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V" />
-            <Text fx:id="desc3" layoutX="475.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" />
+            <Text fx:id="quant3" fill="WHITE" layoutX="263.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" textAlignment="CENTER" wrappingWidth="145.046875" />
+            <Text fx:id="valor3" fill="WHITE" layoutX="428.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V" textAlignment="CENTER" wrappingWidth="137.453125" />
+            <Text fx:id="desc3" fill="WHITE" layoutX="590.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" textAlignment="CENTER" wrappingWidth="137.45312988758087" />
          </children>
       </Pane>
-      <Button fx:id="previous" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" onAction="#previous" text="Anterior" />
-      <Button fx:id="next" layoutX="439.0" layoutY="451.0" mnemonicParsing="false" onAction="#next" text="Próximo" />
    </children>
 </AnchorPane>

@@ -156,6 +156,7 @@ private String senha;
            }
        }
     }
+    
     public void deletaCatalogo(int IdCarta){
        try{
             Statement s= conUser.createStatement();

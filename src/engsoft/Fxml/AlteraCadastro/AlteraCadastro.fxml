@@ -5,36 +5,32 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.AlteraCadastro.AlteraCadastroController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.AlteraCadastro.AlteraCadastroController">
    <children>
-      <Pane layoutX="4.0" layoutY="6.0" prefHeight="402.0" prefWidth="706.0">
-         <children>
-            <Button layoutX="31.0" layoutY="347.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="199.0" text="Voltar" />
-            <Label alignment="CENTER" layoutX="211.0" layoutY="35.0" prefHeight="17.0" prefWidth="182.0" text="Atualização de Cadastro" />
-            <Button layoutX="254.0" layoutY="347.0" mnemonicParsing="false" onAction="#atualizaCadastro" prefHeight="25.0" prefWidth="199.0" text="Atualizar Informações" />
-            <Label layoutX="45.0" layoutY="66.0" prefHeight="17.0" prefWidth="101.0" text="Nome de Usuário" />
-            <Label layoutX="45.0" layoutY="129.0" prefHeight="17.0" prefWidth="182.0" text="Nome (Máximo de 50 Caracteres)" />
-            <Label layoutX="45.0" layoutY="184.0" prefHeight="17.0" prefWidth="213.0" text="Endereço (Máximo de 50 Caracteres)" />
-            <Label layoutX="42.0" layoutY="227.0" prefHeight="17.0" prefWidth="250.0" text="Numero de Telefone (DDD-Codigo-Número)" />
-            <Label layoutX="379.0" layoutY="66.0" text="País" />
-            <Label layoutX="379.0" layoutY="121.0" text="Estado" />
-            <Label layoutX="379.0" layoutY="176.0" prefHeight="17.0" prefWidth="42.0" text="Cidade" />
-            <TextField fx:id="NickField" layoutX="30.0" layoutY="90.0" prefHeight="25.0" prefWidth="250.0" />
-            <TextField fx:id="NomeField" layoutX="30.0" layoutY="146.0" prefHeight="25.0" prefWidth="250.0" />
-            <TextField fx:id="EndField" layoutX="30.0" layoutY="202.0" prefHeight="25.0" prefWidth="250.0" />
-            <TextField fx:id="DDDField" layoutX="30.0" layoutY="248.0" prefHeight="25.0" prefWidth="42.0" />
-            <TextField fx:id="CodCddField" layoutX="80.0" layoutY="248.0" prefHeight="25.0" prefWidth="87.0" />
-            <TextField fx:id="NumUsuarioField" layoutX="187.0" layoutY="248.0" prefHeight="25.0" prefWidth="87.0" />
-            <TextField fx:id="EmailField" layoutX="30.0" layoutY="303.0" prefHeight="25.0" prefWidth="250.0" />
-            <Label layoutX="45.0" layoutY="286.0" prefHeight="17.0" prefWidth="236.0" text="Email (Máximo de 60 Caracteres)" />
-            <Text fx:id="Mensagem" layoutX="368.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="213.13671875" />
-            <ChoiceBox fx:id="PaisField" layoutX="379.0" layoutY="90.0" onContextMenuRequested="#limpaCampos" onMouseClicked="#limpaCampos" onMousePressed="#limpaCampos" prefHeight="25.0" prefWidth="199.0" />
-            <ChoiceBox fx:id="EstadoField" layoutX="379.0" layoutY="146.0" onContextMenuRequested="#carregaEstados" onMouseClicked="#carregaEstados" onMousePressed="#carregaEstados" prefHeight="25.0" prefWidth="199.0" />
-            <ChoiceBox fx:id="CityField" layoutX="379.0" layoutY="202.0" onContextMenuRequested="#carregaCidades" onMouseClicked="#carregaCidades" onMousePressed="#carregaCidades" prefHeight="25.0" prefWidth="199.0" />
-            <Button layoutX="468.0" layoutY="347.0" mnemonicParsing="false" onAction="#alterarSenha" prefHeight="25.0" prefWidth="199.0" text="Alterar a Senha" />
-         </children></Pane>
+      <Button layoutX="82.0" layoutY="508.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="41.0" prefWidth="199.0" styleClass="rich-blue" text="Voltar" />
+      <Button layoutX="305.0" layoutY="508.0" mnemonicParsing="false" onAction="#atualizaCadastro" prefHeight="25.0" prefWidth="199.0" styleClass="rich-blue" text="Atualizar Informações" />
+      <Label layoutX="97.0" layoutY="146.0" prefHeight="17.0" prefWidth="101.0" styleClass="font" text="Nome de Usuário" />
+      <Label layoutX="97.0" layoutY="211.0" prefHeight="17.0" prefWidth="182.0" styleClass="font" text="Nome (Máximo de 50 Caracteres)" />
+      <Label layoutX="97.0" layoutY="274.0" prefHeight="17.0" prefWidth="213.0" styleClass="font" text="Endereço (Máximo de 50 Caracteres)" />
+      <Label layoutX="97.0" layoutY="334.0" prefHeight="17.0" prefWidth="250.0" styleClass="font" text="Numero de Telefone (DDD-Codigo-Número)" />
+      <Label layoutX="494.0" layoutY="144.0" styleClass="font" text="País" />
+      <Label layoutX="494.0" layoutY="200.0" styleClass="font" text="Estado" />
+      <Label layoutX="494.0" layoutY="262.0" prefHeight="17.0" prefWidth="42.0" styleClass="font" text="Cidade" />
+      <TextField fx:id="NickField" layoutX="97.0" layoutY="175.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="NomeField" layoutX="97.0" layoutY="238.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="EndField" layoutX="97.0" layoutY="301.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="DDDField" layoutX="97.0" layoutY="359.0" prefHeight="25.0" prefWidth="42.0" />
+      <TextField fx:id="CodCddField" layoutX="155.0" layoutY="359.0" prefHeight="25.0" prefWidth="87.0" />
+      <TextField fx:id="NumUsuarioField" layoutX="260.0" layoutY="359.0" prefHeight="25.0" prefWidth="87.0" />
+      <TextField fx:id="EmailField" layoutX="97.0" layoutY="418.0" prefHeight="25.0" prefWidth="250.0" />
+      <Label layoutX="97.0" layoutY="394.0" prefHeight="17.0" prefWidth="236.0" styleClass="font" text="Email (Máximo de 60 Caracteres)" />
+      <Text fx:id="Mensagem" fill="WHITE" layoutX="512.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="213.13671875" />
+      <ChoiceBox fx:id="PaisField" layoutX="494.0" layoutY="168.0" onContextMenuRequested="#limpaCampos" onMouseClicked="#limpaCampos" onMousePressed="#limpaCampos" prefHeight="25.0" prefWidth="250.0" />
+      <ChoiceBox fx:id="EstadoField" layoutX="494.0" layoutY="225.0" onContextMenuRequested="#carregaEstados" onMouseClicked="#carregaEstados" onMousePressed="#carregaEstados" prefHeight="25.0" prefWidth="250.0" />
+      <ChoiceBox fx:id="CityField" layoutX="494.0" layoutY="288.0" onContextMenuRequested="#carregaCidades" onMouseClicked="#carregaCidades" onMousePressed="#carregaCidades" prefHeight="25.0" prefWidth="250.0" />
+      <Button layoutX="519.0" layoutY="508.0" mnemonicParsing="false" onAction="#alterarSenha" prefHeight="41.0" prefWidth="199.0" styleClass="rich-blue" text="Alterar a Senha" />
+      <Label alignment="CENTER" layoutX="309.0" layoutY="73.0" prefHeight="17.0" prefWidth="182.0" styleClass="font" text="Atualização de Cadastro" />
    </children>
 </AnchorPane>
