@@ -15,17 +15,17 @@
       </ImageView>
       <Pane layoutX="32.0" layoutY="477.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
          <children>
-            <Text fx:id="ID" fill="WHITE" layoutX="53.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="ID" fill="WHITE" layoutX="13.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="103.537109375" />
          </children>
       </Pane>
       <Pane layoutX="238.0" layoutY="477.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
          <children>
-            <Text fx:id="name" fill="WHITE" layoutX="53.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="name" fill="WHITE" layoutX="13.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="103.53710651397705" />
          </children>
       </Pane>
       <Pane layoutX="34.0" layoutY="513.0" prefHeight="73.0" prefWidth="335.0" styleClass="circle-back">
          <children>
-            <Text fx:id="desc" fill="WHITE" layoutX="46.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="242.537109375" />
+            <Text fx:id="desc" fill="WHITE" layoutX="46.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="242.537109375" />
          </children>
       </Pane>
    </children>

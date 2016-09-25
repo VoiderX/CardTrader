@@ -10,6 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -76,6 +77,7 @@ public class CartaDAO {
        }
        return lista;
     }
+    
     public static String retornaNomeCard(int IdCarta){
          Connection con=ConexaoDB.getCon();
          String nome="";
@@ -94,6 +96,7 @@ public class CartaDAO {
         }
         return nome;
     }
+    
     public static String retornaDescCard(int IdCarta){
          Connection con=ConexaoDB.getCon();
          String Desc="";
@@ -110,4 +113,21 @@ public class CartaDAO {
         return Desc;
     }
     
+    public static ArrayList retornaCartas(){
+        ArrayList<Carta> list = new ArrayList();
+        Connection con=ConexaoDB.getCon();
+        Carta c=null;
+        try{
+            Statement s=con.createStatement();
+            ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"
+                +" WHERE FABRICANTE_ID_FABRICANTE=ID_FABRICANTE");
+            while(rs.next()){
+                c=new Carta(rs.getString("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
+                list.add(c);
+            }
+       }catch(Exception e){
+           e.printStackTrace();
+       }
+       return(list);
+    }
 }

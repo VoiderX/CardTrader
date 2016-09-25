@@ -50,6 +50,10 @@
 }
 
 .circle-back{
-    -fx-background-color: #686DAB;
+   -fx-background-color:
+      #000000,
+      linear-gradient(#7ebcea, #2f4b8f),
+      linear-gradient(#426ab7, #263e75),
+      linear-gradient(#395cab, #223768);
     -fx-background-radius: 15px;
 }

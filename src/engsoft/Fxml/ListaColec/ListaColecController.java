@@ -66,6 +66,7 @@ public class ListaColecController implements Initializable {
             
     @FXML
     public void voltaMenu(){
+        engsoft.ControleUI.getInstance().saisecondStage();
         engsoft.ControleUI.getInstance().mostraMenu();
     }  
 
