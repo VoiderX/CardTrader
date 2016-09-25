@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.CardDetalhes.CardDetalhesController">
+   <children>
+      <ImageView fx:id="card" fitHeight="460.0" fitWidth="334.545" layoutX="32.0" layoutY="8.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../alakazam-base-set-bs-1.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="32.0" layoutY="477.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="ID" fill="WHITE" layoutX="53.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </Pane>
+      <Pane layoutX="238.0" layoutY="477.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="name" fill="WHITE" layoutX="53.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </Pane>
+      <Pane layoutX="34.0" layoutY="513.0" prefHeight="73.0" prefWidth="335.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="desc" fill="WHITE" layoutX="46.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="242.537109375" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

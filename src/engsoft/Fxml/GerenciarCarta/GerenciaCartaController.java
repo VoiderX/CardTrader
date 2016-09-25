@@ -58,8 +58,6 @@ public class GerenciaCartaController implements Initializable {
          Image1.setImage(im1);
          Text1.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getIdCartaBuf()));
          Desc.appendText(engsoft.CartaDAO.retornaDescCard(engsoft.ControleUI.getInstance().getIdCartaBuf()));
-         
-         
     }    
     
 }

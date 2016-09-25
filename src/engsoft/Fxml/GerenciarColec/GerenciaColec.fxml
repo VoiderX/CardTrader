@@ -7,61 +7,78 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.GerenciarColec.GerenciaColecController">
    <children>
-      <Button layoutX="562.0" layoutY="526.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="41.0" prefWidth="158.0" styleClass="rich-blue" text="Voltar para menu" textFill="#0d0d0d" />
-      <ImageView fx:id="Image1" fitHeight="156.0" fitWidth="174.0" layoutX="94.0" layoutY="61.0" onMouseClicked="#clickImage1" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="562.0" layoutY="547.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="41.0" prefWidth="158.0" styleClass="rich-blue" text="Voltar para menu" textFill="#0d0d0d" />
+      <ImageView fx:id="Image1" fitHeight="192.5" fitWidth="140.0" layoutX="94.0" layoutY="61.0" onMouseClicked="#clickImage1" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../Downloads/aguia-real.jpg" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <ImageView fx:id="Image3" fitHeight="208.0" fitWidth="127.0" layoutX="94.0" layoutY="294.0" onMouseClicked="#clickImage3" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Downloads/aguia-real.jpg" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <ImageView fx:id="Image2" fitHeight="156.0" fitWidth="132.0" layoutX="340.0" layoutY="61.0" onMouseClicked="#clickImage2" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Downloads/aguia-real.jpg" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <ImageView fx:id="Image4" fitHeight="169.0" fitWidth="127.0" layoutX="340.0" layoutY="294.0" onMouseClicked="#clickImage4" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Downloads/aguia-real.jpg" />
+            <Image url="@../../alakazam-base-set-bs-1.jpg" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
       <Label layoutX="34.0" layoutY="31.0" prefHeight="17.0" prefWidth="132.0" styleClass="font" text="Adições recentes:" />
-      <Text fx:id="Text1" fill="WHITE" layoutX="117.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="80.13671875" />
-      <Text fx:id="Text2" fill="WHITE" layoutX="364.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="80.13671875" />
-      <Text fx:id="Text3" fill="WHITE" layoutX="117.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="80.13671875" />
-      <Text fx:id="Text4" fill="WHITE" layoutX="364.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="80.13671875" />
+      <Pane layoutX="100.0" layoutY="260.0" prefHeight="30.0" prefWidth="132.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="Text1" fill="WHITE" layoutX="26.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="80.13671875" />
+         </children>
+      </Pane>
       <TextField fx:id="IdCarta" layoutX="570.0" layoutY="64.0" onAction="#procurarCarta" prefHeight="25.0" prefWidth="143.0" />
       <Label layoutX="573.0" layoutY="31.0" prefHeight="17.0" prefWidth="143.0" styleClass="font" text="Procurar Cartas:" />
       <Button layoutX="571.0" layoutY="110.0" mnemonicParsing="false" onAction="#procurarCarta" prefHeight="41.0" prefWidth="143.0" styleClass="rich-blue" text="Procurar" />
-      <ImageView fx:id="Image5" fitHeight="208.0" fitWidth="181.0" layoutX="557.0" layoutY="208.0" onMouseClicked="#clickImage5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image5" fitHeight="247.5" fitWidth="180.0" layoutX="551.0" layoutY="186.0" onMouseClicked="#clickImage5" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../Downloads/aguia-real.jpg" />
+            <Image url="@../../alakazam-base-set-bs-1.jpg" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
       <Text fx:id="Text5" fill="WHITE" layoutX="601.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="80.13671860098839" />
-      <Button layoutX="206.0" layoutY="526.0" mnemonicParsing="false" onAction="#chamaLista" prefHeight="41.0" prefWidth="132.0" styleClass="rich-blue" text="Listar Todos" />
+      <Button layoutX="204.0" layoutY="547.0" mnemonicParsing="false" onAction="#chamaLista" prefHeight="41.0" prefWidth="132.0" styleClass="rich-blue" text="Listar Todos" />
       <Text fx:id="Mensagem" fill="WHITE" layoutX="558.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="170.99999928474426" />
+      <ImageView fx:id="Image2" fitHeight="192.5" fitWidth="140.0" layoutX="330.0" layoutY="64.0" onMouseClicked="#clickImage1" pickOnBounds="true">
+         <image>
+            <Image url="@../../alakazam-base-set-bs-1.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Pane layoutX="336.0" layoutY="263.0" prefHeight="30.0" prefWidth="132.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="Text2" fill="WHITE" layoutX="26.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="80.13671875" />
+         </children>
+      </Pane>
+      <ImageView fx:id="Image3" fitHeight="192.5" fitWidth="140.0" layoutX="94.0" layoutY="302.0" onMouseClicked="#clickImage1" pickOnBounds="true">
+         <image>
+            <Image url="@../../alakazam-base-set-bs-1.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Pane layoutX="100.0" layoutY="501.0" prefHeight="30.0" prefWidth="132.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="Text3" fill="WHITE" layoutX="26.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="80.13671875" />
+         </children>
+      </Pane>
+      <ImageView fx:id="Image4" fitHeight="192.5" fitWidth="140.0" layoutX="332.0" layoutY="302.0" onMouseClicked="#clickImage1" pickOnBounds="true">
+         <image>
+            <Image url="@../../alakazam-base-set-bs-1.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Pane layoutX="338.0" layoutY="501.0" prefHeight="30.0" prefWidth="132.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="Text4" fill="WHITE" layoutX="26.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="80.13671875" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

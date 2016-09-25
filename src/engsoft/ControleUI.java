@@ -60,6 +60,7 @@ public final class ControleUI{
     private static Parent ListaColecFXML;
     private static Parent GerenciaCartaFXML;
     private static Parent ListaCartasFXML;
+    private static Parent CardDetalhesFXML;
     
     private static Scene LoginScene;
     private static Scene CadastroScene;
@@ -70,6 +71,7 @@ public final class ControleUI{
     private static Scene ListaColecScene;
     private static Scene GerenciaCartaScene;
     private static Scene ListaCartasScene;
+    private static Scene CardDetalhesScene;
     
     private static Stage mainStage;
     private static Stage secondStage;
@@ -183,4 +185,15 @@ public final class ControleUI{
         secondStage.close();
     }
     
+    public void ChamaCardDetalhes(){
+        try{
+            CardDetalhesFXML=FXMLLoader.load(getClass().getResource("Fxml/CardDetalhes/CardDetalhes.fxml"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        CardDetalhesScene=new Scene(CardDetalhesFXML);
+        secondStage.setScene(CardDetalhesScene);
+        secondStage.setTitle("Detalhes");
+        secondStage.show();
+    }
 }

@@ -28,11 +28,11 @@ public class Carta {
     }
 
     public Carta(int ID, int quant, float valor) {
+        this.ID = Integer.toString(ID);
         this.quant = quant;
         this.valor = valor;
         CartaDAO obj = new CartaDAO();
         this.img = obj.puxarCarta(ID);
-        this.desc = obj.retornaDescCard(ID);
     }
 
     public int getQuant() {

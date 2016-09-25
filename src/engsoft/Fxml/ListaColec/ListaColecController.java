@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -39,12 +40,6 @@ public class ListaColecController implements Initializable {
     @FXML
     Text valor3;
     @FXML
-    Text desc1;
-    @FXML
-    Text desc2;
-    @FXML
-    Text desc3;
-    @FXML
     ImageView img1;
     @FXML
     ImageView img2;
@@ -64,10 +59,10 @@ public class ListaColecController implements Initializable {
     private ArrayList<Carta> list;
     private ArrayList<Text> valor;
     private ArrayList<Text> quant;
-    private ArrayList<Text> desc;
     private ArrayList<ImageView> img;
     private ArrayList<Pane> pane;
-    private int ctrl;
+    private ArrayList<Integer> id;
+    private int ctrl,id0,id1,id2;
             
     @FXML
     public void voltaMenu(){
@@ -83,18 +78,17 @@ public class ListaColecController implements Initializable {
         ctrl=0;
         for(int i=0;i<3;i++){
             if(ctrl<list.size()){
+                id.set(i, Integer.valueOf(list.get(ctrl).getID()));
                 pane.get(i).setVisible(true);
                 img.get(ctrl%3).setImage(list.get(ctrl).getImg());
                 quant.get(ctrl%3).setText(""+list.get(ctrl).getQuant());
                 valor.get(ctrl%3).setText(""+list.get(ctrl).getValor());
-                desc.get(ctrl%3).setText(list.get(ctrl).getDesc());
                 
             }else{
                 pane.get(i).setVisible(false);
                 img.get(i).setImage(null);
                 quant.get(i).setText("");
                 valor.get(i).setText("");
-                desc.get(i).setText("");
             }
             ctrl++;
         }
@@ -108,24 +102,24 @@ public class ListaColecController implements Initializable {
         list = getList();
         valor = new ArrayList<>();
         quant = new ArrayList<>();
-        desc = new ArrayList<>();
         img = new ArrayList<>();
         pane = new ArrayList<>();
+        id = new ArrayList<>();
         valor.add(valor1);
         valor.add(valor2);
         valor.add(valor3);
         quant.add(quant1);
         quant.add(quant2);
         quant.add(quant3);
-        desc.add(desc1);
-        desc.add(desc2);
-        desc.add(desc3);
         img.add(img1);
         img.add(img2);
         img.add(img3);
         pane.add(pane1);
         pane.add(pane2);
         pane.add(pane3);
+        id.add(id0);
+        id.add(id1);
+        id.add(id2);
     }
     
     public ArrayList getList(){
@@ -146,18 +140,16 @@ public class ListaColecController implements Initializable {
         if(ctrl<list.size()){
             for(int i=0;i<3;i++){
                 if(ctrl<list.size()){
+                    id.set(i, Integer.valueOf(list.get(ctrl).getID()));
                     pane.get(i).setVisible(true);
                     img.get(ctrl%3).setImage(list.get(ctrl).getImg());
                     quant.get(ctrl%3).setText(""+list.get(ctrl).getQuant());
                     valor.get(ctrl%3).setText(""+list.get(ctrl).getValor());
-                    desc.get(ctrl%3).setText(list.get(ctrl).getDesc());
-                    
                 }else{
                     pane.get(i).setVisible(false);
                     img.get(i).setImage(null);
                     quant.get(i).setText("");
                     valor.get(i).setText("");
-                    desc.get(i).setText("");
                 }
                 ctrl++;
             }   
@@ -175,17 +167,16 @@ public class ListaColecController implements Initializable {
             ctrl-=6;
             for(int i=0;i<3;i++){
                 if(ctrl<list.size()){
+                    id.set(i, Integer.valueOf(list.get(ctrl).getID()));
                     pane.get(i).setVisible(true);
                     img.get(ctrl%3).setImage(list.get(ctrl).getImg());
                     quant.get(ctrl%3).setText(""+list.get(ctrl).getQuant());
                     valor.get(ctrl%3).setText(""+list.get(ctrl).getValor());
-                    desc.get(ctrl%3).setText(list.get(ctrl).getDesc());
                 }else{
                     pane.get(i).setVisible(false);
                     img.get(i).setImage(null);
                     quant.get(i).setText("");
                     valor.get(i).setText("");
-                    desc.get(i).setText("");
                 }
                 ctrl++;
             }
@@ -195,6 +186,19 @@ public class ListaColecController implements Initializable {
         }
         if(ctrl<=3){
             previous.setDisable(true);
+        }
+    }
+    
+    public void clickImage(Event e){
+        if(e.getSource() == img1){
+            engsoft.ControleUI.getInstance().setIdCartaBuf(id.get(0));
+            engsoft.ControleUI.getInstance().ChamaCardDetalhes();
+        }else if(e.getSource() == img2){
+            engsoft.ControleUI.getInstance().setIdCartaBuf(id.get(1));
+            engsoft.ControleUI.getInstance().ChamaCardDetalhes();
+        }else{
+            engsoft.ControleUI.getInstance().setIdCartaBuf(id.get(2));
+            engsoft.ControleUI.getInstance().ChamaCardDetalhes();
         }
     }
 }
