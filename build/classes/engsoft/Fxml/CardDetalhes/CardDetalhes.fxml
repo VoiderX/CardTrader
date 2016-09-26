@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.CardDetalhes.CardDetalhesController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="592.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.CardDetalhes.CardDetalhesController">
    <children>
       <ImageView fx:id="card" fitHeight="460.0" fitWidth="334.545" layoutX="32.0" layoutY="8.0" pickOnBounds="true">
          <image>
@@ -28,5 +31,12 @@
             <Text fx:id="desc" fill="WHITE" layoutX="46.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="242.537109375" />
          </children>
       </Pane>
+      <TextField fx:id="Valor" layoutX="398.0" layoutY="131.0" />
+      <TextField fx:id="Quantidade" layoutX="398.0" layoutY="204.0" />
+      <Button layoutX="411.0" layoutY="284.0" mnemonicParsing="false" onAction="#alterar" prefHeight="46.0" prefWidth="112.0" text="Alterar" />
+      <Button layoutX="411.0" layoutY="351.0" mnemonicParsing="false" onAction="#remover" prefHeight="46.0" prefWidth="112.0" text="Remover" />
+      <Label layoutX="398.0" layoutY="104.0" prefHeight="15.0" prefWidth="79.0" text="Valor:" />
+      <Label layoutX="397.0" layoutY="187.0" prefHeight="15.0" prefWidth="79.0" text="Quantidade" />
+      <Text fx:id="Mensagem" layoutX="411.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="137.99999713897705" />
    </children>
 </AnchorPane>

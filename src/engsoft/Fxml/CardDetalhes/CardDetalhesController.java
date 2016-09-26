@@ -7,9 +7,11 @@ package engsoft.Fxml.CardDetalhes;
 
 import engsoft.CartaDAO;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -28,6 +30,38 @@ public class CardDetalhesController implements Initializable {
     Text name;
     @FXML
     Text desc;
+    @FXML
+    TextField Valor;
+    @FXML
+    TextField Quantidade;
+    @FXML
+    Text Mensagem;
+    ResultSet rs;
+    
+    @FXML
+    public void alterar(){
+        try{
+        engsoft.ControleUI.getInstance().getConexaoUser().alteraCatalogo(
+        engsoft.ControleUI.getInstance().getIdCartaBuf(),
+        Float.valueOf(Valor.getText()),Integer.valueOf(Quantidade.getText()));
+        Mensagem.setText("Item alterado com sucesso!");
+        }
+        catch(Exception e){
+            Mensagem.setText("Entre com valores válidos!");
+        }
+    }
+    @FXML
+    public void remover(){
+        try{
+            engsoft.ControleUI.getInstance().getConexaoUser().deletaCatalogo(
+            engsoft.ControleUI.getInstance().getIdCartaBuf());
+            Mensagem.setText("Item removido com sucesso!");
+        }
+        catch(Exception e){
+            Mensagem.setText("Erro ao remover item!");
+        }
+        
+    }
     
     /**
      * Initializes the controller class.
@@ -40,6 +74,17 @@ public class CardDetalhesController implements Initializable {
         ID.setText(Integer.toString(obj.getIdCartaBuf()));
         name.setText(engsoft.CartaDAO.retornaNomeCard(obj.getIdCartaBuf()));
         desc.setText(engsoft.CartaDAO.retornaDescCard(obj.getIdCartaBuf()));
-    }    
+        try{
+            rs= engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
+            engsoft.ControleUI.getInstance().getIdCartaBuf());
+            while(rs.next()){
+                Valor.setText(String.valueOf(rs.getFloat("VALOR_CATALOGO")));
+                Quantidade.setText(String.valueOf(rs.getInt("QUANT_CATALOGO")));
+            }            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     
+    }
 }

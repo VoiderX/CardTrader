@@ -67,6 +67,7 @@ public class GerenciaColecController implements Initializable {
                     if(!engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())).equals("xNull")){
                         imagem.get(4).setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
                         text.get(4).setText(engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())));
+                        engsoft.ControleUI.getInstance().setIdCartaBuf(id.get(4));
                         Mensagem.setText("");
                     }else{
                         Mensagem.setText("ID indisponível!");
@@ -103,9 +104,6 @@ public class GerenciaColecController implements Initializable {
             engsoft.ControleUI.getInstance().setIdCartaBuf(id.get(3));
             engsoft.ControleUI.getInstance().chamaGerenciaCarta();
         }else if(e.getSource()==imagem.get(4)){
-            engsoft.ControleUI.getInstance().setIdCartaBuf(id.get(4));
-            engsoft.ControleUI.getInstance().chamaGerenciaCarta();
-        }else if(e.getSource()==imagem.get(5)){
             try{
             if(!engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())).equals("xNull")){
                     try{

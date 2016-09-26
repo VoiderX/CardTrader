@@ -160,11 +160,34 @@ private String senha;
     public void deletaCatalogo(int IdCarta){
        try{
             Statement s= conUser.createStatement();
-            s.executeUpdate("DELETE FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta+")");
+            s.executeUpdate("DELETE FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
        }
        catch(Exception e){
            e.printStackTrace();
        }
     }
+    
+    public void alteraCatalogo(int IdCarta,float valor, int quantidade){
+        try{
+            Statement s= conUser.createStatement();
+            s.executeUpdate("UPDATE "+usuario+"catview SET (USUARIO_CATALOGO,CARTA_CATALOGO,QUANT_CATALOGO,VALOR_CATALOGO)"+
+            "=('"+usuario+"',"+IdCarta+","+quantidade+","+valor+")"
+                    + " WHERE CARTA_CATALOGO="+IdCarta);
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+    }
+    public ResultSet retornaInfoCarta(int IdCarta){       
+        ResultSet rs=null;
+        try{
+             Statement s=conUser.createStatement();
+              rs=s.executeQuery("SELECT * FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+        }
     
 }
