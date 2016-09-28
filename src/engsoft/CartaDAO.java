@@ -44,7 +44,7 @@ public class CartaDAO {
     ResultSet rs = s.executeQuery("SELECT IMG_CARTA FROM CARTA WHERE ID_CARTA="+id);
     if (rs != null) {
         while(rs.next()){
-            int oid=rs.getInt("IMG_CARTA");
+            long oid=rs.getInt("IMG_CARTA");
             LargeObject obj = lobj.open(oid);
             byte b[]=new byte[obj.size()];
             obj.read(b,0, obj.size());
