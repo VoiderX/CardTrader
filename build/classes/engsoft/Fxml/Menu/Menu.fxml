@@ -7,9 +7,9 @@
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.Menu.MenuController">
    <children>
       <Button layoutX="104.0" layoutY="224.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Procurar Cartas a Venda" />
-      <Button layoutX="104.0" layoutY="308.0" mnemonicParsing="false" onAction="#gerenciaColec" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Gerenciar Suas Coleções" />
-      <Button layoutX="104.0" layoutY="398.0" mnemonicParsing="false" onAction="#vendeCarta" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Vender Cartas" />
-      <Button layoutX="437.0" layoutY="224.0" mnemonicParsing="false" onAction="#alteraCad" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Alterar o seu Cadastro" />
+      <Button layoutX="104.0" layoutY="308.0" mnemonicParsing="false" onAction="#gerenciaColec" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Gerenciar Seu Catálogo" />
+      <Button layoutX="437.0" layoutY="224.0" mnemonicParsing="false" onAction="#vendeCarta" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Vender Cartas" />
+      <Button layoutX="104.0" layoutY="398.0" mnemonicParsing="false" onAction="#alteraCad" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Alterar o seu Cadastro" />
       <Button layoutX="437.0" layoutY="308.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Verificar seu histórico de transações" />
       <Button layoutX="437.0" layoutY="398.0" mnemonicParsing="false" onAction="#sair" prefHeight="41.0" prefWidth="260.0" styleClass="rich-blue" text="Sair" />
       <Label layoutX="316.0" layoutY="53.0" styleClass="font" text="Bem vindo ao menu do Usuário" />
