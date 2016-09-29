@@ -9,34 +9,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="592.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.CardDetalhes.CardDetalhesController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.CardDetalhes.CardDetalhesController">
    <children>
       <ImageView fx:id="card" fitHeight="460.0" fitWidth="334.545" layoutX="32.0" layoutY="8.0" pickOnBounds="true">
          <image>
             <Image url="@../../alakazam-base-set-bs-1.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="32.0" layoutY="477.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
+      <Pane layoutX="397.0" layoutY="57.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
          <children>
             <Text fx:id="ID" fill="WHITE" layoutX="13.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="103.537109375" />
          </children>
       </Pane>
-      <Pane layoutX="238.0" layoutY="477.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
+      <Pane layoutX="603.0" layoutY="57.0" prefHeight="30.0" prefWidth="129.0" styleClass="circle-back">
          <children>
             <Text fx:id="name" fill="WHITE" layoutX="13.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="103.53710651397705" />
          </children>
       </Pane>
-      <Pane layoutX="34.0" layoutY="513.0" prefHeight="73.0" prefWidth="335.0" styleClass="circle-back">
+      <Pane layoutX="399.0" layoutY="93.0" prefHeight="73.0" prefWidth="335.0" styleClass="circle-back">
          <children>
             <Text fx:id="desc" fill="WHITE" layoutX="46.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="242.537109375" />
          </children>
       </Pane>
-      <TextField fx:id="Valor" layoutX="398.0" layoutY="131.0" />
-      <TextField fx:id="Quantidade" layoutX="398.0" layoutY="204.0" />
-      <Button layoutX="411.0" layoutY="284.0" mnemonicParsing="false" onAction="#alterar" prefHeight="46.0" prefWidth="112.0" text="Alterar" />
-      <Button layoutX="411.0" layoutY="351.0" mnemonicParsing="false" onAction="#remover" prefHeight="46.0" prefWidth="112.0" text="Remover" />
-      <Label layoutX="398.0" layoutY="104.0" prefHeight="15.0" prefWidth="79.0" text="Valor:" />
-      <Label layoutX="397.0" layoutY="187.0" prefHeight="15.0" prefWidth="79.0" text="Quantidade" />
-      <Text fx:id="Mensagem" layoutX="411.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="137.99999713897705" />
+      <TextField fx:id="Valor" layoutX="590.0" layoutY="195.0" />
+      <TextField fx:id="Quantidade" layoutX="590.0" layoutY="242.0" />
+      <Button layoutX="410.0" layoutY="284.0" mnemonicParsing="false" onAction="#alterar" prefHeight="46.0" prefWidth="112.0" styleClass="rich-blue" text="Alterar" />
+      <Button layoutX="603.0" layoutY="284.0" mnemonicParsing="false" onAction="#remover" prefHeight="46.0" prefWidth="112.0" styleClass="rich-blue" text="Remover" />
+      <Pane layoutX="397.0" layoutY="191.0" prefHeight="30.0" prefWidth="138.0" styleClass="circle-back">
+         <children>
+            <Label layoutX="52.0" layoutY="7.0" prefHeight="15.0" prefWidth="34.0" text="Valor:" textAlignment="CENTER" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="397.0" layoutY="238.0" prefHeight="30.0" prefWidth="138.0" styleClass="circle-back">
+         <children>
+            <Label layoutX="34.0" layoutY="7.0" prefHeight="15.0" prefWidth="71.0" text="Quantidade:" textAlignment="CENTER" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Text fx:id="Mensagem" fill="WHITE" layoutX="498.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="137.99999713897705" />
    </children>
 </AnchorPane>

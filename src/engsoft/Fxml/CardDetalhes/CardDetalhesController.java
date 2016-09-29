@@ -6,6 +6,7 @@
 package engsoft.Fxml.CardDetalhes;
 
 import engsoft.CartaDAO;
+import engsoft.Fxml.ListaColec.ListaColecController;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
@@ -55,7 +56,9 @@ public class CardDetalhesController implements Initializable {
         try{
             engsoft.ControleUI.getInstance().getConexaoUser().deletaCatalogo(
             engsoft.ControleUI.getInstance().getIdCartaBuf());
+            
             Mensagem.setText("Item removido com sucesso!");
+            
         }
         catch(Exception e){
             Mensagem.setText("Erro ao remover item!");

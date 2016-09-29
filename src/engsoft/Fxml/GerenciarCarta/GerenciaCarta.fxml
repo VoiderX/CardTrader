@@ -25,7 +25,7 @@
       <Button layoutX="258.0" layoutY="290.0" mnemonicParsing="false" onAction="#inserirCarta" prefHeight="39.0" prefWidth="138.0" styleClass="rich-blue" text="Salvar" />
       <Button layoutX="430.0" layoutY="289.0" mnemonicParsing="false" onAction="#sairStage" prefHeight="41.0" prefWidth="138.0" styleClass="rich-blue" text="Cancelar" />
       <Label layoutX="427.0" layoutY="59.0" styleClass="font" text="Quantidade:" />
-      <Text fx:id="Mensagem" layoutX="37.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="171.13671875" />
+      <Text fx:id="Mensagem" fill="WHITE" layoutX="37.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="171.13671875" />
       <Pane layoutX="37.0" layoutY="294.0" prefHeight="30.0" prefWidth="171.0" styleClass="circle-back">
          <children>
             <Text fx:id="Text1" fill="WHITE" layoutX="43.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" text="Nome da Carta" textAlignment="CENTER" wrappingWidth="84.13671875" />

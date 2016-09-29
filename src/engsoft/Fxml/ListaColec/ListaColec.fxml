@@ -70,5 +70,6 @@
             <Text fx:id="valor3" fill="WHITE" layoutX="546.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V" textAlignment="CENTER" wrappingWidth="137.453125" />
          </children>
       </Pane>
+      <Text fx:id="warning" fill="WHITE" layoutX="273.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nenhuma Carta no Catálogo." textAlignment="CENTER" />
    </children>
 </AnchorPane>

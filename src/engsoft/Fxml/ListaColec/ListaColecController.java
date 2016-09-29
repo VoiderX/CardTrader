@@ -55,6 +55,8 @@ public class ListaColecController implements Initializable {
     Pane pane2;
     @FXML
     Pane pane3;
+    @FXML
+    Text warning;
     
     private ArrayList<Carta> list;
     private ArrayList<Text> valor;
@@ -77,6 +79,9 @@ public class ListaColecController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         init();
         ctrl=0;
+        if(list.size()!=0){
+            warning.setVisible(false);
+        }
         for(int i=0;i<3;i++){
             if(ctrl<list.size()){
                 id.set(i, Integer.valueOf(list.get(ctrl).getID()));
