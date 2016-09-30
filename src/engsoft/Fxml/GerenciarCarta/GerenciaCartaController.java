@@ -43,20 +43,27 @@ public class GerenciaCartaController implements Initializable {
     }
     @FXML
     public void inserirCarta(){
+        float valor;
+        int quant;
         try{
-         rs=engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
-         engsoft.ControleUI.getInstance().getIdCartaBuf());
-        if(!rs.next()){
-            Mensagem.setText(engsoft.ControleUI.getInstance().getConexaoUser().insereCatalogo(engsoft.ControleUI.getInstance().getIdCartaBuf(), 
-                Integer.valueOf(Quantidade.getText()), Float.valueOf(Valor.getText())));
-        }
-        else{
-            engsoft.ControleUI.getInstance().getConexaoUser().alteraCatalogo(
-            engsoft.ControleUI.getInstance().getIdCartaBuf(),
-            Float.valueOf(Valor.getText()),Integer.valueOf(Quantidade.getText()));
-            Mensagem.setText("Item alterado com sucesso!");
-        }
-        
+            rs=engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
+            engsoft.ControleUI.getInstance().getIdCartaBuf());
+            valor = Float.valueOf(Valor.getText());
+            quant = Integer.valueOf(Quantidade.getText());
+            if(valor>0.0 && quant>0){
+                if(!rs.next()){
+                    Mensagem.setText(engsoft.ControleUI.getInstance().getConexaoUser().insereCatalogo(engsoft.ControleUI.getInstance().getIdCartaBuf(), 
+                        quant, valor));
+                }
+                else{
+                    engsoft.ControleUI.getInstance().getConexaoUser().alteraCatalogo(
+                    engsoft.ControleUI.getInstance().getIdCartaBuf(),
+                    valor,quant);
+                    Mensagem.setText("Item alterado com sucesso!");
+                }
+            }else{
+                Mensagem.setText("Valor inválido!");
+            }
         }
         catch(Exception e){
             Mensagem.setText("Digite um valor válido!");

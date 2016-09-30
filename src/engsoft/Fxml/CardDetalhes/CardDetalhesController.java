@@ -41,15 +41,26 @@ public class CardDetalhesController implements Initializable {
     
     @FXML
     public void alterar(){
+        float valor;
+        int quant;
+        
+        
         try{
-        engsoft.ControleUI.getInstance().getConexaoUser().alteraCatalogo(
-        engsoft.ControleUI.getInstance().getIdCartaBuf(),
-        Float.valueOf(Valor.getText()),Integer.valueOf(Quantidade.getText()));
-        Mensagem.setText("Item alterado com sucesso!");
+            valor = Float.valueOf(Valor.getText());
+            quant = Integer.valueOf(Quantidade.getText());
+            if(valor>0.0 && quant>0){
+                engsoft.ControleUI.getInstance().getConexaoUser().alteraCatalogo(
+                    engsoft.ControleUI.getInstance().getIdCartaBuf(),
+                    valor,quant);
+                Mensagem.setText("Item alterado com sucesso!");
+            }else{
+                Mensagem.setText("Valor inválido!");
+            }
         }
         catch(Exception e){
             Mensagem.setText("Entre com valores válidos!");
         }
+        
     }
     @FXML
     public void remover(){
@@ -71,7 +82,6 @@ public class CardDetalhesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         engsoft.ControleUI obj = engsoft.ControleUI.getInstance();
         card.setImage(CartaDAO.puxarCarta(obj.getIdCartaBuf()));
         ID.setText(Integer.toString(obj.getIdCartaBuf()));
