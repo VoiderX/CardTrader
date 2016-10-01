@@ -22,15 +22,15 @@ import javafx.scene.text.Text;
  */
 public class ListaCartasController implements Initializable {
     @FXML
-    TableView Tabela=new TableView();
+    TableView<engsoft.Carta> Tabela=new TableView<>();
     @FXML
-    TableColumn ColunaID=new TableColumn();
+    TableColumn<engsoft.Carta,String> ColunaID=new TableColumn<>();
     @FXML
-    TableColumn ColunaNome=new TableColumn();
+    TableColumn<engsoft.Carta,String> ColunaNome=new TableColumn<>();
     @FXML
-    TableColumn ColunaFabr=new TableColumn();
+    TableColumn<engsoft.Carta,String> ColunaFabr=new TableColumn<>();
     @FXML
-    TableColumn ColunaDesc=new TableColumn();
+    TableColumn<engsoft.Carta,String> ColunaDesc=new TableColumn<>();
     @FXML
     Text Mensagem=new Text();
     public void cancelar(){
@@ -54,7 +54,7 @@ public class ListaCartasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ObservableList ListaCard=engsoft.CartaDAO.retornaInfoCard();
+        ObservableList<engsoft.Carta> ListaCard=engsoft.CartaDAO.retornaInfoCard();
         ColunaNome.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Nome"));
         ColunaFabr.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Fabricante"));
         ColunaDesc.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Desc"));

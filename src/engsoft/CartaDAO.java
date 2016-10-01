@@ -59,8 +59,8 @@ public class CartaDAO {
     return im;
     }
     
-    public static ObservableList retornaInfoCard(){
-       ObservableList lista=FXCollections.observableArrayList();
+    public static ObservableList<Carta> retornaInfoCard(){
+       ObservableList<Carta> lista=FXCollections.observableArrayList();
        Connection con=ConexaoDB.getCon();
        Carta c=null;
        try{
@@ -113,8 +113,8 @@ public class CartaDAO {
         return Desc;
     }
     
-    public static ArrayList retornaCartas(){
-        ArrayList<Carta> list = new ArrayList();
+    public static ArrayList<Carta> retornaCartas(){
+        ArrayList<Carta> list = new ArrayList<Carta>();
         Connection con=ConexaoDB.getCon();
         Carta c=null;
         try{

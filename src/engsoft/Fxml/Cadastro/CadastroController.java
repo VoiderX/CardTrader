@@ -38,11 +38,11 @@ public class CadastroController implements Initializable {
     @FXML
     TextField EmailField=new TextField();
     @FXML
-    ChoiceBox PaisField=new ChoiceBox();
+    ChoiceBox<String> PaisField=new ChoiceBox<>();
     @FXML
-    ChoiceBox EstadoField= new ChoiceBox();
+    ChoiceBox<String> EstadoField= new ChoiceBox<>();
     @FXML
-    ChoiceBox CityField=new ChoiceBox();
+    ChoiceBox<String> CityField=new ChoiceBox<>();
     @FXML
     PasswordField PassField=new PasswordField();
     @FXML 

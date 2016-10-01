@@ -128,7 +128,7 @@ public class ListaColecController implements Initializable {
         id.add(id2);
     }
     
-    public ArrayList getList(){
+    public ArrayList<Carta> getList(){
         ResultSet rs= engsoft.ControleUI.getInstance().getConexaoUser().retornaCatalogo();
         ArrayList<Carta> l = new ArrayList<>();
         try {

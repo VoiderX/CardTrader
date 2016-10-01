@@ -20,21 +20,21 @@ import javafx.scene.text.Text;
  */
 public class Locations { //Classe para armazenar os métodos de consulta as tabelas de países,estados e cidades
         Connection con;
-        ObservableList ConjVazio=FXCollections.observableArrayList();
+        ObservableList<String> ConjVazio=FXCollections.observableArrayList();
     public Locations(){
         con=ConexaoDB.getCon();
     }
     
-     public void limpaCampos(ChoiceBox EstadoField, ChoiceBox CityField){
+     public void limpaCampos(ChoiceBox<String> EstadoField, ChoiceBox<String> CityField){
         //Função para  limpar os campos
-        EstadoField.setValue(ConjVazio); //Limpa o valor atual
-        CityField.setValue(ConjVazio);
+        EstadoField.setValue(""); //Limpa o valor atual
+        CityField.setValue("");
         EstadoField.setItems(ConjVazio);//Limpa o vetor de items
         CityField.setItems(ConjVazio);        
         }
     
-    public void carregaPais(ChoiceBox PaisField, Text Mensagem){
-    ObservableList Paises= FXCollections.observableArrayList();//Inicializa o "array"
+    public void carregaPais(ChoiceBox<String> PaisField, Text Mensagem){
+    ObservableList<String> Paises= FXCollections.observableArrayList();//Inicializa o "array"
     try{
     Statement s = con.createStatement();
     ResultSet rs=s.executeQuery("SELECT * FROM PAIS");//Result set com todos os países
@@ -49,8 +49,8 @@ public class Locations { //Classe para armazenar os métodos de consulta as tabe
      Mensagem.setText("");//Limpa os campos     
     }
     
-    public void carregaEstados(ChoiceBox PaisField,ChoiceBox EstadoField,ChoiceBox CityField, Text Mensagem){
-        ObservableList Estados= FXCollections.observableArrayList();//Inicializa o "array"
+    public void carregaEstados(ChoiceBox<String> PaisField,ChoiceBox<String> EstadoField,ChoiceBox<String> CityField, Text Mensagem){
+        ObservableList<String> Estados= FXCollections.observableArrayList();//Inicializa o "array"
         if(PaisField.getValue()!=null){//Verifica se o país foi selecionado
     try{
         Statement s=con.createStatement();//Insere no rs somente os estados dos países selecionados
@@ -74,8 +74,8 @@ public class Locations { //Classe para armazenar os métodos de consulta as tabe
     }
     
     @FXML
-    public void carregaCidades(ChoiceBox PaisField,ChoiceBox EstadoField,ChoiceBox CityField,Text Mensagem){//Idem ao carregaEstados
-         ObservableList Cidades= FXCollections.observableArrayList();
+    public void carregaCidades(ChoiceBox<String> PaisField,ChoiceBox<String> EstadoField,ChoiceBox<String> CityField,Text Mensagem){//Idem ao carregaEstados
+         ObservableList<String> Cidades= FXCollections.observableArrayList();
         if(EstadoField.getValue()!=null){
            
     try{

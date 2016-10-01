@@ -65,7 +65,7 @@ private String senha;
     
     public void puxarInfo(TextField NickField,TextField NomeField,TextField DDDField,TextField
             CodCddField,TextField NumUsuarioField,TextField EmailField,TextField EndField, 
-            ChoiceBox PaisField,ChoiceBox EstadoField,ChoiceBox CityField,Text Mensagem){
+            ChoiceBox<String> PaisField,ChoiceBox<String> EstadoField,ChoiceBox<String> CityField,Text Mensagem){
          try{             
              Statement s = conUser.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
              String sql = "SELECT * FROM "+usuario+"view";

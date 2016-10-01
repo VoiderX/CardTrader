@@ -37,11 +37,11 @@ public class AlteraCadastroController implements Initializable {
     TextField NumUsuarioField=new TextField();
     String NumField;
     @FXML
-    ChoiceBox PaisField=new ChoiceBox();
+    ChoiceBox <String> PaisField=new ChoiceBox<String>();
     @FXML
-    ChoiceBox EstadoField=new ChoiceBox();
+    ChoiceBox <String> EstadoField=new ChoiceBox<String>();
     @FXML
-    ChoiceBox CityField=new ChoiceBox();
+    ChoiceBox <String> CityField=new ChoiceBox<String>();
     @FXML
     TextField EmailField=new TextField();
     @FXML
