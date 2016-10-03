@@ -104,13 +104,14 @@ private String senha;
           try{
                 Statement s=conUser.createStatement();//Passa as querys de alteração de dados
                
-                s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField+"' WHERE NICK_USUARIO='"+
+                s.executeUpdate("UPDATE "+usuario+"view SET NOME_USUARIO='"+NomeField.toUpperCase()+"' WHERE NICK_USUARIO='"+
                             usuario+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET NUM_USUARIO='"+NumField+"' WHERE NICK_USUARIO='"+
                             usuario+"'");
-                s.executeUpdate("UPDATE "+usuario+"view SET EMAIL_USUARIO='"+EmailField+"' WHERE NICK_USUARIO='"+
+                s.executeUpdate("UPDATE "+usuario+"view SET EMAIL_USUARIO='"+EmailField.toUpperCase()+"' WHERE NICK_USUARIO='"+
                             usuario+"'");
-                s.executeUpdate("UPDATE "+usuario+"view SET ENDERECO_USUARIO='"+EndField+"' WHERE NICK_USUARIO='"+
+                s.executeUpdate("UPDATE "+usuario+"view SET ENDERECO_USUARIO='"+EndField.toUpperCase()
+                        +"' WHERE NICK_USUARIO='"+
                             usuario+"'");
                 s.executeUpdate("UPDATE "+usuario+"view SET(CIDADE_ESTADO_PAIS_NOME_PAIS,CIDADE_ESTADO_NOME_ESTADO,CIDADE_NOME_CIDADE)"
                             +"=('"+PaisField+"','"+EstadoField+"','"+CityField+"')WHERE "+

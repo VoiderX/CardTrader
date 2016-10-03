@@ -47,9 +47,20 @@ public class ConexaoDBNGTest {
      * Test of realizaCadastro method, of class ConexaoDB.
      */
     @Test
+    public void testxAltSenha() {
+        System.out.println("altSenha");
+        String NickField = "celularoi";
+        String PassField = "123456";
+        ConexaoDB instance = new ConexaoDB();
+        String expResult = "Alteração executada com sucesso!";
+        String result = instance.altSenha(NickField, PassField);
+        assertEquals(result, expResult);
+    }
+    
+    @Test
     public void testRealizaCadastroCerto() {
         System.out.println("realizaCadastro");
-        String NickField = "celularolaoi";
+        String NickField = "celularoi";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
         String NumField = "19";
@@ -64,11 +75,29 @@ public class ConexaoDBNGTest {
         assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail
     }
+    @Test
+     public void testRealizaCadastroCerto2() {
+        System.out.println("realizaCadastro");
+        String NickField = "celularoi2";
+        String NomeField = "Lucas Tsuchiya";
+        String EndField = "Avenida padre Paulo broda";
+        String NumField = "19";
+        String EmailField = "patricia123@gmail.com";
+        String PaisField = "Brasil";
+        String EstadoField = "PR";
+        String CityField = "Londrina";
+        String PassField = "lucas12vinho";
+        ConexaoDB instance = new ConexaoDB();
+        String expResult = "Usuário Cadastrado com sucesso!";
+        String result = instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
+        assertEquals(result, expResult);
+        // TODO review the generated test code and remove the default call to fail
+    }
     
         @Test
     public void testRealizaCadastroRepetido() {
         System.out.println("realizaCadastro");
-        String NickField = "celular";
+        String NickField = "celularoi";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
         String NumField = "19";
@@ -82,17 +111,7 @@ public class ConexaoDBNGTest {
         String result = instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
         assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail
-    }
-    @Test
-    public void testAltSenha() {
-        System.out.println("altSenha");
-        String NickField = "celular";
-        String PassField = "lucasvinho";
-        ConexaoDB instance = new ConexaoDB();
-        String expResult = "Alteração executada com sucesso!";
-        String result = instance.altSenha(NickField, PassField);
-        assertEquals(result, expResult);
-    }
+    } 
     
         @Test
     public void testAltSenhanencotrado() {
