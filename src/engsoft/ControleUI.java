@@ -80,7 +80,7 @@ public final class ControleUI{
     private static Stage mainStage;
     private static Stage secondStage;
     
-    
+    private static String stagein;
     
     private void initUI(){ //Metódo inicializador 
         mainStage.centerOnScreen();
@@ -144,6 +144,7 @@ public final class ControleUI{
         }
         GerenciaColecScene=new Scene(GerenciaColecFXML);
         mainStage.setScene(GerenciaColecScene);
+        stagein="Gerencia";
         mainStage.show();
     }
     
@@ -208,6 +209,7 @@ public final class ControleUI{
             e.printStackTrace();
         }
         ProcuraCartasScene=new Scene(ProcuraCartasFXML);
+        stagein="Procura";
         mainStage.setScene(ProcuraCartasScene); 
     }
     public void chamaHistorico(){
@@ -219,4 +221,7 @@ public final class ControleUI{
         HistoricoScene=new Scene(HistoricoFXML);
         mainStage.setScene(HistoricoScene);        
     }
+    public String verificaMainStage(){
+            return stagein;
+        }
 }

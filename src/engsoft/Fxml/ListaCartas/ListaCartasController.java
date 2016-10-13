@@ -40,7 +40,12 @@ public class ListaCartasController implements Initializable {
         try{
             engsoft.Carta c=(engsoft.Carta)Tabela.getSelectionModel().getSelectedItem(); 
             engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.valueOf(c.getID()));
+            if(engsoft.ControleUI.getInstance().verificaMainStage().equals("Gerencia")){
             engsoft.ControleUI.getInstance().chamaGerenciarColec();
+            }
+            else if(engsoft.ControleUI.getInstance().verificaMainStage().equals("Procura")){
+                engsoft.ControleUI.getInstance().chamaProcuraCarta();
+            }
             engsoft.ControleUI.getInstance().saisecondStage();
         }
         catch(Exception e){

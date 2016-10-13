@@ -54,6 +54,9 @@ private String senha;
         }
         return(conUser);
     }
+    public Connection retornaCon(){
+        return this.conUser;
+    }
     public void fecharConexao(){
         try{
         conUser.close();
