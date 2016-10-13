@@ -20,10 +20,7 @@ import javafx.scene.image.ImageView;
  * @author Gabriel
  */
 public class ProcurarCartasController implements Initializable {
-    @FXML
-    TextField Usuario;
-    @FXML
-    TextField Carta;
+    
     @FXML
     ImageView Image1;
     @FXML
@@ -58,6 +55,41 @@ public class ProcurarCartasController implements Initializable {
     TextArea Text8;
     @FXML
     TextField CartaID;
+    @FXML
+    TextField Usuario;
+    ArrayList<engsoft.Catalogo> Catalogos;
+    @FXML
+    public void clickImage1(){
+        System.out.println("Clicou1");
+    }
+    @FXML
+    public void clickImage2(){
+        System.out.println("Clicou2");
+    }
+    @FXML
+    public void clickImage3(){
+        System.out.println("Clicou3");
+    }
+    @FXML
+    public void clickImage4(){
+        System.out.println("Clicou4");
+    }
+    @FXML
+    public void clickImage5(){
+        System.out.println("Clicou5");
+    }
+    @FXML
+    public void clickImage6(){
+        System.out.println("Clicou6");
+    }
+    @FXML
+    public void clickImage7(){
+        System.out.println("Clicou7");
+    }
+    @FXML
+    public void clickImage8(){
+        System.out.println("Clicou8");
+    }
     
      @FXML
      public void retornaMenu(){
@@ -69,11 +101,36 @@ public class ProcurarCartasController implements Initializable {
      }
      @FXML
      public void listaUsuarios(){
-         engsoft.TransacaoDAO.retornaUsuarios();
+         engsoft.ControleUI.getInstance().chamaListarUsuario();
+     }
+     @FXML
+     public void pesquisaUser(){
+         Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText());
+        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
+        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
+                +"\n"+Catalogos.get(0).getUsuario()+"\n"+
+                Catalogos.get(0).getValor());
+        
+        Image2.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(1).getIdCarta()));        
+        Text2.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(1).getIdCarta())
+                +"\n"+Catalogos.get(1).getUsuario()+"\n"+
+                Catalogos.get(1).getValor());         
+     }
+     @FXML
+     public void pesquisaCarta(){
+        Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Integer.valueOf(CartaID.getText()));
+        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
+        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
+                +"\n"+Catalogos.get(0).getUsuario()+"\n"+
+                Catalogos.get(0).getValor());
      }
      @FXML
      public void pesquisar(){
-         
+        Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText(),(Integer.valueOf(CartaID.getText())));         
+        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
+        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
+                +"\n"+Catalogos.get(0).getUsuario()+"\n"+
+                Catalogos.get(0).getValor());
      }
     /**
      * Initializes the controller class.
@@ -81,7 +138,8 @@ public class ProcurarCartasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         CartaID.setText(String.valueOf(engsoft.ControleUI.getInstance().getIdCartaBuf()));
-        ArrayList<engsoft.Catalogo> Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
+        Usuario.setText(engsoft.ControleUI.getInstance().getUserBuf());
+        Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
         
         Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
         Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())

@@ -39,6 +39,16 @@ public final class ControleUI{
         this.idCartaBuf = idCartaBuf;
     }
     
+    String UserBuf;
+
+    public String getUserBuf() {
+        return UserBuf;
+    }
+
+    public void setUserBuf(String UserBuf) {
+        this.UserBuf = UserBuf;
+    }
+    
     
     private static ControleUI INSTANCE = null;
     
@@ -63,6 +73,7 @@ public final class ControleUI{
     private static Parent CardDetalhesFXML;
     private static Parent ProcuraCartasFXML;
     private static Parent HistoricoFXML;
+    private static Parent ListaUsuarioFXML;
             
     private static Scene LoginScene;
     private static Scene CadastroScene;
@@ -76,6 +87,7 @@ public final class ControleUI{
     private static Scene CardDetalhesScene;
     private static Scene ProcuraCartasScene;
     private static Scene HistoricoScene;
+    private static Scene ListaUsuarioScene;
     
     private static Stage mainStage;
     private static Stage secondStage;
@@ -220,6 +232,16 @@ public final class ControleUI{
         }
         HistoricoScene=new Scene(HistoricoFXML);
         mainStage.setScene(HistoricoScene);        
+    }
+    public void chamaListarUsuario(){
+             try{
+                ListaUsuarioFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaUsuarios/ListaUsuarios.fxml"));
+            }catch(Exception e){
+            e.printStackTrace();
+            }
+            ListaUsuarioScene=new Scene(ListaUsuarioFXML);
+            secondStage.setScene(ListaUsuarioScene); 
+            secondStage.show();
     }
     public String verificaMainStage(){
             return stagein;

@@ -68,23 +68,28 @@ public class GerenciaColecController implements Initializable {
                         imagem.get(4).setImage(engsoft.CartaDAO.puxarCarta(Integer.valueOf(IdCarta.getText())));
                         text.get(4).setText(engsoft.CartaDAO.retornaNomeCard(Integer.valueOf(IdCarta.getText())));
                         engsoft.ControleUI.getInstance().setIdCartaBuf(id.get(4));
+                        imagem.get(4).setCursor(Cursor.HAND);
                         Mensagem.setText("");
                     }else{
                         Mensagem.setText("ID indisponível!");
+                        imagem.get(4).setCursor(Cursor.DEFAULT);
                         imagem.get(4).setImage(engsoft.CartaDAO.puxarCarta(0));
                         text.get(4).setText("");
                     }
                 }catch(Exception e){
                     Mensagem.setText("Digite um ID válido!");
+                    imagem.get(4).setCursor(Cursor.DEFAULT);
                     imagem.get(4).setImage(engsoft.CartaDAO.puxarCarta(0));
                     text.get(4).setText(engsoft.CartaDAO.retornaNomeCard(0));
                 }
             }else{
                 imagem.get(4).setImage(null);
+                imagem.get(4).setCursor(Cursor.DEFAULT);
                 text.get(4).setText("Digite um ID maior que zero!");
             }
         }catch(Exception e){
             imagem.get(4).setImage(engsoft.CartaDAO.puxarCarta(0));
+            imagem.get(4).setCursor(Cursor.DEFAULT);
             text.get(4).setText("");
             Mensagem.setText("Digite um ID válido!");
         }

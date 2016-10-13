@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -8,53 +9,77 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ProcurarCartas.ProcurarCartasController">
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ProcurarCartas.ProcurarCartasController">
    <children>
       <Button layoutX="497.0" layoutY="511.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="85.0" text="Voltar" />
-      <TextField layoutX="34.0" layoutY="47.0" />
-      <TextField fx:id="CartaID" layoutX="202.0" layoutY="47.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="Usuario" layoutX="34.0" layoutY="47.0" onAction="#pesquisaUser" />
+      <TextField fx:id="CartaID" layoutX="202.0" layoutY="47.0" onAction="#pesquisaCarta" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="34.0" layoutY="30.0" prefHeight="17.0" prefWidth="149.0" text="Procurar por Usuário:" />
       <Label layoutX="202.0" layoutY="30.0" prefHeight="17.0" prefWidth="149.0" text="Procurar por Carta:" />
       <Button layoutX="358.0" layoutY="47.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="25.0" prefWidth="85.0" text="Pesquisar" />
-      <ImageView fx:id="Image1" fitHeight="133.0" fitWidth="121.0" layoutX="34.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image1" fitHeight="133.0" fitWidth="121.0" layoutX="34.0" layoutY="89.0" onMouseClicked="#clickImage1" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/professor-oak-base-set-bs-88.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="Image2" fitHeight="133.0" fitWidth="97.0" layoutX="177.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image2" fitHeight="133.0" fitWidth="97.0" layoutX="177.0" layoutY="89.0" onMouseClicked="#clickImage2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/doduo-base-set-bs-48.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="Image3" fitHeight="133.0" fitWidth="97.0" layoutX="311.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image3" fitHeight="133.0" fitWidth="97.0" layoutX="311.0" layoutY="89.0" onMouseClicked="#clickImage3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/blastoise-base-set-bs-2.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="Image4" fitHeight="133.0" fitWidth="97.0" layoutX="443.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image4" fitHeight="133.0" fitWidth="97.0" layoutX="443.0" layoutY="89.0" onMouseClicked="#clickImage4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/arcanine-base-set-bs-23.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="Image5" fitHeight="133.0" fitWidth="97.0" layoutX="34.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image5" fitHeight="133.0" fitWidth="97.0" layoutX="34.0" layoutY="299.0" onMouseClicked="#clickImage5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/beedrill-base-set-bs-17.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="Image6" fitHeight="133.0" fitWidth="97.0" layoutX="177.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image6" fitHeight="133.0" fitWidth="97.0" layoutX="177.0" layoutY="299.0" onMouseClicked="#clickImage6" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/defender-base-set-bs-80.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="Image7" fitHeight="133.0" fitWidth="97.0" layoutX="310.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image7" fitHeight="133.0" fitWidth="97.0" layoutX="310.0" layoutY="299.0" onMouseClicked="#clickImage7" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/blastoise-base-set-bs-2.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fx:id="Image8" fitHeight="133.0" fitWidth="109.0" layoutX="449.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image8" fitHeight="133.0" fitWidth="109.0" layoutX="449.0" layoutY="299.0" onMouseClicked="#clickImage8" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../PokemonCard/caterpie-base-set-bs-45.jpg" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <Button layoutX="28.0" layoutY="511.0" mnemonicParsing="false" onAction="#listaUsuarios" prefHeight="25.0" prefWidth="97.0" text="Listar Usuários" />
       <Button layoutX="154.0" layoutY="511.0" mnemonicParsing="false" onAction="#listaCartas" prefHeight="25.0" prefWidth="97.0" text="Listar Cartas" />

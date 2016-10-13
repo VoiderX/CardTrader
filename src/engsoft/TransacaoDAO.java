@@ -36,6 +36,61 @@ public class TransacaoDAO {
         
         return Catalogos;
     }
+     public static ArrayList<Catalogo> buscaCatalogo(String Usuario){ //Retorna todas cartas a venda de um usuario
+        ArrayList<Catalogo> Catalogos = new ArrayList<>();
+        Connection con= engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        try{
+         Statement s= con.createStatement();
+         ResultSet rs= s.executeQuery("SELECT * FROM CATALOGO WHERE USUARIO_CATALOGO='"+Usuario+"'");
+            while(rs.next()){
+                 engsoft.Catalogo aux= new Catalogo(rs.getString("USUARIO_CATALOGO"),rs.getInt("CARTA_CATALOGO"),
+                 rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
+                 Catalogos.add(aux);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return Catalogos;
+    }
+          public static ArrayList<Catalogo> buscaCatalogo(int IdCarta){ //Retorna todas as cartas a venda com este ID
+        ArrayList<Catalogo> Catalogos = new ArrayList<>();
+        Connection con= engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        try{
+         Statement s= con.createStatement();
+         ResultSet rs= s.executeQuery("SELECT * FROM CATALOGO WHERE CARTA_CATALOGO="+IdCarta);
+            while(rs.next()){
+                 engsoft.Catalogo aux= new Catalogo(rs.getString("USUARIO_CATALOGO"),rs.getInt("CARTA_CATALOGO"),
+                 rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
+                 Catalogos.add(aux);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return Catalogos;
+    }
+     public static ArrayList<Catalogo> buscaCatalogo(String Usuario,int IdCarta){ //Retorna a carta a venda de um usuário
+        ArrayList<Catalogo> Catalogos = new ArrayList<>();
+        Connection con= engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        try{
+         Statement s= con.createStatement();
+         ResultSet rs= s.executeQuery("SELECT * FROM CATALOGO WHERE USUARIO_CATALOGO='"+Usuario+"'"
+                 + " AND CARTA_CATALOGO="+IdCarta);
+            while(rs.next()){
+                 engsoft.Catalogo aux= new Catalogo(rs.getString("USUARIO_CATALOGO"),rs.getInt("CARTA_CATALOGO"),
+                 rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
+                 Catalogos.add(aux);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return Catalogos;
+    }
     
     public static ObservableList<Usuario> retornaUsuarios(){
         ObservableList<Usuario> ListaUsuarios= FXCollections.observableArrayList();
