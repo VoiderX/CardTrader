@@ -74,6 +74,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                    //Fornece permissão de seleção e atualização na sua própria view
                 s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField);
                 s.executeUpdate("GRANT SELECT,INSERT,UPDATE,DELETE ON "+NickField+"catview TO "+NickField);
+                s.executeUpdate("GRANT SELECT,INSERT,UPDATE ON TRANSACAO TO "+NickField);
                 s.close();//Encerra o statement(declaração);         
 
             }catch(Exception e){//Caso haja uma falha de conexão
@@ -84,6 +85,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 s.executeUpdate("DELETE FROM USUARIO WHERE NICK_USUARIO='"+NickField+"'");
                 s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"view");
                 s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"catview");
+                s.executeUpdate("REVOKE ALL PRIVILEGES ON TRANSACAO FROM "+NickField);
                 s.executeUpdate("DROP USER IF EXISTS "+NickField);
                 System.out.println(e);
                 Mensagem="Erro de conexão, tente novamente";

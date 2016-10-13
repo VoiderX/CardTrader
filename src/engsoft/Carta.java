@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
  * @author Gabriel
  */
 public class Carta {
-    private String ID;
+    private Integer ID;
     private String Nome;
     private String Fabricante;
     private String desc;
@@ -20,15 +20,15 @@ public class Carta {
     private float valor;
     private Image img;
     
-    public Carta(String ID,String Nome,String Desc,String Fabricante){
+    public Carta(Integer ID,String Nome,String Desc,String Fabricante){
         setID(ID);
         setNome(Nome);
         setFabricante(Fabricante);
         setDesc(Desc);
     }
 
-    public Carta(int ID, int quant, float valor) {
-        this.ID = Integer.toString(ID);
+    public Carta(Integer ID, int quant, float valor) {
+        this.ID = ID;
         this.quant = quant;
         this.valor = valor;
         CartaDAO obj = new CartaDAO();
@@ -47,11 +47,11 @@ public class Carta {
         return img;
     }
     
-    public String getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 

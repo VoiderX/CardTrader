@@ -61,7 +61,9 @@ public final class ControleUI{
     private static Parent GerenciaCartaFXML;
     private static Parent ListaCartasFXML;
     private static Parent CardDetalhesFXML;
-    
+    private static Parent ProcuraCartasFXML;
+    private static Parent HistoricoFXML;
+            
     private static Scene LoginScene;
     private static Scene CadastroScene;
     private static Scene MenuScene;
@@ -72,6 +74,8 @@ public final class ControleUI{
     private static Scene GerenciaCartaScene;
     private static Scene ListaCartasScene;
     private static Scene CardDetalhesScene;
+    private static Scene ProcuraCartasScene;
+    private static Scene HistoricoScene;
     
     private static Stage mainStage;
     private static Stage secondStage;
@@ -195,5 +199,24 @@ public final class ControleUI{
         secondStage.setScene(CardDetalhesScene);
         secondStage.setTitle("Detalhes");
         secondStage.show();
+    }
+    
+    public void chamaProcuraCarta(){
+        try{
+             ProcuraCartasFXML=FXMLLoader.load(getClass().getResource("Fxml/ProcurarCartas/ProcurarCartas.fxml"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        ProcuraCartasScene=new Scene(ProcuraCartasFXML);
+        mainStage.setScene(ProcuraCartasScene); 
+    }
+    public void chamaHistorico(){
+        try{
+             HistoricoFXML=FXMLLoader.load(getClass().getResource("Fxml/Historico/Historico.fxml"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        HistoricoScene=new Scene(HistoricoFXML);
+        mainStage.setScene(HistoricoScene);        
     }
 }

@@ -68,7 +68,7 @@ public class CartaDAO {
       ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"
         +" WHERE FABRICANTE_ID_FABRICANTE=ID_FABRICANTE");
         while(rs.next()){
-            c=new Carta(rs.getString("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
+            c=new Carta(rs.getInt("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
             lista.add(c);
         }
        }
@@ -122,7 +122,7 @@ public class CartaDAO {
             ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"
                 +" WHERE FABRICANTE_ID_FABRICANTE=ID_FABRICANTE");
             while(rs.next()){
-                c=new Carta(rs.getString("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
+                c=new Carta(rs.getInt("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
                 list.add(c);
             }
        }catch(Exception e){

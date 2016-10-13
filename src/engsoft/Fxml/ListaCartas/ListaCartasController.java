@@ -24,7 +24,7 @@ public class ListaCartasController implements Initializable {
     @FXML
     TableView<engsoft.Carta> Tabela=new TableView<>();
     @FXML
-    TableColumn<engsoft.Carta,String> ColunaID=new TableColumn<>();
+    TableColumn<engsoft.Carta,Integer> ColunaID=new TableColumn<>();
     @FXML
     TableColumn<engsoft.Carta,String> ColunaNome=new TableColumn<>();
     @FXML
@@ -58,7 +58,7 @@ public class ListaCartasController implements Initializable {
         ColunaNome.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Nome"));
         ColunaFabr.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Fabricante"));
         ColunaDesc.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Desc"));
-        ColunaID.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("ID"));
+        ColunaID.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,Integer>("ID"));
         Tabela.setItems(ListaCard);        
         Tabela.getSortOrder().add(ColunaID);
         
