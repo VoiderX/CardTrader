@@ -58,37 +58,46 @@ public class ProcurarCartasController implements Initializable {
     @FXML
     TextField Usuario;
     ArrayList<engsoft.Catalogo> Catalogos;
+    ArrayList<Integer> Id= new ArrayList<>();
     @FXML
     public void clickImage1(){
-        System.out.println("Clicou1");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(0)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     @FXML
     public void clickImage2(){
-        System.out.println("Clicou2");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(1)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     @FXML
     public void clickImage3(){
-        System.out.println("Clicou3");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(2)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     @FXML
     public void clickImage4(){
-        System.out.println("Clicou4");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(3)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     @FXML
     public void clickImage5(){
-        System.out.println("Clicou5");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(4)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     @FXML
     public void clickImage6(){
-        System.out.println("Clicou6");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(5)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     @FXML
     public void clickImage7(){
-        System.out.println("Clicou7");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(6)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     @FXML
     public void clickImage8(){
-        System.out.println("Clicou8");
+        engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(7)));
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
     }
     
      @FXML
@@ -104,7 +113,7 @@ public class ProcurarCartasController implements Initializable {
          engsoft.ControleUI.getInstance().chamaListarUsuario();
      }
      @FXML
-     public void pesquisaUser(){
+     public void pesquisaUser(){ //Setar para todos as cartas, só exemplos
          Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText());
         Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
         Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
@@ -117,7 +126,7 @@ public class ProcurarCartasController implements Initializable {
                 Catalogos.get(1).getValor());         
      }
      @FXML
-     public void pesquisaCarta(){
+     public void pesquisaCarta(){ //Setar para todos as cartas, só exemplos
         Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Integer.valueOf(CartaID.getText()));
         Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
         Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
@@ -125,7 +134,7 @@ public class ProcurarCartasController implements Initializable {
                 Catalogos.get(0).getValor());
      }
      @FXML
-     public void pesquisar(){
+     public void pesquisar(){ //Setar para todos as cartas, só exemplos
         Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText(),(Integer.valueOf(CartaID.getText())));         
         Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
         Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
@@ -140,46 +149,54 @@ public class ProcurarCartasController implements Initializable {
         CartaID.setText(String.valueOf(engsoft.ControleUI.getInstance().getIdCartaBuf()));
         Usuario.setText(engsoft.ControleUI.getInstance().getUserBuf());
         Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
+        Id.add(0);
+        Id.add(1);
+        Id.add(2);
+        Id.add(3);
+        Id.add(4);
+        Id.add(5);
+        Id.add(6);
+        Id.add(7);
         
-        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
-        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
-                +"\n"+Catalogos.get(0).getUsuario()+"\n"+
-                Catalogos.get(0).getValor());
+        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(0)).getIdCarta()));        
+        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(0)).getIdCarta())
+                +"\n"+Catalogos.get(Id.get(0)).getUsuario()+"\n"+
+                Catalogos.get(Id.get(0)).getValor());
         
-        Image2.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(1).getIdCarta()));        
-        Text2.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(1).getIdCarta())
-                +"\n"+Catalogos.get(1).getUsuario()+"\n"+
-                Catalogos.get(1).getValor());
+        Image2.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(1)).getIdCarta()));        
+        Text2.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(1)).getIdCarta())
+                +"\n"+Catalogos.get(Id.get(1)).getUsuario()+"\n"+
+                Catalogos.get(Id.get(1)).getValor());
                 
-        Image3.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(2).getIdCarta()));        
-        Text3.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(2).getIdCarta())
-                +"\n"+Catalogos.get(2).getUsuario()+"\n"+
-                Catalogos.get(2).getValor());
+        Image3.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(2)).getIdCarta()));        
+        Text3.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(2)).getIdCarta())
+                +"\n"+Catalogos.get(Id.get(2)).getUsuario()+"\n"+
+                Catalogos.get(Id.get(2)).getValor());
                 
-        Image4.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(3).getIdCarta()));        
-        Text4.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(3).getIdCarta())
-                +"\n"+Catalogos.get(3).getUsuario()+"\n"+
-                Catalogos.get(3).getValor());        
+        Image4.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(3)).getIdCarta()));        
+        Text4.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(3)).getIdCarta())
+                +"\n"+Catalogos.get(Id.get(3)).getUsuario()+"\n"+
+                Catalogos.get(Id.get(3)).getValor());        
                 
-        Image5.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(4).getIdCarta()));        
-        Text5.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(4).getIdCarta())
-                +"\n"+Catalogos.get(4).getUsuario()+"\n"+
-                Catalogos.get(4).getValor());
+        Image5.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(4)).getIdCarta()));        
+        Text5.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(4)).getIdCarta())
+                +"\n"+Catalogos.get(Id.get(4)).getUsuario()+"\n"+
+                Catalogos.get(Id.get(4)).getValor());
                 
         Image6.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(5).getIdCarta()));        
         Text6.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(5).getIdCarta())
                 +"\n"+Catalogos.get(5).getUsuario()+"\n"+
                 Catalogos.get(5).getValor());
                 
-        Image7.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(6).getIdCarta()));        
-        Text7.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(6).getIdCarta())
+        Image7.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(6)).getIdCarta()));        
+        Text7.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(6)).getIdCarta())
                 +"\n"+Catalogos.get(6).getUsuario()+"\n"+
                 Catalogos.get(6).getValor());
                 
-        Image8.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(7).getIdCarta()));        
-        Text8.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(7).getIdCarta())
-                +"\n"+Catalogos.get(7).getUsuario()+"\n"+
-                Catalogos.get(7).getValor());
+        Image8.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(7)).getIdCarta()));        
+        Text8.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(7)).getIdCarta())
+                +"\n"+Catalogos.get(Id.get(7)).getUsuario()+"\n"+
+                Catalogos.get(Id.get(7)).getValor());
     }   
     
 }

@@ -109,4 +109,39 @@ public class TransacaoDAO {
         }
         return ListaUsuarios;
     }
+    public static String comprarCarta(String NickVendedor, String NickComprador,int CartaId,int Quantidade,float Valor){
+        String Mensagem="";
+        Connection conn=engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        int QuantResult=0;
+        float ValorResult=0;
+        try{
+            Statement s= conn.createStatement();
+            ResultSet rs=s.executeQuery("SELECT QUANT_CATALOGO,VALOR_CATALOGO FROM CATALOGO WHERE "
+                    + "USUARIO_CATALOGO='"+NickVendedor+"' AND  CARTA_CATALOGO="+CartaId);
+            while(rs.next()){
+                QuantResult=rs.getInt("QUANT_CATALOGO");
+                ValorResult=rs.getFloat("VALOR_CATALOGO");
+                
+            }
+                if(NickVendedor.equals(NickComprador)){
+                    return "Você não pode comprar de você mesmo!";
+                }
+                if(Quantidade>QuantResult || (Valor/Quantidade)!=ValorResult){
+                    return "Valor ou Quantidade Inválidos!";
+                }                
+            s.executeUpdate("UPDATE CATALOGO SET QUANT_CATALOGO="+(QuantResult-Quantidade)+" WHERE USUARIO_CATALOGO='"
+                     +NickVendedor+"' AND CARTA_CATALOGO="+CartaId);
+            if(QuantResult-Quantidade==0){
+                s.executeUpdate("DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='"
+                    +NickVendedor+"' AND CARTA_CATALOGO="+CartaId);
+            }
+            s.executeUpdate("INSERT INTO TRANSACAO VALUES('"+NickVendedor+"','"+NickComprador+"','"
+                   +"AGUARD PAG',"+CartaId+","+Quantidade+","+Valor+")");
+            return "Transação efetuada com sucesso!";
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return "Erro ao realizar transação!";
+    }
 }

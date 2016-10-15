@@ -16,7 +16,15 @@ import javafx.fxml.Initializable;
  * @author Gabriel
  */
 public class HistoricoController implements Initializable {
-
+    
+    @FXML
+    public void chamaHistoricoVendas(){
+        
+    }
+    @FXML
+    public void chamaHistoricoCompras(){
+        
+    }
     @FXML
     public void retornaMenu(){
         engsoft.ControleUI.getInstance().mostraMenu();

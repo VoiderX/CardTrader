@@ -69,13 +69,19 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 s.executeUpdate("CREATE VIEW "+NickField+"view AS SELECT * FROM USUARIO"
                                 + " WHERE NICK_USUARIO='"+NickField+"'"); 
                 s.executeUpdate("CREATE VIEW "+NickField+"catview AS SELECT * FROM CATALOGO"
-                                + " WHERE USUARIO_CATALOGO='"+NickField+"'"); 
+                                + " WHERE USUARIO_CATALOGO='"+NickField+"'");
+                s.executeUpdate("CREATE VIEW "+NickField+"vendasview AS SELECT * FROM TRANSACAO"
+                                + " WHERE USUARIO_NICK_VENDEDOR='"+NickField+"'");
+                s.executeUpdate("CREATE VIEW "+NickField+"comprasview AS SELECT * FROM TRANSACAO"
+                                + " WHERE USUARIO_NICK_COMPRADOR='"+NickField+"'");
 
                    //Fornece permissão de seleção e atualização na sua própria view
                 s.executeUpdate("GRANT SELECT,UPDATE ON "+NickField+"view TO "+NickField);
                 s.executeUpdate("GRANT SELECT,INSERT,UPDATE,DELETE ON "+NickField+"catview TO "+NickField);
+                s.executeUpdate("GRANT SELECT,INSERT,UPDATE,DELETE ON "+NickField+"vendasview TO "+NickField);
+                s.executeUpdate("GRANT SELECT,INSERT,UPDATE,DELETE ON "+NickField+"comprasview TO "+NickField);
                 s.executeUpdate("GRANT SELECT,INSERT,UPDATE ON TRANSACAO TO "+NickField);
-                s.executeUpdate("GRANT SELECT ON CATALOGO TO "+NickField);
+                s.executeUpdate("GRANT SELECT,UPDATE,DELETE ON CATALOGO TO "+NickField);
                 s.close();//Encerra o statement(declaração);         
 
             }catch(Exception e){//Caso haja uma falha de conexão
@@ -86,6 +92,8 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 s.executeUpdate("DELETE FROM USUARIO WHERE NICK_USUARIO='"+NickField+"'");
                 s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"view");
                 s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"catview");
+                s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"vendasview");
+                s.executeUpdate("DROP VIEW IF EXISTS "+NickField+"comprasview");
                 s.executeUpdate("REVOKE ALL PRIVILEGES ON TRANSACAO FROM "+NickField);
                 s.executeUpdate("REVOKE ALL PRIVILEGES ON CATALOGO FROM "+NickField);
                 s.executeUpdate("DROP USER IF EXISTS "+NickField);
