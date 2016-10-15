@@ -26,8 +26,6 @@ public class HistoricoComprasController implements Initializable {
     @FXML
     TableColumn<engsoft.Transacao,String> Vendedor;
     @FXML
-    TableColumn<engsoft.Transacao,String> Comprador;
-    @FXML
     TableColumn<engsoft.Transacao,String> Status;
     @FXML
     TableColumn<engsoft.Transacao,Integer> Carta;
@@ -46,7 +44,6 @@ public class HistoricoComprasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Compras=engsoft.TransacaoDAO.retornaCompras();
         Vendedor.setCellValueFactory(new PropertyValueFactory<>("Vendedor"));
-        Comprador.setCellValueFactory(new PropertyValueFactory<>("Comprador"));
         Status.setCellValueFactory(new PropertyValueFactory<>("Status"));
         Carta.setCellValueFactory(new PropertyValueFactory<>("IdCarta"));
         Quantidade.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));

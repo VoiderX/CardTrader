@@ -24,8 +24,6 @@ public class HistoricoVendasController implements Initializable {
     @FXML
     TableView<engsoft.Transacao> Tabela;
     @FXML
-    TableColumn<engsoft.Transacao,String> Vendedor;
-    @FXML
     TableColumn<engsoft.Transacao,String> Comprador;
     @FXML
     TableColumn<engsoft.Transacao,String> Status;
@@ -40,13 +38,18 @@ public class HistoricoVendasController implements Initializable {
     public void retornaMenu(){
         engsoft.ControleUI.getInstance().mostraMenu();
     }
+    @FXML
+    public void Selecionar(){
+        engsoft.Transacao aux = Tabela.getSelectionModel().getSelectedItem();
+        engsoft.ControleUI.getInstance().setTraBuf(aux);
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
+    }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Vendas=engsoft.TransacaoDAO.retornaVendas();
-        Vendedor.setCellValueFactory(new PropertyValueFactory<>("Vendedor"));
         Comprador.setCellValueFactory(new PropertyValueFactory<>("Comprador"));
         Status.setCellValueFactory(new PropertyValueFactory<>("Status"));
         Carta.setCellValueFactory(new PropertyValueFactory<>("IdCarta"));

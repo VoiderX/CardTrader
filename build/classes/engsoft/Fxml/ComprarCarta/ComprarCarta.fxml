@@ -20,17 +20,17 @@
       <TextField fx:id="Valor" layoutX="441.0" layoutY="143.0" prefHeight="25.0" prefWidth="70.0" />
       <Label layoutX="332.0" layoutY="113.0" prefHeight="17.0" prefWidth="70.0" text="Quantidade" />
       <Label layoutX="441.0" layoutY="113.0" prefHeight="17.0" prefWidth="47.0" text="Valor:" />
-      <Label layoutX="332.0" layoutY="31.0" prefHeight="17.0" prefWidth="97.0" text="Total Disponível:" />
-      <Label layoutX="332.0" layoutY="63.0" prefHeight="17.0" prefWidth="97.0" text="Valor:" />
+      <Label fx:id="TotalLabel" layoutX="332.0" layoutY="31.0" prefHeight="17.0" prefWidth="97.0" text="Total Disponível:" />
+      <Label fx:id="ValorLabel" layoutX="332.0" layoutY="63.0" prefHeight="17.0" prefWidth="97.0" text="Valor:" />
       <Label layoutX="332.0" layoutY="87.0" prefHeight="17.0" prefWidth="70.0" text="Vendendor:" />
-      <Text fx:id="TextTotal" layoutX="427.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="97.00000137090683" />
-      <Text fx:id="TextValor" layoutX="380.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="61.000000298023224" />
-      <Text fx:id="TextVendedor" layoutX="403.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="170.13671875" />
-      <Button layoutX="438.0" layoutY="222.0" mnemonicParsing="false" onAction="#comprar" prefHeight="25.0" prefWidth="146.0" text="Comprar" />
+      <Text fx:id="TextTotal" layoutX="427.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="97.00000137090683" />
+      <Text fx:id="TextValor" layoutX="380.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="61.000000298023224" />
+      <Text fx:id="TextVendedor" layoutX="403.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.13671875" />
+      <Button fx:id="Comprar" layoutX="438.0" layoutY="222.0" mnemonicParsing="false" onAction="#comprar" prefHeight="25.0" prefWidth="146.0" text="Comprar" />
       <Button fx:id="Pago" layoutX="438.0" layoutY="266.0" mnemonicParsing="false" onAction="#marcarPago" prefHeight="25.0" prefWidth="146.0" text="Marcar como Pago" />
       <Button fx:id="Recebido" layoutX="438.0" layoutY="305.0" mnemonicParsing="false" onAction="#marcarRecebido" prefHeight="25.0" prefWidth="146.0" text="Marcar como Recebido" />
       <Text fx:id="TextNomeCarta" layoutX="31.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="238.9999933540821" />
-      <Text fx:id="Mensagem" layoutX="332.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.13671100139618" />
+      <Text fx:id="Mensagem" layoutX="270.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="160.13671100139618" />
       <Button fx:id="Calcular" layoutX="524.0" layoutY="143.0" mnemonicParsing="false" onAction="#calcular" prefHeight="25.0" prefWidth="70.0" text="Calcular" />
       <Label fx:id="EstadoMsg" layoutX="276.0" layoutY="187.0" prefHeight="17.0" prefWidth="113.0" text="Estado da transação:" />
       <TextField fx:id="Estado" editable="false" layoutX="390.0" layoutY="183.0" prefHeight="25.0" prefWidth="193.0" text="Sample" />

@@ -183,4 +183,17 @@ public class TransacaoDAO {
         }
         return Vendas;       
     }
+    public static String marcarPago(String Vendedor, String Comprador,int IdCarta,float Valor){
+        Connection conn=engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        try{
+            Statement s= conn.createStatement();
+            s.executeUpdate("UPDATE TRANSACAO SET STATUS_TRANSACAO='PAGO' WHERE USUARIO_NICK_VENDEDOR='"+Vendedor+"'"
+            +" AND USUARIO_NICK_COMPRADOR='"+Comprador+"' AND CARTA_ID_CARTA="+IdCarta+" AND VALORCARTA_TRANSACAO="+Valor);
+            return "Alteração Efetuada com Sucesso!";
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return "Erro ao alterar";
+    }
 }

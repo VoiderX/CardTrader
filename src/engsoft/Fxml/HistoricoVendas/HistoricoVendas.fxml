@@ -9,15 +9,14 @@
    <children>
       <TableView fx:id="Tabela" layoutX="10.0" layoutY="74.0" prefHeight="200.0" prefWidth="580.0">
         <columns>
-          <TableColumn fx:id="Vendedor" prefWidth="114.0" text="Vendedor" />
-          <TableColumn fx:id="Comprador" prefWidth="123.0" text="Comprador" />
+          <TableColumn fx:id="Comprador" prefWidth="114.0" text="Comprador" />
             <TableColumn fx:id="Status" prefWidth="95.0" text="Status" />
             <TableColumn fx:id="Carta" prefWidth="89.0" text="Carta" />
             <TableColumn fx:id="Quantidade" prefWidth="75.0" text="Quantidade" />
             <TableColumn fx:id="Valor" prefWidth="81.0" text="Valor" />
         </columns>
       </TableView>
-      <Button layoutX="370.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Selecionar" />
+      <Button layoutX="370.0" layoutY="332.0" mnemonicParsing="false" onAction="#Selecionar" prefHeight="25.0" prefWidth="98.0" text="Selecionar" />
       <Button layoutX="477.0" layoutY="332.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="98.0" text="Voltar" />
    </children>
 </AnchorPane>

@@ -39,6 +39,17 @@ public final class ControleUI{
         this.idCartaBuf = idCartaBuf;
     }
     
+    Transacao TraBuf;
+
+    public Transacao getTraBuf() {
+        return TraBuf;
+    }
+
+    public void setTraBuf(Transacao TraBuf) {
+        this.TraBuf = TraBuf;
+    }
+    
+    
     String UserBuf;
 
     public String getUserBuf() {
@@ -241,6 +252,7 @@ public final class ControleUI{
         }catch(Exception e){
             e.printStackTrace();
         }
+        stagein="Historico Compras";
         HistoricoScene=new Scene(HistoricoFXML);
         mainStage.setScene(HistoricoScene);        
     }
@@ -250,6 +262,7 @@ public final class ControleUI{
         }catch(Exception e){
             e.printStackTrace();
         }
+        stagein="Historico Vendas";
         HistoricoScene=new Scene(HistoricoFXML);
         mainStage.setScene(HistoricoScene);        
     }

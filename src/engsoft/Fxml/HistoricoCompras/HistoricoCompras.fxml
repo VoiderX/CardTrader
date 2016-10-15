@@ -9,8 +9,7 @@
    <children>
       <TableView fx:id="Tabela" layoutX="29.0" layoutY="52.0" prefHeight="200.0" prefWidth="543.0">
         <columns>
-          <TableColumn fx:id="Vendedor" prefWidth="95.0" text="Vendedor" />
-          <TableColumn fx:id="Comprador" prefWidth="108.0" text="Comprador" />
+          <TableColumn fx:id="Vendedor" prefWidth="108.0" text="Vendedor" />
             <TableColumn fx:id="Status" text="Status" />
             <TableColumn fx:id="Carta" prefWidth="61.0" text="Carta" />
             <TableColumn fx:id="Quantidade" prefWidth="107.0" text="Quantidade" />
