@@ -44,8 +44,12 @@ public class MenuController implements Initializable {
         engsoft.ControleUI.getInstance().chamaProcuraCarta();
     }
     @FXML
-    public void historico(){
-        engsoft.ControleUI.getInstance().chamaHistorico();
+    public void historicovendas(){
+        engsoft.ControleUI.getInstance().chamaHistoricoVendas();
+    }
+    @FXML
+    public void historicocompras(){
+        engsoft.ControleUI.getInstance().chamaHistoricoCompras();
     }
     /**
      * Initializes the controller class.

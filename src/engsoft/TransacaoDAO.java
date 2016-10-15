@@ -144,4 +144,43 @@ public class TransacaoDAO {
         }
         return "Erro ao realizar transação!";
     }
+    public static ObservableList<Transacao> retornaCompras(){
+        Connection conn= engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        ObservableList<Transacao> Compras=FXCollections.observableArrayList();
+        try{
+            Statement s=conn.createStatement();
+            ResultSet rs=s.executeQuery("SELECT * FROM "+engsoft.ControleUI.getInstance().getConexaoUser().getUsuario()
+                    +"comprasview");
+            while(rs.next()){
+                engsoft.Transacao aux= new Transacao(rs.getString("USUARIO_NICK_VENDEDOR"),
+                rs.getString("USUARIO_NICK_COMPRADOR"),rs.getString("STATUS_TRANSACAO"),
+                rs.getInt("CARTA_ID_CARTA"),rs.getInt("QUANTIDADE_TRANSACAO"),rs.getFloat("VALORCARTA_TRANSACAO"));
+                Compras.add(aux);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return Compras;
+    }
+    
+    public static ObservableList<Transacao> retornaVendas(){
+        Connection conn= engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        ObservableList<Transacao> Vendas=FXCollections.observableArrayList();
+        try{
+            Statement s=conn.createStatement();
+            ResultSet rs=s.executeQuery("SELECT * FROM "+engsoft.ControleUI.getInstance().getConexaoUser().getUsuario()
+                    +"vendasview");
+            while(rs.next()){
+                engsoft.Transacao aux= new Transacao(rs.getString("USUARIO_NICK_VENDEDOR"),
+                rs.getString("USUARIO_NICK_COMPRADOR"),rs.getString("STATUS_TRANSACAO"),
+                rs.getInt("CARTA_ID_CARTA"),rs.getInt("QUANTIDADE_TRANSACAO"),rs.getFloat("VALORCARTA_TRANSACAO"));
+                Vendas.add(aux);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return Vendas;       
+    }
 }

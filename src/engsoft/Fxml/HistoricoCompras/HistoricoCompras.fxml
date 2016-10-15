@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.HistoricoCompras.HistoricoComprasController">
+   <children>
+      <TableView fx:id="Tabela" layoutX="29.0" layoutY="52.0" prefHeight="200.0" prefWidth="543.0">
+        <columns>
+          <TableColumn fx:id="Vendedor" prefWidth="95.0" text="Vendedor" />
+          <TableColumn fx:id="Comprador" prefWidth="108.0" text="Comprador" />
+            <TableColumn fx:id="Status" text="Status" />
+            <TableColumn fx:id="Carta" prefWidth="61.0" text="Carta" />
+            <TableColumn fx:id="Quantidade" prefWidth="107.0" text="Quantidade" />
+            <TableColumn fx:id="Valor" prefWidth="90.0" text="Valor" />
+        </columns>
+      </TableView>
+      <Button layoutX="462.0" layoutY="319.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="102.0" text="Voltar" />
+      <Button layoutX="351.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Selecionar" />
+   </children>
+</AnchorPane>

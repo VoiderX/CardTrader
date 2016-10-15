@@ -235,9 +235,18 @@ public final class ControleUI{
         stagein="Procura";
         mainStage.setScene(ProcuraCartasScene); 
     }
-    public void chamaHistorico(){
+    public void chamaHistoricoCompras(){
         try{
-             HistoricoFXML=FXMLLoader.load(getClass().getResource("Fxml/Historico/Historico.fxml"));
+             HistoricoFXML=FXMLLoader.load(getClass().getResource("Fxml/HistoricoCompras/HistoricoCompras.fxml"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        HistoricoScene=new Scene(HistoricoFXML);
+        mainStage.setScene(HistoricoScene);        
+    }
+     public void chamaHistoricoVendas(){
+        try{
+            HistoricoFXML=FXMLLoader.load(getClass().getResource("Fxml/HistoricoVendas/HistoricoVendas.fxml"));
         }catch(Exception e){
             e.printStackTrace();
         }
