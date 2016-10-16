@@ -196,4 +196,17 @@ public class TransacaoDAO {
         }
         return "Erro ao alterar";
     }
+    public static String marcarRecebido(String Vendedor, String Comprador,int IdCarta,float Valor){
+                Connection conn=engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+        try{
+            Statement s= conn.createStatement();
+            s.executeUpdate("UPDATE TRANSACAO SET STATUS_TRANSACAO='RECEBIDO' WHERE USUARIO_NICK_VENDEDOR='"+Vendedor+"'"
+            +" AND USUARIO_NICK_COMPRADOR='"+Comprador+"' AND CARTA_ID_CARTA="+IdCarta+" AND VALORCARTA_TRANSACAO="+Valor);
+            return "Alteração Efetuada com Sucesso!";
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return "Erro ao alterar";
+    }
 }

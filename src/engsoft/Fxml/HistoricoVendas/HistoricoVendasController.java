@@ -39,7 +39,7 @@ public class HistoricoVendasController implements Initializable {
         engsoft.ControleUI.getInstance().mostraMenu();
     }
     @FXML
-    public void Selecionar(){
+    public void selecionar(){
         engsoft.Transacao aux = Tabela.getSelectionModel().getSelectedItem();
         engsoft.ControleUI.getInstance().setTraBuf(aux);
         engsoft.ControleUI.getInstance().chamaComprarCarta();

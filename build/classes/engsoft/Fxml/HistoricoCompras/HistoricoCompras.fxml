@@ -17,6 +17,6 @@
         </columns>
       </TableView>
       <Button layoutX="462.0" layoutY="319.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="102.0" text="Voltar" />
-      <Button layoutX="351.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Selecionar" />
+      <Button layoutX="351.0" layoutY="319.0" mnemonicParsing="false" onAction="#selecionar" prefHeight="25.0" prefWidth="102.0" text="Selecionar" />
    </children>
 </AnchorPane>

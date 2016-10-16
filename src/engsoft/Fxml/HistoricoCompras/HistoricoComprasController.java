@@ -37,6 +37,12 @@ public class HistoricoComprasController implements Initializable {
     public void retornaMenu(){
         engsoft.ControleUI.getInstance().mostraMenu();
     }
+    @FXML
+    public void selecionar(){
+        engsoft.Transacao aux = Tabela.getSelectionModel().getSelectedItem();
+        engsoft.ControleUI.getInstance().setTraBuf(aux);
+        engsoft.ControleUI.getInstance().chamaComprarCarta();
+    }
     /**
      * Initializes the controller class.
      */

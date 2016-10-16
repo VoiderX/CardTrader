@@ -88,44 +88,73 @@ public class ComprarCartaController implements Initializable {
     }
     @FXML
     public void marcarRecebido(){
-        
+           Mensagem.setText(engsoft.TransacaoDAO.marcarRecebido(
+                engsoft.ControleUI.getInstance().getTraBuf().getVendedor(),
+                engsoft.ControleUI.getInstance().getTraBuf().getComprador(),
+                engsoft.ControleUI.getInstance().getTraBuf().getIdCarta(),
+                engsoft.ControleUI.getInstance().getTraBuf().getValor()));
+       if(Mensagem.getText().equals("Alteração Efetuada com Sucesso!")){
+           Estado.setText("Recebido");
+       }
+       engsoft.ControleUI.getInstance().chamaHistoricoCompras();
+       engsoft.ControleUI.getInstance().arrastarSecondStage();
     }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {        
-        if(engsoft.ControleUI.getInstance().verificaMainStage().equals("Procura")){
-        Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
-        TextTotal.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getQuantCatalogo()));
-        TextVendedor.setText(engsoft.ControleUI.getInstance().getCatalogoBuf().getUsuario());
-        TextValor.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getValor()));
-        TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
-            Pago.setDisable(true);
-            Recebido.setDisable(true);
-            EstadoMsg.setDisable(true);
-            Valor.setEditable(false);
-            Pago.setVisible(false);
-            Recebido.setVisible(false);
-            EstadoMsg.setVisible(false);
-            Estado.setVisible((false));
-        }
-        else if(engsoft.ControleUI.getInstance().verificaMainStage().equals("Historico Vendas")){
-            Comprar.setDisable(true);
-            Comprar.setVisible(false);
-            Calcular.setDisable(true);
-            Calcular.setVisible(false);
-            Recebido.setDisable(true);
-            Recebido.setVisible(false);
-            ValorLabel.setVisible(false);
-            TotalLabel.setVisible(false);
-            
-            Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
-            TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
-            Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
-            Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
-            TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
-            Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
+        switch (engsoft.ControleUI.getInstance().verificaMainStage()) {
+            case "Procura":
+                Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
+                TextTotal.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getQuantCatalogo()));
+                TextVendedor.setText(engsoft.ControleUI.getInstance().getCatalogoBuf().getUsuario());
+                TextValor.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getValor()));
+                TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
+                Pago.setDisable(true);
+                Recebido.setDisable(true);
+                EstadoMsg.setDisable(true);
+                Valor.setEditable(false);
+                Pago.setVisible(false);
+                Recebido.setVisible(false);
+                EstadoMsg.setVisible(false);
+                Estado.setVisible((false));
+                break;
+            case "Historico Vendas":
+                Comprar.setDisable(true);
+                Comprar.setVisible(false);
+                Calcular.setDisable(true);
+                Calcular.setVisible(false);
+                Recebido.setDisable(true);
+                Recebido.setVisible(false);
+                ValorLabel.setVisible(false);
+                TotalLabel.setVisible(false);
+                Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
+                TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
+                Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
+                Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
+                TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
+                Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
+                break;
+            case "Historico Compras":
+                ValorLabel.setVisible(false);
+                TotalLabel.setVisible(false);
+                Comprar.setVisible(false);
+                Pago.setVisible(false);
+                Comprar.setDisable(true);
+                Pago.setDisable(true);
+                Calcular.setVisible(false);
+                Calcular.setDisable(true);
+                ;
+                Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
+                TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
+                Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
+                Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
+                TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta())); 
+                Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
+                break;
+            default:
+                break;
         }
     }    
     

@@ -83,13 +83,13 @@
       </ImageView>
       <Button layoutX="28.0" layoutY="511.0" mnemonicParsing="false" onAction="#listaUsuarios" prefHeight="25.0" prefWidth="97.0" text="Listar Usuários" />
       <Button layoutX="154.0" layoutY="511.0" mnemonicParsing="false" onAction="#listaCartas" prefHeight="25.0" prefWidth="97.0" text="Listar Cartas" />
-      <TextArea fx:id="Text1" editable="false" layoutX="40.0" layoutY="222.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
-      <TextArea fx:id="Text2" editable="false" layoutX="183.0" layoutY="222.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
-      <TextArea fx:id="Text3" editable="false" layoutX="317.0" layoutY="222.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
-      <TextArea fx:id="Text4" editable="false" layoutX="449.0" layoutY="222.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
-      <TextArea fx:id="Text5" editable="false" layoutX="34.0" layoutY="432.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
-      <TextArea fx:id="Text6" editable="false" layoutX="183.0" layoutY="432.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
-      <TextArea fx:id="Text7" editable="false" layoutX="316.0" layoutY="432.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
-      <TextArea fx:id="Text8" editable="false" layoutX="455.0" layoutY="432.0" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text1" editable="false" layoutX="40.0" layoutY="222.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text2" editable="false" layoutX="183.0" layoutY="222.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text3" editable="false" layoutX="317.0" layoutY="222.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text4" editable="false" layoutX="449.0" layoutY="222.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text5" editable="false" layoutX="34.0" layoutY="432.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text6" editable="false" layoutX="183.0" layoutY="432.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text7" editable="false" layoutX="316.0" layoutY="432.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
+      <TextArea fx:id="Text8" editable="false" layoutX="455.0" layoutY="432.0" mouseTransparent="true" prefHeight="67.0" prefWidth="85.0" text="Carta&#10;Usuario&#10;Valor" />
    </children>
 </AnchorPane>
