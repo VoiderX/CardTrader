@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -20,7 +23,8 @@ import javafx.scene.image.ImageView;
  * @author Gabriel
  */
 public class ProcurarCartasController implements Initializable {
-    
+    @FXML
+    Text mensagem;
     @FXML
     ImageView Image1;
     @FXML
@@ -57,8 +61,34 @@ public class ProcurarCartasController implements Initializable {
     TextField CartaID;
     @FXML
     TextField Usuario;
+    
+    @FXML
+    Pane pane0;
+    @FXML
+    Pane pane1;
+    @FXML
+    Pane pane2;
+    @FXML
+    Pane pane3;
+    @FXML
+    Pane pane4;
+    @FXML
+    Pane pane5;
+    @FXML
+    Pane pane6;
+    @FXML
+    Pane pane7;
+    @FXML
+    Button previous;
+    @FXML
+    Button next;
+    
     ArrayList<engsoft.Catalogo> Catalogos;
     ArrayList<Integer> Id= new ArrayList<>();
+    ArrayList<ImageView> image = new ArrayList<>();
+    ArrayList<TextArea> text = new ArrayList<>();
+    ArrayList<Pane> pane = new ArrayList<>();
+    int ctrl;
     @FXML
     public void clickImage1(){
         engsoft.ControleUI.getInstance().setCatalogoBuf(Catalogos.get(Id.get(0)));
@@ -112,34 +142,44 @@ public class ProcurarCartasController implements Initializable {
      public void listaUsuarios(){
          engsoft.ControleUI.getInstance().chamaListarUsuario();
      }
+     
      @FXML
-     public void pesquisaUser(){ //Setar para todos as cartas, só exemplos
-         Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText());
-        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
-        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
-                +"\n"+Catalogos.get(0).getUsuario()+"\n"+
-                Catalogos.get(0).getValor());
-        
-        Image2.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(1).getIdCarta()));        
-        Text2.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(1).getIdCarta())
-                +"\n"+Catalogos.get(1).getUsuario()+"\n"+
-                Catalogos.get(1).getValor());         
-     }
-     @FXML
-     public void pesquisaCarta(){ //Setar para todos as cartas, só exemplos
-        Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Integer.valueOf(CartaID.getText()));
-        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
-        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
-                +"\n"+Catalogos.get(0).getUsuario()+"\n"+
-                Catalogos.get(0).getValor());
-     }
-     @FXML
-     public void pesquisar(){ //Setar para todos as cartas, só exemplos
-        Catalogos=engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText(),(Integer.valueOf(CartaID.getText())));         
-        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(0).getIdCarta()));        
-        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(0).getIdCarta())
-                +"\n"+Catalogos.get(0).getUsuario()+"\n"+
-                Catalogos.get(0).getValor());
+     public void pesquisar(){
+        boolean carta,user;
+        user = Usuario.getText().length() != 0;
+        carta = CartaID.getText().length() != 0;
+        if(user && carta){
+            try{
+                if(Integer.valueOf(CartaID.getText())>0){
+                    Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText(),Integer.valueOf(CartaID.getText()));
+                    if(Catalogos.isEmpty()){
+                        mensagem.setText("Nenhuma carta encontrada deste usuário.");
+                    }
+                }else{
+                    mensagem.setText("Digite um ID maior que 0!");
+                }
+            }catch(Exception e){
+                mensagem.setText("Digite um número válido!");
+            }
+        }else if(user && !carta){
+            Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText());
+            if(Catalogos.isEmpty()){
+                mensagem.setText("Nenhuma carta deste usuaário.");
+            }
+        }else if(!user && carta){
+            if(Integer.valueOf(CartaID.getText())>0){
+                    Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Integer.valueOf(CartaID.getText()));
+                    if(Catalogos.isEmpty()){
+                        mensagem.setText("Nenhuma carta encontrada!");
+                    }
+            }else{
+                mensagem.setText("Digite um ID maior que 0!");
+            }
+        }else{
+            mensagem.setText("Campos vazios");
+        }
+        ctrl=0;
+        showCards();
      }
     /**
      * Initializes the controller class.
@@ -149,54 +189,77 @@ public class ProcurarCartasController implements Initializable {
         CartaID.setText(String.valueOf(engsoft.ControleUI.getInstance().getIdCartaBuf()));
         Usuario.setText(engsoft.ControleUI.getInstance().getUserBuf());
         Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
-        Id.add(0);
-        Id.add(1);
-        Id.add(2);
-        Id.add(3);
-        Id.add(4);
-        Id.add(5);
-        Id.add(6);
-        Id.add(7);
+        image.add(Image1);
+        image.add(Image2);
+        image.add(Image3);
+        image.add(Image4);
+        image.add(Image5);
+        image.add(Image6);
+        image.add(Image7);
+        image.add(Image8);
+        text.add(Text1);
+        text.add(Text2);
+        text.add(Text3);
+        text.add(Text4);
+        text.add(Text5);
+        text.add(Text6);
+        text.add(Text7);
+        text.add(Text8);
+        pane.add(pane0);
+        pane.add(pane1);
+        pane.add(pane2);
+        pane.add(pane3);
+        pane.add(pane4);
+        pane.add(pane5);
+        pane.add(pane6);
+        pane.add(pane7);
         
-        Image1.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(0)).getIdCarta()));        
-        Text1.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(0)).getIdCarta())
-                +"\n"+Catalogos.get(Id.get(0)).getUsuario()+"\n"+
-                Catalogos.get(Id.get(0)).getValor());
-        
-        Image2.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(1)).getIdCarta()));        
-        Text2.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(1)).getIdCarta())
-                +"\n"+Catalogos.get(Id.get(1)).getUsuario()+"\n"+
-                Catalogos.get(Id.get(1)).getValor());
-                
-        Image3.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(2)).getIdCarta()));        
-        Text3.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(2)).getIdCarta())
-                +"\n"+Catalogos.get(Id.get(2)).getUsuario()+"\n"+
-                Catalogos.get(Id.get(2)).getValor());
-                
-        Image4.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(3)).getIdCarta()));        
-        Text4.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(3)).getIdCarta())
-                +"\n"+Catalogos.get(Id.get(3)).getUsuario()+"\n"+
-                Catalogos.get(Id.get(3)).getValor());        
-                
-        Image5.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(4)).getIdCarta()));        
-        Text5.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(4)).getIdCarta())
-                +"\n"+Catalogos.get(Id.get(4)).getUsuario()+"\n"+
-                Catalogos.get(Id.get(4)).getValor());
-                
-        Image6.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(5).getIdCarta()));        
-        Text6.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(5).getIdCarta())
-                +"\n"+Catalogos.get(5).getUsuario()+"\n"+
-                Catalogos.get(5).getValor());
-                
-        Image7.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(6)).getIdCarta()));        
-        Text7.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(6)).getIdCarta())
-                +"\n"+Catalogos.get(6).getUsuario()+"\n"+
-                Catalogos.get(6).getValor());
-                
-        Image8.setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(Id.get(7)).getIdCarta()));        
-        Text8.setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(Id.get(7)).getIdCarta())
-                +"\n"+Catalogos.get(Id.get(7)).getUsuario()+"\n"+
-                Catalogos.get(Id.get(7)).getValor());
-    }   
+        if(!Catalogos.isEmpty()){
+            showCards();
+        }else{
+            mensagem.setText("Não há cartas a venda.");
+        }
+        Usuario.setText("");
+        CartaID.setText("");
+    }
     
+    @FXML
+    public void next(){ //puxa as proximas cartas 
+        showCards();
+    }
+    
+    @FXML
+    public void previous(){
+        ctrl-=16;
+        showCards();
+    }
+    
+    public void showCards(){
+        int j=0,l=ctrl;
+        Id.clear();
+        for(int i=l;i<l+8;i++){
+            if(i<Catalogos.size()){
+                pane.get(j).setVisible(true);
+                image.get(j).setImage(engsoft.CartaDAO.puxarCarta(Catalogos.get(i).getIdCarta()));        
+                text.get(j).setText(engsoft.CartaDAO.retornaNomeCard(Catalogos.get(i).getIdCarta())
+                        +"\n"+Catalogos.get(i).getUsuario()+"\n"+
+                        Catalogos.get(i).getValor());
+                Id.add(i);
+            }else{
+                pane.get(j).setVisible(false);
+            }
+            j++;
+            ctrl++;
+        }
+        if(ctrl<Catalogos.size()){
+            next.setDisable(false);
+        }else{
+            next.setDisable(true);
+        }
+        if(ctrl<=8){
+            previous.setDisable(true);
+        }else{
+            previous.setDisable(false);
+        }
+    }
 }
