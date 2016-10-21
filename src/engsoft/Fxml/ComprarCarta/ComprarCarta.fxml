@@ -6,32 +6,54 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ComprarCarta.ComprarCartaController">
+<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="650.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ComprarCarta.ComprarCartaController">
    <children>
-      <ImageView fx:id="Imagem" fitHeight="347.0" fitWidth="239.0" layoutX="31.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Imagem" fitHeight="345.0" fitWidth="250.0" layoutX="31.0" layoutY="31.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../PokemonCard/zapdos-base-set-bs-16.jpg" />
+            <Image url="@../../alakazam-base-set-bs-1.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="438.0" layoutY="347.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="146.0" text="Cancelar" />
-      <TextField fx:id="Quantidade" layoutX="332.0" layoutY="143.0" onKeyReleased="#calcular" prefHeight="25.0" prefWidth="70.0" />
-      <Label layoutX="332.0" layoutY="113.0" prefHeight="17.0" prefWidth="70.0" text="Quantidade" />
-      <Label layoutX="441.0" layoutY="113.0" prefHeight="17.0" prefWidth="47.0" text="Valor:" />
-      <Label fx:id="TotalLabel" layoutX="332.0" layoutY="31.0" prefHeight="17.0" prefWidth="97.0" text="Total Disponível:" />
-      <Label fx:id="ValorLabel" layoutX="332.0" layoutY="63.0" prefHeight="17.0" prefWidth="97.0" text="Valor:" />
-      <Label layoutX="332.0" layoutY="87.0" prefHeight="17.0" prefWidth="70.0" text="Vendendor:" />
-      <Text fx:id="TextTotal" layoutX="427.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="97.00000137090683" />
-      <Text fx:id="TextValor" layoutX="380.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="61.000000298023224" />
-      <Text fx:id="TextVendedor" layoutX="415.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.13671875" />
-      <Button fx:id="Comprar" layoutX="438.0" layoutY="222.0" mnemonicParsing="false" onAction="#comprar" prefHeight="25.0" prefWidth="146.0" text="Comprar" />
-      <Button fx:id="Pago" layoutX="438.0" layoutY="266.0" mnemonicParsing="false" onAction="#marcarPago" prefHeight="25.0" prefWidth="146.0" text="Marcar como Pago" />
-      <Button fx:id="Recebido" layoutX="438.0" layoutY="305.0" mnemonicParsing="false" onAction="#marcarRecebido" prefHeight="25.0" prefWidth="146.0" text="Marcar como Recebido" />
-      <Text fx:id="TextNomeCarta" layoutX="31.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="238.9999933540821" />
-      <Text fx:id="Mensagem" layoutX="270.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="160.13671100139618" />
-      <Label fx:id="EstadoMsg" layoutX="276.0" layoutY="187.0" prefHeight="17.0" prefWidth="113.0" text="Estado da transação:" />
-      <TextField fx:id="Estado" editable="false" layoutX="390.0" layoutY="183.0" prefHeight="25.0" prefWidth="193.0" text="Sample" />
-      <Text fx:id="Valor" layoutX="440.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="70.00000029802322" />
+      <Button layoutX="441.0" layoutY="366.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="39.0" prefWidth="193.0" styleClass="rich-blue" text="Cancelar" />
+      <TextField fx:id="Quantidade" layoutX="440.0" layoutY="150.0" onKeyReleased="#calcular" prefHeight="25.0" prefWidth="70.0" />
+      <Pane layoutX="297.0" layoutY="109.0" />
+      <Pane layoutX="297.0" layoutY="31.0" prefHeight="108.0" prefWidth="338.0" styleClass="circle-back">
+         <children>
+            <Label fx:id="TotalLabel" layoutX="13.0" layoutY="20.0" prefHeight="17.0" prefWidth="97.0" text="Total Disponível:" textFill="WHITE" />
+            <Label fx:id="ValorLabel" layoutX="13.0" layoutY="44.0" prefHeight="17.0" prefWidth="97.0" text="Valor:" textFill="WHITE" />
+            <Label layoutX="12.0" layoutY="65.0" prefHeight="17.0" prefWidth="70.0" text="Vendendor:" textFill="WHITE" />
+            <Text fx:id="TextTotal" fill="WHITE" layoutX="226.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="97.00000137090683" />
+            <Text fx:id="TextValor" fill="WHITE" layoutX="262.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="61.000000298023224" />
+            <Text fx:id="TextVendedor" fill="WHITE" layoutX="152.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="170.13671875" />
+         </children>
+      </Pane>
+      <Button fx:id="Comprar" layoutX="441.0" layoutY="222.0" mnemonicParsing="false" onAction="#comprar" prefHeight="39.0" prefWidth="193.0" styleClass="rich-blue" text="Comprar" />
+      <Button fx:id="Pago" layoutX="441.0" layoutY="269.0" mnemonicParsing="false" onAction="#marcarPago" prefHeight="39.0" prefWidth="193.0" styleClass="rich-blue" text="Marcar como Pago" />
+      <Button fx:id="Recebido" layoutX="441.0" layoutY="317.0" mnemonicParsing="false" onAction="#marcarRecebido" prefHeight="39.0" prefWidth="193.0" styleClass="rich-blue" text="Marcar como Recebido" />
+      <Pane layoutX="37.0" layoutY="385.0" prefHeight="25.0" prefWidth="239.0" styleClass="circle-back">
+         <children>
+            <Text fx:id="TextNomeCarta" fill="WHITE" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="238.9999933540821" />
+         </children>
+      </Pane>
+      <Text fx:id="Mensagem" fill="WHITE" layoutX="293.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="140.0000013411045" />
+      <Pane fx:id="EstadoMsg" layoutX="293.0" layoutY="187.0" prefHeight="25.0" prefWidth="140.0" styleClass="circle-back">
+         <children>
+            <Label layoutX="17.0" layoutY="-1.0" prefHeight="25.0" prefWidth="114.0" text="Estado da transação:" textAlignment="CENTER" textFill="WHITE" />
+         </children>
+      </Pane>
+      <TextField fx:id="Estado" editable="false" layoutX="441.0" layoutY="187.0" prefHeight="25.0" prefWidth="193.0" text="Sample" />
+      <Pane layoutX="293.0" layoutY="150.0" prefHeight="25.0" prefWidth="140.0" styleClass="circle-back">
+         <children>
+            <Label layoutX="35.0" prefHeight="25.0" prefWidth="70.0" text="Quantidade" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" />
+         </children>
+      </Pane>
+      <Pane layoutX="523.0" layoutY="150.0" prefHeight="25.0" prefWidth="47.0" styleClass="circle-back">
+         <children>
+            <Label layoutX="9.0" layoutY="4.0" prefHeight="17.0" prefWidth="47.0" text="Valor:" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Text fx:id="Valor" fill="WHITE" layoutX="575.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="60.99999248981476" />
    </children>
 </AnchorPane>

@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 /**
@@ -42,13 +43,11 @@ public class ComprarCartaController implements Initializable {
     @FXML
     Button Recebido;
     @FXML
-    Button Calcular;
-    @FXML
     Button Comprar;
     @FXML
     TextField Estado;
     @FXML
-    Label EstadoMsg;
+    Pane EstadoMsg;
     @FXML
     Label ValorLabel;
     @FXML
@@ -139,8 +138,6 @@ public class ComprarCartaController implements Initializable {
             case "Historico Vendas":
                 Comprar.setDisable(true);
                 Comprar.setVisible(false);
-                Calcular.setDisable(true);
-                Calcular.setVisible(false);
                 Recebido.setDisable(true);
                 Recebido.setVisible(false);
                 ValorLabel.setVisible(false);
@@ -151,6 +148,9 @@ public class ComprarCartaController implements Initializable {
                 Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
                 TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
                 Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
+                if(Estado.getText().equals("RECEBIDO")){
+                    Pago.setDisable(true);
+                }
                 break;
             case "Historico Compras":
                 ValorLabel.setVisible(false);
@@ -159,15 +159,15 @@ public class ComprarCartaController implements Initializable {
                 Pago.setVisible(false);
                 Comprar.setDisable(true);
                 Pago.setDisable(true);
-                Calcular.setVisible(false);
-                Calcular.setDisable(true);
-                ;
                 Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
                 TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
                 Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
                 Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
                 TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta())); 
                 Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
+                if(Estado.getText().equals("RECEBIDO")){
+                    Recebido.setDisable(true);
+                }
                 break;
             default:
                 break;

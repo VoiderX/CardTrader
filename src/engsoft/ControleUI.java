@@ -284,6 +284,7 @@ public final class ControleUI{
             }
             ComprarCartaScene=new Scene(ComprarCartaFXML);
             secondStage.setScene(ComprarCartaScene);
+            secondStage.setTitle("Comprar carta");
             secondStage.show();       
     }
     public void arrastarSecondStage(){

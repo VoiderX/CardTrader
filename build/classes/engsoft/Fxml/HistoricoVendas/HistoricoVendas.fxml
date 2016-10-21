@@ -5,18 +5,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.HistoricoVendas.HistoricoVendasController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.HistoricoVendas.HistoricoVendasController">
    <children>
-      <TableView fx:id="Tabela" layoutX="10.0" layoutY="74.0" prefHeight="200.0" prefWidth="580.0">
+      <TableView fx:id="Tabela" layoutX="25.0" layoutY="59.0" prefHeight="450.0" prefWidth="750.0">
         <columns>
-          <TableColumn fx:id="Comprador" prefWidth="114.0" text="Comprador" />
-            <TableColumn fx:id="Status" prefWidth="95.0" text="Status" />
-            <TableColumn fx:id="Carta" prefWidth="89.0" text="Carta" />
-            <TableColumn fx:id="Quantidade" prefWidth="75.0" text="Quantidade" />
-            <TableColumn fx:id="Valor" prefWidth="81.0" text="Valor" />
+          <TableColumn fx:id="Comprador" editable="false" prefWidth="221.0" resizable="false" text="Comprador" />
+            <TableColumn fx:id="Status" editable="false" prefWidth="237.0" resizable="false" text="Status" />
+            <TableColumn fx:id="Carta" editable="false" prefWidth="149.0" resizable="false" text="Carta" />
+            <TableColumn fx:id="Quantidade" editable="false" prefWidth="85.0" resizable="false" text="Quantidade" />
+            <TableColumn fx:id="Valor" editable="false" prefWidth="54.0" resizable="false" text="Valor" />
         </columns>
       </TableView>
-      <Button layoutX="370.0" layoutY="332.0" mnemonicParsing="false" onAction="#selecionar" prefHeight="25.0" prefWidth="98.0" text="Selecionar" />
-      <Button layoutX="477.0" layoutY="332.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="25.0" prefWidth="98.0" text="Voltar" />
+      <Button layoutX="470.0" layoutY="529.0" mnemonicParsing="false" onAction="#selecionar" prefHeight="39.0" prefWidth="140.0" styleClass="rich-blue" text="Selecionar" />
+      <Button layoutX="635.0" layoutY="529.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="39.0" prefWidth="140.0" styleClass="rich-blue" text="Voltar" />
    </children>
 </AnchorPane>

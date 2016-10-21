@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ListaUsuarios.ListaUsuariosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.ListaUsuarios.ListaUsuariosController">
    <children>
-      <TableView fx:id="Tabela" layoutX="39.0" layoutY="24.0" prefHeight="280.0" prefWidth="523.0">
+      <TableView fx:id="Tabela" layoutX="40.0" layoutY="20.0" prefHeight="280.0" prefWidth="520.0">
         <columns>
-          <TableColumn fx:id="ColunaUsuario" prefWidth="232.0" text="Usuário" />
+          <TableColumn fx:id="ColunaUsuario" prefWidth="520.0" resizable="false" text="Usuário" />
         </columns>
       </TableView>
-      <Button layoutX="465.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="97.0" text="Cancelar" />
-      <Button layoutX="333.0" layoutY="336.0" mnemonicParsing="false" onAction="#selecionar" prefHeight="25.0" prefWidth="89.0" text="Selecionar" />
+      <Button layoutX="433.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="39.0" prefWidth="127.0" styleClass="rich-blue" text="Cancelar" />
+      <Button layoutX="280.0" layoutY="336.0" mnemonicParsing="false" onAction="#selecionar" prefHeight="39.0" prefWidth="127.0" styleClass="rich-blue" text="Selecionar" />
       <Text fx:id="Mensagem" layoutX="45.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.13671875" />
    </children>
 </AnchorPane>
