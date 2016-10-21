@@ -50,7 +50,7 @@ public final class ControleUI{
     }
     
     
-    String UserBuf;
+    String UserBuf="";
 
     public String getUserBuf() {
         return UserBuf;

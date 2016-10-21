@@ -44,12 +44,21 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
         conexao=createCon();
         try{
             Statement a=conexao.createStatement();
+            Statement b=conexao.createStatement();
            ResultSet ver= a.executeQuery("SELECT * FROM USUARIO WHERE NICK_USUARIO='"+NickField+"'");
+           ResultSet ver2=b.executeQuery("SELECT * FROM USUARIO WHERE EMAIL_USUARIO='"+EmailField.toUpperCase()+"'");
            while(ver.next()){
-              if(ver.getString("NICK_USUARIO").equals(NickField));
-              return  "Nome de usuário ou email já  cadastrado!";
+              if(ver.getString("NICK_USUARIO").equals(NickField)){
+                return  "Nome de usuário já  cadastrado!";
+              }
+           }
+           while(ver2.next()){
+              if(ver2.getString("EMAIL_USUARIO").equals((EmailField).toUpperCase())){
+                return  "Email já  cadastrado!";
+              }
            }
         }catch(Exception e){
+            e.printStackTrace();
            return "Um erro ocorreu, tente novamente!";
         }
          try{
@@ -85,6 +94,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 s.close();//Encerra o statement(declaração);         
 
             }catch(Exception e){//Caso haja uma falha de conexão
+                e.printStackTrace();
                 int j=0;
                 do{
                 try{
@@ -102,7 +112,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 j++;
                 }
                 catch(Exception a){
-                    System.out.println(a);
+                    a.printStackTrace();
                     j++;
                     }
                 }while(j<20);

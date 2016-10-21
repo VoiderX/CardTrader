@@ -109,6 +109,24 @@ public class TransacaoDAO {
         }
         return ListaUsuarios;
     }
+    public static boolean verificaUsuarios(){
+         Connection con= engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
+         int cont=0;
+        try{
+         Statement s= con.createStatement();
+         ResultSet rs= s.executeQuery("SELECT USUARIO_CATALOGO FROM CATALOGO GROUP BY USUARIO_CATALOGO");
+         while(rs.next()){
+             cont++;
+         }
+         if(cont>0){
+             return true;
+         }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     public static String comprarCarta(String NickVendedor, String NickComprador,int CartaId,int Quantidade,float Valor){
         String Mensagem="";
         Connection conn=engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();

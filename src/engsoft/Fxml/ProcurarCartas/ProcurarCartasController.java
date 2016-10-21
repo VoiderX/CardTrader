@@ -147,7 +147,7 @@ public class ProcurarCartasController implements Initializable {
      public void pesquisar(){
         boolean carta,user;
         user = Usuario.getText().length() != 0;
-        carta = CartaID.getText().length() != 0;
+        carta = Integer.valueOf(CartaID.getText())!=0;
         if(user && carta){
             try{
                 if(Integer.valueOf(CartaID.getText())>0){
@@ -219,8 +219,6 @@ public class ProcurarCartasController implements Initializable {
         }else{
             mensagem.setText("Não há cartas a venda.");
         }
-        Usuario.setText("");
-        CartaID.setText("");
     }
     
     @FXML

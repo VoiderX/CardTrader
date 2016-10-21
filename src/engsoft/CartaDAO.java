@@ -130,4 +130,22 @@ public class CartaDAO {
        }
        return(list);
     }
+    public boolean verificaCarta(int idCarta){
+        Connection con=ConexaoDB.getCon();
+        int cont=0;
+        try{
+            Statement s=con.createStatement();
+            ResultSet rs=s.executeQuery("SELECT * FROM CARTA WHERE ID_CARTA="+idCarta);
+            while(rs.next()){
+                cont++;
+            }
+            if(cont>0){
+                return true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
