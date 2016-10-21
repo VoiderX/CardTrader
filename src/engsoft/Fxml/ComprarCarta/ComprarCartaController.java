@@ -34,7 +34,7 @@ public class ComprarCartaController implements Initializable {
     @FXML
     TextField Quantidade;
     @FXML
-    TextField Valor;
+    Text Valor;
     @FXML
     Text Mensagem;
     @FXML
@@ -59,19 +59,36 @@ public class ComprarCartaController implements Initializable {
     }
     @FXML
     public void comprar(){
-      Mensagem.setText(engsoft.TransacaoDAO.comprarCarta(TextVendedor.getText(), engsoft.ControleUI.getInstance().getConexaoUser().getUsuario()
-               , engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()
-               , Integer.valueOf(Quantidade.getText()),
-               Float.valueOf(TextValor.getText())*Integer.valueOf(Quantidade.getText())));
-      if(Mensagem.getText().equals("Transação efetuada com sucesso!")){
-      TextTotal.setText(String.valueOf(Integer.valueOf(TextTotal.getText())-Integer.valueOf(Quantidade.getText())));
+      if(!"".equals(Valor.getText())){
+        Mensagem.setText(engsoft.TransacaoDAO.comprarCarta(TextVendedor.getText(), engsoft.ControleUI.getInstance().getConexaoUser().getUsuario()
+                 , engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()
+                 , Integer.valueOf(Quantidade.getText()),
+                 Float.valueOf(TextValor.getText())*Integer.valueOf(Quantidade.getText())));
+        if(Mensagem.getText().equals("Transação efetuada com sucesso!")){
+        TextTotal.setText(String.valueOf(Integer.valueOf(TextTotal.getText())-Integer.valueOf(Quantidade.getText())));
+        }
+        engsoft.ControleUI.getInstance().chamaProcuraCarta();
+        engsoft.ControleUI.getInstance().arrastarSecondStage();
+      }else{
+          Mensagem.setText("Nenhuma quantidade válida selecionada!");
       }
-      engsoft.ControleUI.getInstance().chamaProcuraCarta();
-      engsoft.ControleUI.getInstance().arrastarSecondStage();
     }
     @FXML
     public void calcular(){
-        Valor.setText(String.valueOf(Float.valueOf(TextValor.getText())*Integer.valueOf(Quantidade.getText())));
+        if(Quantidade.getText().length()!=0){
+            try{
+                int valor = Integer.valueOf(Quantidade.getText());
+                if(valor>0){
+                    Valor.setText(String.valueOf(Float.valueOf(TextValor.getText())*valor));
+                }else{
+                    Mensagem.setText("Valor menor que um!");
+                }
+            }catch(Exception e){
+                Mensagem.setText("Valor não válido");
+            }
+        }else{
+            Valor.setText("");
+        }
     }
     @FXML
     public void marcarPago(){
@@ -114,7 +131,6 @@ public class ComprarCartaController implements Initializable {
                 Pago.setDisable(true);
                 Recebido.setDisable(true);
                 EstadoMsg.setDisable(true);
-                Valor.setEditable(false);
                 Pago.setVisible(false);
                 Recebido.setVisible(false);
                 EstadoMsg.setVisible(false);
