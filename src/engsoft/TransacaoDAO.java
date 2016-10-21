@@ -109,12 +109,12 @@ public class TransacaoDAO {
         }
         return ListaUsuarios;
     }
-    public static boolean verificaUsuarios(){
+    public static boolean verificaUsuarios(String User){
          Connection con= engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
          int cont=0;
         try{
          Statement s= con.createStatement();
-         ResultSet rs= s.executeQuery("SELECT USUARIO_CATALOGO FROM CATALOGO GROUP BY USUARIO_CATALOGO");
+         ResultSet rs= s.executeQuery("SELECT USUARIO_CATALOGO FROM CATALOGO WHERE USUARIO_CATALOGO='"+User+"'");
          while(rs.next()){
              cont++;
          }
