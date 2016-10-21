@@ -130,7 +130,7 @@ public class CartaDAO {
        }
        return(list);
     }
-    public boolean verificaCarta(int idCarta){
+    public static boolean verificaCarta(int idCarta){
         Connection con=ConexaoDB.getCon();
         int cont=0;
         try{
