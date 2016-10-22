@@ -89,10 +89,21 @@ public class AlteraCadastroController implements Initializable {
     
     @FXML
     private void puxarInfo(){//Puxa as informações do usuário
-      conexao.puxarInfo(NickField, NomeField, DDDField, CodCddField, NumUsuarioField, EmailField, 
-              EndField, PaisField, EstadoField, CityField, Mensagem);
-              NomeField.setText(Utilidades.firstToUpper(NomeField.getText()));
-              EndField.setText(Utilidades.firstToUpper(EndField.getText()));
+        engsoft.Usuario user=conexao.puxarInfo();
+        NickField.setText(user.getNickField());
+        NickField.setDisable(true);
+        NomeField.setText(user.getNomeField());
+        EndField.setText(user.getEndField());
+        EmailField.setText(user.getEmailField());
+        PaisField.setValue(user.getPaisField());
+        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
+        EstadoField.setValue(user.getEstadoField());
+        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
+        CityField.setValue(user.getCityField());
+        Mensagem.setText(user.getMensagem());
+        NomeField.setText(Utilidades.firstToUpper(NomeField.getText()));
+        EndField.setText(Utilidades.firstToUpper(EndField.getText()));
+        engsoft.Utilidades.telSplit(user.getNumUsuarioField(), DDDField, CodCddField, NumUsuarioField);
     }
     
     @FXML

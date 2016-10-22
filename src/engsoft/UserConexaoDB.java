@@ -66,39 +66,32 @@ private String senha;
         }
     }
     
-    public void puxarInfo(TextField NickField,TextField NomeField,TextField DDDField,TextField
-            CodCddField,TextField NumUsuarioField,TextField EmailField,TextField EndField, 
-            ChoiceBox<String> PaisField,ChoiceBox<String> EstadoField,ChoiceBox<String> CityField,Text Mensagem){
+    public Usuario puxarInfo(){
+        Usuario user=new Usuario();
          try{             
              Statement s = conUser.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
              String sql = "SELECT * FROM "+usuario+"view";
              ResultSet rs = s.executeQuery(sql); //Result set recebe apenas os dados da view do usuário
              rs.first();//Coloca o result set na primeira posição
-             NickField.setText(rs.getString("NICK_USUARIO"));//Puxa os dados do banco e exibe para o usuário
-             NickField.setDisable(true);
-             NomeField.setText(rs.getString("NOME_USUARIO").toLowerCase());
-             String NumField;
-             NumField=rs.getString("NUM_USUARIO");             
-             Utilidades.telSplit(NumField, DDDField, CodCddField, NumUsuarioField);
-             EmailField.setText(rs.getString("EMAIL_USUARIO").toLowerCase());
-             EndField.setText(rs.getString("ENDERECO_USUARIO").toLowerCase());
-             Locations Loc = new Locations();
-             Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
-             PaisField.setValue(rs.getString("CIDADE_ESTADO_PAIS_NOME_PAIS"));
-             Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
-             EstadoField.setValue(rs.getString("CIDADE_ESTADO_NOME_ESTADO"));
-             Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
-             CityField.setValue(rs.getString("CIDADE_NOME_CIDADE"));
+             user.setNickField(rs.getString("NICK_USUARIO"));//Puxa os dados do banco e exibe para o usuário
+             user.setNomeField(rs.getString("NOME_USUARIO").toLowerCase());
+             user.setNumUsuarioField(rs.getString("NUM_USUARIO"));             
+             user.setEmailField(rs.getString("EMAIL_USUARIO").toLowerCase());
+             user.setEndField(rs.getString("ENDERECO_USUARIO").toLowerCase());
+             user.setPaisField(rs.getString("CIDADE_ESTADO_PAIS_NOME_PAIS"));
+             user.setEstadoField(rs.getString("CIDADE_ESTADO_NOME_ESTADO"));
+             user.setCityField(rs.getString("CIDADE_NOME_CIDADE"));
              rs.first();
              rs.close();//Fecha o result set
              s.close(); //Fecha o statement     
-             Mensagem.setText("Dados carregados com sucesso!");
+             user.setMensagem("Dados carregados com sucesso!");
              
      }
       catch(Exception e){
           System.out.println(e);
-          Mensagem.setText("Erro ao carregar dados!");
+          user.setMensagem("Erro ao carregar dados!");
       }
+         return user;
     }
     
     public String alterarCadastro(String NomeField,String NumField,String EmailField,
