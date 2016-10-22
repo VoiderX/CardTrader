@@ -135,6 +135,6 @@
       <Button layoutX="172.0" layoutY="547.0" mnemonicParsing="false" onAction="#listaCartas" prefHeight="39.0" prefWidth="149.0" styleClass="rich-blue" text="Listar Cartas" />
       <Button fx:id="next" layoutX="492.0" layoutY="547.0" mnemonicParsing="false" onAction="#next" prefHeight="39.0" prefWidth="149.0" styleClass="rich-blue" text="Próximo" />
       <Button fx:id="previous" layoutX="334.0" layoutY="547.0" mnemonicParsing="false" onAction="#previous" prefHeight="39.0" prefWidth="149.0" styleClass="rich-blue" text="Anterior" />
-      <Text fx:id="mensagem" layoutX="468.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="118.00000286102295" />
+      <Text fx:id="mensagem" fill="WHITE" layoutX="560.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="197.00000286102295" />
    </children>
 </AnchorPane>
