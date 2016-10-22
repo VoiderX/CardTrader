@@ -92,15 +92,16 @@ public class AlteraCadastroController implements Initializable {
        engsoft.Usuario user = new engsoft.Usuario();
        user = engsoft.ControleUI.getInstance().getConexaoUser().puxarInfo();
        NickField.setText(user.getNickField());
-       NomeField.setText(user.getNomeField());
+       NomeField.setText(engsoft.Utilidades.firstToUpper(user.getNomeField()));
        EmailField.setText(user.getEmailField());
-       EndField.setText(user.getEndField());
+       EndField.setText(engsoft.Utilidades.firstToUpper(user.getEndField()));
        PaisField.setValue(user.getPaisField());
        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
        EstadoField.setValue(user.getEstadoField());
        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
        CityField.setValue(user.getCityField());
        engsoft.Utilidades.telSplit(user.getNumUsuarioField(), DDDField, CodCddField, NumUsuarioField);
+       
     }
     
     @FXML
