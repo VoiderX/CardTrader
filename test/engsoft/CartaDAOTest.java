@@ -5,6 +5,7 @@
  */
 package engsoft;
 
+import java.util.ArrayList;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -76,6 +77,47 @@ public class CartaDAOTest {
         
     }
     
-    
+    //Testado com 10 cartas
+    @Test
+    public void retornaCartasTest1(){
+
+        ArrayList<Carta> list = new ArrayList<Carta>();
+        
+        list = CartaDAO.retornaCartas();
+            
+        for(int i=0;i<list.size();i++){
+            
+        if(i==0){
+            assertEquals("Mewtwo",list.get(i).getNome());
+        }
+        else if(i==1){
+             assertEquals("Magneton",list.get(i).getNome());
+        }
+        else if(i==2){
+             assertEquals("Machamp",list.get(i).getNome());
+        }
+        else if(i==3){
+             assertEquals("Hitmonchan",list.get(i).getNome());
+        }
+        else if(i==4){
+             assertEquals("Gyarados",list.get(i).getNome());
+        }
+        else if(i==5){
+             assertEquals("Clefairy",list.get(i).getNome());
+        }
+        else if(i==6){
+             assertEquals("Charizard",list.get(i).getNome());
+        }
+        else if(i==7){
+             assertEquals("Chansey",list.get(i).getNome());
+        }
+        else if(i==8){
+             assertEquals("Blastoise",list.get(i).getNome());
+        }
+        else if(i==9){
+             assertEquals("Alakazam",list.get(i).getNome());
+        }
+        }
+    }    
 
 }
