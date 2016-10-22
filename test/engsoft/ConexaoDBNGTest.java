@@ -46,7 +46,7 @@ public class ConexaoDBNGTest {
     /**
      * Test of realizaCadastro method, of class ConexaoDB.
      */
-    @Test
+    @Test(priority = 5)
     public void testxAltSenha() {
         System.out.println("altSenha");
         String NickField = "celularoi";
@@ -57,7 +57,7 @@ public class ConexaoDBNGTest {
         assertEquals(result, expResult);
     }
     
-    @Test
+    @Test(priority = 1)
     public void testRealizaCadastroCerto() {
         System.out.println("realizaCadastro");
         String NickField = "celularoi";
@@ -75,7 +75,7 @@ public class ConexaoDBNGTest {
         assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail
     }
-    @Test
+    @Test(priority = 2)
      public void testRealizaCadastroCerto2() {
         System.out.println("realizaCadastro");
         String NickField = "celularoi2";
@@ -94,7 +94,7 @@ public class ConexaoDBNGTest {
         // TODO review the generated test code and remove the default call to fail
     }
     
-        @Test
+        @Test(priority = 3)
     public void testRealizaCadastroRepetido() {
         System.out.println("realizaCadastro");
         String NickField = "celularoi";
@@ -107,14 +107,14 @@ public class ConexaoDBNGTest {
         String CityField = "Londrina";
         String PassField = "lucas12vinho";
         ConexaoDB instance = new ConexaoDB();
-        String expResult = "Nome de usuário ou email já  cadastrado!";
+        String expResult = "Nome de usuário já  cadastrado!";
         String result = instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
         assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail
     } 
     
-        @Test
-    public void testAltSenhanencotrado() {
+        @Test(priority = 4)
+    public void testAltSenhanencotrado(){
         System.out.println("altSenha");
         String NickField = "celulartelefone";
         String PassField = "lucasvinho";

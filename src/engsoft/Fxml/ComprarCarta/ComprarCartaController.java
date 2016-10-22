@@ -97,7 +97,8 @@ public class ComprarCartaController implements Initializable {
                 engsoft.ControleUI.getInstance().getTraBuf().getIdCarta(),
                 engsoft.ControleUI.getInstance().getTraBuf().getValor()));
        if(Mensagem.getText().equals("Alteração Efetuada com Sucesso!")){
-           Estado.setText("Pago");
+           Estado.setText("PAGO");
+           Pago.setDisable(true);
        }
        engsoft.ControleUI.getInstance().chamaHistoricoVendas();
        engsoft.ControleUI.getInstance().arrastarSecondStage();
@@ -110,7 +111,8 @@ public class ComprarCartaController implements Initializable {
                 engsoft.ControleUI.getInstance().getTraBuf().getIdCarta(),
                 engsoft.ControleUI.getInstance().getTraBuf().getValor()));
        if(Mensagem.getText().equals("Alteração Efetuada com Sucesso!")){
-           Estado.setText("Recebido");
+           Estado.setText("RECEBIDO");
+           Recebido.setDisable(true);
        }
        engsoft.ControleUI.getInstance().chamaHistoricoCompras();
        engsoft.ControleUI.getInstance().arrastarSecondStage();
@@ -148,7 +150,7 @@ public class ComprarCartaController implements Initializable {
                 Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
                 TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
                 Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
-                if(Estado.getText().equals("RECEBIDO")){
+                if(Estado.getText().equals("RECEBIDO") || Estado.getText().equals("PAGO")){
                     Pago.setDisable(true);
                 }
                 break;

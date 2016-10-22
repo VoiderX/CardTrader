@@ -117,7 +117,7 @@ private String senha;
                 s.close();      
             }catch(Exception e){//Banco pode lançar exceção chave duplicada ou email duplicado
                 //Outras possibilidades devem ser tratadas na interface 
-                System.out.println(e);
+                e.printStackTrace();
                 Mensagem=  "Nome de usuário ou email já utilizados!";
             }
           return Mensagem;
