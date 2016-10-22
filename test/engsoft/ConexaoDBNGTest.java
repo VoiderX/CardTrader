@@ -78,11 +78,11 @@ public class ConexaoDBNGTest {
     @Test
      public void testRealizaCadastroCerto2() {
         System.out.println("realizaCadastro");
-        String NickField = "celularoi2";
+        String NickField = "celularoi3";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
         String NumField = "19";
-        String EmailField = "patricia123@gmail.com";
+        String EmailField = "patricia1234@gmail.com";
         String PaisField = "Brasil";
         String EstadoField = "PR";
         String CityField = "Londrina";
@@ -134,4 +134,6 @@ public class ConexaoDBNGTest {
         String result = instance.altSenha(NickField, PassField);
         assertEquals(result, expResult);
     }
+    
+    
 }
