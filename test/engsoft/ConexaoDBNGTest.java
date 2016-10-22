@@ -124,5 +124,14 @@ public class ConexaoDBNGTest {
         assertEquals(result, expResult);
     }
    
-   
+           @Test
+    public void testCatalago1() {
+        System.out.println("altSenha");
+        String NickField = "celulartelefone";
+        String PassField = "lucasvinho";
+        ConexaoDB instance = new ConexaoDB();
+        String expResult = "Usuário não encontrado!";
+        String result = instance.altSenha(NickField, PassField);
+        assertEquals(result, expResult);
+    }
 }
