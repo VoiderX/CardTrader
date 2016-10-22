@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -34,14 +35,21 @@ public class HistoricoComprasController implements Initializable {
     @FXML
     TableColumn<engsoft.Transacao,Float>  Valor;
     @FXML
+    Text mensagem;
+    @FXML
     public void retornaMenu(){
         engsoft.ControleUI.getInstance().mostraMenu();
     }
     @FXML
     public void selecionar(){
         engsoft.Transacao aux = Tabela.getSelectionModel().getSelectedItem();
-        engsoft.ControleUI.getInstance().setTraBuf(aux);
-        engsoft.ControleUI.getInstance().chamaComprarCarta();
+        if(aux != null){
+            engsoft.ControleUI.getInstance().setTraBuf(aux);
+            engsoft.ControleUI.getInstance().chamaComprarCarta();
+            mensagem.setText("");
+        }else{
+            mensagem.setText("Nenhuma linha selecionada!");
+        }
     }
     /**
      * Initializes the controller class.
@@ -55,6 +63,7 @@ public class HistoricoComprasController implements Initializable {
         Quantidade.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));
         Valor.setCellValueFactory(new PropertyValueFactory<>("Valor"));
         Tabela.setItems(Compras);
+        mensagem.setText("");
     }    
     
 }

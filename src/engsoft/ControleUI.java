@@ -244,7 +244,7 @@ public final class ControleUI{
         }
         ProcuraCartasScene=new Scene(ProcuraCartasFXML);
         stagein="Procura";
-        mainStage.setScene(ProcuraCartasScene); 
+        mainStage.setScene(ProcuraCartasScene);
     }
     public void chamaHistoricoCompras(){
         try{

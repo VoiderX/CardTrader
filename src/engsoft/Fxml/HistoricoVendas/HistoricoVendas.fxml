@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="block" stylesheets="@../Stylesheets/Common.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="engsoft.Fxml.HistoricoVendas.HistoricoVendasController">
    <children>
@@ -18,5 +19,6 @@
       </TableView>
       <Button layoutX="470.0" layoutY="529.0" mnemonicParsing="false" onAction="#selecionar" prefHeight="39.0" prefWidth="140.0" styleClass="rich-blue" text="Selecionar" />
       <Button layoutX="635.0" layoutY="529.0" mnemonicParsing="false" onAction="#retornaMenu" prefHeight="39.0" prefWidth="140.0" styleClass="rich-blue" text="Voltar" />
+      <Text fx:id="mensagem" fill="WHITE" layoutX="175.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="196.537109375" />
    </children>
 </AnchorPane>
