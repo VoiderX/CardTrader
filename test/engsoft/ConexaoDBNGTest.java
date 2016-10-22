@@ -49,7 +49,7 @@ public class ConexaoDBNGTest {
     @Test(priority = 5)
     public void testxAltSenha() {
         System.out.println("altSenha");
-        String NickField = "celularoi";
+        String NickField = "fulano1";
         String PassField = "123456";
         ConexaoDB instance = new ConexaoDB();
         String expResult = "Alteração executada com sucesso!";
@@ -60,7 +60,7 @@ public class ConexaoDBNGTest {
     @Test(priority = 1)
     public void testRealizaCadastroCerto() {
         System.out.println("realizaCadastro");
-        String NickField = "celularoi";
+        String NickField = "fulano1";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
         String NumField = "19";
@@ -78,7 +78,7 @@ public class ConexaoDBNGTest {
     @Test(priority = 2)
      public void testRealizaCadastroCerto2() {
         System.out.println("realizaCadastro");
-        String NickField = "celularoi2";
+        String NickField = "fulano2";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
         String NumField = "19";
@@ -97,7 +97,7 @@ public class ConexaoDBNGTest {
         @Test(priority = 3)
     public void testRealizaCadastroRepetido() {
         System.out.println("realizaCadastro");
-        String NickField = "celularoi";
+        String NickField = "fulano1";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
         String NumField = "19";
@@ -124,14 +124,4 @@ public class ConexaoDBNGTest {
         assertEquals(result, expResult);
     }
    
-           @Test
-    public void testCatalago1() {
-        System.out.println("altSenha");
-        String NickField = "celulartelefone";
-        String PassField = "lucasvinho";
-        ConexaoDB instance = new ConexaoDB();
-        String expResult = "Usuário não encontrado!";
-        String result = instance.altSenha(NickField, PassField);
-        assertEquals(result, expResult);
-    }
 }

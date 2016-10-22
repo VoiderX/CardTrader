@@ -48,7 +48,7 @@ public class UserConexaoDBNGTest {
 
 
      
-    @Test
+    @Test(priority = 6)
     public void testAlterarCadastro() {
         System.out.println("alterarCadastro");
         String NomeField = "Lucas B Tsuchiya";
@@ -59,7 +59,7 @@ public class UserConexaoDBNGTest {
         String EstadoField = "PR";
         String CityField = "Londrina";
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("celularoi");
+        instance.setUsuario("fulano1");
         instance.setSenha("123456");
         String expResult = "Nome de usuário ou email já utilizados!";
         instance.createCon();
@@ -77,7 +77,7 @@ public class UserConexaoDBNGTest {
         String EstadoField = "PR";
         String CityField = "Londrina";
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("celularoi");
+        instance.setUsuario("fulano1");
         instance.setSenha("123456");
         String expResult = "Dados atualizados com sucesso!";
         instance.createCon();
@@ -92,7 +92,7 @@ public class UserConexaoDBNGTest {
         int quant = 0;
         float valor = 0.0F;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("celularoi");
+        instance.setUsuario("fulano1");
         instance.setSenha("123456");
         instance.createCon();
         String expResult = "Quantidade inválida!";
@@ -100,14 +100,14 @@ public class UserConexaoDBNGTest {
         assertEquals(result, expResult);
     }
 
-        @Test
+        @Test(priority = 7)
     public void testInsereCatalogo1() {
         System.out.println("insereCatalogo2");
         int IdCarta = 999;
         int quant = 9;
         float valor = 0.0F;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("celularoi");
+        instance.setUsuario("fulano1");
         instance.setSenha("123456");
         instance.createCon();
         String expResult = "Valor inválido";
@@ -122,7 +122,7 @@ public class UserConexaoDBNGTest {
         int quant = 17;
         float valor = 2.0F;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("celularoi");
+        instance.setUsuario("fulano1");
         instance.setSenha("123456");
         instance.createCon();
         String expResult = "Item inserido com sucesso!";
@@ -130,96 +130,98 @@ public class UserConexaoDBNGTest {
         assertEquals(result, expResult);
     }
     
-    @Test
+    @Test(priority = 7)
     public void testInsereCatalogo3() {
         System.out.println("insereCatalogo2");
         int IdCarta = 8888;
         int quant = 17;
         float valor = 2.0F;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucasteste");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
         instance.createCon();
         String expResult = "Um erro ocorreu!";
         String result = instance.insereCatalogo(IdCarta, quant, valor);
         assertEquals(result, expResult);
     }
     
-    @Test
+    @Test(priority = 6)
     public void testDeletaCatalogo() {
         System.out.println("deletaCatalogo");
         int IdCarta = 0;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucasteste");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano");
+        instance.setSenha("123456");
         instance.createCon();
         instance.deletaCatalogo(IdCarta);
     }
-    @Test
+    @Test(priority = 6)
     public void testDeletaCatalogo1() {
         System.out.println("deletaCatalogo");
         int IdCarta = 1;
         UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
+        instance.createCon();
         instance.deletaCatalogo(IdCarta);
     }
     
-    @Test
+    @Test(priority = 6)
     public void testAlteraCatalogo() {
         System.out.println("alteraCatalogo");
         int IdCarta = 2;
         float valor = 1.0F;
         int quantidade = 2;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucasteste");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
         instance.createCon();
         instance.alteraCatalogo(IdCarta, valor, quantidade);
     }
     
-        @Test
+        @Test(priority = 6)
     public void testAlteraCatalogo2() {
         System.out.println("alteraCatalogo");
         int IdCarta = 2;
         float valor = 1.0F;
         int quantidade = 2;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucastte");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano12");
+        instance.setSenha("123456");
         instance.createCon();
         instance.alteraCatalogo(IdCarta, valor, quantidade);
     }
     
-    @Test
+    @Test(priority = 6)
     public void testRetornaInfoCarta() {
         System.out.println("retornaInfoCarta");
-        int IdCarta = 0;
+        int IdCarta = 1;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucastte");
-        instance.setSenha("12345678");
-        ResultSet expResult = null;
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
+        instance.createCon();
         ResultSet result = instance.retornaInfoCarta(IdCarta);
-        assertEquals(result, expResult);
     }
     
-    @Test
+    @Test(priority = 6)
     public void testRetornaInfoCarta2() {
         System.out.println("retornaInfoCarta");
         int IdCarta = 2;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucasteste");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano12");
+        instance.setSenha("123456");
         instance.createCon();
         ResultSet expResult = null;
         ResultSet result = instance.retornaInfoCarta(IdCarta);
         assertEquals(result, expResult);
     }
     
-    @Test
+    @Test(priority = 6)
     public void testRetornaCatalogo() {
         System.out.println("retornaCatalogo");
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucasteste");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
         instance.createCon();
         instance.retornaCatalogo();
       
@@ -227,7 +229,7 @@ public class UserConexaoDBNGTest {
   
     }
     
-    @Test
+    @Test(priority = 6)
     public void testRetornaCatalogo1() {
         System.out.println("retornaCatalogo");
         UserConexaoDB instance = new UserConexaoDB();
@@ -241,12 +243,12 @@ public class UserConexaoDBNGTest {
 
     }
     
-    @Test
+    @Test(priority = 6)
     public void testPuxarInfo() {
         //Gabriel alterou o metódo puxarInfo para facilitar os testes
     }
     
-    @Test
+    @Test(priority = 6)
     public void testGetUsuario() {
         System.out.println("getUsuario");
         UserConexaoDB instance = new UserConexaoDB();
@@ -258,7 +260,7 @@ public class UserConexaoDBNGTest {
         assertEquals(result, expResult);
     }
     
-    @Test
+    @Test(priority = 6)
     public void testGetSenha() {
         System.out.println("getSenha");
         UserConexaoDB instance = new UserConexaoDB();
@@ -271,7 +273,7 @@ public class UserConexaoDBNGTest {
  
     }
     
-    @Test
+    @Test(priority = 6)
     public void testRetornaCon() {
         System.out.println("retornaCon");
         UserConexaoDB instance = new UserConexaoDB();
@@ -283,12 +285,12 @@ public class UserConexaoDBNGTest {
     /**
      * Test of fecharConexao method, of class UserConexaoDB.
      */
-    @Test
+    @Test(priority = 6)
     public void testFecharConexao() {
         System.out.println("fecharConexao");
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("lucasteste");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
         instance.createCon();
         instance.fecharConexao();
     }
