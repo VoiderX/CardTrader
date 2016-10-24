@@ -6,6 +6,7 @@
 package engsoft;
 
 import java.sql.Connection;
+import java.sql.Statement;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -46,6 +47,32 @@ public class ConexaoDBNGTest {
     /**
      * Test of realizaCadastro method, of class ConexaoDB.
      */
+    @Test(priority = 0)
+    public void limpabanco(){
+       try{
+       Statement s=ConexaoDB.getCon().createStatement();
+       s.executeQuery("DELETE  FROM TRANSACAO;\n" +
+        "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano1';\n" +
+        "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano2';\n" +
+        "DROP VIEW IF EXISTS FULANO1CATVIEW ;\n" +
+        "DROP VIEW IF EXISTS FULANO1COMPRASVIEW ;\n" +
+        "DROP VIEW IF EXISTS FULANO1VENDASVIEW;\n" +
+        "DROP VIEW IF EXISTS FULANO1VIEW ;\n" +
+        "DROP VIEW IF EXISTS FULANO2CATVIEW;\n" +
+        "DROP VIEW IF EXISTS  FULANO2COMPRASVIEW ;\n" +
+        "DROP VIEW IF EXISTS FULANO2VENDASVIEW;\n" +
+        "DROP VIEW IF EXISTS FULANO2VIEW;\n" +
+        "DELETE FROM USUARIO WHERE NICK_USUARIO='fulano1';\n" +
+        "DELETE FROM USUARIO WHERE NICK_USUARIO='fulano2';\n" +
+        "REVOKE ALL ON CATALOGO,TRANSACAO FROM FULANO1;\n" +
+        "REVOKE ALL ON CATALOGO,TRANSACAO FROM FULANO2;\n" +
+        "DROP USER IF EXISTS FULANO1;\n" +
+         "DROP USER IF EXISTS FULANO2;");
+       }
+       catch(Exception e){
+         e.printStackTrace();
+        }       
+    }
     @Test(priority = 3)
     public void testxAltSenha() {
         System.out.println("altSenha");
