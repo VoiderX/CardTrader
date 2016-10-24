@@ -222,8 +222,7 @@ public class ProcurarCartasController implements Initializable {
         CartaID.setText(String.valueOf(engsoft.ControleUI.getInstance().getIdCartaBuf()));
         Usuario.setText(engsoft.ControleUI.getInstance().getUserBuf());
         Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
-        
-        
+        inicializaArrays();
         if(!Catalogos.isEmpty()){
             showCards();
         }else{
