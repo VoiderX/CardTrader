@@ -63,7 +63,7 @@ public class ConexaoDBNGTest {
         String NickField = "fulano1";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
-        String NumField = "19";
+        String NumField = "1944443333";
         String EmailField = "patricia55@gmail.com";
         String PaisField = "Brasil";
         String EstadoField = "PR";
@@ -81,7 +81,7 @@ public class ConexaoDBNGTest {
         String NickField = "fulano2";
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
-        String NumField = "19";
+        String NumField = "1922224444";
         String EmailField = "patricia1995@gmail.com";
         String PaisField = "Brasil";
         String EstadoField = "PR";

@@ -53,7 +53,7 @@ public class UserConexaoDBNGTest {
         System.out.println("alterarCadastro");
         String NomeField = "Lucas B Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
-        String NumField = "19";
+        String NumField = "1922224444";
         String EmailField = "patricia1995@gmail.com";
         String PaisField = "Brasil";
         String EstadoField = "PR";
@@ -71,7 +71,7 @@ public class UserConexaoDBNGTest {
         System.out.println("alterarCadastro");
         String NomeField = "Lucas B Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
-        String NumField = "19";
+        String NumField = "1922224444";
         String EmailField = "lucasteste156@gmail.com";
         String PaisField = "Brasil";
         String EstadoField = "PR";
