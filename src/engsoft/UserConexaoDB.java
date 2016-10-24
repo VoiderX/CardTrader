@@ -6,9 +6,6 @@
 package engsoft;
 
 import java.sql.*;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 /**
  *
  * @author Gabriel

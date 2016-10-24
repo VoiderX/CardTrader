@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
  */
 public final class Utilidades {
     public static String firstToUpper(String AnyField){
-        char NomeFieldChar[]=new char[AnyField.length()];
+        char NomeFieldChar[];
         
         NomeFieldChar=AnyField.toCharArray();
         NomeFieldChar[0]=Character.toUpperCase(NomeFieldChar[0]);

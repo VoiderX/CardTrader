@@ -7,8 +7,10 @@ package engsoft;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
@@ -53,7 +55,7 @@ public class CartaDAO {
             im=SwingFXUtils.toFXImage(imagem, null);
             }
     }
-    }catch(Exception e){
+    }catch(SQLException | IOException e){
         e.printStackTrace();
     }
     return im;
@@ -62,7 +64,7 @@ public class CartaDAO {
     public static ObservableList<Carta> retornaInfoCard(){
        ObservableList<Carta> lista=FXCollections.observableArrayList();
        Connection con=ConexaoDB.getCon();
-       Carta c=null;
+       Carta c;
        try{
       Statement s=con.createStatement();
       ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"
@@ -114,9 +116,9 @@ public class CartaDAO {
     }
     
     public static ArrayList<Carta> retornaCartas(){
-        ArrayList<Carta> list = new ArrayList<Carta>();
+        ArrayList<Carta> list = new ArrayList<>();
         Connection con=ConexaoDB.getCon();
-        Carta c=null;
+        Carta c;
         try{
             Statement s=con.createStatement();
             ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"

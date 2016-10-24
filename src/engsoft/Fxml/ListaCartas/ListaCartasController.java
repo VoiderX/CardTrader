@@ -39,7 +39,7 @@ public class ListaCartasController implements Initializable {
     public void selecionaCarta(){
         try{
             engsoft.Carta c=(engsoft.Carta)Tabela.getSelectionModel().getSelectedItem(); 
-            engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.valueOf(c.getID()));
+            engsoft.ControleUI.getInstance().setIdCartaBuf(c.getID());
             if(engsoft.ControleUI.getInstance().verificaMainStage().equals("Gerencia")){
             engsoft.ControleUI.getInstance().chamaGerenciarColec();
             }
@@ -60,10 +60,10 @@ public class ListaCartasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ObservableList<engsoft.Carta> ListaCard=engsoft.CartaDAO.retornaInfoCard();
-        ColunaNome.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Nome"));
-        ColunaFabr.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Fabricante"));
-        ColunaDesc.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,String>("Desc"));
-        ColunaID.setCellValueFactory(new PropertyValueFactory<engsoft.Carta,Integer>("ID"));
+        ColunaNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        ColunaFabr.setCellValueFactory(new PropertyValueFactory<>("Fabricante"));
+        ColunaDesc.setCellValueFactory(new PropertyValueFactory<>("Desc"));
+        ColunaID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         Tabela.setItems(ListaCard);        
         Tabela.getSortOrder().add(ColunaID);
         

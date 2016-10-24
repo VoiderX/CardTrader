@@ -5,7 +5,6 @@
  */
 package engsoft.Fxml.AlteraCadastro;
 
-import engsoft.Utilidades;
 import engsoft.Valida;
 import java.net.URL;
 import java.sql.Connection;

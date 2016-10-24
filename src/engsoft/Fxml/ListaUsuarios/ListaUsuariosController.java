@@ -51,7 +51,7 @@ public class ListaUsuariosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList <engsoft.Usuario> Usuarios=engsoft.TransacaoDAO.retornaUsuarios();
-        ColunaUsuario.setCellValueFactory(new PropertyValueFactory<engsoft.Usuario,String>("Usuario"));
+        ColunaUsuario.setCellValueFactory(new PropertyValueFactory<>("Usuario"));
         Tabela.setItems(Usuarios);
         Tabela.getSortOrder().add(ColunaUsuario);
     }      
