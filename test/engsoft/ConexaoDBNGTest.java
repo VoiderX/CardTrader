@@ -64,7 +64,7 @@ public class ConexaoDBNGTest {
         String NomeField = "Lucas Tsuchiya";
         String EndField = "Avenida padre Paulo broda";
         String NumField = "19";
-        String EmailField = "patricia3@gmail.com";
+        String EmailField = "patricia55@gmail.com";
         String PaisField = "Brasil";
         String EstadoField = "PR";
         String CityField = "Londrina";
