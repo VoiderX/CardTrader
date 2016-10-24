@@ -40,15 +40,7 @@ public class TransacaoDAONGTest {
     public void tearDownMethod() throws Exception {
     }
 
-
-
-
-
-
-
-
-
-    @Test
+    @Test(priority = 8)
     public void testComprarCarta() {
         System.out.println("comprarCarta");
          UserConexaoDB instance = new UserConexaoDB();
@@ -66,7 +58,7 @@ public class TransacaoDAONGTest {
         assertEquals(result, expResult);
     }
     
-     @Test
+     @Test(priority = 8)
     public void testComprarCarta0() {
         System.out.println("comprarCarta");
          UserConexaoDB instance = new UserConexaoDB();
@@ -84,7 +76,7 @@ public class TransacaoDAONGTest {
         assertEquals(result, expResult);
     }
     
-         @Test
+         @Test(priority = 8)
     public void testComprarCarta1() {
         System.out.println("comprarCarta");
          UserConexaoDB instance = new UserConexaoDB();
@@ -102,7 +94,7 @@ public class TransacaoDAONGTest {
         assertEquals(result, expResult);
     }
     
-             @Test
+             @Test(priority = 8)
     public void testComprarCarta2() {
         System.out.println("comprarCarta");
          UserConexaoDB instance = new UserConexaoDB();
