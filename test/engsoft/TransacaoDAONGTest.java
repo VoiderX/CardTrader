@@ -110,9 +110,9 @@ public class TransacaoDAONGTest {
         instance.setSenha("123456");
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
-        String NickVendedor = "lucasteste";
-        String NickComprador = "fulano1";
-        int CartaId = 9;
+        String NickVendedor = "fulano1";
+        String NickComprador = "fulano2";
+        int CartaId = 7;
         int Quantidade = 1;
         float Valor = 2.0F;
         String expResult = "Transação efetuada com sucesso!";
