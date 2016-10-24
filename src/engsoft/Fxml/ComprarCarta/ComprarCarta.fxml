@@ -27,6 +27,8 @@
             <Text fx:id="TextTotal" fill="WHITE" layoutX="226.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="97.00000137090683" />
             <Text fx:id="TextValor" fill="WHITE" layoutX="262.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="61.000000298023224" />
             <Text fx:id="TextVendedor" fill="WHITE" layoutX="152.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="170.13671875" />
+            <Label fx:id="CompradorLabel" layoutX="12.0" layoutY="87.0" prefHeight="15.0" prefWidth="70.0" text="Comprador:" textFill="#fcfcfc" />
+            <Text fx:id="TextComprador" fill="WHITE" layoutX="153.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="170.13671398162842" />
          </children>
       </Pane>
       <Button fx:id="Comprar" layoutX="441.0" layoutY="222.0" mnemonicParsing="false" onAction="#comprar" prefHeight="39.0" prefWidth="193.0" styleClass="rich-blue" text="Comprar" />

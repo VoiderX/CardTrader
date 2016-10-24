@@ -128,7 +128,6 @@ public class TransacaoDAO {
         return false;
     }
     public static String comprarCarta(String NickVendedor, String NickComprador,int CartaId,int Quantidade,float Valor){
-        String Mensagem="";
         Connection conn=engsoft.ControleUI.getInstance().getConexaoUser().retornaCon();
         int QuantResult=0;
         float ValorResult=0;

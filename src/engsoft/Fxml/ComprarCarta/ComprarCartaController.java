@@ -29,6 +29,8 @@ public class ComprarCartaController implements Initializable {
     @FXML
     Text TextVendedor;
     @FXML
+    Text TextComprador;
+    @FXML
     Text TextValor;
     @FXML
     Text TextNomeCarta;
@@ -52,6 +54,8 @@ public class ComprarCartaController implements Initializable {
     Label ValorLabel;
     @FXML
     Label TotalLabel;
+    @FXML
+    Label CompradorLabel;
     @FXML
     public void cancelar(){
        engsoft.ControleUI.getInstance().saisecondStage();
@@ -117,6 +121,59 @@ public class ComprarCartaController implements Initializable {
        engsoft.ControleUI.getInstance().chamaHistoricoCompras();
        engsoft.ControleUI.getInstance().arrastarSecondStage();
     }
+    public void initProcura(){
+        Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
+        TextTotal.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getQuantCatalogo()));
+        TextVendedor.setText(engsoft.ControleUI.getInstance().getCatalogoBuf().getUsuario());
+        TextValor.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getValor()));
+        TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
+        Pago.setDisable(true);
+        Recebido.setDisable(true);
+        EstadoMsg.setDisable(true);
+        Pago.setVisible(false);
+        Recebido.setVisible(false);
+        EstadoMsg.setVisible(false);
+        Estado.setVisible((false));     
+        CompradorLabel.setVisible(false);
+    }
+    public void initHistVendas(){
+        Comprar.setDisable(true);
+        Comprar.setVisible(false);
+        Recebido.setDisable(true);
+        Recebido.setVisible(false);
+        ValorLabel.setVisible(false);
+        TotalLabel.setVisible(false);
+        Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
+        TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
+        Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
+        Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
+        TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
+        Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
+        if(Estado.getText().equals("RECEBIDO") || Estado.getText().equals("PAGO")){
+            Pago.setDisable(true);
+        }
+        TextComprador.setText(engsoft.ControleUI.getInstance().getTraBuf().getComprador());
+    }
+    
+    public void initHistCompras(){
+        ValorLabel.setVisible(false);
+        TotalLabel.setVisible(false);
+        Comprar.setVisible(false);
+        Pago.setVisible(false);
+        Comprar.setDisable(true);
+        Pago.setDisable(true);
+        Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
+        TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
+        Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
+        Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
+        TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta())); 
+        Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
+        if(Estado.getText().equals("RECEBIDO")){
+            Recebido.setDisable(true);
+        }
+         TextComprador.setText(engsoft.ControleUI.getInstance().getTraBuf().getComprador());
+    }
+    
     /**
      * Initializes the controller class.
      */
@@ -124,55 +181,13 @@ public class ComprarCartaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {        
         switch (engsoft.ControleUI.getInstance().verificaMainStage()) {
             case "Procura":
-                Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
-                TextTotal.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getQuantCatalogo()));
-                TextVendedor.setText(engsoft.ControleUI.getInstance().getCatalogoBuf().getUsuario());
-                TextValor.setText(String.valueOf(engsoft.ControleUI.getInstance().getCatalogoBuf().getValor()));
-                TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getCatalogoBuf().getIdCarta()));
-                Pago.setDisable(true);
-                Recebido.setDisable(true);
-                EstadoMsg.setDisable(true);
-                Pago.setVisible(false);
-                Recebido.setVisible(false);
-                EstadoMsg.setVisible(false);
-                Estado.setVisible((false));
+                initProcura();
                 break;
             case "Historico Vendas":
-                Comprar.setDisable(true);
-                Comprar.setVisible(false);
-                Recebido.setDisable(true);
-                Recebido.setVisible(false);
-                ValorLabel.setVisible(false);
-                TotalLabel.setVisible(false);
-                Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
-                TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
-                Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
-                Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
-                TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
-                Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
-                if(Estado.getText().equals("RECEBIDO") || Estado.getText().equals("PAGO")){
-                    Pago.setDisable(true);
-                }
+               initHistVendas();
                 break;
             case "Historico Compras":
-                ValorLabel.setVisible(false);
-                TotalLabel.setVisible(false);
-                Comprar.setVisible(false);
-                Pago.setVisible(false);
-                Comprar.setDisable(true);
-                Pago.setDisable(true);
-                Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
-                TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
-                Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
-                Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
-                TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta())); 
-                Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
-                if(Estado.getText().equals("RECEBIDO")){
-                    Recebido.setDisable(true);
-                }
-                break;
-            default:
-                break;
+                initHistCompras();
         }
     }    
     
