@@ -79,12 +79,12 @@ public class ListaColecController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         init();
         ctrl=0;
-        if(list.size()!=0){
+        if(!list.isEmpty()){
             warning.setVisible(false);
         }
         for(int i=0;i<3;i++){
             if(ctrl<list.size()){
-                id.set(i, Integer.valueOf(list.get(ctrl).getID()));
+                id.set(i, list.get(ctrl).getID());
                 pane.get(i).setVisible(true);
                 img.get(ctrl%3).setImage(list.get(ctrl).getImg());
                 quant.get(ctrl%3).setText(""+list.get(ctrl).getQuant());

@@ -222,6 +222,16 @@ public class ProcurarCartasController implements Initializable {
         CartaID.setText(String.valueOf(engsoft.ControleUI.getInstance().getIdCartaBuf()));
         Usuario.setText(engsoft.ControleUI.getInstance().getUserBuf());
         Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
+        
+        
+        if(!Catalogos.isEmpty()){
+            showCards();
+        }else{
+            mensagem.setText("Não há cartas a venda.");
+        }
+    }
+    
+    public void inicializaArrays(){
         image.add(Image1);
         image.add(Image2);
         image.add(Image3);
@@ -246,12 +256,6 @@ public class ProcurarCartasController implements Initializable {
         pane.add(pane5);
         pane.add(pane6);
         pane.add(pane7);
-        
-        if(!Catalogos.isEmpty()){
-            showCards();
-        }else{
-            mensagem.setText("Não há cartas a venda.");
-        }
     }
     
     @FXML
