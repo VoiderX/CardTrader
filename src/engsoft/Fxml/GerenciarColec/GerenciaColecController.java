@@ -24,29 +24,29 @@ import javafx.scene.text.Text;
  */
 public class GerenciaColecController implements Initializable {
     @FXML
-    ImageView Image1=new ImageView();
+    ImageView Image1;
     @FXML
-    ImageView Image2=new ImageView();
+    ImageView Image2;
     @FXML
-    ImageView Image3=new ImageView();
+    ImageView Image3;
     @FXML
-    ImageView Image4=new ImageView();
+    ImageView Image4;
     @FXML
-    ImageView Image5=new ImageView();
+    ImageView Image5;
     @FXML
-    TextField IdCarta=new TextField();
+    TextField IdCarta;
     @FXML
-    Text Text1=new Text();
+    Text Text1;
     @FXML
-    Text Text2=new Text();
+    Text Text2;
     @FXML
-    Text Text3= new Text();
+    Text Text3;
     @FXML
-    Text Text4=new Text();
+    Text Text4;
     @FXML
-    Text Text5=new Text();
+    Text Text5;
     @FXML
-    Text Mensagem = new Text();
+    Text Mensagem;
     
     int id1=0,id2=0,id3=0,id4=0,id5=0;
 

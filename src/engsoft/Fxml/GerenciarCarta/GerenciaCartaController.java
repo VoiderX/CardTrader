@@ -25,17 +25,17 @@ import javafx.scene.text.Text;
 public class GerenciaCartaController implements Initializable {
 
     @FXML
-    ImageView Image1=new ImageView();
+    ImageView Image1;
     @FXML
-    Text Text1=new Text();
+    Text Text1;
     @FXML
-    TextArea Desc= new TextArea();
+    TextArea Desc;
     @FXML
-    TextField Valor = new TextField();
+    TextField Valor;
     @FXML
-    TextField Quantidade = new TextField();
+    TextField Quantidade;
     @FXML
-    Text Mensagem = new Text();
+    Text Mensagem;
     ResultSet rs;
     @FXML
     public void sairStage(){

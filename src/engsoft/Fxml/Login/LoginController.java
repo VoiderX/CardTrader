@@ -24,11 +24,11 @@ import javafx.scene.text.Text;
  */
 public class LoginController implements Initializable {   
     @FXML
-    TextField NickField=new TextField();
+    TextField NickField;
     @FXML
-    PasswordField PassField= new PasswordField();
+    PasswordField PassField;
     @FXML
-    Text Mensagem=new Text();
+    Text Mensagem;
     /**
      * Initializes the controller class.
      */

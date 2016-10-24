@@ -22,17 +22,17 @@ import javafx.scene.text.Text;
  */
 public class ListaCartasController implements Initializable {
     @FXML
-    TableView<engsoft.Carta> Tabela=new TableView<>();
+    TableView<engsoft.Carta> Tabela;
     @FXML
-    TableColumn<engsoft.Carta,Integer> ColunaID=new TableColumn<>();
+    TableColumn<engsoft.Carta,Integer> ColunaID;
     @FXML
-    TableColumn<engsoft.Carta,String> ColunaNome=new TableColumn<>();
+    TableColumn<engsoft.Carta,String> ColunaNome;
     @FXML
-    TableColumn<engsoft.Carta,String> ColunaFabr=new TableColumn<>();
+    TableColumn<engsoft.Carta,String> ColunaFabr;
     @FXML
-    TableColumn<engsoft.Carta,String> ColunaDesc=new TableColumn<>();
+    TableColumn<engsoft.Carta,String> ColunaDesc;
     @FXML
-    Text Mensagem=new Text();
+    Text Mensagem;
     public void cancelar(){
         engsoft.ControleUI.getInstance().saisecondStage();
     }

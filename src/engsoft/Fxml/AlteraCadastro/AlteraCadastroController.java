@@ -24,28 +24,27 @@ import javafx.scene.text.Text;
 public class AlteraCadastroController implements Initializable {
     
     @FXML //Inicialização dos elementos
-    TextField NickField=new TextField();
+    TextField NickField;
     @FXML
-    TextField NomeField=new TextField();
+    TextField NomeField;
     @FXML
-    TextField EndField=new TextField();
+    TextField EndField;
     @FXML
-    TextField DDDField=new TextField();
+    TextField DDDField;
     @FXML
-    TextField CodCddField=new TextField();
+    TextField CodCddField;
     @FXML
-    TextField NumUsuarioField=new TextField();
-    String NumField;
+    TextField NumUsuarioField;
     @FXML
-    ChoiceBox <String> PaisField=new ChoiceBox<String>();
+    ChoiceBox <String> PaisField;
     @FXML
-    ChoiceBox <String> EstadoField=new ChoiceBox<String>();
+    ChoiceBox <String> EstadoField;
     @FXML
-    ChoiceBox <String> CityField=new ChoiceBox<String>();
+    ChoiceBox <String> CityField;
     @FXML
-    TextField EmailField=new TextField();
+    TextField EmailField;
     @FXML
-    Text Mensagem=new Text();
+    Text Mensagem;
     engsoft.Locations Loc;  
     
     private Connection con = null;
@@ -57,7 +56,8 @@ public class AlteraCadastroController implements Initializable {
         Loc=new engsoft.Locations(); //Instancia a classe de localizações
         Loc.carregaPais(PaisField, Mensagem); //Carrega os países ao incicializar a interface
         conexao=engsoft.ControleUI.getInstance().getConexaoUser();
-        puxarInfo();// Puxa as informações do usuário       
+        puxarInfo();// Puxa as informações do usuário
+        NickField.setDisable(true);
     } 
     @FXML    
     public void limpaCampos(){
@@ -89,7 +89,7 @@ public class AlteraCadastroController implements Initializable {
     
     @FXML
     private void puxarInfo(){//Puxa as informações do usuário
-       engsoft.Usuario user = new engsoft.Usuario();
+       engsoft.Usuario user;
        user = engsoft.ControleUI.getInstance().getConexaoUser().puxarInfo();
        NickField.setText(user.getNickField());
        NomeField.setText(engsoft.Utilidades.firstToUpper(user.getNomeField()));
@@ -114,12 +114,12 @@ public class AlteraCadastroController implements Initializable {
         //Converter todos os atributos menos o nick pra maiusculo
         String NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());
         StringBuilder mens = new StringBuilder("");
-        if(Valida.validaAltCadastro(NomeField.getText(), EndField.getText(), NumField, EmailField.getText(),((CityField.getValue()==null)?"":CityField.getValue().toString()), mens)){           
+        if(Valida.validaAltCadastro(NomeField.getText(), EndField.getText(), NumField, EmailField.getText(),((CityField.getValue()==null)?"":CityField.getValue()), mens)){           
           Mensagem.setText(conexao.alterarCadastro(NomeField.getText().toUpperCase(),
                   NumField, EmailField.getText().toUpperCase(),
                   EndField.getText().toUpperCase(),
-                  PaisField.getValue().toString(), EstadoField.getValue().toString()
-                  ,CityField.getValue().toString()));                  
+                  PaisField.getValue(), EstadoField.getValue()
+                  ,CityField.getValue()));                  
         }else{
             Mensagem.setText(mens.toString());
         }      

@@ -150,50 +150,11 @@ public class ProcurarCartasController implements Initializable {
         user = Usuario.getText().length() != 0;
         carta = CartaID.getText().length() !=0;
         if(user && carta){
-            try{
-                int cartaId = Integer.valueOf(CartaID.getText());
-                if(engsoft.TransacaoDAO.verificaUsuarios(Usuario.getText()) && CartaDAO.verificaCarta(cartaId)){
-                    if(Integer.valueOf(CartaID.getText())>0){
-                        Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText(),cartaId);
-                        if(Catalogos.isEmpty()){
-                            mensagem.setText("Nenhuma carta encontrada deste usuário.");
-                        }
-                    }else{
-                        mensagem.setText("Digite um ID maior que 0!");
-                    }
-                }else{
-                    mensagem.setText("Usuário ou carta não existente.");
-                }
-            }catch(Exception e){
-                mensagem.setText("Digite um número válido!");
-            } 
+            pesquisaUserCard(); 
         }else if(user && !carta){
-            if(engsoft.TransacaoDAO.verificaUsuarios(Usuario.getText())){
-                Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText());
-                if(Catalogos.isEmpty()){
-                    mensagem.setText("Nenhuma carta deste usuário.");
-                }
-            }else{
-                mensagem.setText("Usuário não existente.");
-            }
+            pesquisaUser();
         }else if(!user && carta){
-            try{
-                int cartaId = Integer.valueOf(CartaID.getText());
-                if(engsoft.CartaDAO.verificaCarta(cartaId)){
-                    if(Integer.valueOf(CartaID.getText())>0){
-                            Catalogos = engsoft.TransacaoDAO.buscaCatalogo(cartaId);
-                            if(Catalogos.isEmpty()){
-                                mensagem.setText("Nenhuma carta encontrada!");
-                            }
-                    }else{
-                        mensagem.setText("Digite um ID maior que 0!");
-                    }
-                }else{
-                    mensagem.setText("Carta não existente.");
-                }
-            }catch(Exception e){
-                mensagem.setText("Digite um número válido!");
-            }
+            pesquisaCard();
         }else{
             Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
             mensagem.setText("");
@@ -201,6 +162,58 @@ public class ProcurarCartasController implements Initializable {
         ctrl=0;
         showCards();
      }
+     
+    public void pesquisaUserCard(){
+        try{
+            int cartaId = Integer.valueOf(CartaID.getText());
+            if(engsoft.TransacaoDAO.verificaUsuarios(Usuario.getText()) && CartaDAO.verificaCarta(cartaId)){
+                if(Integer.valueOf(CartaID.getText())>0){
+                    Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText(),cartaId);
+                    if(Catalogos.isEmpty()){
+                        mensagem.setText("Nenhuma carta encontrada deste usuário.");
+                    }
+                }else{
+                    mensagem.setText("Digite um ID maior que 0!");
+                }
+            }else{
+                mensagem.setText("Usuário ou carta não existente.");
+            }
+        }catch(Exception e){
+            mensagem.setText("Digite um número válido!");
+        }
+    }
+    
+    public void pesquisaUser(){
+        if(engsoft.TransacaoDAO.verificaUsuarios(Usuario.getText())){
+            Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText());
+            if(Catalogos.isEmpty()){
+                mensagem.setText("Nenhuma carta deste usuário.");
+            }
+        }else{
+            mensagem.setText("Usuário não existente.");
+        }
+    }
+    
+    public void pesquisaCard(){
+        try{
+            int cartaId = Integer.valueOf(CartaID.getText());
+            if(engsoft.CartaDAO.verificaCarta(cartaId)){
+                if(Integer.valueOf(CartaID.getText())>0){
+                        Catalogos = engsoft.TransacaoDAO.buscaCatalogo(cartaId);
+                        if(Catalogos.isEmpty()){
+                            mensagem.setText("Nenhuma carta encontrada!");
+                        }
+                }else{
+                    mensagem.setText("Digite um ID maior que 0!");
+                }
+            }else{
+                mensagem.setText("Carta não existente.");
+            }
+        }catch(Exception e){
+            mensagem.setText("Digite um número válido!");
+        }
+    }
+     
     /**
      * Initializes the controller class.
      */

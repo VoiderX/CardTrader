@@ -6,7 +6,6 @@
 package engsoft.Fxml.CardDetalhes;
 
 import engsoft.CartaDAO;
-import engsoft.Fxml.ListaColec.ListaColecController;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;

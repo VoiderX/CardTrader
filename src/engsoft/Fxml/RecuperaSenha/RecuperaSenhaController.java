@@ -22,11 +22,11 @@ import javafx.scene.text.Text;
 public class RecuperaSenhaController implements Initializable {
     
     @FXML
-    Text Mensagem= new Text();
+    Text Mensagem;
     @FXML
-    TextField NickField=new TextField();
+    TextField NickField;
     @FXML
-    PasswordField PassField=new PasswordField();
+    PasswordField PassField;
     engsoft.ConexaoDB conexao;
     
     @FXML

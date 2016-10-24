@@ -23,30 +23,30 @@ import javafx.scene.text.Text;
 public class CadastroController implements Initializable {
     
     @FXML //Inicialização dos elementos
-    TextField NickField=new TextField();
+    TextField NickField;
     @FXML
-    TextField NomeField=new TextField();
+    TextField NomeField;
     @FXML
-    TextField EndField=new TextField();
+    TextField EndField;
     @FXML
-    TextField DDDField=new TextField();
+    TextField DDDField;
     @FXML
-    TextField CodCddField=new TextField();
+    TextField CodCddField;
     @FXML
-    TextField NumUsuarioField=new TextField();
+    TextField NumUsuarioField;
     String NumField;
     @FXML
-    TextField EmailField=new TextField();
+    TextField EmailField;
     @FXML
-    ChoiceBox<String> PaisField=new ChoiceBox<>();
+    ChoiceBox<String> PaisField;
     @FXML
-    ChoiceBox<String> EstadoField= new ChoiceBox<>();
+    ChoiceBox<String> EstadoField;
     @FXML
-    ChoiceBox<String> CityField=new ChoiceBox<>();
+    ChoiceBox<String> CityField;
     @FXML
-    PasswordField PassField=new PasswordField();
+    PasswordField PassField;
     @FXML 
-    Text Mensagem= new Text();
+    Text Mensagem;
     engsoft.Locations Loc;
     engsoft.ConexaoDB conexao;    
     @FXML
@@ -91,12 +91,12 @@ public class CadastroController implements Initializable {
         //Converter todos os atributos menos o nick pra maiusculo
         NumField=(DDDField.getText()+CodCddField.getText()+NumUsuarioField.getText());  //Cooncatena os dados do telefone
         StringBuilder mens = new StringBuilder("");
-        if(Valida.validaCadastro(NickField.getText(), NomeField.getText(), EndField.getText(), NumField, EmailField.getText(), ((CityField.getValue()==null)?"":CityField.getValue().toString()), PassField.getText(), mens)){
+        if(Valida.validaCadastro(NickField.getText(), NomeField.getText(), EndField.getText(), NumField, EmailField.getText(), ((CityField.getValue()==null)?"":CityField.getValue()), PassField.getText(), mens)){
             
             Mensagem.setText(conexao.realizaCadastro(NickField.getText(),NomeField.getText(),
-                  EndField.getText(),NumField,EmailField.getText(),PaisField.getValue().toString()
-                    ,EstadoField.getValue().toString()
-                    ,CityField.getValue().toString(),PassField.getText()));
+                  EndField.getText(),NumField,EmailField.getText(),PaisField.getValue()
+                    ,EstadoField.getValue()
+                    ,CityField.getValue(),PassField.getText()));
         }else{
             Mensagem.setText(mens.toString());
         }
