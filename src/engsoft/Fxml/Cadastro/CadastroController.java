@@ -61,6 +61,9 @@ public class CadastroController implements Initializable {
              EstadoField.setValue(null);
              CityField.setValue(null);
              Mensagem.setText("");
+             DDDField.setText("");
+             CodCddField.setText("");
+             NumUsuarioField.setText("");
     }    
    
     

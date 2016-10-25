@@ -15,6 +15,6 @@
       </TableView>
       <Button layoutX="433.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="39.0" prefWidth="127.0" styleClass="rich-blue" text="Cancelar" />
       <Button layoutX="280.0" layoutY="336.0" mnemonicParsing="false" onAction="#selecionar" prefHeight="39.0" prefWidth="127.0" styleClass="rich-blue" text="Selecionar" />
-      <Text fx:id="Mensagem" layoutX="45.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.13671875" />
+      <Text fx:id="Mensagem" fill="WHITE" layoutX="45.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="220.13671875" />
    </children>
 </AnchorPane>

@@ -171,6 +171,8 @@ public class ProcurarCartasController implements Initializable {
                     Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText(),cartaId);
                     if(Catalogos.isEmpty()){
                         mensagem.setText("Nenhuma carta encontrada deste usuário.");
+                    }else{
+                        mensagem.setText("");
                     }
                 }else{
                     mensagem.setText("Digite um ID maior que 0!");
@@ -188,6 +190,8 @@ public class ProcurarCartasController implements Initializable {
             Catalogos = engsoft.TransacaoDAO.buscaCatalogo(Usuario.getText());
             if(Catalogos.isEmpty()){
                 mensagem.setText("Nenhuma carta deste usuário.");
+            }else{
+                mensagem.setText("");
             }
         }else{
             mensagem.setText("Usuário não existente.");
@@ -202,6 +206,8 @@ public class ProcurarCartasController implements Initializable {
                         Catalogos = engsoft.TransacaoDAO.buscaCatalogo(cartaId);
                         if(Catalogos.isEmpty()){
                             mensagem.setText("Nenhuma carta encontrada!");
+                        }else{
+                            mensagem.setText("");
                         }
                 }else{
                     mensagem.setText("Digite um ID maior que 0!");
