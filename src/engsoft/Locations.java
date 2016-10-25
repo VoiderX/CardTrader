@@ -43,7 +43,6 @@ public class Locations { //Classe para armazenar os métodos de consulta as tabe
     }
     }
     catch(Exception e){
-        System.out.println(e);
     }
      PaisField.setItems(Paises);//Adiciona os países na choice box  
      Mensagem.setText("");//Limpa os campos     
@@ -60,7 +59,6 @@ public class Locations { //Classe para armazenar os métodos de consulta as tabe
     }
     }
     catch(Exception e){
-        System.out.println(e);
     }
     EstadoField.setItems(Estados);
     CityField.setValue(null);
@@ -87,7 +85,6 @@ public class Locations { //Classe para armazenar os métodos de consulta as tabe
     }
     }
     catch(Exception e){
-        System.out.println(e);
     }
     CityField.setItems(Cidades);
     CityField.show();

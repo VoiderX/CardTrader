@@ -47,7 +47,6 @@ private String senha;
         }
          
             catch(ClassNotFoundException | SQLException e){
-                    System.out.println("Erro ao acessar o banco");
         }
         return(conUser);
     }
@@ -112,9 +111,7 @@ private String senha;
                     //Update de Pais-Estado-Cidade, devem ser realizados todos em uma unica query devido ser uma chave composta        
                 Mensagem= "Dados atualizados com sucesso!";
                 s.close();      
-            }catch(Exception e){//Banco pode lançar exceção chave duplicada ou email duplicado
-                //Outras possibilidades devem ser tratadas na interface 
-                e.printStackTrace();
+            }catch(Exception e){                
                 Mensagem=  "Nome de usuário ou email já utilizados!";
             }
           return Mensagem;
@@ -127,7 +124,6 @@ private String senha;
            rs=s.executeQuery("SELECT * FROM "+usuario+"catview");
        }
        catch(Exception e){
-           e.printStackTrace();
        }
        return rs;
     }
@@ -145,7 +141,6 @@ private String senha;
                 return "Item inserido com sucesso!";
             }
            catch(Exception e){
-               e.printStackTrace();
                return "Um erro ocorreu!";
            }
        }
@@ -157,7 +152,6 @@ private String senha;
             s.executeUpdate("DELETE FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
        }
        catch(Exception e){
-           e.printStackTrace();
        }
     }
     
@@ -169,7 +163,6 @@ private String senha;
                     + " WHERE CARTA_CATALOGO="+IdCarta);
        }
        catch(Exception e){
-           e.printStackTrace();
        }
     }
     public ResultSet retornaInfoCarta(int IdCarta){       
@@ -179,7 +172,6 @@ private String senha;
               rs=s.executeQuery("SELECT * FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return rs;
         }

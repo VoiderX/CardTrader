@@ -8,6 +8,7 @@ package engsoft.Fxml.GerenciarCarta;
 
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -65,7 +66,7 @@ public class GerenciaCartaController implements Initializable {
                 Mensagem.setText("Valor inválido!");
             }
         }
-        catch(Exception e){
+        catch(NumberFormatException | SQLException e){
             Mensagem.setText("Digite um valor válido!");
         }
     }
@@ -83,7 +84,6 @@ public class GerenciaCartaController implements Initializable {
             }
          }
          catch(Exception e){
-             e.printStackTrace();
          }
          Image im1=engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getIdCartaBuf());
          Image1.setImage(im1);

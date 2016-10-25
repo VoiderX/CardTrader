@@ -187,7 +187,6 @@ public final class ControleUI{
             ListaColecFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaColec/ListaColec.fxml"));
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         ListaColecScene=new Scene(ListaColecFXML);
         mainStage.setScene(ListaColecScene);
@@ -199,7 +198,6 @@ public final class ControleUI{
             GerenciaCartaFXML=FXMLLoader.load(getClass().getResource("Fxml/GerenciarCarta/GerenciaCarta.fxml"));
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         GerenciaCartaScene=new Scene(GerenciaCartaFXML);
         secondStage.setScene(GerenciaCartaScene);
@@ -212,7 +210,6 @@ public final class ControleUI{
             ListaCartasFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaCartas/ListaCartas.fxml"));
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         ListaCartasScene=new Scene(ListaCartasFXML);
         secondStage.setTitle("Seleção de Carta");
@@ -228,7 +225,6 @@ public final class ControleUI{
         try{
             CardDetalhesFXML=FXMLLoader.load(getClass().getResource("Fxml/CardDetalhes/CardDetalhes.fxml"));
         }catch(Exception e){
-            e.printStackTrace();
         }
         CardDetalhesScene=new Scene(CardDetalhesFXML);
         secondStage.setScene(CardDetalhesScene);
@@ -240,7 +236,6 @@ public final class ControleUI{
         try{
              ProcuraCartasFXML=FXMLLoader.load(getClass().getResource("Fxml/ProcurarCartas/ProcurarCartas.fxml"));
         }catch(Exception e){
-            e.printStackTrace();
         }
         ProcuraCartasScene=new Scene(ProcuraCartasFXML);
         stagein="Procura";
@@ -250,7 +245,6 @@ public final class ControleUI{
         try{
              HistoricoFXML=FXMLLoader.load(getClass().getResource("Fxml/HistoricoCompras/HistoricoCompras.fxml"));
         }catch(Exception e){
-            e.printStackTrace();
         }
         stagein="Historico Compras";
         HistoricoScene=new Scene(HistoricoFXML);
@@ -260,7 +254,6 @@ public final class ControleUI{
         try{
             HistoricoFXML=FXMLLoader.load(getClass().getResource("Fxml/HistoricoVendas/HistoricoVendas.fxml"));
         }catch(Exception e){
-            e.printStackTrace();
         }
         stagein="Historico Vendas";
         HistoricoScene=new Scene(HistoricoFXML);
@@ -270,7 +263,6 @@ public final class ControleUI{
              try{
                 ListaUsuarioFXML=FXMLLoader.load(getClass().getResource("Fxml/ListaUsuarios/ListaUsuarios.fxml"));
             }catch(Exception e){
-            e.printStackTrace();
             }
             ListaUsuarioScene=new Scene(ListaUsuarioFXML);
             secondStage.setScene(ListaUsuarioScene); 
@@ -280,7 +272,6 @@ public final class ControleUI{
             try{
                 ComprarCartaFXML=FXMLLoader.load(getClass().getResource("Fxml/ComprarCarta/ComprarCarta.fxml"));
             }catch(Exception e){
-              e.printStackTrace();
             }
             ComprarCartaScene=new Scene(ComprarCartaFXML);
             secondStage.setScene(ComprarCartaScene);

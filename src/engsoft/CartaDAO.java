@@ -56,7 +56,6 @@ public class CartaDAO {
             }
     }
     }catch(SQLException | IOException e){
-        e.printStackTrace();
     }
     return im;
     }
@@ -75,7 +74,6 @@ public class CartaDAO {
         }
        }
        catch(Exception e){
-           e.printStackTrace();
        }
        return lista;
     }
@@ -91,7 +89,6 @@ public class CartaDAO {
              }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         if(nome.isEmpty()){
             nome="xNull";
@@ -110,7 +107,6 @@ public class CartaDAO {
              }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return Desc;
     }
@@ -128,7 +124,6 @@ public class CartaDAO {
                 list.add(c);
             }
        }catch(Exception e){
-           e.printStackTrace();
        }
        return(list);
     }
@@ -146,7 +141,6 @@ public class CartaDAO {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return false;
     }

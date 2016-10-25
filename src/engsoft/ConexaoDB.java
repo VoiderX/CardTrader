@@ -33,7 +33,6 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
         }
          
             catch(ClassNotFoundException | SQLException e){
-                    System.out.println("Erro ao acessar o banco");
         }
         return(conexao);
     }
@@ -58,7 +57,6 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
               }
            }
         }catch(Exception e){
-            e.printStackTrace();
            return "Um erro ocorreu, tente novamente!";
         }
          try{
@@ -93,8 +91,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 s.executeUpdate("GRANT SELECT,UPDATE,DELETE ON CATALOGO TO "+NickField);
                 s.close();//Encerra o statement(declaração);         
 
-            }catch(Exception e){//Caso haja uma falha de conexão
-                e.printStackTrace();
+            }catch(Exception e){                
                 int j=0;
                 do{
                 try{
@@ -112,7 +109,6 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
                 j++;
                 }
                 catch(Exception a){
-                    a.printStackTrace();
                     j++;
                     }
                 }while(j<20);

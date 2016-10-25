@@ -95,7 +95,6 @@ public class CardDetalhesController implements Initializable {
             }            
         }
         catch(Exception e){
-            e.printStackTrace();
         }
     
     }

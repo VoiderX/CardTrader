@@ -31,7 +31,6 @@ public class TransacaoDAO {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         
         return Catalogos;
@@ -49,7 +48,6 @@ public class TransacaoDAO {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         
         return Catalogos;
@@ -67,7 +65,6 @@ public class TransacaoDAO {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         
         return Catalogos;
@@ -86,7 +83,6 @@ public class TransacaoDAO {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         
         return Catalogos;
@@ -105,7 +101,6 @@ public class TransacaoDAO {
          }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return ListaUsuarios;
     }
@@ -123,7 +118,6 @@ public class TransacaoDAO {
          }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return false;
     }
@@ -157,7 +151,6 @@ public class TransacaoDAO {
             return "Transação efetuada com sucesso!";
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return "Erro ao realizar transação!";
     }
@@ -176,7 +169,6 @@ public class TransacaoDAO {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return Compras;
     }
@@ -196,7 +188,6 @@ public class TransacaoDAO {
             }
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return Vendas;       
     }
@@ -209,7 +200,6 @@ public class TransacaoDAO {
             return "Alteração Efetuada com Sucesso!";
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return "Erro ao alterar";
     }
@@ -222,7 +212,6 @@ public class TransacaoDAO {
             return "Alteração Efetuada com Sucesso!";
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return "Erro ao alterar";
     }
