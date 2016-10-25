@@ -5,7 +5,8 @@
  */
 package engsoft;
 
-import java.sql.Connection;
+
+import java.sql.SQLException;
 import java.sql.Statement;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -54,6 +55,7 @@ public class ConexaoDBNGTest {
        s.executeQuery("DELETE  FROM TRANSACAO;\n" +
         "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano1';\n" +
         "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano2';\n" +
+        "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano3';\n" +
         "DROP VIEW IF EXISTS FULANO1CATVIEW ;\n" +
         "DROP VIEW IF EXISTS FULANO1COMPRASVIEW ;\n" +
         "DROP VIEW IF EXISTS FULANO1VENDASVIEW;\n" +
@@ -61,13 +63,21 @@ public class ConexaoDBNGTest {
         "DROP VIEW IF EXISTS FULANO2CATVIEW;\n" +
         "DROP VIEW IF EXISTS  FULANO2COMPRASVIEW ;\n" +
         "DROP VIEW IF EXISTS FULANO2VENDASVIEW;\n" +
-        "DROP VIEW IF EXISTS FULANO2VIEW;\n" +
+        "DROP VIEW IF EXISTS FULANO2VIEW;\n"+
+        "DROP VIEW IF EXISTS FULANO3VIEW;\n" +
+        "DROP VIEW IF EXISTS  FULANO3COMPRASVIEW ;\n" +
+        "DROP VIEW IF EXISTS FULANO3VENDASVIEW;\n" +
+        "DROP VIEW IF EXISTS FULANO3CATVIEW;\n" +
+        "DROP VIEW IF EXISTS FULANO3VIEW;\n" +
         "DELETE FROM USUARIO WHERE NICK_USUARIO='fulano1';\n" +
         "DELETE FROM USUARIO WHERE NICK_USUARIO='fulano2';\n" +
+        "DELETE FROM USUARIO WHERE NICK_USUARIO='fulano3';\n" +       
         "REVOKE ALL ON CATALOGO,TRANSACAO FROM FULANO1;\n" +
         "REVOKE ALL ON CATALOGO,TRANSACAO FROM FULANO2;\n" +
+        "REVOKE ALL ON CATALOGO,TRANSACAO FROM FULANO3;\n" +
         "DROP USER IF EXISTS FULANO1;\n" +
-         "DROP USER IF EXISTS FULANO2;");
+        "DROP USER IF EXISTS FULANO2;\n"+
+        "DROP USER IF EXISTS FULANO3;");
        }
        catch(Exception e){
          e.printStackTrace();
@@ -149,5 +159,29 @@ public class ConexaoDBNGTest {
         String expResult = "Usuário não encontrado!";
         String result = instance.altSenha(NickField, PassField);
         assertEquals(result, expResult);
-    }      
+    }
+    @Test(priority = 10)
+    public void rollBackBanco(){
+        System.out.println("realizaCadastro");
+        String NickField = "fulano3";
+        String NomeField = "Lucas Tsuchiya";
+        String EndField = "Avenida padre Paulo broda";
+        String NumField = "19";
+        String EmailField = "zazazazaza@gmail.com";
+        String PaisField = "Brasil";
+        String EstadoField = "PR";
+        String CityField = "Londrina";
+        String PassField = "lucas12vinho";
+        ConexaoDB instance = new ConexaoDB();
+        String expResult = "Erro de conexão, tente novamente";
+        instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
+        try{
+        Statement s=ConexaoDB.getCon().createStatement();
+        s.executeQuery("DELETE FROM USUARIO WHERE NICK_USUARIO='fulano3'");
+        }catch(SQLException e){            
+        }
+        String result = instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
+        assertEquals(result, expResult);
+        instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
+    }
 }
