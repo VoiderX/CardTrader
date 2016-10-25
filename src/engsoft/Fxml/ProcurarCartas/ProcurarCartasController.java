@@ -137,10 +137,16 @@ public class ProcurarCartasController implements Initializable {
      }
      @FXML
      public void listaCartas(){
+         engsoft.ControleUI.getInstance().setUserBuf(Usuario.getText());
          engsoft.ControleUI.getInstance().ChamaLista();
      }
      @FXML
      public void listaUsuarios(){
+         try{
+            engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.getInteger(CartaID.getText()));
+         }catch(Exception e){
+             engsoft.ControleUI.getInstance().setIdCartaBuf(0);
+         }
          engsoft.ControleUI.getInstance().chamaListarUsuario();
      }
      
@@ -225,7 +231,11 @@ public class ProcurarCartasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CartaID.setText(String.valueOf(engsoft.ControleUI.getInstance().getIdCartaBuf()));
+        if(engsoft.ControleUI.getInstance().getIdCartaBuf()!=0){
+            CartaID.setText(String.valueOf(engsoft.ControleUI.getInstance().getIdCartaBuf()));
+        }else{
+            CartaID.setText("");
+        }
         Usuario.setText(engsoft.ControleUI.getInstance().getUserBuf());
         Catalogos = engsoft.TransacaoDAO.buscaCatalogo();
         inicializaArrays();
