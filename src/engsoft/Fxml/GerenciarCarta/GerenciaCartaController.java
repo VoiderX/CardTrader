@@ -37,7 +37,7 @@ public class GerenciaCartaController implements Initializable {
     TextField Quantidade;
     @FXML
     Text Mensagem;
-    ResultSet rs;
+    engsoft.Catalogo c;
     @FXML
     public void sairStage(){
         engsoft.ControleUI.getInstance().saisecondStage();
@@ -47,12 +47,12 @@ public class GerenciaCartaController implements Initializable {
         float valor;
         int quant;
         try{
-            rs=engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
+            c=engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
             engsoft.ControleUI.getInstance().getIdCartaBuf());
             valor = Float.valueOf(Valor.getText());
             quant = Integer.valueOf(Quantidade.getText());
             if(valor>0.0 && quant>0){
-                if(!rs.next()){
+                if(c==null){
                     Mensagem.setText(engsoft.ControleUI.getInstance().getConexaoUser().insereCatalogo(engsoft.ControleUI.getInstance().getIdCartaBuf(), 
                         quant, valor));
                 }
@@ -66,7 +66,7 @@ public class GerenciaCartaController implements Initializable {
                 Mensagem.setText("Valor inválido!");
             }
         }
-        catch(NumberFormatException | SQLException e){
+        catch(NumberFormatException e){
             Mensagem.setText("Digite um valor válido!");
         }
     }
@@ -75,16 +75,12 @@ public class GerenciaCartaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         rs=engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
+         c=engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
          engsoft.ControleUI.getInstance().getIdCartaBuf());
-         try{
-            while(rs.next()){
-                Valor.setText(String.valueOf(rs.getFloat("VALOR_CATALOGO")));
-                Quantidade.setText(String.valueOf(rs.getInt("QUANT_CATALOGO")));
+            if(c!=null){
+                Valor.setText(String.valueOf(c.getValor()));
+                Quantidade.setText(String.valueOf(c.getQuantCatalogo()));
             }
-         }
-         catch(Exception e){
-         }
          Image im1=engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getIdCartaBuf());
          Image1.setImage(im1);
          Text1.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getIdCartaBuf()));

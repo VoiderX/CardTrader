@@ -7,6 +7,7 @@ package engsoft;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -200,7 +201,7 @@ public class UserConexaoDBNGTest {
         instance.setUsuario("fulano1");
         instance.setSenha("123456");
         instance.createCon();
-        ResultSet result = instance.retornaInfoCarta(IdCarta);
+        instance.retornaInfoCarta(IdCarta);
     }
     
     @Test(priority = 6)
@@ -211,9 +212,7 @@ public class UserConexaoDBNGTest {
         instance.setUsuario("fulano12");
         instance.setSenha("123456");
         instance.createCon();
-        ResultSet expResult = null;
-        ResultSet result = instance.retornaInfoCarta(IdCarta);
-        assertEquals(result, expResult);
+        instance.retornaInfoCarta(IdCarta);
     }
     
     @Test(priority = 6)
@@ -233,12 +232,11 @@ public class UserConexaoDBNGTest {
     public void testRetornaCatalogo1() {
         System.out.println("retornaCatalogo");
         UserConexaoDB instance = new UserConexaoDB();
-        ResultSet expResult = null;
-        ResultSet result = instance.retornaCatalogo();
-        instance.setUsuario("lucasteste");
-        instance.setSenha("12345678");
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
         instance.createCon();
-        assertEquals(result, expResult);
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        ArrayList<Carta> c=engsoft.ControleUI.getInstance().getConexaoUser().retornaCatalogo();
         // TODO review the generated test code and remove the default call to fail.
 
     }

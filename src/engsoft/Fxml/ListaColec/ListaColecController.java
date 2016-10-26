@@ -129,16 +129,7 @@ public class ListaColecController implements Initializable {
     }
     
     public ArrayList<Carta> getList(){
-        ResultSet rs= engsoft.ControleUI.getInstance().getConexaoUser().retornaCatalogo();
-        ArrayList<Carta> l = new ArrayList<>();
-        try {
-            while(rs.next()){
-                Carta c = new Carta(rs.getInt("CARTA_CATALOGO"),rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
-                l.add(c);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ListaColecController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ArrayList<Carta> l=engsoft.ControleUI.getInstance().getConexaoUser().retornaCatalogo();
         return l;
     }
     

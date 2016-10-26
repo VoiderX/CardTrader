@@ -36,13 +36,12 @@ public class CardDetalhesController implements Initializable {
     TextField Quantidade;
     @FXML
     Text Mensagem;
-    ResultSet rs;
+    engsoft.Catalogo c;
     
     @FXML
     public void alterar(){
         float valor;
-        int quant;
-        
+        int quant;       
         
         try{
             valor = Float.valueOf(Valor.getText());
@@ -87,11 +86,11 @@ public class CardDetalhesController implements Initializable {
         name.setText(engsoft.CartaDAO.retornaNomeCard(obj.getIdCartaBuf()));
         desc.setText(engsoft.CartaDAO.retornaDescCard(obj.getIdCartaBuf()));
         try{
-            rs= engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
+            c= engsoft.ControleUI.getInstance().getConexaoUser().retornaInfoCarta(
             engsoft.ControleUI.getInstance().getIdCartaBuf());
-            while(rs.next()){
-                Valor.setText(String.valueOf(rs.getFloat("VALOR_CATALOGO")));
-                Quantidade.setText(String.valueOf(rs.getInt("QUANT_CATALOGO")));
+            if(c!=null){
+                Valor.setText(String.valueOf(c.getValor()));
+                Quantidade.setText(String.valueOf(c.getQuantCatalogo()));
             }            
         }
         catch(Exception e){

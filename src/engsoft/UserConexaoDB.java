@@ -6,6 +6,7 @@
 package engsoft;
 
 import java.sql.*;
+import java.util.ArrayList;
 /**
  *
  * @author Gabriel
@@ -117,15 +118,22 @@ private String senha;
           return Mensagem;
     }
     
-    public ResultSet retornaCatalogo(){
+    public ArrayList<Carta> retornaCatalogo(){
         ResultSet rs=null;
+        ArrayList<Carta> l = new ArrayList<>();
        try{
            Statement s= conUser.createStatement();
            rs=s.executeQuery("SELECT * FROM "+usuario+"catview");
+           while(rs.next()){
+            Carta c = new Carta(rs.getInt("CARTA_CATALOGO"),rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
+            l.add(c);
+        }
+           rs.close();
+           s.close();
        }
        catch(Exception e){
        }
-       return rs;
+       return l;
     }
     
     public String insereCatalogo(int IdCarta,int quant,float valor){
@@ -168,15 +176,21 @@ private String senha;
        catch(Exception e){
        }
     }
-    public ResultSet retornaInfoCarta(int IdCarta){       
-        ResultSet rs=null;
+    public Catalogo retornaInfoCarta(int IdCarta){
+        Catalogo c= null;
         try{
              Statement s=conUser.createStatement();
-             rs=s.executeQuery("SELECT * FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
+             ResultSet rs=s.executeQuery("SELECT * FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
+             while(rs.next()){
+                 c=new Catalogo(rs.getString("USUARIO_CATALOGO"),rs.getInt("CARTA_CATALOGO"),
+                 rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
+             }
+              rs.close();
+              s.close();
         }
         catch(Exception e){
         }
-        return rs;
+        return c;
         }
     
 }
