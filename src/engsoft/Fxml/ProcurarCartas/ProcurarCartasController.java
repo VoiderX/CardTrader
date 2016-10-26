@@ -143,7 +143,7 @@ public class ProcurarCartasController implements Initializable {
      @FXML
      public void listaUsuarios(){
          try{
-            engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.getInteger(CartaID.getText()));
+            engsoft.ControleUI.getInstance().setIdCartaBuf(Integer.parseInt(CartaID.getText()));
          }catch(Exception e){
              engsoft.ControleUI.getInstance().setIdCartaBuf(0);
          }
