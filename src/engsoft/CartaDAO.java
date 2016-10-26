@@ -44,17 +44,19 @@ public class CartaDAO {
 
     Statement s = con.createStatement();
     ResultSet rs = s.executeQuery("SELECT IMG_CARTA FROM CARTA WHERE ID_CARTA="+id);
-    if (rs != null) {
-        while(rs.next()){
-            long oid=rs.getInt("IMG_CARTA");
-            LargeObject obj = lobj.open(oid);
-            byte b[]=new byte[obj.size()];
-            obj.read(b,0, obj.size());
-            ByteArrayInputStream bArray = new ByteArrayInputStream(b);
-            BufferedImage imagem = ImageIO.read(bArray);
-            im=SwingFXUtils.toFXImage(imagem, null);
-            }
-    }
+        if (rs != null) {
+            while(rs.next()){
+                long oid=rs.getInt("IMG_CARTA");
+                LargeObject obj = lobj.open(oid);
+                byte b[]=new byte[obj.size()];
+                obj.read(b,0, obj.size());
+                ByteArrayInputStream bArray = new ByteArrayInputStream(b);
+                BufferedImage imagem = ImageIO.read(bArray);
+                im=SwingFXUtils.toFXImage(imagem, null);
+                }
+            rs.close();
+            s.close();
+        }
     }catch(SQLException | IOException e){
     }
     return im;
@@ -64,7 +66,7 @@ public class CartaDAO {
        ObservableList<Carta> lista=FXCollections.observableArrayList();
        Connection con=ConexaoDB.getCon();
        Carta c;
-       try{
+      try{
       Statement s=con.createStatement();
       ResultSet rs= s.executeQuery("SELECT ID_CARTA,NOME_CARTA,DESC_CARTA,FABRICANTE.NOME_FABRICANTE FROM CARTA,FABRICANTE"
         +" WHERE FABRICANTE_ID_FABRICANTE=ID_FABRICANTE");
@@ -72,6 +74,8 @@ public class CartaDAO {
             c=new Carta(rs.getInt("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
             lista.add(c);
         }
+        rs.close();
+        s.close();
        }
        catch(Exception e){
        }
@@ -87,6 +91,8 @@ public class CartaDAO {
              while(rs.next()){
              nome=rs.getString("NOME_CARTA");
              }
+             rs.close();
+             s.close();
         }
         catch(Exception e){
         }
@@ -105,6 +111,8 @@ public class CartaDAO {
              while(rs.next()){
              Desc=rs.getString("DESC_CARTA");
              }
+             rs.close();
+             s.close();
         }
         catch(Exception e){
         }
@@ -123,6 +131,8 @@ public class CartaDAO {
                 c=new Carta(rs.getInt("ID_CARTA"),rs.getString("NOME_CARTA"),rs.getString("DESC_CARTA"),rs.getString("NOME_FABRICANTE"));
                 list.add(c);
             }
+            rs.close();
+            s.close();
        }catch(Exception e){
        }
        return(list);
@@ -139,6 +149,8 @@ public class CartaDAO {
             if(cont>0){
                 return true;
             }
+            rs.close();
+            s.close();
         }
         catch(Exception e){
         }

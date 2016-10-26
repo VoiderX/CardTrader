@@ -138,6 +138,7 @@ private String senha;
             try{
                 Statement s= conUser.createStatement();
                 s.executeUpdate("INSERT INTO "+usuario+"catview"+ " VALUES ('"+usuario+"',"+IdCarta+","+quant+","+valor+")");
+                s.close();
                 return "Item inserido com sucesso!";
             }
            catch(Exception e){
@@ -150,6 +151,7 @@ private String senha;
        try{
             Statement s= conUser.createStatement();
             s.executeUpdate("DELETE FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
+            s.close();
        }
        catch(Exception e){
        }
@@ -161,6 +163,7 @@ private String senha;
             s.executeUpdate("UPDATE "+usuario+"catview SET (USUARIO_CATALOGO,CARTA_CATALOGO,QUANT_CATALOGO,VALOR_CATALOGO)"+
             "=('"+usuario+"',"+IdCarta+","+quantidade+","+valor+")"
                     + " WHERE CARTA_CATALOGO="+IdCarta);
+            s.close();
        }
        catch(Exception e){
        }
@@ -169,7 +172,7 @@ private String senha;
         ResultSet rs=null;
         try{
              Statement s=conUser.createStatement();
-              rs=s.executeQuery("SELECT * FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
+             rs=s.executeQuery("SELECT * FROM "+usuario+"catview WHERE CARTA_CATALOGO="+IdCarta);
         }
         catch(Exception e){
         }

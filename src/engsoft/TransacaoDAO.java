@@ -29,7 +29,9 @@ public class TransacaoDAO {
                  rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
                  Catalogos.add(aux);
             }
-        }
+        rs.close();
+        s.close();
+        }        
         catch(Exception e){
         }
         
@@ -46,6 +48,8 @@ public class TransacaoDAO {
                  rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
                  Catalogos.add(aux);
             }
+             rs.close();
+             s.close();
         }
         catch(Exception e){
         }
@@ -63,6 +67,8 @@ public class TransacaoDAO {
                  rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
                  Catalogos.add(aux);
             }
+            rs.close();
+            s.close();
         }
         catch(Exception e){
         }
@@ -81,6 +87,8 @@ public class TransacaoDAO {
                  rs.getInt("QUANT_CATALOGO"),rs.getFloat("VALOR_CATALOGO"));
                  Catalogos.add(aux);
             }
+            rs.close();
+            s.close();
         }
         catch(Exception e){
         }
@@ -99,6 +107,8 @@ public class TransacaoDAO {
              aux=new Usuario(rs.getString("USUARIO_CATALOGO"));
              ListaUsuarios.add(aux);
          }
+         rs.close();
+         s.close();
         }
         catch(Exception e){
         }
@@ -116,6 +126,8 @@ public class TransacaoDAO {
          if(cont>0){
              return true;
          }
+         rs.close();
+         s.close();
         }
         catch(Exception e){
         }
@@ -148,6 +160,8 @@ public class TransacaoDAO {
             }
             s.executeUpdate("INSERT INTO TRANSACAO VALUES('"+NickVendedor+"','"+NickComprador+"','"
                    +"AGUARD PAG',"+CartaId+","+Quantidade+","+Valor+")");
+            rs.close();
+            s.close();
             return "Transação efetuada com sucesso!";
         }
         catch(Exception e){
@@ -167,6 +181,8 @@ public class TransacaoDAO {
                 rs.getInt("CARTA_ID_CARTA"),rs.getInt("QUANTIDADE_TRANSACAO"),rs.getFloat("VALORCARTA_TRANSACAO"));
                 Compras.add(aux);
             }
+            rs.close();
+            s.close();
         }
         catch(Exception e){
         }
@@ -186,6 +202,8 @@ public class TransacaoDAO {
                 rs.getInt("CARTA_ID_CARTA"),rs.getInt("QUANTIDADE_TRANSACAO"),rs.getFloat("VALORCARTA_TRANSACAO"));
                 Vendas.add(aux);
             }
+            rs.close();
+            s.close();
         }
         catch(Exception e){
         }
@@ -197,6 +215,7 @@ public class TransacaoDAO {
             Statement s= conn.createStatement();
             s.executeUpdate("UPDATE TRANSACAO SET STATUS_TRANSACAO='PAGO' WHERE USUARIO_NICK_VENDEDOR='"+Vendedor+"'"
             +" AND USUARIO_NICK_COMPRADOR='"+Comprador+"' AND CARTA_ID_CARTA="+IdCarta+" AND VALORCARTA_TRANSACAO="+Valor);
+            s.close();
             return "Alteração Efetuada com Sucesso!";
         }
         catch(Exception e){
@@ -209,6 +228,7 @@ public class TransacaoDAO {
             Statement s= conn.createStatement();
             s.executeUpdate("UPDATE TRANSACAO SET STATUS_TRANSACAO='RECEBIDO' WHERE USUARIO_NICK_VENDEDOR='"+Vendedor+"'"
             +" AND USUARIO_NICK_COMPRADOR='"+Comprador+"' AND CARTA_ID_CARTA="+IdCarta+" AND VALORCARTA_TRANSACAO="+Valor);
+            s.close();
             return "Alteração Efetuada com Sucesso!";
         }
         catch(Exception e){
