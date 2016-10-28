@@ -41,9 +41,61 @@ public class TransacaoDAONGTest {
     }
 
     @Test(priority = 8)
+    public void testBuscaCatalogo_0args() {
+        System.out.println("buscaCatalogo");
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        TransacaoDAO.buscaCatalogo();
+        instance.fecharConexao();
+    }
+    
+        @Test(priority = 8)
+    public void testBuscaCatalogo_1args() {
+        System.out.println("buscaCatalogo");
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("1234567");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        TransacaoDAO.buscaCatalogo();
+        instance.fecharConexao();
+    }
+    
+    @Test(priority = 7)
+    public void testBuscaCatalogo_String() {
+        System.out.println("buscaCatalogo");
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        String Usuario = "fulano1";
+        TransacaoDAO.buscaCatalogo(Usuario);
+        instance.fecharConexao();
+    }
+    
+        @Test(priority = 7)
+    public void testBuscaCatalogo_String0() {
+        System.out.println("buscaCatalogo");
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("1234567");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        String Usuario = "fulano1";
+        TransacaoDAO.buscaCatalogo(Usuario);
+        instance.fecharConexao();
+    }
+    
+    
+    
+    @Test(priority = 8)
     public void testComprarCarta() {
         System.out.println("comprarCarta");
-         UserConexaoDB instance = new UserConexaoDB();
+        UserConexaoDB instance = new UserConexaoDB();
         instance.setUsuario("fulsano1");
         instance.setSenha("123456");
         instance.createCon();
@@ -56,6 +108,7 @@ public class TransacaoDAONGTest {
         String expResult = "Erro ao realizar transação!";
         String result = TransacaoDAO.comprarCarta(NickVendedor, NickComprador, CartaId, Quantidade, Valor);
         assertEquals(result, expResult);
+        instance.fecharConexao();
     }
     
      @Test(priority = 8)
@@ -74,6 +127,7 @@ public class TransacaoDAONGTest {
         String expResult = "Você não pode comprar de você mesmo!";
         String result = TransacaoDAO.comprarCarta(NickVendedor, NickComprador, CartaId, Quantidade, Valor);
         assertEquals(result, expResult);
+        instance.fecharConexao();
     }
     
          @Test(priority = 8)
@@ -92,6 +146,7 @@ public class TransacaoDAONGTest {
         String expResult = "Valor ou Quantidade Inválidos!";
         String result = TransacaoDAO.comprarCarta(NickVendedor, NickComprador, CartaId, Quantidade, Valor);
         assertEquals(result, expResult);
+        instance.fecharConexao();
     }
     
              @Test(priority = 8)
@@ -110,6 +165,7 @@ public class TransacaoDAONGTest {
         String expResult = "Transação efetuada com sucesso!";
         String result = TransacaoDAO.comprarCarta(NickVendedor, NickComprador, CartaId, Quantidade, Valor);
         assertEquals(result, expResult);
+        instance.fecharConexao();
     }
     
         @Test(priority = 7)
@@ -124,6 +180,7 @@ public class TransacaoDAONGTest {
         boolean expResult = true;
         boolean result = TransacaoDAO.verificaUsuarios(User);
         assertEquals(result, expResult);
+        instance.fecharConexao();
     }
         
         @Test(priority = 7)
@@ -138,6 +195,7 @@ public class TransacaoDAONGTest {
         boolean expResult = false;
         boolean result = TransacaoDAO.verificaUsuarios(User);
         assertEquals(result, expResult);
+        instance.fecharConexao();
     }
         
         @Test(priority = 7)
@@ -150,6 +208,7 @@ public class TransacaoDAONGTest {
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         String User = "fulano1";
         TransacaoDAO.verificaUsuarios(User);
+        instance.fecharConexao();
     }
         
     @Test(priority = 7)
@@ -165,6 +224,7 @@ public class TransacaoDAONGTest {
         int IdCarta = 0;
         float Valor = 0.0F;
         TransacaoDAO.marcarRecebido(Vendedor, Comprador, IdCarta, Valor);
+        instance.fecharConexao();
     }
     
      @Test(priority = 7)
@@ -180,6 +240,7 @@ public class TransacaoDAONGTest {
         int IdCarta = 0;
         float Valor = 0.0F;
         TransacaoDAO.marcarRecebido(Vendedor, Comprador, IdCarta, Valor);
+        instance.fecharConexao();
     }
     
     @Test(priority = 7)
@@ -212,36 +273,39 @@ public class TransacaoDAONGTest {
         int IdCarta = 7;
         float Valor = 2.0F;
         TransacaoDAO.marcarPago(Vendedor, Comprador, IdCarta, Valor);
+        instance.fecharConexao();
     } 
     
-    @Test(priority = 7)
+    @Test(priority = 9)
     public void testRetornaVendas() {
         System.out.println("retornaVendas");
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("fulano2");
-        instance.setSenha("lucas12vinho");
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         TransacaoDAO.retornaVendas();  
+        instance.fecharConexao();
     }
     
-    @Test(priority = 7)
+    @Test(priority = 9)
     public void testRetornaVendas0() {
         System.out.println("retornaVendas");
         UserConexaoDB instance = new UserConexaoDB();
         instance.setUsuario("fulano2");
-        instance.setSenha("luca3s12vinho");
+        instance.setSenha("lucas12vinho");
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         TransacaoDAO.retornaVendas();  
+        instance.fecharConexao();
     }
     
-    @Test(priority = 7)
+    @Test(priority = 9)
     public void testRetornaVendas1() {
         System.out.println("retornaVendas");
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("fulano");
-        instance.setSenha("lucas12vinho");
+        instance.setUsuario("fulano2");
+        instance.setSenha("lucas12vi3nho");
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         TransacaoDAO.retornaVendas();  
