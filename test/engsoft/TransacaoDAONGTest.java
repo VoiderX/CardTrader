@@ -97,7 +97,7 @@ public class TransacaoDAONGTest {
              @Test(priority = 8)
     public void testComprarCarta2() {
         System.out.println("comprarCarta");
-         UserConexaoDB instance = new UserConexaoDB();
+        UserConexaoDB instance = new UserConexaoDB();
         instance.setUsuario("fulano1");
         instance.setSenha("123456");
         instance.createCon();
@@ -111,5 +111,34 @@ public class TransacaoDAONGTest {
         String result = TransacaoDAO.comprarCarta(NickVendedor, NickComprador, CartaId, Quantidade, Valor);
         assertEquals(result, expResult);
     }
+    
+        @Test
+        public void testVerificaUsuarios() {
+        System.out.println("verificaUsuarios");
+         UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        String User = "fulano1";
+        boolean expResult = true;
+        boolean result = TransacaoDAO.verificaUsuarios(User);
+        assertEquals(result, expResult);
+    }
+        
+        @Test
+        public void testVerificaUsuarios0() {
+        System.out.println("verificaUsuarios");
+         UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano2");
+        instance.setSenha("lucas12vinho");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        String User = "fulano2";
+        boolean expResult = false;
+        boolean result = TransacaoDAO.verificaUsuarios(User);
+        assertEquals(result, expResult);
+    }
+        
     
 }
