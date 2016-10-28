@@ -409,7 +409,7 @@ public class TransacaoDAONGTest {
         instance.fecharConexao();
     }
     
-    @Test(priority = 7)
+    @Test(priority = 8)
     public void testRetornaCompras() {
         System.out.println("retornaCompras");
         UserConexaoDB instance = new UserConexaoDB();
