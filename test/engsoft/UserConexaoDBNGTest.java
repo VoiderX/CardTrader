@@ -243,8 +243,26 @@ public class UserConexaoDBNGTest {
     
     @Test(priority = 6)
     public void testPuxarInfo() {
-        //Gabriel alterou o metódo puxarInfo para facilitar os testes
+        System.out.println("puxarInfo");
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("123456");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        instance.puxarInfo();
     }
+        @Test(priority = 6)
+    public void testPuxarInfo0() {
+        System.out.println("puxarInfo");
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano1");
+        instance.setSenha("1234567");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        instance.puxarInfo();
+        
+    }
+   
     
     @Test(priority = 6)
     public void testGetUsuario() {
