@@ -219,19 +219,19 @@ public class UserConexaoDBNGTest {
          instance.fecharConexao();
     }
     
-    @Test(priority = 6)
+    @Test(priority = 8)
     public void testRetornaInfoCarta() {
         System.out.println("retornaInfoCarta");
-        int IdCarta = 1;
+        int IdCarta = 10;
         UserConexaoDB instance = new UserConexaoDB();
-        instance.setUsuario("fulano1");
-        instance.setSenha("123456");
+        instance.setUsuario("fulano2");
+        instance.setSenha("lucas12vinho");
         instance.createCon();
         instance.retornaInfoCarta(IdCarta);
          instance.fecharConexao();
     }
     
-    @Test(priority = 6)
+    @Test(priority = 7)
     public void testRetornaInfoCarta2() {
         System.out.println("retornaInfoCarta");
         int IdCarta = 2;
@@ -240,10 +240,10 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.retornaInfoCarta(IdCarta);
-         instance.fecharConexao();
+        instance.fecharConexao();
     }
     
-    @Test(priority = 6)
+    @Test(priority = 7)
     public void testRetornaCatalogo() {
         System.out.println("retornaCatalogo");
         UserConexaoDB instance = new UserConexaoDB();
@@ -251,7 +251,7 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.retornaCatalogo();
-         instance.fecharConexao();
+        instance.fecharConexao();
 
   
     }
@@ -268,8 +268,20 @@ public class UserConexaoDBNGTest {
          instance.fecharConexao();
 
     }
+        @Test(priority = 6)
+    public void testRetornaCatalogo2() {
+        System.out.println("retornaCatalogo");
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano12131231");
+        instance.setSenha("123456");
+        instance.createCon();
+        engsoft.ControleUI.getInstance().setConexaoUser(instance);
+        ArrayList<Carta> c=engsoft.ControleUI.getInstance().getConexaoUser().retornaCatalogo();
+         instance.fecharConexao();
+
+    }
     
-    @Test(priority = 6)
+    @Test(priority = 5)
     public void testPuxarInfo() {
         System.out.println("puxarInfo");
         UserConexaoDB instance = new UserConexaoDB();
@@ -277,8 +289,34 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
-        instance.puxarInfo();
-         instance.fecharConexao();
+        String NickField = "fulano1";
+        String NomeField = "lucas tsuchiya";
+        String EndField = "avenida padre paulo broda";
+        String NumField = "1944443333";
+        String EmailField = "patricia55@gmail.com";
+        String PaisField = "Brasil";
+        String EstadoField = "PR";
+        String CityField = "Londrina";
+        Usuario user=instance.puxarInfo();
+        String NickField1 = user.getNickField();
+        String NomeField1 = user.getNomeField();
+        String EndField1 =  user.getEndField();
+        String NumField1 =  user.getNumUsuarioField();
+        String EmailField1 = user.getEmailField();
+        String PaisField1 = user.getPaisField();
+        String EstadoField1 = user.getEstadoField();
+        String CityField1 = user.getCityField();
+        assertEquals(NickField,NickField1);
+        assertEquals(NomeField,NomeField1);
+        assertEquals(EndField,EndField1);
+        assertEquals(NumField,NumField1);
+        assertEquals(EmailField,EmailField1);
+        assertEquals(PaisField,PaisField1);
+        assertEquals(EstadoField,EstadoField1);
+        assertEquals(CityField,CityField1);
+        user.getMensagem();
+        user.getUsuario();
+        instance.fecharConexao();
     }
         @Test(priority = 6)
     public void testPuxarInfo0() {
@@ -289,7 +327,7 @@ public class UserConexaoDBNGTest {
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         instance.puxarInfo();
-         instance.fecharConexao();
+        instance.fecharConexao();
         
     }
    

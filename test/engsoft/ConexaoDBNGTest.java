@@ -178,7 +178,7 @@ public class ConexaoDBNGTest {
         String result = instance.altSenha(NickField, PassField);
         assertEquals(result, expResult);
     }
-    @Test(priority = 10)
+    @Test(priority = 4)
     public void rollBackBanco(){
         System.out.println("realizaCadastro");
         String NickField = "fulano3";
