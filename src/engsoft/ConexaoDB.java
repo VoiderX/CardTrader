@@ -16,6 +16,7 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
     private static Connection conexao = null;
     public ConexaoDB(){}    
     public static Connection getCon(){
+        createCon();
         return((conexao==null)?createCon():conexao);//retorna a conexão
     }
     
