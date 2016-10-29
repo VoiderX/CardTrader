@@ -243,6 +243,7 @@ public class ProcurarCartasController implements Initializable {
             showCards();
         }else{
             mensagem.setText("Não há cartas a venda.");
+            showCards();
         }
     }
     

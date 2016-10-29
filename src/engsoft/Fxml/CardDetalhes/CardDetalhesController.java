@@ -51,6 +51,8 @@ public class CardDetalhesController implements Initializable {
                     engsoft.ControleUI.getInstance().getIdCartaBuf(),
                     valor,quant);
                 Mensagem.setText("Item alterado com sucesso!");
+                engsoft.ControleUI.getInstance().chamaListaColec();
+                engsoft.ControleUI.getInstance().arrastarSecondStage();
             }else{
                 Mensagem.setText("Valor inválido!");
             }
@@ -67,7 +69,8 @@ public class CardDetalhesController implements Initializable {
             engsoft.ControleUI.getInstance().getIdCartaBuf());
             
             Mensagem.setText("Item removido com sucesso!");
-            
+            engsoft.ControleUI.getInstance().chamaListaColec();
+            engsoft.ControleUI.getInstance().arrastarSecondStage();
         }
         catch(Exception e){
             Mensagem.setText("Erro ao remover item!");
