@@ -65,7 +65,9 @@ public class UserConexaoDBNGTest {
         String expResult = "Nome de usuário ou email já utilizados!";
         instance.createCon();
         String result = instance.alterarCadastro(NomeField, NumField, EmailField, EndField, PaisField, EstadoField, CityField);
-        assertEquals(result, expResult);        
+        assertEquals(result, expResult);     
+        instance.fecharConexao();
+
     }
     @Test(priority = 6)
     public void testAlterarCadastroCerto() {
@@ -83,7 +85,9 @@ public class UserConexaoDBNGTest {
         String expResult = "Dados atualizados com sucesso!";
         instance.createCon();
         String result = instance.alterarCadastro(NomeField, NumField, EmailField, EndField, PaisField, EstadoField, CityField);
-        assertEquals(result, expResult);        
+        assertEquals(result, expResult);    
+        instance.fecharConexao();
+
     }        
 
     @Test(priority = 7)
@@ -99,6 +103,8 @@ public class UserConexaoDBNGTest {
         String expResult = "Quantidade inválida!";
         String result = instance.insereCatalogo(IdCarta, quant, valor);
         assertEquals(result, expResult);
+        instance.fecharConexao();
+
     }
 
         @Test(priority = 7)
@@ -114,6 +120,7 @@ public class UserConexaoDBNGTest {
         String expResult = "Valor inválido";
         String result = instance.insereCatalogo(IdCarta, quant, valor);
         assertEquals(result, expResult);
+         instance.fecharConexao();
     }
     
       @Test(priority = 7)
@@ -129,6 +136,7 @@ public class UserConexaoDBNGTest {
         String expResult = "Item inserido com sucesso!";
         String result = instance.insereCatalogo(IdCarta, quant, valor);
         assertEquals(result, expResult);
+         instance.fecharConexao();
     }
     
     @Test(priority = 7)
@@ -144,6 +152,7 @@ public class UserConexaoDBNGTest {
         String expResult = "Um erro ocorreu!";
         String result = instance.insereCatalogo(IdCarta, quant, valor);
         assertEquals(result, expResult);
+         instance.fecharConexao();
     }
     
     @Test(priority = 6)
@@ -155,6 +164,7 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.deletaCatalogo(IdCarta);
+         instance.fecharConexao();
     }
     @Test(priority = 6)
     public void testDeletaCatalogo1() {
@@ -165,6 +175,7 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.deletaCatalogo(IdCarta);
+         instance.fecharConexao();
     }
     
     @Test(priority = 6)
@@ -178,6 +189,7 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.alteraCatalogo(IdCarta, valor, quantidade);
+         instance.fecharConexao();
     }
     
         @Test(priority = 6)
@@ -191,6 +203,7 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.alteraCatalogo(IdCarta, valor, quantidade);
+         instance.fecharConexao();
     }
     
     @Test(priority = 6)
@@ -202,6 +215,7 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.retornaInfoCarta(IdCarta);
+         instance.fecharConexao();
     }
     
     @Test(priority = 6)
@@ -213,6 +227,7 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.retornaInfoCarta(IdCarta);
+         instance.fecharConexao();
     }
     
     @Test(priority = 6)
@@ -223,8 +238,8 @@ public class UserConexaoDBNGTest {
         instance.setSenha("123456");
         instance.createCon();
         instance.retornaCatalogo();
-      
-        // TODO review the generated test code and remove the default call to fail.
+         instance.fecharConexao();
+
   
     }
     
@@ -237,7 +252,7 @@ public class UserConexaoDBNGTest {
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         ArrayList<Carta> c=engsoft.ControleUI.getInstance().getConexaoUser().retornaCatalogo();
-        // TODO review the generated test code and remove the default call to fail.
+         instance.fecharConexao();
 
     }
     
@@ -250,6 +265,7 @@ public class UserConexaoDBNGTest {
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         instance.puxarInfo();
+         instance.fecharConexao();
     }
         @Test(priority = 6)
     public void testPuxarInfo0() {
@@ -260,6 +276,7 @@ public class UserConexaoDBNGTest {
         instance.createCon();
         engsoft.ControleUI.getInstance().setConexaoUser(instance);
         instance.puxarInfo();
+         instance.fecharConexao();
         
     }
    
@@ -274,6 +291,7 @@ public class UserConexaoDBNGTest {
         String expResult = "lucasteste";
         String result = instance.getUsuario();
         assertEquals(result, expResult);
+         instance.fecharConexao();
     }
     
     @Test(priority = 6)
@@ -286,6 +304,7 @@ public class UserConexaoDBNGTest {
         String expResult = "12345678";
         String result = instance.getSenha();
         assertEquals(result, expResult);
+         instance.fecharConexao();
  
     }
     
@@ -296,11 +315,10 @@ public class UserConexaoDBNGTest {
         Connection expResult = null;
         Connection result = instance.retornaCon();
         assertEquals(result, expResult);
+         instance.fecharConexao();
     }
 
-    /**
-     * Test of fecharConexao method, of class UserConexaoDB.
-     */
+  
     @Test(priority = 6)
     public void testFecharConexao() {
         System.out.println("fecharConexao");
