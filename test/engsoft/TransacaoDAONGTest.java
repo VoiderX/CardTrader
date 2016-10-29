@@ -355,6 +355,7 @@ public class TransacaoDAONGTest {
         String expResult = "Alteração Efetuada com Sucesso!";
         String result = TransacaoDAO.marcarPago(Vendedor, Comprador, IdCarta, Valor);
         assertEquals(result, expResult);
+        instance.fecharConexao();
     }
     
     @Test(priority = 7)
