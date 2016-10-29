@@ -52,7 +52,7 @@ public class ConexaoDBNGTest {
     public void limpabanco(){
        try{
        Statement s=ConexaoDB.getCon().createStatement();
-       s.executeQuery("DELETE  FROM TRANSACAO;\n" +
+       s.executeUpdate("DELETE  FROM TRANSACAO;\n" +
         "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano1';\n" +
         "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano2';\n" +
         "DELETE FROM CATALOGO WHERE USUARIO_CATALOGO='fulano3';\n" +
@@ -145,6 +145,24 @@ public class ConexaoDBNGTest {
         String PassField = "lucas12vinho";
         ConexaoDB instance = new ConexaoDB();
         String expResult = "Nome de usuário já  cadastrado!";
+        String result = instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
+        assertEquals(result, expResult);
+        // TODO review the generated test code and remove the default call to fail
+    }
+    @Test(priority = 2)
+    public void testRealizaCadastroRepetido2() {
+        System.out.println("realizaCadastro");
+        String NickField = "fulano15";
+        String NomeField = "Lucas Tsuchiya";
+        String EndField = "Avenida padre Paulo broda";
+        String NumField = "19";
+        String EmailField = "patricia1995@gmail.com";
+        String PaisField = "Brasil";
+        String EstadoField = "PR";
+        String CityField = "Londrina";
+        String PassField = "lucas12vinho";
+        ConexaoDB instance = new ConexaoDB();
+        String expResult = "Email já  cadastrado!";
         String result = instance.realizaCadastro(NickField, NomeField, EndField, NumField, EmailField, PaisField, EstadoField, CityField, PassField);
         assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail

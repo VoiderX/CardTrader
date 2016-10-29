@@ -154,6 +154,19 @@ public class UserConexaoDBNGTest {
         assertEquals(result, expResult);
          instance.fecharConexao();
     }
+        @Test(priority = 7)
+    public void testInsereCatalogo4() {
+        System.out.println("insereCatalogo4");
+        int IdCarta = 10;
+        int quant = 5;
+        float valor = 2.0F;
+        UserConexaoDB instance = new UserConexaoDB();
+        instance.setUsuario("fulano2");
+        instance.setSenha("lucas12vinho");
+        instance.createCon();
+        instance.insereCatalogo(IdCarta, quant, valor);        
+        instance.fecharConexao();
+    }
     
     @Test(priority = 6)
     public void testDeletaCatalogo() {
