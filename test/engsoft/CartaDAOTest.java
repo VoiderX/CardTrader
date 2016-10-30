@@ -6,6 +6,8 @@
 package engsoft;
 
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -119,5 +121,44 @@ public class CartaDAOTest {
         }
         }
     }    
+    
+    //Verifica existencia de 10 cartas e 1 falsa
+    @Test
+    public void verificaCartaTest(){
+    
+        assertTrue(CartaDAO.verificaCarta(1));
+        assertTrue(CartaDAO.verificaCarta(2));
+        assertTrue(CartaDAO.verificaCarta(3));
+        assertTrue(CartaDAO.verificaCarta(4));
+        assertTrue(CartaDAO.verificaCarta(5));
+        assertTrue(CartaDAO.verificaCarta(6));
+        assertTrue(CartaDAO.verificaCarta(7));
+        assertTrue(CartaDAO.verificaCarta(8));
+        assertTrue(CartaDAO.verificaCarta(9));
+        assertTrue(CartaDAO.verificaCarta(10));
+        
+        assertFalse(CartaDAO.verificaCarta(11));
+    
+    }
 
+    @Test
+    public void retornaInfoCardTest(){
+    
+    ObservableList<Carta> lista=FXCollections.observableArrayList();
+    
+    lista = CartaDAO.retornaInfoCard();
+    
+    assertEquals("A scientist created this Pokémon after years of horrific gene-splicing and DNA engineering experiments.",lista.get(0).getDesc());
+    assertEquals("Formed by several Magnemites linked together. It frequently appears when sunspots flare up.",lista.get(1).getDesc());
+    assertEquals("Using its amazing muscles, it throws powerful punches that can knock its victim clear over the horizon.",lista.get(2).getDesc());
+    assertEquals("While seeming to do nothing, it fires punches in lightning-fast volleys that are impossible to see.",lista.get(3).getDesc());
+    assertEquals("Rarely seen in the wild. Huge and vicious, it is capable of destroying entire cities in a rage.",lista.get(4).getDesc());
+    assertEquals("Its magical and cute appeal has many admirers. It is rare and found only in certain areas.",lista.get(5).getDesc());
+    assertEquals("Spits fire that is hot enough to melt boulders. Known to unintentionally cause forest fires.",lista.get(6).getDesc());
+    assertEquals("A rare and elusive Pokémon that is said to bring happiness to those who manage to catch it.",lista.get(7).getDesc());
+    assertEquals("A brutal Pokémon with pressurized water jets on its shell. They are used for high-speed tackles.",lista.get(8).getDesc());
+    assertEquals("Its brain can outperform a supercomputer. Its intelligence quotient is said to be 5000.",lista.get(9).getDesc());
+        
+    }
+    
 }
