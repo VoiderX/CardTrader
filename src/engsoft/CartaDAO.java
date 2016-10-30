@@ -44,7 +44,6 @@ public class CartaDAO {
 
     Statement s = con.createStatement();
     ResultSet rs = s.executeQuery("SELECT IMG_CARTA FROM CARTA WHERE ID_CARTA="+id);
-        if (rs != null) {
             while(rs.next()){
                 long oid=rs.getInt("IMG_CARTA");
                 LargeObject obj = lobj.open(oid);
@@ -56,7 +55,6 @@ public class CartaDAO {
                 }
             rs.close();
             s.close();
-        }
     }catch(SQLException | IOException e){
     }
     return im;
