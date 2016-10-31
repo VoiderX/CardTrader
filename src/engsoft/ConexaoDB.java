@@ -16,8 +16,15 @@ public  class ConexaoDB {//Classe de conexão primária com o banco de dados, fe
     private static Connection conexao = null;
     public ConexaoDB(){}    
     public static Connection getCon(){
+        if(conexao!=null){
+            try{
+            conexao.close();
+            }
+            catch(Exception e){
+            }
+        }
         createCon();
-        return((conexao==null)?createCon():conexao);//retorna a conexão
+        return conexao;//retorna a conexão
     }
     
     private static void rollBackBanco(String NickField)throws SQLException{

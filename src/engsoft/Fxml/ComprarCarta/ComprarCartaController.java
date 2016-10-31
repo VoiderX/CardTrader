@@ -146,6 +146,7 @@ public class ComprarCartaController implements Initializable {
         Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
         TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
         Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
+        Quantidade.setMouseTransparent(true);
         Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
         TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
         Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
@@ -165,6 +166,7 @@ public class ComprarCartaController implements Initializable {
         Imagem.setImage(engsoft.CartaDAO.puxarCarta(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta()));
         TextVendedor.setText(engsoft.ControleUI.getInstance().getTraBuf().getVendedor());
         Quantidade.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getQuantidade()));
+        Quantidade.setMouseTransparent(true);
         Valor.setText(String.valueOf(engsoft.ControleUI.getInstance().getTraBuf().getValor()));
         TextNomeCarta.setText(engsoft.CartaDAO.retornaNomeCard(engsoft.ControleUI.getInstance().getTraBuf().getIdCarta())); 
         Estado.setText(engsoft.ControleUI.getInstance().getTraBuf().getStatus());
