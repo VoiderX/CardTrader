@@ -11,88 +11,62 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.text.Text;
 
 /**
  *
  * @author Gabriel
  */
 public class Locations { //Classe para armazenar os métodos de consulta as tabelas de países,estados e cidades
-        Connection con;
-        ObservableList<String> ConjVazio=FXCollections.observableArrayList();
-    public Locations(){
-        con=ConexaoDB.getCon();
-    }
     
-     public void limpaCampos(ChoiceBox<String> EstadoField, ChoiceBox<String> CityField){
-        //Função para  limpar os campos
-        EstadoField.setValue(""); //Limpa o valor atual
-        CityField.setValue("");
-        EstadoField.setItems(ConjVazio);//Limpa o vetor de items
-        CityField.setItems(ConjVazio);        
-        }
-    
-    public void carregaPais(ChoiceBox<String> PaisField, Text Mensagem){
+    public static ObservableList<String> carregaPais(){
+    Connection con=ConexaoDB.getCon();
     ObservableList<String> Paises= FXCollections.observableArrayList();//Inicializa o "array"
     try{
     Statement s = con.createStatement();
     ResultSet rs=s.executeQuery("SELECT * FROM PAIS");//Result set com todos os países
-    while(rs.next()){//Loop para adicionr os páises no array
-    Paises.add(rs.getString("NOME_PAIS"));
-    }
+        while(rs.next()){//Loop para adicionr os páises no array
+        Paises.add(rs.getString("NOME_PAIS"));
+        }
     }
     catch(Exception e){
     }
-     PaisField.setItems(Paises);//Adiciona os países na choice box  
-     Mensagem.setText("");//Limpa os campos     
+    return Paises;
     }
     
-    public void carregaEstados(ChoiceBox<String> PaisField,ChoiceBox<String> EstadoField,ChoiceBox<String> CityField, Text Mensagem){
+    public static ObservableList<String> carregaEstados(String PaisField){
+        Connection con=ConexaoDB.getCon();
         ObservableList<String> Estados= FXCollections.observableArrayList();//Inicializa o "array"
-        if(PaisField.getValue()!=null){//Verifica se o país foi selecionado
-    try{
-        Statement s=con.createStatement();//Insere no rs somente os estados dos países selecionados
-        ResultSet rs=s.executeQuery("SELECT NOME_ESTADO FROM ESTADO WHERE PAIS_NOME_PAIS='"+ PaisField.getValue()+"'");
-    while(rs.next()){        
-        Estados.add(rs.getString("NOME_ESTADO"));//Idem ao carregaPaíses até o fim do método
-    }
-    }
-    catch(Exception e){
-    }
-    EstadoField.setItems(Estados);
-    CityField.setValue(null);
-    Mensagem.setText("");
-    EstadoField.show();
+        if(PaisField!=null){//Verifica se o país foi selecionado
+            try{
+                Statement s=con.createStatement();//Insere no rs somente os estados dos países selecionados
+                ResultSet rs=s.executeQuery("SELECT NOME_ESTADO FROM ESTADO WHERE PAIS_NOME_PAIS='"+ PaisField+"'");
+                while(rs.next()){        
+                    Estados.add(rs.getString("NOME_ESTADO"));//Idem ao carregaPaíses até o fim do método
+                }
+            }
+            catch(Exception e){
+            }
         }
-        else{
-            limpaCampos(EstadoField,CityField);
-            Mensagem.setText("Selecione um país!");
-        }
+        return Estados;
     }
     
     @FXML
-    public void carregaCidades(ChoiceBox<String> PaisField,ChoiceBox<String> EstadoField,ChoiceBox<String> CityField,Text Mensagem){//Idem ao carregaEstados
-         ObservableList<String> Cidades= FXCollections.observableArrayList();
-        if(EstadoField.getValue()!=null){
-           
-    try{
-        Statement s=con.createStatement();
-        ResultSet rs=s.executeQuery("SELECT NOME_CIDADE FROM CIDADE WHERE ESTADO_NOME_ESTADO='"
-                + EstadoField.getValue()+"' AND ESTADO_PAIS_NOME_PAIS='"+PaisField.getValue()+"'");
-    while(rs.next()){        
-        Cidades.add(rs.getString("NOME_CIDADE"));
-    }
-    }
-    catch(Exception e){
-    }
-    CityField.setItems(Cidades);
-    CityField.show();
+    public static ObservableList<String> CarregaCidades(String EstadoField,String PaisField){//Idem ao carregaEstados
+        Connection con=ConexaoDB.getCon();
+        ObservableList<String> Cidades= FXCollections.observableArrayList();
+        if(EstadoField!=null){
+            try{
+            Statement s=con.createStatement();
+            ResultSet rs=s.executeQuery("SELECT NOME_CIDADE FROM CIDADE WHERE ESTADO_NOME_ESTADO='"
+                    + EstadoField+"' AND ESTADO_PAIS_NOME_PAIS='"+PaisField+"'");
+                while(rs.next()){        
+                    Cidades.add(rs.getString("NOME_CIDADE"));
+                }
+            }
+            catch(Exception e){
+            }
         }
-        else{//Limpeza de campos caso não haja um estado selecionado
-            limpaCampos(EstadoField,CityField);
-            Mensagem.setText("Selecione um estado!");
-        }
+        return Cidades;
     }
     
 }

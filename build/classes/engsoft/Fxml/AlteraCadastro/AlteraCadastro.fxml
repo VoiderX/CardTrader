@@ -27,7 +27,7 @@
       <TextField fx:id="EmailField" layoutX="97.0" layoutY="418.0" prefHeight="25.0" prefWidth="250.0" />
       <Label layoutX="97.0" layoutY="394.0" prefHeight="17.0" prefWidth="236.0" styleClass="font" text="Email (Máximo de 60 Caracteres)" />
       <Text fx:id="Mensagem" fill="WHITE" layoutX="512.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" textAlignment="CENTER" wrappingWidth="213.13671875" />
-      <ChoiceBox fx:id="PaisField" layoutX="494.0" layoutY="168.0" onContextMenuRequested="#limpaCampos" onMouseClicked="#limpaCampos" onMousePressed="#limpaCampos" prefHeight="25.0" prefWidth="250.0" />
+      <ChoiceBox fx:id="PaisField" layoutX="494.0" layoutY="168.0" onContextMenuRequested="#limpaCampos" onMouseClicked="#limpaCampos" prefHeight="25.0" prefWidth="250.0" />
       <ChoiceBox fx:id="EstadoField" layoutX="494.0" layoutY="225.0" onContextMenuRequested="#carregaEstados" onMouseClicked="#carregaEstados" onMousePressed="#carregaEstados" prefHeight="25.0" prefWidth="250.0" />
       <ChoiceBox fx:id="CityField" layoutX="494.0" layoutY="288.0" onContextMenuRequested="#carregaCidades" onMouseClicked="#carregaCidades" onMousePressed="#carregaCidades" prefHeight="25.0" prefWidth="250.0" />
       <Button layoutX="519.0" layoutY="508.0" mnemonicParsing="false" onAction="#alterarSenha" prefHeight="41.0" prefWidth="199.0" styleClass="rich-blue" text="Alterar a Senha" />

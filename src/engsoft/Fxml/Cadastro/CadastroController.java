@@ -8,6 +8,8 @@ package engsoft.Fxml.Cadastro;
 import engsoft.Valida;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -66,20 +68,46 @@ public class CadastroController implements Initializable {
              NumUsuarioField.setText("");
     }    
    
-    
     @FXML
     public void limpaCampos(){
-        Loc.limpaCampos(EstadoField, CityField);
+         ObservableList<String> ConjVazio= FXCollections.observableArrayList();//Inicializa o "array"
+         EstadoField.setItems(ConjVazio);
+         EstadoField.setValue("");
+         CityField.setItems(ConjVazio);
+         CityField.setValue("");
+         Mensagem.setText("");
+    }
+    public void limpaCidade(){
+         ObservableList<String> ConjVazio= FXCollections.observableArrayList();//Inicializa o "array"
+         CityField.setItems(ConjVazio);
+         CityField.setValue("");
+         Mensagem.setText("");
     }
     
     @FXML
     public void carregaEstados(){
-        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
+        limpaCidade();
+        if(PaisField.getValue()!=null){
+         EstadoField.setItems(engsoft.Locations.carregaEstados(PaisField.getValue()));
+        }
+        else{
+            Mensagem.setText("Selecione um país!");
+        }
     }
     
     @FXML
     public void carregaCidades(){
-        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
+       if(PaisField.getValue()==null){
+           Mensagem.setText("Selecione um país!");
+       }
+       else{
+            if((EstadoField.getValue()!=null)&&!(EstadoField.getValue().equals(""))){
+                CityField.setItems(engsoft.Locations.CarregaCidades(EstadoField.getValue(), PaisField.getValue()));
+            }
+            else{
+                Mensagem.setText("Selecione um estado!");
+            }
+       }
     }
    
     
@@ -110,7 +138,7 @@ public class CadastroController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         conexao = new engsoft.ConexaoDB(); //Necessário utilizar a conexão base para realização do cadastro
         Loc= new engsoft.Locations();
-        Loc.carregaPais(PaisField, Mensagem);
+        PaisField.setItems(engsoft.Locations.carregaPais());
     }    
     
 }

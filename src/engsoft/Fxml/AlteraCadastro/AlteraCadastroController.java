@@ -5,10 +5,13 @@
  */
 package engsoft.Fxml.AlteraCadastro;
 
+import engsoft.Locations;
 import engsoft.Valida;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -53,25 +56,50 @@ public class AlteraCadastroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Loc=new engsoft.Locations(); //Instancia a classe de localizações
-        Loc.carregaPais(PaisField, Mensagem); //Carrega os países ao incicializar a interface
+        PaisField.setItems(engsoft.Locations.carregaPais());
         conexao=engsoft.ControleUI.getInstance().getConexaoUser();
         puxarInfo();// Puxa as informações do usuário
         NickField.setDisable(true);
     } 
-    @FXML    
+    @FXML
     public void limpaCampos(){
-          Loc.limpaCampos(EstadoField, CityField);//Chama o método de limpar os campos
-        }
-    
-    
+         ObservableList<String> ConjVazio= FXCollections.observableArrayList();//Inicializa o "array"
+         EstadoField.setItems(ConjVazio);
+         EstadoField.setValue("");
+         CityField.setItems(ConjVazio);
+         CityField.setValue("");
+         Mensagem.setText("");
+    }
+    public void limpaCidade(){
+         ObservableList<String> ConjVazio= FXCollections.observableArrayList();//Inicializa o "array"
+         CityField.setItems(ConjVazio);
+         CityField.setValue("");
+         Mensagem.setText("");
+    }
     @FXML
     public void carregaEstados(){
-        Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem); //Método para carregar o estados
+        limpaCidade();
+        if(PaisField.getValue()!=null){
+         EstadoField.setItems(engsoft.Locations.carregaEstados(PaisField.getValue()));
+        }
+        else{
+            Mensagem.setText("Selecione um país!");
+        }
     }
     
     @FXML
     public void carregaCidades(){
-        Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);//Método para carregar as cidades        
+        if(PaisField.getValue()==null){
+           Mensagem.setText("Selecione um país!");
+       }
+       else{
+            if((EstadoField.getValue()!=null)&&!(EstadoField.getValue().equals(""))){
+                CityField.setItems(engsoft.Locations.CarregaCidades(EstadoField.getValue(), PaisField.getValue()));
+            }
+            else{
+                Mensagem.setText("Selecione um estado!");
+            }
+       }
     }   
 
     @FXML
@@ -95,9 +123,9 @@ public class AlteraCadastroController implements Initializable {
        EmailField.setText(user.getEmailField());
        EndField.setText(engsoft.Utilidades.firstToUpper(user.getEndField()));
        PaisField.setValue(user.getPaisField());
-       Loc.carregaEstados(PaisField, EstadoField, CityField, Mensagem);
+       carregaEstados();
        EstadoField.setValue(user.getEstadoField());
-       Loc.carregaCidades(PaisField, EstadoField, CityField, Mensagem);
+       CityField.setItems(engsoft.Locations.CarregaCidades(EstadoField.getValue(), PaisField.getValue()));
        CityField.setValue(user.getCityField());
        engsoft.Utilidades.telSplit(user.getNumUsuarioField(), DDDField, CodCddField, NumUsuarioField);
        
