@@ -1,111 +1,111 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package engsoft;
 
 /**
- *
- * @author Gabriel
- */
+*
+* @author Gabriel
+*/
 public class Usuario {
-    private String Usuario;
-    private String NickField;
-    private String NomeField;
-    private String NumUsuarioField;
-    private String EmailField;
-    private String EndField;
-    private String PaisField;
-    private String EstadoField;
-    private String CityField;
-    private String Mensagem;
-   
-    public Usuario(String Usuario){
-        setUsuario(Usuario);
-    }
-    public Usuario(){
-        
-    }
-    public String getUsuario() {
-        return Usuario;
-    }
+   private String Usuario;
+   private String NickField;
+   private String NomeField;
+   private String NumUsuarioField;
+   private String EmailField;
+   private String EndField;
+   private String PaisField;
+   private String EstadoField;
+   private String CityField;
+   private String Mensagem;
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
-    }
+   public Usuario(String Usuario){
+      setUsuario(Usuario);
+   }
+   public Usuario(){
 
-    public String getNickField() {
-        return NickField;
-    }
+   }
+   public String getUsuario() {
+      return Usuario;
+   }
 
-    public void setNickField(String NickField) {
-        this.NickField = NickField;
-    }
+   public void setUsuario(String Usuario) {
+      this.Usuario = Usuario;
+   }
 
-    public String getNomeField() {
-        return NomeField;
-    }
+   public String getNickField() {
+      return NickField;
+   }
 
-    public void setNomeField(String NomeField) {
-        this.NomeField = NomeField;
-    }
+   public void setNickField(String NickField) {
+      this.NickField = NickField;
+   }
 
-    public String getNumUsuarioField() {
-        return NumUsuarioField;
-    }
+   public String getNomeField() {
+      return NomeField;
+   }
 
-    public void setNumUsuarioField(String NumUsuarioField) {
-        this.NumUsuarioField = NumUsuarioField;
-    }
+   public void setNomeField(String NomeField) {
+      this.NomeField = NomeField;
+   }
 
-    public String getEmailField() {
-        return EmailField;
-    }
+   public String getNumUsuarioField() {
+      return NumUsuarioField;
+   }
 
-    public void setEmailField(String EmailField) {
-        this.EmailField = EmailField;
-    }
+   public void setNumUsuarioField(String NumUsuarioField) {
+      this.NumUsuarioField = NumUsuarioField;
+   }
 
-    public String getEndField() {
-        return EndField;
-    }
+   public String getEmailField() {
+      return EmailField;
+   }
 
-    public void setEndField(String EndField) {
-        this.EndField = EndField;
-    }
+   public void setEmailField(String EmailField) {
+      this.EmailField = EmailField;
+   }
 
-    public String getPaisField() {
-        return PaisField;
-    }
+   public String getEndField() {
+      return EndField;
+   }
 
-    public void setPaisField(String PaisField) {
-        this.PaisField = PaisField;
-    }
+   public void setEndField(String EndField) {
+      this.EndField = EndField;
+   }
 
-    public String getEstadoField() {
-        return EstadoField;
-    }
+   public String getPaisField() {
+      return PaisField;
+   }
 
-    public void setEstadoField(String EstadoField) {
-        this.EstadoField = EstadoField;
-    }
+   public void setPaisField(String PaisField) {
+      this.PaisField = PaisField;
+   }
 
-    public String getCityField() {
-        return CityField;
-    }
+   public String getEstadoField() {
+      return EstadoField;
+   }
 
-    public void setCityField(String CityField) {
-        this.CityField = CityField;
-    }
+   public void setEstadoField(String EstadoField) {
+      this.EstadoField = EstadoField;
+   }
 
-    public String getMensagem() {
-        return Mensagem;
-    }
+   public String getCityField() {
+      return CityField;
+   }
 
-    public void setMensagem(String Mensagem) {
-        this.Mensagem = Mensagem;
-    }
-    
-    
+   public void setCityField(String CityField) {
+      this.CityField = CityField;
+   }
+
+   public String getMensagem() {
+      return Mensagem;
+   }
+
+   public void setMensagem(String Mensagem) {
+      this.Mensagem = Mensagem;
+   }
+
+
 }

@@ -1,33 +1,33 @@
 @font-face {
-    font-family: Roboto;
-    src: url('../Font/Roboto-Regular.ttf');
+   font-family: Roboto;
+   src: url('../Font/Roboto-Regular.ttf');
 }
 
 .root{
-    -fx-font-family: Roboto;
+   -fx-font-family: Roboto;
 }
 
 .block{
-    -fx-background-color: #696A76;
-    /*-fx-background-color: #DEDDDD;*/
+   -fx-background-color: #696A76;
+   /*-fx-background-color: #DEDDDD;*/
 }
 
 .font{
-    -fx-text-fill: #FFFFFF;
+   -fx-text-fill: #FFFFFF;
 }
 
 .rich-blue {
-    -fx-background-color:
-        #000000,
-        linear-gradient(#7ebcea, #2f4b8f),
-        linear-gradient(#426ab7, #263e75),
-        linear-gradient(#395cab, #223768);
-    -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 3,2,2,2;
-    -fx-padding: 12 30 12 30;
-    -fx-text-fill: white;
-    -fx-font-size: 12px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 2, 2);
+   -fx-background-color:
+   #000000,
+   linear-gradient(#7ebcea, #2f4b8f),
+   linear-gradient(#426ab7, #263e75),
+   linear-gradient(#395cab, #223768);
+   -fx-background-insets: 0,1,2,3;
+   -fx-background-radius: 3,2,2,2;
+   -fx-padding: 12 30 12 30;
+   -fx-text-fill: white;
+   -fx-font-size: 12px;
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 2, 2);
 }
 
 .rich-blue Text {
@@ -42,7 +42,7 @@
 }
 
 .rich-blue:pressed{
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 2, 2);
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 2, 2);
 }
 
 .card-back{
@@ -52,9 +52,9 @@
 
 .circle-back{
    -fx-background-color:
-      #000000,
-      linear-gradient(#7ebcea, #2f4b8f),
-      linear-gradient(#426ab7, #263e75),
-      linear-gradient(#395cab, #223768);
-    -fx-background-radius: 15px;
+   #000000,
+   linear-gradient(#7ebcea, #2f4b8f),
+   linear-gradient(#426ab7, #263e75),
+   linear-gradient(#395cab, #223768);
+   -fx-background-radius: 15px;
 }

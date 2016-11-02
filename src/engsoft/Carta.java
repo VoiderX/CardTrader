@@ -1,84 +1,84 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package engsoft;
 
 import javafx.scene.image.Image;
 
 /**
- *
- * @author Gabriel
- */
+*
+* @author Gabriel
+*/
 public class Carta {
-    private Integer ID;
-    private String Nome;
-    private String Fabricante;
-    private String desc;
-    private int quant;
-    private float valor;
-    private Image img;
-    
-    public Carta(Integer ID,String Nome,String Desc,String Fabricante){
-        setID(ID);
-        setNome(Nome);
-        setFabricante(Fabricante);
-        setDesc(Desc);
-    }
+   private Integer ID;
+   private String Nome;
+   private String Fabricante;
+   private String desc;
+   private int quant;
+   private float valor;
+   private Image img;
 
-    public Carta(Integer ID, int quant, float valor) {
-        this.ID = ID;
-        this.quant = quant;
-        this.valor = valor;
-        CartaDAO obj = new CartaDAO();
-        this.img = obj.puxarCarta(ID);
-    }
+   public Carta(Integer ID,String Nome,String Desc,String Fabricante){
+      setID(ID);
+      setNome(Nome);
+      setFabricante(Fabricante);
+      setDesc(Desc);
+   }
 
-    public int getQuant() {
-        return quant;
-    }
+   public Carta(Integer ID, int quant, float valor) {
+      this.ID = ID;
+      this.quant = quant;
+      this.valor = valor;
+      CartaDAO obj = new CartaDAO();
+      this.img = obj.puxarCarta(ID);
+   }
 
-    public float getValor() {
-        return valor;
-    }
+   public int getQuant() {
+      return quant;
+   }
 
-    public Image getImg() {
-        return img;
-    }
-    
-    public Integer getID() {
-        return ID;
-    }
+   public float getValor() {
+      return valor;
+   }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
+   public Image getImg() {
+      return img;
+   }
 
-    public String getNome() {
-        return Nome;
-    }
+   public Integer getID() {
+      return ID;
+   }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
-    }
+   public void setID(Integer ID) {
+      this.ID = ID;
+   }
 
-    public String getFabricante() {
-        return Fabricante;
-    }
+   public String getNome() {
+      return Nome;
+   }
 
-    public void setFabricante(String Fabricante) {
-        this.Fabricante = Fabricante;
-    }
+   public void setNome(String Nome) {
+      this.Nome = Nome;
+   }
 
-    public String getDesc() {
-        return desc;
-    }
+   public String getFabricante() {
+      return Fabricante;
+   }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-    
-    
-    
+   public void setFabricante(String Fabricante) {
+      this.Fabricante = Fabricante;
+   }
+
+   public String getDesc() {
+      return desc;
+   }
+
+   public void setDesc(String desc) {
+      this.desc = desc;
+   }
+
+
+
 }
